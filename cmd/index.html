@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Terminal with Vim & Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .terminal-container {
+            width: 100%;
+            max-width: 1000px;
+            height: 700px;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #3d3d3d;
+        }
+
+        .terminal-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .control.close { background: #ff5f57; }
+        .control.minimize { background: #ffbd2e; }
+        .control.maximize { background: #28ca42; }
+
+        .terminal-body {
+            height: calc(100% - 45px);
+            padding: 20px;
+            overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .terminal-output {
+            margin-bottom: 10px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .input-line {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .prompt {
+            color: #28ca42;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        .prompt-user {
+            color: #5d9df5;
+        }
+
+        .prompt-symbol {
+            color: #ff6b6b;
+        }
+
+        .prompt-path {
+            color: #ffd166;
+        }
+
+        #command-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #f0f0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+            caret-color: #28ca42;
+        }
+
+        .command {
+            color: #5d9df5;
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        .success {
+            color: #28ca42;
+        }
+
+        .info {
+            color: #ffbd2e;
+        }
+
+        .directory {
+            color: #9d65ff;
+        }
+
+        .file {
+            color: #ffd166;
+        }
+
+        .executable {
+            color: #28ca42;
+        }
+
+        .hidden {
+            color: #666;
+        }
+
+        .python {
+            color: #3776ab;
+        }
+
+        .python-output {
+            color: #ffd166;
+        }
+
+        .python-error {
+            color: #ff6b6b;
+        }
+
+        .python-prompt {
+            color: #3776ab;
+            font-weight: bold;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #28ca42;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .autocomplete-hint {
+            color: #666;
+            margin-left: 5px;
+        }
+
+        .path-info {
+            color: #5d9df5;
+            margin-bottom: 5px;
+        }
+
+        /* Vim Editor Styles */
+        .vim-editor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1e1e1e;
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+        }
+
+        .vim-header {
+            background: #2d2d2d;
+            padding: 10px 20px;
+            border-bottom: 1px solid #3d3d3d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .vim-title {
+            font-weight: bold;
+            color: #ffd166;
+        }
+
+        .vim-status {
+            color: #5d9df5;
+            font-size: 12px;
+        }
+
+        .vim-body {
+            flex: 1;
+            padding: 20px;
+            overflow: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            line-height: 1.6;
+            white-space: pre;
+            position: relative;
+        }
+
+        .vim-line {
+            min-height: 1.6em;
+        }
+
+        .vim-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.6em;
+            background: #ffd166;
+            animation: vim-blink 1s infinite;
+            vertical-align: bottom;
+            position: absolute;
+        }
+
+        @keyframes vim-blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .vim-mode-normal {
+            background: #1e1e1e;
+            color: #f0f0f0;
+        }
+
+        .vim-mode-insert {
+            background: #002b36;
+            color: #839496;
+        }
+
+        .vim-mode-visual {
+            background: #073642;
+            color: #b58900;
+        }
+
+        .vim-mode-command {
+            background: #586e75;
+            color: #fdf6e3;
+        }
+
+        .vim-line-number {
+            color: #666;
+            min-width: 40px;
+            display: inline-block;
+            text-align: right;
+            padding-right: 10px;
+            user-select: none;
+        }
+
+        .vim-command-line {
+            background: #2d2d2d;
+            padding: 10px;
+            border-top: 1px solid #3d3d3d;
+            display: flex;
+            align-items: center;
+        }
+
+        .vim-command-prompt {
+            color: #28ca42;
+            margin-right: 10px;
+        }
+
+        #vim-command-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #f0f0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .vim-help {
+            color: #888;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
+        .vim-modified {
+            color: #ff6b6b;
+        }
+
+        .vim-saved {
+            color: #28ca42;
+        }
+
+        .vim-selection {
+            background: #005577;
+            color: #fff;
+        }
+
+        /* Python REPL Styles */
+        .python-repl {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1e1e1e;
+            z-index: 1001;
+            display: none;
+            flex-direction: column;
+        }
+
+        .python-header {
+            background: #2d2d2d;
+            padding: 10px 20px;
+            border-bottom: 1px solid #3d3d3d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .python-title {
+            font-weight: bold;
+            color: #3776ab;
+        }
+
+        .python-version {
+            color: #ffd166;
+            font-size: 12px;
+        }
+
+        .python-body {
+            flex: 1;
+            padding: 20px;
+            overflow: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .python-output-line {
+            margin-bottom: 5px;
+            white-space: pre-wrap;
+        }
+
+        .python-input-line {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .python-prompt {
+            color: #3776ab;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        #python-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #f0f0f0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            outline: none;
+            caret-color: #3776ab;
+        }
+
+        .python-help {
+            color: #888;
+            font-size: 12px;
+            margin-top: 10px;
+            padding: 10px;
+            background: #2d2d2d;
+            border-radius: 4px;
+        }
+
+        /* Scrollbar styling */
+        .terminal-body::-webkit-scrollbar,
+        .vim-body::-webkit-scrollbar,
+        .python-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .terminal-body::-webkit-scrollbar-track,
+        .vim-body::-webkit-scrollbar-track,
+        .python-body::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        .terminal-body::-webkit-scrollbar-thumb,
+        .vim-body::-webkit-scrollbar-thumb,
+        .python-body::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 4px;
+        }
+
+        .terminal-body::-webkit-scrollbar-thumb:hover,
+        .vim-body::-webkit-scrollbar-thumb:hover,
+        .python-body::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-title">
+                <div class="window-controls">
+                    <div class="control close"></div>
+                    <div class="control minimize"></div>
+                    <div class="control maximize"></div>
+                </div>
+                <span>web-terminal</span>
+            </div>
+            <div class="terminal-status">bash</div>
+        </div>
+        
+        <div class="terminal-body" id="terminal-body">
+            <div class="terminal-output">
+Welcome to Web Terminal v4.0<br>
+Type 'help' to see available commands<br>
+Type 'clear' to clear the terminal<br>
+Type 'tree' to see full file structure<br>
+Type 'vim [file]' to edit files<br>
+Type 'py [file]' to run Python files<br>
+Type 'python' to start Python REPL<br>
+            </div>
+            
+            <div class="input-line" id="current-input-line">
+                <div class="prompt">
+                    <span class="prompt-user">user</span>
+                    <span class="prompt-symbol">@</span>
+                    <span class="prompt-user">web-terminal</span>
+                    <span class="prompt-symbol">:</span>
+                    <span class="prompt-path" id="current-path">~/</span>
+                    <span class="prompt-symbol">$</span>
+                </div>
+                <input type="text" id="command-input" autofocus>
+                <span id="cursor" class="cursor"></span>
+                <span id="autocomplete-hint" class="autocomplete-hint"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vim Editor Overlay -->
+    <div class="vim-editor" id="vim-editor">
+        <div class="vim-header">
+            <div class="vim-title" id="vim-filename">VIM - [No Name]</div>
+            <div class="vim-status">
+                <span id="vim-mode-indicator">NORMAL</span>
+                <span id="vim-modified-indicator"></span>
+                <span id="vim-cursor-position">1,1</span>
+            </div>
+        </div>
+        
+        <div class="vim-body" id="vim-body" tabindex="0"></div>
+        
+        <div class="vim-command-line">
+            <div class="vim-command-prompt" id="vim-command-prompt">:</div>
+            <input type="text" id="vim-command-input" style="display: none;">
+            <div id="vim-message"></div>
+        </div>
+        
+        <div class="vim-help" id="vim-help">
+            NORMAL mode: i=insert, v=visual, :=command, h/j/k/l=move, x=delete, dd=delete line, p=paste
+        </div>
+    </div>
+
+    <!-- Python REPL Overlay -->
+    <div class="python-repl" id="python-repl">
+        <div class="python-header">
+            <div class="python-title">Python 3.9.0 Interactive Shell</div>
+            <div class="python-version">Type 'help()' for help, 'exit()' to quit</div>
+        </div>
+        
+        <div class="python-body" id="python-body">
+            <div class="python-output-line">
+Python 3.9.0 (default, Oct  1 2023, 12:00:00)<br>
+[GCC 8.3.0] on web-terminal<br>
+Type "help", "copyright", "credits" or "license" for more information.<br>
+            </div>
+        </div>
+        
+        <div class="python-input-line">
+            <div class="python-prompt">>>></div>
+            <input type="text" id="python-input" autofocus>
+        </div>
+        
+        <div class="python-help">
+            Available: print(), len(), str(), int(), float(), list(), dict(), range(), sum(), min(), max()
+        </div>
+    </div>
+
+    <script>
+        class PythonInterpreter {
+            constructor(terminal) {
+                this.terminal = terminal;
+                this.repl = document.getElementById('python-repl');
+                this.pythonBody = document.getElementById('python-body');
+                this.pythonInput = document.getElementById('python-input');
+                this.history = [];
+                this.historyIndex = -1;
+                this.variables = {};
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                this.pythonInput.addEventListener('keydown', (e) => this.handleKeyDown(e));
+                this.repl.addEventListener('click', () => this.pythonInput.focus());
+            }
+            
+            openREPL() {
+                this.repl.style.display = 'flex';
+                this.pythonInput.focus();
+            }
+            
+            closeREPL() {
+                this.repl.style.display = 'none';
+                this.terminal.focusInput();
+            }
+            
+            handleKeyDown(e) {
+                switch(e.key) {
+                    case 'Enter':
+                        this.executeCode(this.pythonInput.value.trim());
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        this.navigateHistory(-1);
+                        break;
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        this.navigateHistory(1);
+                        break;
+                    case 'Escape':
+                        this.closeREPL();
+                        break;
+                }
+            }
+            
+            navigateHistory(direction) {
+                if (this.history.length === 0) return;
+                
+                this.historyIndex = Math.max(-1, Math.min(this.history.length - 1, this.historyIndex + direction));
+                
+                if (this.historyIndex >= 0) {
+                    this.pythonInput.value = this.history[this.historyIndex];
+                } else {
+                    this.pythonInput.value = '';
+                }
+                
+                this.pythonInput.selectionStart = this.pythonInput.selectionEnd = this.pythonInput.value.length;
+            }
+            
+            executeCode(code) {
+                if (!code) {
+                    this.addInputLine();
+                    return;
+                }
+                
+                // Add to history
+                this.history.push(code);
+                this.historyIndex = this.history.length;
+                
+                // Display input
+                this.addOutput(`>>> ${code}`, 'python-output');
+                
+                try {
+                    const result = this.evaluatePython(code);
+                    if (result !== undefined) {
+                        this.addOutput(String(result), 'python-output');
+                    }
+                } catch (error) {
+                    this.addOutput(`Error: ${error.message}`, 'python-error');
+                }
+                
+                this.pythonInput.value = '';
+                this.addInputLine();
+                this.scrollToBottom();
+            }
+            
+            evaluatePython(code) {
+                // Basic Python evaluation
+                if (code === 'exit()' || code === 'quit()') {
+                    this.closeREPL();
+                    return;
+                }
+                
+                if (code === 'help()') {
+                    return this.showHelp();
+                }
+                
+                // Handle print statements
+                if (code.startsWith('print(') && code.endsWith(')')) {
+                    const content = code.substring(6, code.length - 1);
+                    const result = this.evaluateExpression(content);
+                    this.addOutput(String(result), 'python-output');
+                    return;
+                }
+                
+                // Handle variable assignment
+                if (code.includes('=')) {
+                    const parts = code.split('=').map(p => p.trim());
+                    if (parts.length === 2) {
+                        const varName = parts[0];
+                        const value = this.evaluateExpression(parts[1]);
+                        this.variables[varName] = value;
+                        return;
+                    }
+                }
+                
+                // Evaluate expression
+                return this.evaluateExpression(code);
+            }
+            
+            evaluateExpression(expr) {
+                expr = expr.trim();
+                
+                // Check for variables
+                if (this.variables[expr]) {
+                    return this.variables[expr];
+                }
+                
+                // Built-in functions
+                if (expr.startsWith('len(') && expr.endsWith(')')) {
+                    const arg = expr.substring(4, expr.length - 1);
+                    const value = this.evaluateExpression(arg);
+                    if (Array.isArray(value) || typeof value === 'string') {
+                        return value.length;
+                    }
+                    throw new Error(`object of type '${typeof value}' has no len()`);
+                }
+                
+                if (expr.startsWith('str(') && expr.endsWith(')')) {
+                    const arg = expr.substring(4, expr.length - 1);
+                    return String(this.evaluateExpression(arg));
+                }
+                
+                if (expr.startsWith('int(') && expr.endsWith(')')) {
+                    const arg = expr.substring(4, expr.length - 1);
+                    const value = this.evaluateExpression(arg);
+                    const num = parseFloat(value);
+                    if (isNaN(num)) throw new Error(`invalid literal for int(): '${value}'`);
+                    return Math.floor(num);
+                }
+                
+                if (expr.startsWith('float(') && expr.endsWith(')')) {
+                    const arg = expr.substring(6, expr.length - 1);
+                    const value = this.evaluateExpression(arg);
+                    const num = parseFloat(value);
+                    if (isNaN(num)) throw new Error(`could not convert string to float: '${value}'`);
+                    return num;
+                }
+                
+                if (expr.startsWith('list(') && expr.endsWith(')')) {
+                    const arg = expr.substring(5, expr.length - 1);
+                    const value = this.evaluateExpression(arg);
+                    if (typeof value === 'string') {
+                        return value.split('');
+                    }
+                    if (value && value.length !== undefined) {
+                        return Array.from(value);
+                    }
+                    throw new Error(`'${typeof value}' object is not iterable`);
+                }
+                
+                if (expr.startsWith('dict(') && expr.endsWith(')')) {
+                    return {};
+                }
+                
+                if (expr.startsWith('range(') && expr.endsWith(')')) {
+                    const args = expr.substring(6, expr.length - 1).split(',').map(a => {
+                        const val = this.evaluateExpression(a.trim());
+                        const num = parseFloat(val);
+                        if (isNaN(num)) throw new Error(`'${val}' cannot be interpreted as an integer`);
+                        return num;
+                    });
+                    
+                    if (args.length === 1) {
+                        return Array.from({length: args[0]}, (_, i) => i);
+                    } else if (args.length === 2) {
+                        return Array.from({length: args[1] - args[0]}, (_, i) => args[0] + i);
+                    } else if (args.length === 3) {
+                        const result = [];
+                        for (let i = args[0]; i < args[1]; i += args[2]) {
+                            result.push(i);
+                        }
+                        return result;
+                    }
+                }
+                
+                if (expr.startsWith('sum(') && expr.endsWith(')')) {
+                    const arg = expr.substring(4, expr.length - 1);
+                    const value = this.evaluateExpression(arg);
+                    if (!Array.isArray(value)) throw new Error(`'${typeof value}' object is not iterable`);
+                    return value.reduce((a, b) => {
+                        const numA = parseFloat(a);
+                        const numB = parseFloat(b);
+                        if (isNaN(numA) || isNaN(numB)) throw new Error(`unsupported operand type(s) for +`);
+                        return numA + numB;
+                    }, 0);
+                }
+                
+                if (expr.startsWith('min(') && expr.endsWith(')')) {
+                    const arg = expr.substring(4, expr.length - 1);
+                    const value = this.evaluateExpression(arg);
+                    if (!Array.isArray(value)) throw new Error(`'${typeof value}' object is not iterable`);
+                    return Math.min(...value.map(v => parseFloat(v)));
+                }
+                
+                if (expr.startsWith('max(') && expr.endsWith(')')) {
+                    const arg = expr.substring(4, expr.length - 1);
+                    const value = this.evaluateExpression(arg);
+                    if (!Array.isArray(value)) throw new Error(`'${typeof value}' object is not iterable`);
+                    return Math.max(...value.map(v => parseFloat(v)));
+                }
+                
+                // Handle lists
+                if (expr.startsWith('[') && expr.endsWith(']')) {
+                    const items = expr.substring(1, expr.length - 1).split(',').map(item => 
+                        item.trim() ? this.evaluateExpression(item.trim()) : null
+                    ).filter(item => item !== null);
+                    return items;
+                }
+                
+                // Handle arithmetic
+                const operators = ['+', '-', '*', '/', '%', '**'];
+                for (const op of operators) {
+                    if (expr.includes(op)) {
+                        const parts = expr.split(op).map(p => p.trim());
+                        if (parts.length === 2) {
+                            const left = this.evaluateExpression(parts[0]);
+                            const right = this.evaluateExpression(parts[1]);
+                            
+                            const numLeft = parseFloat(left);
+                            const numRight = parseFloat(right);
+                            
+                            if (isNaN(numLeft) || isNaN(numRight)) {
+                                throw new Error(`unsupported operand type(s) for ${op}: '${typeof left}' and '${typeof right}'`);
+                            }
+                            
+                            switch(op) {
+                                case '+': return numLeft + numRight;
+                                case '-': return numLeft - numRight;
+                                case '*': return numLeft * numRight;
+                                case '/': return numLeft / numRight;
+                                case '%': return numLeft % numRight;
+                                case '**': return Math.pow(numLeft, numRight);
+                            }
+                        }
+                    }
+                }
+                
+                // Handle string literals
+                if ((expr.startsWith("'") && expr.endsWith("'")) || 
+                    (expr.startsWith('"') && expr.endsWith('"'))) {
+                    return expr.substring(1, expr.length - 1);
+                }
+                
+                // Handle numbers
+                if (!isNaN(expr)) {
+                    return parseFloat(expr);
+                }
+                
+                // Handle boolean literals
+                if (expr === 'True') return true;
+                if (expr === 'False') return false;
+                if (expr === 'None') return null;
+                
+                throw new Error(`name '${expr}' is not defined`);
+            }
+            
+            showHelp() {
+                return `Type Python code to execute. Available functions:
+print()   - Print to console
+len()     - Get length of string or list
+str()     - Convert to string
+int()     - Convert to integer
+float()   - Convert to float
+list()    - Create list
+dict()    - Create dictionary
+range()   - Generate number sequence
+sum()     - Sum of numbers
+min()     - Minimum value
+max()     - Maximum value
+
+Examples:
+  print("Hello, World!")
+  x = 10
+  y = x * 2
+  numbers = [1, 2, 3, 4, 5]
+  print(sum(numbers))`;
+            }
+            
+            runFile(filename) {
+                const file = this.terminal.resolvePath(filename);
+                if (!file || file.type !== 'file') {
+                    this.terminal.output(`py: cannot run '${filename}': No such file`, 'error');
+                    return;
+                }
+                
+                const code = file.content;
+                const lines = code.split('\n');
+                
+                this.terminal.output(`Running ${filename}:`, 'python');
+                this.terminal.output('='.repeat(50), 'info');
+                
+                try {
+                    // Execute each line
+                    for (let i = 0; i < lines.length; i++) {
+                        const line = lines[i].trim();
+                        if (!line || line.startsWith('#')) continue;
+                        
+                        this.terminal.output(`>>> ${line}`, 'python');
+                        try {
+                            const result = this.evaluatePython(line);
+                            if (result !== undefined) {
+                                this.terminal.output(String(result), 'python-output');
+                            }
+                        } catch (error) {
+                            this.terminal.output(`Line ${i + 1}: ${error.message}`, 'python-error');
+                            break;
+                        }
+                    }
+                } catch (error) {
+                    this.terminal.output(`Error: ${error.message}`, 'python-error');
+                }
+                
+                this.terminal.output('='.repeat(50), 'info');
+            }
+            
+            addOutput(text, className = '') {
+                const div = document.createElement('div');
+                div.className = `python-output-line ${className}`;
+                div.textContent = text;
+                this.pythonBody.appendChild(div);
+            }
+            
+            addInputLine() {
+                const div = document.createElement('div');
+                div.className = 'python-input-line';
+                div.innerHTML = `<div class="python-prompt">>>></div>`;
+                this.pythonBody.appendChild(div);
+            }
+            
+            scrollToBottom() {
+                this.pythonBody.scrollTop = this.pythonBody.scrollHeight;
+            }
+        }
+
+        class VimEditor {
+            constructor(terminal) {
+                this.terminal = terminal;
+                this.editor = document.getElementById('vim-editor');
+                this.vimBody = document.getElementById('vim-body');
+                this.vimCommandInput = document.getElementById('vim-command-input');
+                this.vimCommandPrompt = document.getElementById('vim-command-prompt');
+                this.vimMessage = document.getElementById('vim-message');
+                this.vimHelp = document.getElementById('vim-help');
+                this.vimFilename = document.getElementById('vim-filename');
+                this.vimModeIndicator = document.getElementById('vim-mode-indicator');
+                this.vimModifiedIndicator = document.getElementById('vim-modified-indicator');
+                this.vimCursorPosition = document.getElementById('vim-cursor-position');
+                
+                this.mode = 'normal';
+                this.lines = [''];
+                this.cursor = { row: 0, col: 0 };
+                this.selection = null;
+                this.clipboard = '';
+                this.filename = '';
+                this.modified = false;
+                this.commandHistory = [];
+                this.historyIndex = -1;
+                
+                this.init();
+            }
+            
+            init() {
+                this.setupEventListeners();
+                this.updateDisplay();
+            }
+            
+            setupEventListeners() {
+                this.vimBody.addEventListener('keydown', (e) => this.handleKeyDown(e));
+                this.vimCommandInput.addEventListener('keydown', (e) => this.handleCommandKeyDown(e));
+                this.vimBody.addEventListener('click', (e) => this.handleClick(e));
+            }
+            
+            open(filename) {
+                this.filename = filename;
+                this.vimFilename.textContent = `VIM - ${filename}`;
+                
+                const file = this.terminal.resolvePath(filename);
+                if (file && file.type === 'file') {
+                    this.lines = file.content.split('\n');
+                    if (this.lines.length === 0) this.lines = [''];
+                } else {
+                    this.lines = [''];
+                }
+                
+                this.cursor = { row: 0, col: 0 };
+                this.modified = false;
+                this.mode = 'normal';
+                this.editor.style.display = 'flex';
+                this.vimBody.focus();
+                this.updateDisplay();
+            }
+            
+            close() {
+                if (this.modified) {
+                    this.showMessage('No write since last change (add ! to override)');
+                    return;
+                }
+                this.editor.style.display = 'none';
+                this.terminal.focusInput();
+            }
+            
+            save() {
+                if (!this.filename) {
+                    this.showMessage('No file name');
+                    this.enterCommandMode();
+                    return;
+                }
+                
+                const path = this.filename.startsWith('/') ? this.filename : 
+                    this.terminal.currentDir + (this.terminal.currentDir === '/' ? '' : '/') + this.filename;
+                const pathParts = path.split('/').filter(p => p !== '');
+                const filename = pathParts.pop();
+                const dirPath = '/' + pathParts.join('/');
+                
+                const dir = this.terminal.getPathFromRoot(dirPath || '/');
+                
+                if (!dir || dir.type !== 'directory') {
+                    this.showMessage(`Cannot save: Directory ${dirPath} doesn't exist`);
+                    return;
+                }
+                
+                dir.content[filename] = {
+                    type: 'file',
+                    content: this.lines.join('\n')
+                };
+                
+                this.modified = false;
+                this.showMessage(`"${filename}" ${this.lines.length}L, ${this.getTotalChars()}C written`);
+                this.updateDisplay();
+            }
+            
+            getTotalChars() {
+                return this.lines.reduce((sum, line) => sum + line.length, 0);
+            }
+            
+            handleKeyDown(e) {
+                e.preventDefault();
+                
+                switch(this.mode) {
+                    case 'normal':
+                        this.handleNormalMode(e);
+                        break;
+                    case 'insert':
+                        this.handleInsertMode(e);
+                        break;
+                    case 'visual':
+                        this.handleVisualMode(e);
+                        break;
+                }
+            }
+            
+            handleNormalMode(e) {
+                switch(e.key) {
+                    case 'i':
+                        this.mode = 'insert';
+                        break;
+                    case 'v':
+                        this.mode = 'visual';
+                        this.selection = { start: {...this.cursor}, end: {...this.cursor} };
+                        break;
+                    case ':':
+                        this.enterCommandMode();
+                        return;
+                    case 'h':
+                        this.moveCursor(0, -1);
+                        break;
+                    case 'j':
+                        this.moveCursor(1, 0);
+                        break;
+                    case 'k':
+                        this.moveCursor(-1, 0);
+                        break;
+                    case 'l':
+                        this.moveCursor(0, 1);
+                        break;
+                    case 'x':
+                        this.deleteChar();
+                        break;
+                    case 'd':
+                        if (e.key === 'd' && !e.repeat) {
+                            setTimeout(() => {
+                                if (this.lastKey === 'd') {
+                                    this.deleteLine();
+                                    this.lastKey = '';
+                                }
+                            }, 300);
+                            this.lastKey = 'd';
+                        }
+                        break;
+                    case 'p':
+                        this.paste();
+                        break;
+                    case 'y':
+                        if (e.key === 'y' && !e.repeat) {
+                            setTimeout(() => {
+                                if (this.lastKey === 'y') {
+                                    this.yankLine();
+                                    this.lastKey = '';
+                                }
+                            }, 300);
+                            this.lastKey = 'y';
+                        }
+                        break;
+                    case 'Escape':
+                        break;
+                    case 'Backspace':
+                        this.moveCursor(0, -1);
+                        break;
+                    case 'Enter':
+                        this.splitLine();
+                        break;
+                    default:
+                        if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+                            this.showMessage(`Unknown command: ${e.key}`);
+                        }
+                }
+                
+                this.updateDisplay();
+            }
+            
+            handleInsertMode(e) {
+                switch(e.key) {
+                    case 'Escape':
+                        this.mode = 'normal';
+                        this.moveCursor(0, -1);
+                        break;
+                    case 'Enter':
+                        this.splitLine();
+                        break;
+                    case 'Backspace':
+                        this.backspace();
+                        break;
+                    case 'Delete':
+                        this.deleteChar();
+                        break;
+                    case 'ArrowLeft':
+                        this.moveCursor(0, -1);
+                        break;
+                    case 'ArrowRight':
+                        this.moveCursor(0, 1);
+                        break;
+                    case 'ArrowUp':
+                        this.moveCursor(-1, 0);
+                        break;
+                    case 'ArrowDown':
+                        this.moveCursor(1, 0);
+                        break;
+                    default:
+                        if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+                            this.insertText(e.key);
+                        }
+                }
+                
+                this.updateDisplay();
+            }
+            
+            handleVisualMode(e) {
+                switch(e.key) {
+                    case 'Escape':
+                        this.mode = 'normal';
+                        this.selection = null;
+                        break;
+                    case 'y':
+                        this.yankSelection();
+                        this.mode = 'normal';
+                        this.selection = null;
+                        break;
+                    case 'd':
+                        this.deleteSelection();
+                        this.mode = 'normal';
+                        this.selection = null;
+                        break;
+                    case 'h':
+                        this.moveCursor(0, -1, true);
+                        break;
+                    case 'j':
+                        this.moveCursor(1, 0, true);
+                        break;
+                    case 'k':
+                        this.moveCursor(-1, 0, true);
+                        break;
+                    case 'l':
+                        this.moveCursor(0, 1, true);
+                        break;
+                }
+                
+                this.updateDisplay();
+            }
+            
+            enterCommandMode() {
+                this.mode = 'command';
+                this.vimCommandPrompt.textContent = ':';
+                this.vimCommandInput.style.display = 'block';
+                this.vimCommandInput.focus();
+                this.updateDisplay();
+            }
+            
+            exitCommandMode() {
+                this.mode = 'normal';
+                this.vimCommandInput.style.display = 'none';
+                this.vimMessage.textContent = '';
+                this.vimBody.focus();
+                this.updateDisplay();
+            }
+            
+            handleCommandKeyDown(e) {
+                switch(e.key) {
+                    case 'Enter':
+                        this.executeCommand(this.vimCommandInput.value.trim());
+                        this.vimCommandInput.value = '';
+                        break;
+                    case 'Escape':
+                        this.exitCommandMode();
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        this.navigateCommandHistory(-1);
+                        break;
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        this.navigateCommandHistory(1);
+                        break;
+                }
+            }
+            
+            navigateCommandHistory(direction) {
+                if (this.commandHistory.length === 0) return;
+                
+                this.historyIndex = Math.max(-1, Math.min(this.commandHistory.length - 1, this.historyIndex + direction));
+                
+                if (this.historyIndex >= 0) {
+                    this.vimCommandInput.value = this.commandHistory[this.historyIndex];
+                } else {
+                    this.vimCommandInput.value = '';
+                }
+            }
+            
+            executeCommand(cmd) {
+                if (!cmd) {
+                    this.exitCommandMode();
+                    return;
+                }
+                
+                this.commandHistory.push(cmd);
+                this.historyIndex = this.commandHistory.length;
+                
+                const [command, ...args] = cmd.split(' ');
+                
+                switch(command) {
+                    case 'q':
+                        this.close();
+                        break;
+                    case 'q!':
+                        this.modified = false;
+                        this.close();
+                        break;
+                    case 'w':
+                        this.save();
+                        if (args.includes('q')) {
+                            setTimeout(() => this.close(), 100);
+                        }
+                        break;
+                    case 'wq':
+                        this.save();
+                        setTimeout(() => this.close(), 100);
+                        break;
+                    case 'x':
+                        this.save();
+                        setTimeout(() => this.close(), 100);
+                        break;
+                    case 'e':
+                        if (args[0]) {
+                            this.open(args[0]);
+                        }
+                        break;
+                    default:
+                        this.showMessage(`Not an editor command: ${command}`);
+                }
+                
+                if (!['w', 'wq', 'x'].includes(command)) {
+                    this.exitCommandMode();
+                }
+            }
+            
+            handleClick(e) {
+                this.vimBody.focus();
+            }
+            
+            moveCursor(rowDelta, colDelta, extendSelection = false) {
+                const newRow = Math.max(0, Math.min(this.lines.length - 1, this.cursor.row + rowDelta));
+                const maxCol = this.lines[newRow].length;
+                const newCol = Math.max(0, Math.min(maxCol, this.cursor.col + colDelta));
+                
+                if (extendSelection && this.selection) {
+                    this.selection.end = { row: newRow, col: newCol };
+                }
+                
+                this.cursor = { row: newRow, col: newCol };
+            }
+            
+            insertText(text) {
+                const line = this.lines[this.cursor.row];
+                this.lines[this.cursor.row] = line.substring(0, this.cursor.col) + text + line.substring(this.cursor.col);
+                this.cursor.col += text.length;
+                this.modified = true;
+            }
+            
+            backspace() {
+                if (this.cursor.col > 0) {
+                    const line = this.lines[this.cursor.row];
+                    this.lines[this.cursor.row] = line.substring(0, this.cursor.col - 1) + line.substring(this.cursor.col);
+                    this.cursor.col--;
+                    this.modified = true;
+                } else if (this.cursor.row > 0) {
+                    const prevLineLength = this.lines[this.cursor.row - 1].length;
+                    this.lines[this.cursor.row - 1] += this.lines[this.cursor.row];
+                    this.lines.splice(this.cursor.row, 1);
+                    this.cursor.row--;
+                    this.cursor.col = prevLineLength;
+                    this.modified = true;
+                }
+            }
+            
+            deleteChar() {
+                const line = this.lines[this.cursor.row];
+                if (this.cursor.col < line.length) {
+                    this.lines[this.cursor.row] = line.substring(0, this.cursor.col) + line.substring(this.cursor.col + 1);
+                    this.modified = true;
+                } else if (this.cursor.row < this.lines.length - 1) {
+                    this.lines[this.cursor.row] += this.lines[this.cursor.row + 1];
+                    this.lines.splice(this.cursor.row + 1, 1);
+                    this.modified = true;
+                }
+            }
+            
+            deleteLine() {
+                if (this.lines.length > 1) {
+                    this.clipboard = this.lines[this.cursor.row] + '\n';
+                    this.lines.splice(this.cursor.row, 1);
+                    if (this.cursor.row >= this.lines.length) {
+                        this.cursor.row = Math.max(0, this.lines.length - 1);
+                    }
+                    this.cursor.col = Math.min(this.cursor.col, this.lines[this.cursor.row].length);
+                    this.modified = true;
+                }
+            }
+            
+            splitLine() {
+                const line = this.lines[this.cursor.row];
+                const before = line.substring(0, this.cursor.col);
+                const after = line.substring(this.cursor.col);
+                
+                this.lines[this.cursor.row] = before;
+                this.lines.splice(this.cursor.row + 1, 0, after);
+                this.cursor.row++;
+                this.cursor.col = 0;
+                this.modified = true;
+            }
+            
+            paste() {
+                if (!this.clipboard) return;
+                
+                const clipboardLines = this.clipboard.split('\n');
+                const currentLine = this.lines[this.cursor.row];
+                
+                if (clipboardLines.length === 1) {
+                    this.lines[this.cursor.row] = currentLine.substring(0, this.cursor.col) + 
+                                                 clipboardLines[0] + 
+                                                 currentLine.substring(this.cursor.col);
+                    this.cursor.col += clipboardLines[0].length;
+                } else {
+                    const before = currentLine.substring(0, this.cursor.col);
+                    const after = currentLine.substring(this.cursor.col);
+                    
+                    this.lines[this.cursor.row] = before + clipboardLines[0];
+                    
+                    for (let i = 1; i < clipboardLines.length - 1; i++) {
+                        this.lines.splice(this.cursor.row + i, 0, clipboardLines[i]);
+                    }
+                    
+                    const lastLineIndex = this.cursor.row + clipboardLines.length - 1;
+                    this.lines.splice(lastLineIndex, 0, clipboardLines[clipboardLines.length - 1] + after);
+                    
+                    this.cursor.row = lastLineIndex;
+                    this.cursor.col = clipboardLines[clipboardLines.length - 1].length;
+                }
+                
+                this.modified = true;
+            }
+            
+            yankLine() {
+                this.clipboard = this.lines[this.cursor.row] + '\n';
+                this.showMessage('1 line yanked');
+            }
+            
+            yankSelection() {
+                if (!this.selection) return;
+                
+                const { start, end } = this.normalizeSelection();
+                let text = '';
+                
+                for (let i = start.row; i <= end.row; i++) {
+                    if (i === start.row && i === end.row) {
+                        text += this.lines[i].substring(start.col, end.col + 1);
+                    } else if (i === start.row) {
+                        text += this.lines[i].substring(start.col) + '\n';
+                    } else if (i === end.row) {
+                        text += this.lines[i].substring(0, end.col + 1);
+                    } else {
+                        text += this.lines[i] + '\n';
+                    }
+                }
+                
+                this.clipboard = text;
+                this.showMessage(`${end.row - start.row + 1} lines yanked`);
+            }
+            
+            deleteSelection() {
+                if (!this.selection) return;
+                
+                const { start, end } = this.normalizeSelection();
+                this.yankSelection();
+                
+                if (start.row === end.row) {
+                    const line = this.lines[start.row];
+                    this.lines[start.row] = line.substring(0, start.col) + line.substring(end.col + 1);
+                } else {
+                    const firstLine = this.lines[start.row];
+                    const lastLine = this.lines[end.row];
+                    
+                    this.lines[start.row] = firstLine.substring(0, start.col) + lastLine.substring(end.col + 1);
+                    
+                    const linesToRemove = end.row - start.row;
+                    for (let i = 0; i < linesToRemove; i++) {
+                        this.lines.splice(start.row + 1, 1);
+                    }
+                }
+                
+                this.cursor = { ...start };
+                this.modified = true;
+            }
+            
+            normalizeSelection() {
+                if (!this.selection) return { start: this.cursor, end: this.cursor };
+                
+                const start = this.selection.start;
+                const end = this.selection.end;
+                
+                if (start.row < end.row || (start.row === end.row && start.col <= end.col)) {
+                    return { start, end };
+                } else {
+                    return { start: end, end: start };
+                }
+            }
+            
+            showMessage(msg) {
+                this.vimMessage.textContent = msg;
+                setTimeout(() => {
+                    if (this.vimMessage.textContent === msg) {
+                        this.vimMessage.textContent = '';
+                    }
+                }, 3000);
+            }
+            
+            updateDisplay() {
+                this.vimModeIndicator.textContent = this.mode.toUpperCase();
+                this.vimBody.className = `vim-body vim-mode-${this.mode}`;
+                
+                this.vimModifiedIndicator.textContent = this.modified ? ' [+]' : '';
+                this.vimModifiedIndicator.className = this.modified ? 'vim-modified' : 'vim-saved';
+                
+                this.vimCursorPosition.textContent = `${this.cursor.row + 1},${this.cursor.col + 1}`;
+                
+                this.vimBody.innerHTML = '';
+                
+                const showLineNumbers = true;
+                
+                for (let i = 0; i < this.lines.length; i++) {
+                    const lineDiv = document.createElement('div');
+                    lineDiv.className = 'vim-line';
+                    
+                    if (showLineNumbers) {
+                        const lineNum = document.createElement('span');
+                        lineNum.className = 'vim-line-number';
+                        lineNum.textContent = (i + 1).toString().padStart(3, ' ');
+                        lineDiv.appendChild(lineNum);
+                    }
+                    
+                    const lineSpan = document.createElement('span');
+                    
+                    if (this.mode === 'visual' && this.selection) {
+                        const { start, end } = this.normalizeSelection();
+                        
+                        if (i >= start.row && i <= end.row) {
+                            const lineText = this.lines[i];
+                            let before = '';
+                            let selected = '';
+                            let after = '';
+                            
+                            if (i === start.row && i === end.row) {
+                                before = lineText.substring(0, start.col);
+                                selected = lineText.substring(start.col, end.col + 1);
+                                after = lineText.substring(end.col + 1);
+                            } else if (i === start.row) {
+                                before = lineText.substring(0, start.col);
+                                selected = lineText.substring(start.col);
+                            } else if (i === end.row) {
+                                selected = lineText.substring(0, end.col + 1);
+                                after = lineText.substring(end.col + 1);
+                            } else {
+                                selected = lineText;
+                            }
+                            
+                            lineSpan.appendChild(document.createTextNode(before));
+                            
+                            const selectedSpan = document.createElement('span');
+                            selectedSpan.className = 'vim-selection';
+                            selectedSpan.textContent = selected;
+                            lineSpan.appendChild(selectedSpan);
+                            
+                            lineSpan.appendChild(document.createTextNode(after));
+                        } else {
+                            lineSpan.textContent = this.lines[i];
+                        }
+                    } else {
+                        lineSpan.textContent = this.lines[i];
+                    }
+                    
+                    lineDiv.appendChild(lineSpan);
+                    this.vimBody.appendChild(lineDiv);
+                }
+                
+                const cursorElement = document.createElement('div');
+                cursorElement.className = 'vim-cursor';
+                
+                const lineHeight = 1.6 * 16;
+                const charWidth = 8.4;
+                
+                const top = this.cursor.row * lineHeight + 20;
+                const left = (showLineNumbers ? 60 : 20) + (this.cursor.col * charWidth);
+                
+                cursorElement.style.top = `${top}px`;
+                cursorElement.style.left = `${left}px`;
+                
+                this.vimBody.appendChild(cursorElement);
+                
+                switch(this.mode) {
+                    case 'normal':
+                        this.vimHelp.textContent = 'NORMAL: i=insert, v=visual, :=command, h/j/k/l=move, x=delete, dd=delete line, p=paste, u=undo';
+                        break;
+                    case 'insert':
+                        this.vimHelp.textContent = 'INSERT: ESC=normal mode, Type to insert text';
+                        break;
+                    case 'visual':
+                        this.vimHelp.textContent = 'VISUAL: y=yank, d=delete, ESC=normal mode';
+                        break;
+                    case 'command':
+                        this.vimHelp.textContent = 'COMMAND: w=save, q=quit, q!=force quit, wq=save & quit';
+                        break;
+                }
+            }
+        }
+
+        class WebTerminal {
+            constructor() {
+                this.history = [];
+                this.historyIndex = -1;
+                this.currentDir = '/home/user';
+                this.username = 'user';
+                this.hostname = 'web-terminal';
+                
+                this.filesystem = {
+                    '/': {
+                        type: 'directory',
+                        content: {
+                            'home': {
+                                type: 'directory',
+                                content: {
+                                    'user': {
+                                        type: 'directory',
+                                        content: {
+                                            'projects': {
+                                                type: 'directory',
+                                                content: {
+                                                    'web-terminal': {
+                                                        type: 'directory',
+                                                        content: {
+                                                            'README.md': {
+                                                                type: 'file',
+                                                                content: '# Web Terminal Project\nA browser-based terminal emulator with Vim editor and Python interpreter\n\n## Features\n- Bash-like terminal\n- File system navigation\n- Vim text editor\n- Python interpreter\n- Command history\n\n## Usage\n1. Type commands in terminal\n2. Use vim [filename] to edit files\n3. Use py [filename] to run Python files\n4. Type python to start interactive Python shell'
+                                                            },
+                                                            'calculator.py': {
+                                                                type: 'file',
+                                                                content: '# Simple Calculator\n\nprint("Calculator Program")\nprint("=" * 20)\n\n# Basic arithmetic\na = 10\nb = 5\n\nprint(f"a = {a}, b = {b}")\nprint(f"a + b = {a + b}")\nprint(f"a - b = {a - b}")\nprint(f"a * b = {a * b}")\nprint(f"a / b = {a / b}")\n\n# List operations\nnumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nprint(f"\\nNumbers: {numbers}")\nprint(f"Sum: {sum(numbers)}")\nprint(f"Min: {min(numbers)}")\nprint(f"Max: {max(numbers)}")\nprint(f"Average: {sum(numbers) / len(numbers)}")\n\n# String operations\ntext = "Hello, Python!"\nprint(f"\\nText: {text}")\nprint(f"Length: {len(text)}")\nprint(f"Uppercase: {text.upper()}")\nprint(f"Reversed: {text[::-1]}")'
+                                                            },
+                                                            'fibonacci.py': {
+                                                                type: 'file',
+                                                                content: '# Fibonacci Sequence Generator\n\ndef fibonacci(n):\n    """Generate Fibonacci sequence up to n terms"""\n    sequence = []\n    a, b = 0, 1\n    for _ in range(n):\n        sequence.append(a)\n        a, b = b, a + b\n    return sequence\n\n# Generate first 10 Fibonacci numbers\nfib_numbers = fibonacci(10)\nprint("Fibonacci Sequence (first 10 numbers):")\nfor i, num in enumerate(fib_numbers):\n    print(f"  {i + 1}: {num}")\n\n# Calculate some statistics\nprint(f"\\nStatistics:")\nprint(f"  Sum: {sum(fib_numbers)}")\nprint(f"  Average: {sum(fib_numbers) / len(fib_numbers):.2f}")\nprint(f"  Max: {max(fib_numbers)}")\n\n# Demonstrate list comprehension\neven_fib = [num for num in fib_numbers if num % 2 == 0]\nprint(f"  Even numbers: {even_fib}")\nprint(f"  Count of even numbers: {len(even_fib)}")'
+                                                            },
+                                                            'game.py': {
+                                                                type: 'file',
+                                                                content: '# Simple Number Guessing Game\n\nimport random\n\nprint("Welcome to the Number Guessing Game!")\nprint("I\'m thinking of a number between 1 and 100.")\n\n# Generate random number\nsecret_number = random.randint(1, 100)\ntries = 0\nmax_tries = 7\n\nguess = None\nwhile guess != secret_number and tries < max_tries:\n    tries += 1\n    remaining = max_tries - tries + 1\n    \n    try:\n        guess = int(input(f"\\nGuess #{tries} ({remaining} tries left): "))\n    except:\n        print("Please enter a valid number!")\n        continue\n    \n    if guess < secret_number:\n        print("Too low!")\n    elif guess > secret_number:\n        print("Too high!")\n    else:\n        print(f"\\nCongratulations! You guessed it in {tries} tries!")\n        break\n\nif guess != secret_number:\n    print(f"\\nGame over! The number was {secret_number}.")\n\nprint("\\nThanks for playing!")'
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            'scripts': {
+                                                type: 'directory',
+                                                content: {
+                                                    'hello.py': {
+                                                        type: 'file',
+                                                        content: '#!/usr/bin/env python3\n\nprint("Hello, World!")\nprint("Welcome to the Python interpreter in Web Terminal!")\n\n# Simple calculations\nx = 10\ny = 20\nprint(f"\\nCalculations:")\nprint(f"  x = {x}, y = {y}")\nprint(f"  x + y = {x + y}")\nprint(f"  x * y = {x * y}")\nprint(f"  y / x = {y / x}")\n\n# Working with strings\nname = "Web Terminal User"\nprint(f"\\nHello, {name}!")\nprint(f"Your name has {len(name)} characters.")\nprint(f"Uppercase: {name.upper()}")\nprint(f"Lowercase: {name.lower()}")\n\n# Lists and loops\nnumbers = [1, 2, 3, 4, 5]\nprint(f"\\nNumbers: {numbers}")\nprint("Doubled numbers:")\nfor num in numbers:\n    print(f"  {num} * 2 = {num * 2}")'
+                                                    },
+                                                    'math_operations.py': {
+                                                        type: 'file',
+                                                        content: '# Math Operations\n\nimport math\n\n# Basic operations\ndef add(a, b):\n    return a + b\n\ndef subtract(a, b):\n    return a - b\n\ndef multiply(a, b):\n    return a * b\n\ndef divide(a, b):\n    return a / b if b != 0 else "Cannot divide by zero"\n\n# Test the functions\nprint("Math Operations Demo")\nprint("=" * 30)\n\nnum1 = 15\nnum2 = 3\n\nprint(f"Numbers: {num1}, {num2}")\nprint(f"Addition: {add(num1, num2)}")\nprint(f"Subtraction: {subtract(num1, num2)}")\nprint(f"Multiplication: {multiply(num1, num2)}")\nprint(f"Division: {divide(num1, num2)}")\n\n# More math operations\nprint(f"\\nMath module functions:")\nprint(f"  Square root of {num1}: {math.sqrt(num1):.2f}")\nprint(f"  {num1} raised to power {num2}: {math.pow(num1, num2)}")\nprint(f"  Sine of 45 degrees: {math.sin(math.radians(45)):.2f}")\nprint(f"  Pi: {math.pi:.5f}")\nprint(f"  Euler\'s number: {math.e:.5f}")\n\n# Generate some sequences\nprint(f"\\nNumber sequences:")\nsquares = [x**2 for x in range(1, 6)]\ncubes = [x**3 for x in range(1, 6)]\nprint(f"  Squares 1-5: {squares}")\nprint(f"  Cubes 1-5: {cubes}")'
+                                                    }
+                                                }
+                                            },
+                                            '.bashrc': {
+                                                type: 'file',
+                                                content: '# Bash configuration\nPS1="\\u@\\h:\\w\\$ "\nalias ll="ls -la"\nalias vim="nvim"\nalias py="python3"\n\nexport EDITOR=vim\nexport PYTHONPATH="/home/user/projects"'
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+                
+                this.commands = {
+                    'help': this.showHelp.bind(this),
+                    'clear': this.clearTerminal.bind(this),
+                    'ls': this.listDirectory.bind(this),
+                    'pwd': this.printWorkingDirectory.bind(this),
+                    'cd': this.changeDirectory.bind(this),
+                    'cat': this.readFile.bind(this),
+                    'echo': this.echo.bind(this),
+                    'whoami': this.whoami.bind(this),
+                    'date': this.showDate.bind(this),
+                    'history': this.showHistory.bind(this),
+                    'mkdir': this.makeDirectory.bind(this),
+                    'touch': this.createFile.bind(this),
+                    'rm': this.removeFile.bind(this),
+                    'tree': this.showTree.bind(this),
+                    'll': this.listDirectoryLong.bind(this),
+                    'vim': this.openVim.bind(this),
+                    'py': this.runPythonFile.bind(this),
+                    'python': this.openPythonREPL.bind(this)
+                };
+                
+                this.init();
+            }
+            
+            init() {
+                this.terminalBody = document.getElementById('terminal-body');
+                this.commandInput = document.getElementById('command-input');
+                this.autocompleteHint = document.getElementById('autocomplete-hint');
+                this.currentInputLine = document.getElementById('current-input-line');
+                this.currentPathElement = document.getElementById('current-path');
+                
+                // Initialize Vim editor and Python interpreter
+                this.vim = new VimEditor(this);
+                this.python = new PythonInterpreter(this);
+                
+                this.updatePrompt();
+                this.setupEventListeners();
+                this.focusInput();
+            }
+            
+            setupEventListeners() {
+                this.commandInput.addEventListener('keydown', (e) => this.handleKeyDown(e));
+                this.commandInput.addEventListener('input', () => this.showAutocompleteHint());
+                this.terminalBody.addEventListener('click', () => this.focusInput());
+            }
+            
+            focusInput() {
+                this.commandInput.focus();
+            }
+            
+            updatePrompt() {
+                let displayPath = this.currentDir;
+                if (displayPath.startsWith('/home/user')) {
+                    displayPath = '~' + displayPath.substring('/home/user'.length);
+                }
+                if (displayPath === '~') displayPath = '~/';
+                this.currentPathElement.textContent = displayPath;
+            }
+            
+            handleKeyDown(e) {
+                switch(e.key) {
+                    case 'Enter':
+                        this.executeCommand(this.commandInput.value.trim());
+                        break;
+                    case 'ArrowUp':
+                        e.preventDefault();
+                        this.navigateHistory(-1);
+                        break;
+                    case 'ArrowDown':
+                        e.preventDefault();
+                        this.navigateHistory(1);
+                        break;
+                    case 'Tab':
+                        e.preventDefault();
+                        this.autocomplete();
+                        break;
+                }
+            }
+            
+            executeCommand(input) {
+                if (!input) {
+                    this.addNewInputLine();
+                    return;
+                }
+                
+                this.history.push(input);
+                this.historyIndex = this.history.length;
+                
+                const output = document.createElement('div');
+                output.className = 'terminal-output';
+                output.innerHTML = `<div class="prompt">
+                    <span class="prompt-user">${this.username}</span>
+                    <span class="prompt-symbol">@</span>
+                    <span class="prompt-user">${this.hostname}</span>
+                    <span class="prompt-symbol">:</span>
+                    <span class="prompt-path">${this.currentPathElement.textContent}</span>
+                    <span class="prompt-symbol">$</span>
+                </div> ${input}`;
+                this.terminalBody.insertBefore(output, this.currentInputLine);
+                
+                const [command, ...args] = input.split(' ');
+                const handler = this.commands[command];
+                
+                if (handler) {
+                    handler(args);
+                } else {
+                    this.output(`Command not found: ${command}`, 'error');
+                    this.output(`Type 'help' for available commands`, 'info');
+                }
+                
+                this.addNewInputLine();
+                this.commandInput.value = '';
+                this.autocompleteHint.textContent = '';
+                
+                this.terminalBody.scrollTop = this.terminalBody.scrollHeight;
+            }
+            
+            addNewInputLine() {
+                const newInputLine = this.currentInputLine.cloneNode(true);
+                const newInput = newInputLine.querySelector('#command-input');
+                const newPathElement = newInputLine.querySelector('#current-path');
+                newInput.value = '';
+                newInput.addEventListener('keydown', (e) => this.handleKeyDown(e));
+                newInput.addEventListener('input', () => this.showAutocompleteHint());
+                
+                this.terminalBody.appendChild(newInputLine);
+                this.currentInputLine.remove();
+                this.currentInputLine = newInputLine;
+                this.commandInput = newInput;
+                this.currentPathElement = newPathElement;
+                this.autocompleteHint = newInputLine.querySelector('#autocomplete-hint');
+                this.updatePrompt();
+                this.focusInput();
+            }
+            
+            navigateHistory(direction) {
+                if (this.history.length === 0) return;
+                
+                this.historyIndex = Math.max(0, Math.min(this.history.length, this.historyIndex + direction));
+                
+                if (this.historyIndex < this.history.length) {
+                    this.commandInput.value = this.history[this.historyIndex];
+                } else {
+                    this.commandInput.value = '';
+                }
+                
+                this.commandInput.selectionStart = this.commandInput.selectionEnd = this.commandInput.value.length;
+                this.showAutocompleteHint();
+            }
+            
+            autocomplete() {
+                const input = this.commandInput.value.trim();
+                const [command, ...args] = input.split(' ');
+                
+                if (!command) return;
+                
+                const matchingCommands = Object.keys(this.commands).filter(cmd => 
+                    cmd.startsWith(command)
+                );
+                
+                if (matchingCommands.length === 1) {
+                    this.commandInput.value = matchingCommands[0] + (args.length > 0 ? ' ' + args.join(' ') : '');
+                }
+                
+                this.showAutocompleteHint();
+            }
+            
+            showAutocompleteHint() {
+                const input = this.commandInput.value.trim();
+                const [command] = input.split(' ');
+                
+                if (!command) {
+                    this.autocompleteHint.textContent = '';
+                    return;
+                }
+                
+                const matchingCommands = Object.keys(this.commands).filter(cmd => 
+                    cmd.startsWith(command) && cmd !== command
+                );
+                
+                if (matchingCommands.length > 0) {
+                    this.autocompleteHint.textContent = matchingCommands[0].slice(command.length);
+                } else {
+                    this.autocompleteHint.textContent = '';
+                }
+            }
+            
+            output(text, className = '') {
+                const outputDiv = document.createElement('div');
+                outputDiv.className = `terminal-output ${className}`;
+                outputDiv.textContent = text;
+                this.terminalBody.insertBefore(outputDiv, this.currentInputLine);
+            }
+            
+            showHelp() {
+                const helpText = `
+Available commands:
+  help                    - Show this help message
+  clear                   - Clear terminal screen
+  ls [directory]          - List directory contents
+  ll                      - List with details (alias for ls -la)
+  pwd                     - Print working directory
+  cd [directory]          - Change directory (use .. for parent)
+  cat [file]              - Display file contents
+  echo [text]             - Display text
+  whoami                  - Print current user
+  date                    - Show current date and time
+  history                 - Show command history
+  mkdir [directory]       - Create a new directory
+  touch [file]            - Create a new file
+  rm [file/directory]     - Remove file or directory
+  tree                    - Show full file structure
+  vim [file]              - Open file in Vim editor
+  py [file]               - Run Python file
+  python                  - Start Python REPL (interactive shell)
+
+Python Examples:
+  py scripts/hello.py     - Run a Python script
+  python                  - Start interactive Python
+  >>> print("Hello")      - Python REPL command
+  >>> x = 10              - Variable assignment
+  >>> 2 + 3 * 4           - Arithmetic
+  >>> len("hello")        - Function call
+
+VIM Editor Commands:
+  i                       - Enter insert mode
+  ESC                     - Return to normal mode
+  :w                      - Save file
+  :q                      - Quit (if no changes)
+  :q!                     - Quit without saving
+  :wq                     - Save and quit
+  h,j,k,l                 - Move cursor
+  x                       - Delete character
+  dd                      - Delete line
+  p                       - Paste
+  v                       - Visual selection mode
+                `.trim();
+                this.output(helpText);
+            }
+            
+            clearTerminal() {
+                const outputs = this.terminalBody.querySelectorAll('.terminal-output');
+                outputs.forEach(output => output.remove());
+            }
+            
+            listDirectory(args) {
+                const showHidden = args.includes('-a') || args.includes('--all');
+                const path = args.filter(arg => !arg.startsWith('-'))[0] || this.currentDir;
+                const dir = this.resolvePath(path);
+                
+                if (!dir || dir.type !== 'directory') {
+                    this.output(`ls: cannot access '${path}': No such directory`, 'error');
+                    return;
+                }
+                
+                const items = Object.keys(dir.content);
+                if (items.length === 0) {
+                    this.output('(empty directory)');
+                    return;
+                }
+                
+                items.sort().forEach(item => {
+                    if (!showHidden && item.startsWith('.')) return;
+                    
+                    const itemType = dir.content[item];
+                    let className = itemType.type === 'directory' ? 'directory' : 'file';
+                    if (item.startsWith('.')) className = 'hidden';
+                    if (itemType.executable) className = 'executable';
+                    
+                    this.output(item, className);
+                });
+            }
+            
+            listDirectoryLong() {
+                this.listDirectory(['-la']);
+            }
+            
+            printWorkingDirectory() {
+                this.output(this.currentDir);
+            }
+            
+            changeDirectory(args) {
+                if (!args[0]) {
+                    this.currentDir = '/home/user';
+                    this.updatePrompt();
+                    return;
+                }
+                
+                let targetPath = args[0];
+                
+                if (targetPath === '~') {
+                    this.currentDir = '/home/user';
+                } else if (targetPath === '..') {
+                    const parts = this.currentDir.split('/').filter(p => p !== '');
+                    if (parts.length > 0) {
+                        parts.pop();
+                        this.currentDir = '/' + parts.join('/');
+                        if (this.currentDir === '') this.currentDir = '/';
+                    }
+                } else if (targetPath === '.') {
+                    return;
+                } else if (targetPath === '-') {
+                    this.output('cd: OLDPWD not set', 'error');
+                    return;
+                } else {
+                    let newPath;
+                    if (targetPath.startsWith('/')) {
+                        newPath = targetPath;
+                    } else if (targetPath.startsWith('~')) {
+                        newPath = '/home/user' + targetPath.substring(1);
+                    } else {
+                        newPath = this.currentDir + (this.currentDir === '/' ? '' : '/') + targetPath;
+                    }
+                    
+                    const parts = newPath.split('/').filter(p => p !== '');
+                    const normalizedParts = [];
+                    
+                    for (const part of parts) {
+                        if (part === '.') {
+                            continue;
+                        } else if (part === '..') {
+                            if (normalizedParts.length > 0) {
+                                normalizedParts.pop();
+                            }
+                        } else {
+                            normalizedParts.push(part);
+                        }
+                    }
+                    
+                    newPath = '/' + normalizedParts.join('/');
+                    if (newPath === '') newPath = '/';
+                    
+                    const dir = this.resolvePath(newPath);
+                    if (dir && dir.type === 'directory') {
+                        this.currentDir = newPath;
+                    } else {
+                        this.output(`cd: no such directory: ${args[0]}`, 'error');
+                        return;
+                    }
+                }
+                
+                this.updatePrompt();
+            }
+            
+            readFile(args) {
+                if (!args[0]) {
+                    this.output('Usage: cat <file>', 'error');
+                    return;
+                }
+                
+                const path = this.resolvePath(args[0]);
+                if (!path) {
+                    this.output(`cat: ${args[0]}: No such file`, 'error');
+                } else if (path.type === 'file') {
+                    this.output(path.content);
+                } else {
+                    this.output(`cat: ${args[0]}: Is a directory`, 'error');
+                }
+            }
+            
+            echo(args) {
+                this.output(args.join(' '));
+            }
+            
+            whoami() {
+                this.output(this.username);
+            }
+            
+            showDate() {
+                const now = new Date();
+                this.output(now.toString());
+            }
+            
+            showHistory() {
+                if (this.history.length === 0) {
+                    this.output('No commands in history');
+                    return;
+                }
+                
+                this.history.forEach((cmd, index) => {
+                    this.output(`${index + 1}  ${cmd}`);
+                });
+            }
+            
+            makeDirectory(args) {
+                if (!args[0]) {
+                    this.output('Usage: mkdir <directory>', 'error');
+                    return;
+                }
+                
+                const dirName = args[0];
+                const currentDir = this.resolvePath(this.currentDir);
+                
+                if (currentDir.content[dirName]) {
+                    this.output(`mkdir: cannot create directory '${dirName}': File exists`, 'error');
+                    return;
+                }
+                
+                currentDir.content[dirName] = {
+                    type: 'directory',
+                    content: {}
+                };
+                
+                this.output(`Created directory '${dirName}'`, 'success');
+            }
+            
+            createFile(args) {
+                if (!args[0]) {
+                    this.output('Usage: touch <file>', 'error');
+                    return;
+                }
+                
+                const fileName = args[0];
+                const currentDir = this.resolvePath(this.currentDir);
+                
+                if (!currentDir.content[fileName]) {
+                    currentDir.content[fileName] = {
+                        type: 'file',
+                        content: ''
+                    };
+                    this.output(`Created file '${fileName}'`, 'success');
+                }
+            }
+            
+            removeFile(args) {
+                if (!args[0]) {
+                    this.output('Usage: rm <file>', 'error');
+                    return;
+                }
+                
+                const fileName = args[0];
+                const currentDir = this.resolvePath(this.currentDir);
+                
+                if (!currentDir.content[fileName]) {
+                    this.output(`rm: cannot remove '${fileName}': No such file or directory`, 'error');
+                    return;
+                }
+                
+                delete currentDir.content[fileName];
+                this.output(`Removed '${fileName}'`, 'success');
+            }
+            
+            showTree() {
+                this.output('File system tree:', 'info');
+                this.printTree(this.filesystem['/'], '', true);
+            }
+            
+            printTree(node, prefix = '', isLast = true) {
+                if (!node || node.type !== 'directory') return;
+                
+                const items = Object.keys(node.content).sort();
+                items.forEach((item, index) => {
+                    const isLastItem = index === items.length - 1;
+                    const connector = isLast ? '└── ' : '├── ';
+                    const childPrefix = prefix + (isLast ? '    ' : '│   ');
+                    
+                    const child = node.content[item];
+                    let displayName = item;
+                    let className = '';
+                    
+                    if (child.type === 'directory') {
+                        displayName = item + '/';
+                        className = 'directory';
+                    } else {
+                        className = child.executable ? 'executable' : 'file';
+                        if (item.startsWith('.')) className = 'hidden';
+                    }
+                    
+                    this.output(prefix + connector + displayName, className);
+                    
+                    if (child.type === 'directory') {
+                        this.printTree(child, childPrefix, isLastItem);
+                    }
+                });
+            }
+            
+            openVim(args) {
+                if (!args[0]) {
+                    this.output('Usage: vim <file>', 'error');
+                    return;
+                }
+                
+                this.vim.open(args[0]);
+            }
+            
+            runPythonFile(args) {
+                if (!args[0]) {
+                    this.output('Usage: py <file>', 'error');
+                    return;
+                }
+                
+                this.python.runFile(args[0]);
+            }
+            
+            openPythonREPL() {
+                this.python.openREPL();
+            }
+            
+            resolvePath(path) {
+                if (path.startsWith('/')) {
+                    return this.getPathFromRoot(path);
+                } else {
+                    const fullPath = this.normalizeRelativePath(path);
+                    return this.getPathFromRoot(fullPath);
+                }
+            }
+            
+            normalizeRelativePath(path) {
+                if (path === '..') {
+                    const parts = this.currentDir.split('/').filter(p => p !== '');
+                    if (parts.length > 0) {
+                        parts.pop();
+                        return '/' + parts.join('/') || '/';
+                    }
+                    return '/';
+                } else if (path === '.') {
+                    return this.currentDir;
+                } else if (path.startsWith('./')) {
+                    return this.currentDir + (this.currentDir === '/' ? '' : '/') + path.substring(2);
+                } else if (path.startsWith('../')) {
+                    const parts = this.currentDir.split('/').filter(p => p !== '');
+                    parts.pop();
+                    return '/' + parts.join('/') + '/' + path.substring(3);
+                } else {
+                    return this.currentDir + (this.currentDir === '/' ? '' : '/') + path;
+                }
+            }
+            
+            getPathFromRoot(path) {
+                const parts = path.split('/').filter(p => p !== '');
+                let current = this.filesystem['/'].content;
+                
+                for (const part of parts) {
+                    if (current[part]) {
+                        if (current[part].type === 'directory') {
+                            current = current[part].content;
+                        } else {
+                            return current[part];
+                        }
+                    } else {
+                        return null;
+                    }
+                }
+                
+                return { type: 'directory', content: current };
+            }
+        }
+        
+        // Initialize terminal when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new WebTerminal();
+        });
+    </script>
+</body>
+</html>

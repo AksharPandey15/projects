@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCBSEguide | Learning Reimagined</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #f76f65;
+      --primary-dark: #e0564d;
+      --secondary: #212529;
+      --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Urbanist', sans-serif; background-color: #f8fafc; color: var(--secondary); line-height: 1.6; }
+    li { list-style: none; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    img { max-width: 100%; height: auto; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+    /* Header */
+    .header {
+      position: sticky; top: 0; background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px); z-index: 1000; border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+    .header .container { display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-size: 24px; font-weight: 700; color: var(--secondary); }
+    .logo span { color: var(--primary); }
+    .navbar-list { display: flex; gap: 30px; align-items: center; }
+    .navbar-link { font-weight: 600; font-size: 15px; }
+    .navbar-link:hover { color: var(--primary); }
+
+    /* Hero Section */
+    .hero { 
+      padding: 100px 0 80px; 
+      background: var(--bg-gradient); 
+      text-align: center;
+      clip-path: ellipse(150% 100% at 50% 0%);
+    }
+    .hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800; }
+    .hero-title span { color: var(--primary); }
+    .section-text { max-width: 650px; margin: 0 auto 40px; font-size: 18px; color: #555; }
+    
+    .btn {
+      padding: 14px 32px; border-radius: 50px; font-weight: 700; 
+      display: inline-block; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 15px rgba(247, 111, 101, 0.3); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); margin-left: 10px; }
+    .btn-outline:hover { background: var(--primary); color: white; }
+
+    /* Section Styling */
+    .section { padding: 80px 0; }
+    .section-title { font-size: 2.5rem; margin-bottom: 50px; text-align: center; }
+    .grid-list { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
+      gap: 30px; 
+    }
+
+    /* Cards */
+    .card {
+      background: var(--white); border-radius: 20px; padding: 20px;
+      box-shadow: var(--shadow); transition: var(--transition);
+      position: relative; overflow: hidden; border: 1px solid #f0f0f0;
+    }
+    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+    .card-banner { border-radius: 15px; overflow: hidden; margin-bottom: 20px; position: relative; }
+    
+    /* Overlay Button */
+    .card-banner .btn {
+      position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%);
+      transition: var(--transition); opacity: 0; width: 80%;
+    }
+    .card:hover .card-banner .btn { bottom: 15px; opacity: 1; }
+
+    .card-meta { display: flex; justify-content: space-between; padding-top: 15px; border-top: 1px solid #f4f4f4; }
+    .card-price .span { font-weight: 700; color: var(--primary); font-size: 1.1rem; }
+    .label-small { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Boards/Sellers Section */
+    .seller-card {
+      display: flex; align-items: center; gap: 15px; background: white;
+      padding: 15px; border-radius: 15px; border: 1px solid #eee;
+    }
+    .seller-card img { width: 50px; height: 50px; border-radius: 10px; object-fit: cover; }
+    
+    /* Newsletter / Consultation */
+    .newsletter-card {
+      background: var(--secondary); color: white; padding: 60px;
+      border-radius: 30px; display: flex; align-items: center; justify-content: space-between;
+      gap: 40px; position: relative; overflow: hidden;
+    }
+    .newsletter-card h3 { font-size: 2rem; margin-bottom: 10px; }
+    .input-wrapper { display: flex; gap: 10px; background: white; padding: 8px; border-radius: 50px; width: 100%; max-width: 450px; }
+    .input-field { border: none; padding: 10px 20px; outline: none; flex-grow: 1; border-radius: 50px; }
+
+    /* Footer */
+    .footer { background: #111; color: #ccc; padding: 80px 0 30px; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 50px; margin-bottom: 50px; }
+    .footer-list-title { color: white; font-weight: 700; margin-bottom: 20px; }
+    .footer-link { margin-bottom: 10px; display: block; font-size: 14px; }
+    .footer-link:hover { color: var(--primary); padding-left: 5px; }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .newsletter-card { flex-direction: column; text-align: center; }
+      .hero-title { font-size: 2.5rem; }
+    }
+    /* --- TEST GENERATOR FULL WIDTH SECTION --- */
+
+.plans-full-width {
+  width: 100%;
+  background-color: #ffffff; 
+  /* Added extra top padding (120px) to ensure the floating badges aren't cut off */
+  padding: 200px 0 100px; 
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.highlight {
+  color: #f76f65;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* Card Improvements */
+.plan-card {
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 20px;
+  /* Added more top padding (40px) inside the card to push content down */
+  padding: 40px 25px 25px; 
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative; /* Ensure badge stays relative to this card */
+}
+
+.plan-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: #f76f65;
+}
+
+/* Featured Card Styling */
+.plan-card.featured {
+  border: 2px solid #f76f65;
+  background-color: #fff9f8;
+  transform: scale(1.05);
+  /* Ensure this card is "on top" of others visually */
+  z-index: 2; 
+}
+
+.plan-card.featured:hover {
+  transform: scale(1.08) translateY(-10px);
+}
+
+.badge {
+  position: absolute;
+  /* Lowered the badge slightly and ensured it's visible */
+  top: -12px; 
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f76f65;
+  color: white;
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(247, 111, 101, 0.2);
+}
+
+/* Grid for Stats */
+.plan-name {
+  font-size: 24px;
+  margin: 10px 0 20px;
+  font-weight: 700;
+}
+
+.plan-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.stat-item p {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-item span {
+  font-weight: 600;
+  color: #333;
+}
+
+.stat-item .price {
+  color: #f76f65;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Responsive Grid */
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .plan-card.featured {
+    transform: scale(1);
+    margin: 30px 0;
+  }
+  .plans-full-width {
+    padding: 80px 0;
+  }
+}
+  </style>
+</head>
+<body id="top">
+
+  <header class="header">
+    <div class="container">
+      <a href="#" class="logo">My<span>CBSE</span>guide</a>
+      <nav class="navbar">
+        <ul class="navbar-list">
+          <li><a href="#" class="navbar-link">Student Courses</a></li>
+          <li><a href="#" class="navbar-link">Test Generator</a></li>
+          <li><a href="#" class="btn btn-primary" style="padding: 10px 25px;">Sign In</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero">
+      <div class="container">
+        <h1 class="hero-title">A Complete Guide for <span>Students & Teachers</span></h1>
+        <p class="section-text">
+          Access world-class learning resources for CBSE students and a powerful AI Test Generator for teachers to create papers in minutes.
+        </p>
+        <div class="btn-group">
+          <a href="#" class="btn btn-primary">Start Learning</a>
+          <a href="#" class="btn btn-outline">Generate Tests</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Explore Student Courses</h2>
+        <ul class="grid-list">
+          <li>
+            <div class="card">
+              <div class="card-banner">
+                <img src="12.jpg" alt="Class 12" loading="lazy">
+                <button class="btn btn-primary">Enroll Now</button>
+              </div>
+              <p class="label-small">CBSE Curriculum</p>
+              <h3 style="margin: 5px 0 15px;">Class 12th Standard</h3>
+              <div class="card-meta">
+                <div><p class="label-small">Validity</p><span>Full Year</span></div>
+                <div class="card-price"><p class="label-small">Price</p><span class="span">₹499</span></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-banner">
+                <img src="11.jpg" alt="Class 11" loading="lazy">
+                <button class="btn btn-primary">Enroll Now</button>
+              </div>
+              <p class="label-small">CBSE Curriculum</p>
+              <h3 style="margin: 5px 0 15px;">Class 11th Standard</h3>
+              <div class="card-meta">
+                <div><p class="label-small">Validity</p><span>Full Year</span></div>
+                <div class="card-price"><p class="label-small">Price</p><span class="span">₹459</span></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-banner">
+                <img src="jee.jpg" alt="JEE" loading="lazy">
+                <button class="btn btn-primary">Enroll Now</button>
+              </div>
+              <p class="label-small">Competitive</p>
+              <h3 style="margin: 5px 0 15px;">JEE Main & Advanced</h3>
+              <div class="card-meta">
+                <div><p class="label-small">Access</p><span>Unlimited</span></div>
+                <div class="card-price"><p class="label-small">Price</p><span class="span">₹1,599</span></div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="card">
+              <div class="card-banner">
+                <img src="neet.jpg" alt="NEET" loading="lazy">
+                <button class="btn btn-primary">Enroll Now</button>
+              </div>
+              <p class="label-small">Competitive</p>
+              <h3 style="margin: 5px 0 15px;">NEET Medical Prep</h3>
+              <div class="card-meta">
+                <div><p class="label-small">Access</p><span>Unlimited</span></div>
+                <div class="card-price"><p class="label-small">Price</p><span class="span">₹1,999</span></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section plans-full-width">
+      <div class="container">
+        <h2 class="section-title">Test Generator <span class="highlight">+ Free Mobile App</span></h2>
+        
+        <ul class="grid-list">
+          <li>
+            <div class="card plan-card">
+              <div class="card-banner">
+                <img src="t1.jpg" alt="Mini Plan">
+                <button class="btn btn-primary">Order Now</button>
+              </div>
+              <h3 class="plan-name">Mini</h3>
+              <div class="plan-stats">
+                <div class="stat-item"><p>Papers</p><span>25</span></div>
+                <div class="stat-item"><p>Price</p><span class="price">₹500</span></div>
+                <div class="stat-item"><p>Attempts</p><span>250</span></div>
+                <div class="stat-item"><p>Validity</p><span>12 Months</span></div>
+              </div>
+            </div>
+          </li>
+    
+          <li>
+            <div class="card plan-card featured">
+              <div class="badge">Most Popular</div>
+              <div class="card-banner">
+                <img src="t3.jpg" alt="Pro Plan">
+                <button class="btn btn-primary">Order Now</button>
+              </div>
+              <h3 class="plan-name">Pro</h3>
+              <div class="plan-stats">
+                <div class="stat-item"><p>Papers</p><span>100</span></div>
+                <div class="stat-item"><p>Price</p><span class="price">₹1600</span></div>
+                <div class="stat-item"><p>Attempts</p><span>1000</span></div>
+                <div class="stat-item"><p>Validity</p><span>12 Months</span></div>
+              </div>
+            </div>
+          </li>
+    
+          <li>
+            <div class="card plan-card">
+              <div class="card-banner">
+                <img src="t4.jpg" alt="Ultimate Plan">
+                <button class="btn btn-primary">Order Now</button>
+              </div>
+              <h3 class="plan-name">Ultimate</h3>
+              <div class="plan-stats">
+                <div class="stat-item"><p>Papers</p><span>500</span></div>
+                <div class="stat-item"><p>Price</p><span class="price">₹6000</span></div>
+                <div class="stat-item"><p>Attempts</p><span>5000</span></div>
+                <div class="stat-item"><p>Validity</p><span>12 Months</span></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="newsletter-card">
+          <div style="max-width: 500px;">
+            <h3>Free Counselling Session</h3>
+            <p>Speak with an expert mentor to plan your academic roadmap today.</p>
+          </div>
+          <div class="input-wrapper">
+            <input type="tel" placeholder="Enter mobile number" class="input-field">
+            <button class="btn btn-primary">Call Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div>
+          <a href="#" class="logo" style="color: white; margin-bottom: 20px; display: block;">My<span>CBSE</span>guide</a>
+          <p style="font-size: 14px; line-height: 1.8;">The most trusted platform for CBSE students and teachers. Providing quality resources, practice papers, and easy-to-use tools.</p>
+        </div>
+        <ul>
+          <li class="footer-list-title">Quick Links</li>
+          <li><a href="#" class="footer-link">Student Courses</a></li>
+          <li><a href="#" class="footer-link">Test Generator</a></li>
+          <li><a href="#" class="footer-link">Sample Papers</a></li>
+        </ul>
+        <ul>
+          <li class="footer-list-title">Company</li>
+          <li><a href="#" class="footer-link">About Us</a></li>
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Terms of Service</a></li>
+        </ul>
+        <div>
+          <li class="footer-list-title">Get the App</li>
+          <div style="display: flex; gap: 10px; flex-direction: column;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store" style="width: 140px; cursor: pointer;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style="width: 140px; cursor: pointer;">
+          </div>
+        </div>
+      </div>
+      <div style="text-align: center; border-top: 1px solid #333; padding-top: 30px; font-size: 13px;">
+        &copy; 2026 MyCBSEguide. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

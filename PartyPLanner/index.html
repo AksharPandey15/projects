@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Party Planner</h1>
+            <p>Plan your perfect party with AI assistance</p>
+        </header>
+
+        <main>
+            <section class="event-details">
+                <h2>Event Details</h2>
+                <input type="text" id="eventName" placeholder="Event Name">
+                <input type="date" id="eventDate">
+                <input type="time" id="eventTime">
+                <input type="number" id="guestCount" placeholder="Number of Guests">
+            </section>
+
+            <section class="food-suggestions">
+                <h2>Food Menu</h2>
+                <div class="menu-categories">
+                    <button class="menu-btn active" data-category="appetizers">Appetizers</button>
+                    <button class="menu-btn" data-category="mainCourse">Main Course</button>
+                    <button class="menu-btn" data-category="desserts">Desserts</button>
+                    <button class="menu-btn" data-category="drinks">Drinks</button>
+                </div>
+                <div id="menuSuggestions"></div>
+            </section>
+
+            <section class="party-checklist">
+                <h2>Party Checklist</h2>
+                <div class="checklist-container">
+                    <div class="checklist-category">
+                        <h3>One Week Before</h3>
+                        <ul id="weekBefore"></ul>
+                    </div>
+                    <div class="checklist-category">
+                        <h3>Day Before</h3>
+                        <ul id="dayBefore"></ul>
+                    </div>
+                    <div class="checklist-category">
+                        <h3>Party Day</h3>
+                        <ul id="partyDay"></ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

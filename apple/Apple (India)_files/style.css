@@ -1,0 +1,13 @@
+/* start promos/ipad-air */
+.main [data-module-template="heroes"] [data-unit-id="ipad-air"] .split-copy-wrapper .unit-copy-wrapper {
+	padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 1068px) {
+	.main [data-module-template="heroes"] [data-unit-id="ipad-air"] .split-copy-wrapper .unit-copy-wrapper {
+		padding-bottom: 20px;
+	}
+} /* end promos/ipad-air */
+.main [data-module-template="heroes"] [data-unit-id="ipad-air"] .split-wrapper-bottom .ai-callout {
+	font-size: 14px;
+}

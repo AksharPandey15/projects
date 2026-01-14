@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Growth Visualization</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Population Growth Visualization</h1>
+        <label for="country-select">Select Country:</label>
+        <select id="country-select">
+            <option value="Global">Global</option>
+            <option value="India">India</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="USA">USA</option>
+        </select>
+        <canvas id="populationChart"></canvas>
+    </div>
+    <!-- Load Chart.js before your custom script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

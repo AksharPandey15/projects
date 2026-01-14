@@ -1,0 +1,98 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.header {
+    background-color: #fff;
+    border: 2px solid #ff007f;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.header h1 {
+    color: #ff007f;
+    margin: 0;
+    font-size: 24px;
+}
+.info {
+    background-color: #fff;
+    border: 2px solid #0000ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.info h2 {
+    color: #0000ff;
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+.info p {
+    color: #000;
+    margin: 5px 0;
+    font-size: 14px;
+}
+.info .links {
+    margin-top: 10px;
+}
+.info .links a {
+    color: #0000ff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+.puzzle {
+    display: grid;
+    grid-template-columns: repeat(3, 60px);
+    grid-gap: 10px;
+    margin-bottom: 20px;
+}
+.puzzle div {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 2px solid #000;
+    font-size: 24px;
+    color: #000;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.puzzle .empty {
+    background-color: #f0f0f0;
+    border: 2px solid #f0f0f0;
+    cursor: default;
+}
+.puzzle .highlight {
+    border-color: #0000ff;
+    color: #0000ff;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.controls button {
+    background-color: #fff;
+    border: 2px solid #ff007f;
+    color: #ff007f;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.controls button.blue {
+    border-color: #0000ff;
+    color: #0000ff;
+}

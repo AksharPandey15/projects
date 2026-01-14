@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang='en' class=''>
+
+<head>
+
+  <meta charset='UTF-8'>
+
+  <meta name="robots" content="noindex">
+
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <style>
+    .cover {
+  height: 100vh;
+}
+
+.row-margin {
+  margin: 4vh auto;
+}
+
+body {
+  background: #FF4E50;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(135deg, #FF4E50, #F9D423);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.header {
+  color: #fff;
+}
+
+h1 {
+  font-family: "Pacifico";
+}
+
+.btn-default {
+  background-color: black;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+  </style>
+
+  
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-6d8bf8b4b479137260842506acbb12717dace0823c023e08b96360e60b0840d9.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
+</head>
+
+<body>
+  <div class="cover">
+<div class="container header">
+  <div class="row row-margin">
+    <div class="col-sm-12">
+    <h1 class="text-center">Palindrome checker</h1>
+    </div>
+    <div class="col-sm-12">
+    <p class="text-center text-uppercase">A nut for a jar of tuna</p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row row-margin">
+    <div class="col-md-2">
+      
+    </div>
+    <div class="col-md-8">
+    <textarea class="col-md-12" id="inputPalindrome" rows="5">Borrow or rob?</textarea>
+    </div>
+  </div>
+  <div class="row row-margin">
+    <div class="col-sm-3">
+      
+    </div>
+    <button id="checkPalindrome" class="btn btn-default btn-lg btn-block col-sm-6 col-sm-offset-4" type="submit">Check palindrome</button>
+  </div>
+</div>
+<div class="container">
+  <div class="row row-margin">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8 text-center">
+      <div id="notification" class="alert alert-info">Palindrome has not been checked yet</div>
+    </div>
+  </div>
+</div>
+</div>
+<script>var checkButton = document.getElementById("checkPalindrome");
+
+  function isPalindrome(str) {
+    'use strict';
+  
+    str = str.replace(/[^a-z0-9]+/gi, "").toLowerCase();
+    var reversedStr = str.split("").reverse().join("");
+    return str === reversedStr;
+  }
+  
+  checkButton.addEventListener("click", function () {
+    'use strict';
+  
+    var value = document.getElementById("inputPalindrome").value;
+    var notification = document.getElementById("notification");
+  
+    if (isPalindrome(value)) {
+      notification.innerHTML = "Yay! You've got yourself a palindrome";
+      notification.className = "alert alert-success";
+    } else {
+      notification.innerHTML = "Nah! Ain't no palindrome";
+      notification.className = "alert alert-danger";
+    }
+  });</script>  
+</body>
+
+</html>

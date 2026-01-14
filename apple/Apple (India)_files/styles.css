@@ -1,0 +1,80 @@
+
+
+/* iphone-16-pro START */
+.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+	width: 3008px;
+	height: 580px;
+	background-size: 3008px 580px;
+	background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_large.jpg");
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+	.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+		background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_large_2x.jpg");
+	}
+}
+
+@media only screen and (max-width: 1068px) {
+	.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+		width: 1068px;
+		height: 570px;
+		background-size: 1068px 570px;
+		background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_medium.jpg");
+	}
+}
+
+@media only screen and (max-width: 1068px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-resolution: 144dpi) {
+	.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+		background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_medium_2x.jpg");
+	}
+}
+
+@media only screen and (max-width: 734px) {
+	.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+		width: 734px;
+		height: 500px;
+		background-size: 734px 500px;
+		background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_small.jpg");
+	}
+}
+
+@media only screen and (max-width: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 734px) and (min-resolution: 144dpi) {
+	.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+		background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_small_2x.jpg");
+	}
+}
+
+@media only screen and (min-width: 1069px) and (min-height: 776px) {
+	.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+		width: 3008px;
+		height: 692px;
+		background-size: 3008px 692px;
+		background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_largetall.jpg");
+	}
+}
+
+@media only screen and (min-width: 1069px) and (min-height: 776px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-width: 1069px) and (min-height: 776px) and (min-resolution: 1.5dppx), only screen and (min-width: 1069px) and (min-height: 776px) and (min-resolution: 144dpi) {
+	.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+		background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_largetall_2x.jpg");
+	}
+}
+
+@media only screen and (max-width: 1068px) and (min-width: 735px) and (min-height: 734px) {
+	.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+		width: 1068px;
+		height: 650px;
+		background-size: 1068px 650px;
+		background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_mediumtall.jpg");
+	}
+}
+
+@media only screen and (max-width: 1068px) and (min-width: 735px) and (min-height: 734px) and (-webkit-min-device-pixel-ratio: 1.5), only screen and (max-width: 1068px) and (min-width: 735px) and (min-height: 734px) and (min-resolution: 1.5dppx), only screen and (max-width: 1068px) and (min-width: 735px) and (min-height: 734px) and (min-resolution: 144dpi) {
+	.main [data-module-template="heroes"] .unit-image-wrapper .unit-image.unit-image-iphone-16-pro-hero-iphone16pro-avail {
+		background-image: url("https://apple.com/in/home/heroes/iphone-16-pro/images/hero_iphone16pro_avail__fnf0f9x70jiy_mediumtall_2x.jpg");
+	}
+}
+
+.main [data-module-template="heroes"] [data-unit-id="iphone-16-pro"] .split-copy-wrapper.ai .unit-copy-wrapper .ai-callout {
+	margin-top: 16px;
+}
+/* iphone-16-pro END */

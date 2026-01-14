@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Image Generator</h1>
+            <p>Transform your imagination into reality</p>
+        </header>
+
+        <main>
+            <div class="prompt-container">
+                <textarea 
+                    id="promptInput" 
+                    placeholder="Describe the image you want to create...
+Example: A surreal landscape with floating islands and waterfalls flowing upwards, digital art style"></textarea>
+                
+                <div class="controls">
+                    <select id="styleSelect">
+                        <!-- Options will be populated by JavaScript -->
+                    </select>
+                    
+                    <button id="generateBtn">Generate Image</button>
+                </div>
+            </div>
+
+            <div class="gallery">
+                <div class="loading-spinner" hidden></div>
+                <div class="image-container"></div>
+            </div>
+
+            <div class="history">
+                <h2>History</h2>
+                <button id="clearHistoryBtn" class="danger-btn">Clear History</button>
+                <div class="history-container"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

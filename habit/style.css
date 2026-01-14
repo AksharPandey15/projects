@@ -1,0 +1,120 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+  
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+  }
+  
+  /* Main container */
+  .container {
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Header */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  /* Form styling */
+  .habit-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  #habit-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+  
+  #add-habit-btn {
+    padding: 10px 20px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  #add-habit-btn:hover {
+    background: #218838;
+  }
+  
+  /* Habit list container */
+  #habits-list {
+    margin-top: 20px;
+  }
+  
+  /* Habit item styling */
+  .habit-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #f8f9fa;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease, background 0.3s ease;
+  }
+  
+  .habit-item:hover {
+    transform: scale(1.02);
+    background: #e9ecef;
+  }
+  
+  /* Completed habit */
+  .habit-item.completed {
+    background: #d4edda;
+    text-decoration: line-through;
+    color: #155724;
+  }
+  
+  /* Button styling */
+  .habit-item button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  /* Done button */
+  .habit-item .toggle-btn {
+    background: #007bff;
+    color: white;
+  }
+  
+  .habit-item .toggle-btn:hover {
+    background: #0056b3;
+  }
+  
+  /* Delete button */
+  .habit-item .delete-btn {
+    background: #dc3545;
+    color: white;
+  }
+  
+  .habit-item .delete-btn:hover {
+    background: #c82333;
+  }
+  

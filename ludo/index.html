@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dictionary App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Dictionary App</h1>
+        <input type="text" id="wordInput" placeholder="Enter a word">
+        <button id="searchButton">Search</button>
+        <div id="word-container" style="display: none;">
+            <h2 id="word"></h2>
+            <p id="phonetic"></p>
+            <audio id="pronunciation" controls>
+                <source id="pronunciationSource" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div id="meanings"></div>
+            <p id="error-message" style="display: none;"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

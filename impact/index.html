@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="jquery-1.4.1.min.js"></script>
+    <script src="vector_battle_regular.typeface.js"></script>
+    <script src="ipad.js"></script>
+    <script src="game.js"></script>
+    <style>
+      /* Basic Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Center content and set background color */
+      body, html {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 0;
+        background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+
+      /* Main game container */
+      #game-container {
+        text-align: center;
+        width: 100%;
+        max-width: 800px;
+        position: relative; /* Allow absolute positioning of controls */
+      }
+
+      /* Header styling */
+      h1 {
+         font-size: 2em;
+        margin-bottom: 20px;
+        background: linear-gradient(to left, #00c6ff, #0072ff, #eb1313);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Style for canvas with white background */
+      #canvas {
+        border: 2px solid #000;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Button styles */
+      .button {
+        position: absolute;
+        border: 1px solid black;
+        background-color: #ddd;
+        color: #333;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1em;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
+        cursor: pointer;
+      }
+
+      /* Button hover effect */
+      .button:hover {
+        background-color: #bbb;
+        border-color: #222;
+        transform: scale(1.05); /* Slightly increase button size on hover */
+      }
+
+      /* Control positioning */
+      #left-controls {
+        position: absolute;
+        left: 1px;
+        bottom: 0px;
+        display: none;
+      }
+
+      #right-controls {
+        position: absolute;
+        right: 1px;
+        bottom: 0px;
+        display: none;
+      }
+
+      #up {
+        width: 200px;
+        height: 100px;
+        bottom: 100px;
+      }
+
+      #left {
+        width: 100px;
+        height: 100px;
+        bottom: 0px;
+      }
+
+      #right {
+        width: 100px;
+        height: 100px;
+        bottom: 0px;
+        left: 100px;
+      }
+
+      #space {
+        width: 200px;
+        height: 200px;
+        bottom: 0px;
+        right: 0px;
+      }
+
+      /* Responsive adjustments for smaller screens */
+      @media (max-width: 600px) {
+        h1 {
+          font-size: 1.5em;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>Akshar Asteroid Game</h1>
+      <canvas id="canvas" width="780" height="540"></canvas>
+      <div id="left-controls">
+        <div id="up" class="button">THRUST</div>
+        <div id="left" class="button">LEFT</div>
+        <div id="right" class="button">RIGHT</div>
+      </div>
+      <div id="right-controls">
+        <div id="space" class="button">FIRE</div>
+      </div>
+      <br>
+      <span>Due to browser autoplay policies, audio playback requires interaction. Thank you for understanding!</span>
+    </div>
+
+  </body>
+</html>

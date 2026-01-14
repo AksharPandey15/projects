@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to New Year 2027</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c2e, #1a1a4a);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+            padding: 30px;
+            background: rgba(10, 10, 35, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            background: linear-gradient(to right, #ffd700, #ff8c00, #ff1493);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #a3d9ff;
+            margin-bottom: 5px;
+        }
+
+        .year-display {
+            font-size: 9rem;
+            font-weight: 900;
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+            margin: 10px 0;
+            line-height: 1;
+            letter-spacing: 10px;
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); text-shadow: 0 0 30px rgba(255, 215, 0, 0.7); }
+            100% { transform: scale(1.05); text-shadow: 0 0 40px rgba(255, 215, 0, 1); }
+        }
+
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .countdown-box {
+            background: rgba(20, 20, 60, 0.9);
+            border-radius: 15px;
+            padding: 25px 15px;
+            min-width: 150px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .countdown-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .countdown-value {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: #ffd700;
+            line-height: 1;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .countdown-label {
+            font-size: 1.2rem;
+            color: #a3d9ff;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin: 30px 0;
+            padding: 15px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ffd700;
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 800px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 30px auto;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #ff8c00, #ffd700, #ff1493);
+            width: 0%;
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .progress-text {
+            margin-top: 10px;
+            color: #a3d9ff;
+            font-size: 1.1rem;
+        }
+
+        .fireworks-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffd700;
+            opacity: 0;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            opacity: 0.8;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: linear-gradient(to right, #ff8c00, #ffd700);
+            color: #0c0c2e;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 140, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.6);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-test {
+            background: linear-gradient(to right, #ff1493, #ff69b4);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-test:hover {
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.6);
+        }
+
+        .btn-reset {
+            background: linear-gradient(to right, #00bfff, #00ffff);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+        }
+
+        .btn-reset:hover {
+            box-shadow: 0 8px 20px rgba(0, 191, 255, 0.6);
+        }
+
+        .test-info {
+            background: rgba(255, 20, 147, 0.1);
+            border: 1px solid rgba(255, 20, 147, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #ffb6c1;
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #a3d9ff;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #ffd700;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #ff8c00;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .year-display {
+                font-size: 6rem;
+                letter-spacing: 5px;
+            }
+            
+            .countdown-box {
+                min-width: 120px;
+                padding: 20px 10px;
+            }
+            
+            .countdown-value {
+                font-size: 3.5rem;
+            }
+            
+            .countdown-label {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 24px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .year-display {
+                font-size: 4.5rem;
+                letter-spacing: 3px;
+            }
+            
+            .countdown-box {
+                min-width: 100px;
+                padding: 15px 8px;
+            }
+            
+            .countdown-value {
+                font-size: 2.8rem;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Countdown to New Year</h1>
+            <p class="subtitle">The celebration begins in:</p>
+        </div>
+        
+        <div class="year-display">2027</div>
+        
+        <div class="countdown-container" id="countdown-container">
+            <div class="countdown-box">
+                <div class="countdown-value" id="days">00</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            
+            <div class="countdown-box">
+                <div class="countdown-value" id="hours">00</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            
+            <div class="countdown-box">
+                <div class="countdown-value" id="minutes">00</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            
+            <div class="countdown-box">
+                <div class="countdown-value" id="seconds">00</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+        
+        <div class="message" id="message">Getting ready for an amazing 2027!</div>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <div class="progress-text" id="progress-text">0% of the year 2026 has passed</div>
+        
+        <div class="button-container">
+            <button class="btn btn-test" id="test-btn">
+                <i class="fas fa-forward-fast"></i> Instant Test (0:00)
+            </button>
+            <button class="btn btn-reset" id="reset-btn">
+                <i class="fas fa-rotate-left"></i> Reset to Real Countdown
+            </button>
+        </div>
+        
+        <div class="test-info" id="test-info">
+            <strong>Test Mode:</strong> The test button triggers the <strong>exact same celebration function</strong> that will run at midnight on New Year's Eve. This ensures the celebration animation is properly tested.
+        </div>
+        
+        <div class="fireworks-container" id="fireworks"></div>
+    </div>
+    
+    <div class="footer">
+        <p>Made with <i class="fas fa-heart" style="color: #ff1493;"></i> for New Year 2027 | 
+           <span id="current-date"></span></p>
+        <p>Wishing you health, happiness, and success in the coming year!</p>
+    </div>
+
+    <script>
+        // Set the target date for New Year 2027
+        const TARGET_DATE = new Date('January 1, 2027 00:00:00').getTime();
+        let countdownInterval;
+        let isTesting = false;
+        let testTimeout;
+        
+        // Main countdown function that runs every second
+        function runCountdown() {
+            // Get current date and time
+            const now = new Date().getTime();
+            
+            // Calculate time remaining
+            const timeRemaining = TARGET_DATE - now;
+            
+            // Calculate days, hours, minutes, seconds
+            const days = Math.max(0, Math.floor(timeRemaining / (1000 * 60 * 60 * 24)));
+            const hours = Math.max(0, Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+            const minutes = Math.max(0, Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60)));
+            const seconds = Math.max(0, Math.floor((timeRemaining % (1000 * 60)) / 1000));
+            
+            // Update the countdown display
+            updateCountdownDisplay(days, hours, minutes, seconds);
+            
+            // Update progress bar for the current year
+            updateYearProgress();
+            
+            // Update message based on time remaining
+            updateMessage(timeRemaining);
+            
+            // Create fireworks if we're close to the new year
+            if (timeRemaining < 3600000 && timeRemaining > 0) {
+                createFireworks();
+            }
+            
+            // If the countdown is over
+            if (timeRemaining <= 0) {
+                triggerCelebration();
+            }
+        }
+        
+        // THE EXACT SAME FUNCTION that will be called at midnight
+        function triggerCelebration() {
+            // Clear any intervals
+            clearInterval(countdownInterval);
+            if (testTimeout) clearTimeout(testTimeout);
+            
+            // Update the display to show celebration
+            document.getElementById('countdown-container').innerHTML = 
+                '<div class="message" style="font-size: 2.5rem; padding: 30px; margin: 0;">🎉 HAPPY NEW YEAR 2027! 🎉</div>';
+            
+            // Update message
+            document.getElementById('message').innerHTML = 
+                "Welcome to an amazing new year! Wishing you all the best for 2027!";
+            
+            // Update progress
+            document.getElementById('progress-bar').style.width = '100%';
+            document.getElementById('progress-text').innerHTML = 
+                "100% of the year 2026 has passed. Welcome to 2027!";
+            
+            // Create celebration effects
+            createConfetti();
+            
+            // Show test completion message if in test mode
+            if (isTesting) {
+                document.getElementById('test-info').innerHTML = 
+                    '<strong>✅ Test Complete!</strong> The celebration function works perfectly! This is exactly what will happen at midnight on New Year\'s Eve.';
+                document.getElementById('test-info').style.background = 'rgba(0, 255, 0, 0.1)';
+                document.getElementById('test-info').style.borderColor = 'rgba(0, 255, 0, 0.3)';
+            }
+        }
+        
+        // Update countdown display (used by both real and test countdowns)
+        function updateCountdownDisplay(days, hours, minutes, seconds) {
+            document.getElementById('days').innerHTML = formatTime(days);
+            document.getElementById('hours').innerHTML = formatTime(hours);
+            document.getElementById('minutes').innerHTML = formatTime(minutes);
+            document.getElementById('seconds').innerHTML = formatTime(seconds);
+        }
+        
+        // Format time values to always show two digits
+        function formatTime(time) {
+            return time < 10 ? `0${time}` : time;
+        }
+        
+        // Update the progress of the current year
+        function updateYearProgress() {
+            const now = new Date();
+            const startOfYear = new Date(now.getFullYear(), 0, 1);
+            const endOfYear = new Date(now.getFullYear() + 1, 0, 1);
+            const yearProgress = (now - startOfYear) / (endOfYear - startOfYear) * 100;
+            
+            document.getElementById('progress-bar').style.width = `${yearProgress}%`;
+            document.getElementById('progress-text').innerHTML = 
+                `${yearProgress.toFixed(2)}% of the year ${now.getFullYear()} has passed`;
+        }
+        
+        // Update message based on time remaining
+        function updateMessage(timeRemaining) {
+            const messageElement = document.getElementById('message');
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            
+            if (isTesting) {
+                messageElement.innerHTML = `TEST MODE: Testing celebration function...`;
+                return;
+            }
+            
+            if (days > 30) {
+                messageElement.innerHTML = `Getting ready for an amazing 2027!`;
+            } else if (days > 7) {
+                messageElement.innerHTML = `Less than a month until 2027! The excitement is building!`;
+            } else if (days > 1) {
+                messageElement.innerHTML = `Only ${days} days left until the New Year!`;
+            } else if (days === 1) {
+                messageElement.innerHTML = `Tomorrow is New Year's Eve! Get ready to celebrate!`;
+            } else if (days === 0) {
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                if (hours > 1) {
+                    messageElement.innerHTML = `Today is the day! Just ${hours} hours until 2027!`;
+                } else if (seconds < 10) {
+                    messageElement.innerHTML = `${seconds} seconds until 2027!`;
+                } else {
+                    messageElement.innerHTML = `The final countdown! Get your champagne ready!`;
+                }
+            }
+        }
+        
+        // Create fireworks animation
+        function createFireworks() {
+            const fireworksContainer = document.getElementById('fireworks');
+            const fireworkCount = isTesting ? 8 : 3;
+            
+            for (let i = 0; i < fireworkCount; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Random color
+                const colors = ['#ffd700', '#ff8c00', '#ff1493', '#00ffff', '#00ff00'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                firework.style.left = `${posX}%`;
+                firework.style.top = `${posY}%`;
+                firework.style.backgroundColor = color;
+                firework.style.boxShadow = `0 0 10px ${color}`;
+                
+                fireworksContainer.appendChild(firework);
+                
+                // Animate the firework
+                setTimeout(() => {
+                    firework.style.transition = 'all 0.8s ease-out';
+                    firework.style.opacity = '1';
+                    firework.style.transform = 'scale(1)';
+                    
+                    setTimeout(() => {
+                        firework.style.opacity = '0';
+                        firework.style.transform = 'scale(0)';
+                        
+                        // Remove after animation
+                        setTimeout(() => {
+                            if (fireworksContainer.contains(firework)) {
+                                fireworksContainer.removeChild(firework);
+                            }
+                        }, 800);
+                    }, 500);
+                }, i * 300);
+            }
+        }
+        
+        // Create confetti for celebration
+        function createConfetti() {
+            const fireworksContainer = document.getElementById('fireworks');
+            const confettiCount = 200;
+            
+            // Clear any existing confetti
+            const existingConfetti = document.querySelectorAll('.confetti');
+            existingConfetti.forEach(confetti => confetti.remove());
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                
+                // Random color
+                const colors = ['#ffd700', '#ff8c00', '#ff1493', '#00ffff', '#00ff00', '#ff00ff', '#ffff00'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random shape
+                const shapes = ['circle', 'square', 'triangle'];
+                const shape = shapes[Math.floor(Math.random() * shapes.length)];
+                
+                confetti.style.left = `${posX}%`;
+                confetti.style.backgroundColor = color;
+                confetti.style.opacity = Math.random() * 0.7 + 0.3;
+                
+                // Apply shape
+                if (shape === 'circle') {
+                    confetti.style.borderRadius = '50%';
+                } else if (shape === 'triangle') {
+                    confetti.style.width = '0';
+                    confetti.style.height = '0';
+                    confetti.style.backgroundColor = 'transparent';
+                    confetti.style.borderLeft = '8px solid transparent';
+                    confetti.style.borderRight = '8px solid transparent';
+                    confetti.style.borderBottom = `15px solid ${color}`;
+                }
+                
+                fireworksContainer.appendChild(confetti);
+                
+                // Animate confetti falling
+                const animationDuration = Math.random() * 3 + 2;
+                const animationDelay = Math.random() * 5;
+                
+                confetti.style.animation = `fall ${animationDuration}s linear ${animationDelay}s infinite`;
+                
+                // Create keyframes for falling animation if not exists
+                if (!document.getElementById('confetti-keyframes')) {
+                    const style = document.createElement('style');
+                    style.id = 'confetti-keyframes';
+                    style.innerHTML = `
+                        @keyframes fall {
+                            0% { top: -20px; transform: rotate(0deg); }
+                            100% { top: 100%; transform: rotate(360deg); }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+            }
+        }
+        
+        // Display current date in footer
+        function displayCurrentDate() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            document.getElementById('current-date').innerHTML = now.toLocaleDateString('en-US', options);
+        }
+        
+        // Test button functionality - triggers THE EXACT SAME celebration function
+        document.getElementById('test-btn').addEventListener('click', function() {
+            // Set testing mode
+            isTesting = true;
+            
+            // Update UI for test mode
+            document.getElementById('test-btn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Testing...';
+            document.getElementById('test-btn').disabled = true;
+            document.getElementById('test-info').innerHTML = 
+                '<strong>Test in Progress:</strong> The celebration function is being tested. This is the exact same function that will run at midnight.';
+            
+            // Set countdown to 0 immediately for testing
+            updateCountdownDisplay(0, 0, 0, 0);
+            
+            // Wait a moment so user can see 00:00:00:00, then trigger celebration
+            testTimeout = setTimeout(() => {
+                // THIS IS THE KEY PART: Calling the EXACT SAME function
+                triggerCelebration();
+            }, 500);
+        });
+        
+        // Reset button functionality
+        document.getElementById('reset-btn').addEventListener('click', function() {
+            // Clear any test timeouts
+            if (testTimeout) clearTimeout(testTimeout);
+            
+            // Reset testing mode
+            isTesting = false;
+            
+            // Clear interval and restart
+            clearInterval(countdownInterval);
+            countdownInterval = setInterval(runCountdown, 1000);
+            runCountdown(); // Initial call
+            
+            // Reset test button
+            document.getElementById('test-btn').innerHTML = '<i class="fas fa-forward-fast"></i> Instant Test (0:00)';
+            document.getElementById('test-btn').disabled = false;
+            
+            // Reset test info
+            document.getElementById('test-info').innerHTML = 
+                '<strong>Test Mode:</strong> The test button triggers the <strong>exact same celebration function</strong> that will run at midnight on New Year\'s Eve. This ensures the celebration animation is properly tested.';
+            document.getElementById('test-info').style.background = 'rgba(255, 20, 147, 0.1)';
+            document.getElementById('test-info').style.borderColor = 'rgba(255, 20, 147, 0.3)';
+            
+            // Clear confetti
+            const confettiElements = document.querySelectorAll('.confetti');
+            confettiElements.forEach(confetti => confetti.remove());
+        });
+        
+        // Initialize
+        displayCurrentDate();
+        countdownInterval = setInterval(runCountdown, 1000);
+        runCountdown(); // Initial call
+        
+        // Create some initial fireworks for visual effect
+        setTimeout(() => createFireworks(), 1000);
+        setInterval(() => {
+            if (Math.random() > 0.7 && !isTesting) createFireworks();
+        }, 3000);
+    </script>
+</body>
+</html>

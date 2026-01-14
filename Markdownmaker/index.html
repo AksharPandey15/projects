@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Maker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Markdown Maker</h1>
+    
+    <!-- Plain Text Input -->
+    <textarea id="plainText" placeholder="Type your plain text here..."></textarea>
+    
+    <!-- Formatting Buttons -->
+    <div class="buttons">
+      <button onclick="applyMarkdown('h1')">H1</button>
+      <button onclick="applyMarkdown('h2')">H2</button>
+      <button onclick="applyMarkdown('bold')">Bold</button>
+      <button onclick="applyMarkdown('italic')">Italic</button>
+      <button onclick="applyMarkdown('link')">Link</button>
+    </div>
+    
+    <!-- Markdown Output -->
+    <textarea id="markdownOutput" readonly placeholder="Markdown will appear here..."></textarea>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
