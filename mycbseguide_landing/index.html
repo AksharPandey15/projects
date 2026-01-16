@@ -166,23 +166,6 @@
   transform: scale(1.08) translateY(-10px);
 }
 
-.badge {
-  position: absolute;
-  /* Lowered the badge slightly and ensured it's visible */
-  top: -12px; 
-  left: 50%;
-  transform: translateX(-50%);
-  background: #f76f65;
-  color: white;
-  padding: 6px 18px;
-  border-radius: 50px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(247, 111, 101, 0.2);
-}
-
 /* Grid for Stats */
 .plan-name {
   font-size: 24px;
@@ -235,7 +218,50 @@
     padding: 80px 0;
   }
 }
-  </style>
+  .plan-selector {
+    display: inline-flex; /* Keeps everything on one line */
+    align-items: center;
+    gap: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  .plan-selector label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    white-space: nowrap; /* Prevents text from wrapping */
+  }
+
+  .plan-selector select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #f1f5f9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23475569' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    
+    border: 1px solid #e2e8f0;
+    border-radius: 20px; /* Pill shape */
+    padding: 4px 28px 4px 12px; /* Extra right padding for the arrow */
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+  }
+
+  /* Hover & Focus Effects */
+  .plan-selector select:hover {
+    background-color: #e2e8f0;
+    border-color: #cbd5e1;
+  }
+
+  .plan-selector select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+</style>
 </head>
 <body id="top">
 
@@ -338,31 +364,42 @@
           <li>
             <div class="card plan-card">
               <div class="card-banner">
-                <img src="t1.jpg" alt="Mini Plan">
+                <img id="plan-image" alt=" Plan">
                 <button class="btn btn-primary">Order Now</button>
               </div>
-              <h3 class="plan-name">Mini</h3>
+              <div class="plan-selector">
+                <label for="plan-select">Choose a Plan:</label>
+                <select id="plan-select" onchange="updatePlan()">
+                  <option value="mini">Mini</option>
+                  <option value="basic">Basic</option>
+                  <option value="plus">Plus</option>
+                  <option value="pro">Pro</option>
+                  <option value="super">Super</option>
+                  <option value="superPlus">Super-Plus</option>
+                </select>
+              </div>
+              <h3 class="plan-name" id="name">Mini</h3>
               <div class="plan-stats">
-                <div class="stat-item"><p>Papers</p><span>25</span></div>
-                <div class="stat-item"><p>Price</p><span class="price">₹500</span></div>
-                <div class="stat-item"><p>Attempts</p><span>250</span></div>
-                <div class="stat-item"><p>Validity</p><span>12 Months</span></div>
+                <div class="stat-item"><p>Papers</p><span id="paper">25</span></div>
+                <div class="stat-item"><p>Price</p><span class="price" id="p">₹500</span></div>
+                <div class="stat-item"><p>Attempts</p><span id="a">250</span></div>
+                <div class="stat-item"><p>Validity</p><span  id="V">12 Months</span></div>
               </div>
             </div>
           </li>
     
           <li>
-            <div class="card plan-card featured">
-              <div class="badge">Most Popular</div>
+            <div class="card plan-card">
+  
               <div class="card-banner">
-                <img src="t3.jpg" alt="Pro Plan">
+                <img src="t3.jpg" alt=" Plan">
                 <button class="btn btn-primary">Order Now</button>
               </div>
-              <h3 class="plan-name">Pro</h3>
+              <h3 class="plan-name">Super</h3>
               <div class="plan-stats">
-                <div class="stat-item"><p>Papers</p><span>100</span></div>
-                <div class="stat-item"><p>Price</p><span class="price">₹1600</span></div>
-                <div class="stat-item"><p>Attempts</p><span>1000</span></div>
+                <div class="stat-item"><p>Papers</p><span>500</span></div>
+                <div class="stat-item"><p>Price</p><span class="price">₹6000</span></div>
+                <div class="stat-item"><p>Attempts</p><span>5000</span></div>
                 <div class="stat-item"><p>Validity</p><span>12 Months</span></div>
               </div>
             </div>
@@ -374,11 +411,11 @@
                 <img src="t4.jpg" alt="Ultimate Plan">
                 <button class="btn btn-primary">Order Now</button>
               </div>
-              <h3 class="plan-name">Ultimate</h3>
+              <h3 class="plan-name">Super Plus</h3>
               <div class="plan-stats">
-                <div class="stat-item"><p>Papers</p><span>500</span></div>
-                <div class="stat-item"><p>Price</p><span class="price">₹6000</span></div>
-                <div class="stat-item"><p>Attempts</p><span>5000</span></div>
+                <div class="stat-item"><p>Papers</p><span>1000</span></div>
+                <div class="stat-item"><p>Price</p><span class="price">₹10000</span></div>
+                <div class="stat-item"><p>Attempts</p><span>10000</span></div>
                 <div class="stat-item"><p>Validity</p><span>12 Months</span></div>
               </div>
             </div>
@@ -437,4 +474,51 @@
   </footer>
 
 </body>
+<script>
+
+function updatePlan() {
+  const plans = {
+    mini: {
+      name: "Mini", papers: "25", price: "₹500",
+      attempts: "250", validity: "12 Months", img: "t1.jpg"
+    },
+    basic: {
+      name: "Basic", papers: "50", price: "₹900",
+      attempts: "500", validity: "12 Months", img: "t1.jpg"
+    },
+    plus: {
+      name: "Plus", papers: "100", price: "₹1600",
+      attempts: "1000", validity: "12 Months", img: "t1.jpg"
+    },
+    pro: {
+      name: "Pro", papers: "250", price: "₹3500",
+      attempts: "2500", validity: "12 Months", img: "t3.jpg"
+    },
+    super: {
+      name: "Super", papers: "500", price: "₹6000",
+      attempts: "5000", validity: "12 Months", img: "t4.jpg"
+    },
+    superPlus: {
+      name: "Super-Plus", papers: "1000", price: "₹10000",
+      attempts: "10000", validity: "12 Months", img: "t4.jpg"
+    }
+  };
+
+  const selectedValue = document.getElementById("plan-select").value;
+  const data = plans[selectedValue];
+
+  // Update text content
+  document.getElementById("name").innerText = data.name;
+  document.getElementById("paper").innerText = data.papers;
+  document.getElementById("p").innerText = data.price;
+  document.getElementById("a").innerText = data.attempts;
+  document.getElementById("V").innerText = data.validity;
+
+  // Update image source
+  document.getElementById("plan-image").src = data.img;
+}
+
+// Initialize on load
+window.onload = updatePlan;
+</script>
 </html>
