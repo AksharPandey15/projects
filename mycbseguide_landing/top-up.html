@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Top Up Purchase</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #333;
+      border-radius: 10px;
+      width: 340px;
+      padding: 20px;
+      margin: auto;
+    }
+    .card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+    .row label {
+      font-weight: bold;
+    }
+    select, input {
+      width: 160px;
+      padding: 6px;
+    }
+    .amount {
+      font-weight: bold;
+    }
+    .red {
+      color: red;
+      font-weight: bold;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    button {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .cancel {
+      background: #ddd;
+    }
+    .buy {
+      background: #2e7d32;
+      color: #fff;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Top Up Purchase</h2>
+
+  <div class="row">
+    <label>Top Up Type:</label>
+    <select id="topUpType" onchange="handleChange()">
+      <option value="papers">Papers</option>
+      <option value="validity">Validity</option>
+      <option value="attempts">Attempts</option>
+    </select>
+  </div>
+
+  <!-- Papers -->
+  <div id="papersSection">
+    <div class="row">
+      <label>Paper Count:</label>
+      <input type="number" value="30" />
+    </div>
+    <div class="row">
+      <label>Validity:</label>
+      <span>30/05/2025 (<span class="red">75 Days</span>)</span>
+    </div>
+    <div class="row"><label>Amount:</label><span class="amount">₹300.00</span></div>
+    <div class="row"><label>Discount:</label><span>10% (NPATG)</span></div>
+    <div class="row"><label>Net Amount:</label><span class="amount">₹270.00</span></div>
+  </div>
+
+  <!-- Validity -->
+  <div id="validitySection" class="hidden">
+    <div class="row"><label>Remaining Papers:</label><span>10 Papers</span></div>
+    <div class="row"><label>Amount:</label><span>₹120.00</span></div>
+    <div class="row"><label>Additional Papers:</label><span>15 Papers</span></div>
+    <div class="row"><label>Amount:</label><span>₹300.00</span></div>
+    <div class="row"><label>Current Validity:</label><span>30/05/2025</span></div>
+    <div class="row">
+      <label>Desired Validity:</label>
+      <select>
+        <option value="3">3 Months</option>
+        <option value="6">6 Months</option>
+        <option value="12" selected>12 Months</option>
+      </select>
+    </div>
+    <div class="row"><label>New Validity:</label><span class="amount">30/05/2026</span></div>
+    <div class="row"><label>Gross Amount:</label><span>₹420.00</span></div>
+    <div class="row"><label>Discount:</label><span>10% (NPATG)</span></div>
+    <div class="row"><label>Net Amount:</label><span class="amount">₹378.00</span></div>
+  </div>
+
+  <!-- Attempts -->
+  <div id="attemptsSection" class="hidden">
+    <div class="row">
+      <label>Attempt Count:</label>
+      <input type="number" value="600" />
+    </div>
+    <div class="row">
+      <label>Validity:</label>
+      <span>30/05/2025 (<span class="red">75 Days</span>)</span>
+    </div>
+    <div class="row"><label>Amount:</label><span class="amount">₹300.00</span></div>
+    <div class="row"><label>Discount:</label><span>10% (NPATG)</span></div>
+    <div class="row"><label>Net Amount:</label><span class="amount">₹270.00</span></div>
+  </div>
+
+  <div class="buttons">
+    <button class="cancel">Cancel</button>
+    <button class="buy">Buy</button>
+  </div>
+</div>
+
+<script>
+  function handleChange() {
+    const value = document.getElementById('topUpType').value;
+
+    document.getElementById('papersSection').classList.add('hidden');
+    document.getElementById('validitySection').classList.add('hidden');
+    document.getElementById('attemptsSection').classList.add('hidden');
+
+    if (value === 'papers') {
+      document.getElementById('papersSection').classList.remove('hidden');
+    }
+    if (value === 'validity') {
+      document.getElementById('validitySection').classList.remove('hidden');
+    }
+    if (value === 'attempts') {
+      document.getElementById('attemptsSection').classList.remove('hidden');
+    }
+  }
+</script>
+
+</body>
+</html>
