@@ -1,0 +1,191 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #1a1a2e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.game-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.difficulty-selector {
+    margin-bottom: 2rem;
+}
+
+.difficulty-btn {
+    margin: 5px;
+    padding: 8px 20px;
+    font-size: 14px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.game-buttons {
+    margin: 2rem 0;
+}
+
+.choice-btn {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.choice-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.choice-btn:active {
+    transform: translateY(-1px);
+}
+
+#result {
+    margin: 20px 0;
+    font-size: 24px;
+    color: #fff;
+    min-height: 36px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#score {
+    margin: 15px 0;
+    font-size: 20px;
+    color: #fff;
+    padding: 10px;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .choice-btn {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    #result {
+        font-size: 20px;
+    }
+
+    #score {
+        font-size: 16px;
+    }
+}
+
+.mode-selector {
+    margin-bottom: 2rem;
+}
+
+.mode-btn {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size: 16px;
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    border-radius: 20px;
+}
+
+.online-controls {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+.join-game {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#joinGameInput {
+    padding: 8px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+}
+
+.game-code {
+    margin: 1rem 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 18px;
+}
+
+.online-status {
+    margin: 1rem 0;
+    color: #00b4db;
+    font-weight: bold;
+}
+
+.online-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.online-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}

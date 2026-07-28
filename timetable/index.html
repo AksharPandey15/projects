@@ -1,0 +1,124 @@
+<html lang="en" class=""><head>
+
+    <meta charset="UTF-8">
+  
+    <meta name="robots" content="noindex">
+  
+    <link rel="canonical" href="https://codepen.io/theoboldalex/pen/vvxaYL">
+  
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  
+    <style id="INLINE_PEN_STYLESHEET_ID">
+      @import url('https://fonts.googleapis.com/css?family=VT323');
+  
+  body {
+      background-color: #232323;
+  }
+  
+  .display-1, .lead, #box {
+      color: MEDIUMSEAGREEN;
+      opacity: 0.7;
+      font-family: 'VT323', monospace;
+  }
+  
+  .btn {
+      border-radius: 0px;
+      line-height: 17.5px;
+  }
+  
+  .btn-primary {
+      background-color: MEDIUMSEAGREEN;
+      border: MEDIUMSEAGREEN;
+      color: #232323;
+      font-family: 'VT323', monospace;
+  }
+  
+  .btn-primary:hover {
+      background-color: #232323;
+      color: MEDIUMSEAGREEN;
+      box-shadow: 0 0 5px MEDIUMSEAGREEN;
+  }
+  
+  input {
+      background-color: #232323;
+      border: 1px solid MEDIUMSEAGREEN;
+      color: MEDIUMSEAGREEN;
+      font-family: 'VT323', monospace;
+  }
+  
+  input:focus {
+      background-color: MEDIUMSEAGREEN;
+      border: 1px solid #232323;
+      outline: none;
+      color: #232323;
+  }
+  
+  li {
+      list-style: none;
+  }
+    </style>
+  
+    
+  <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+  <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-6d8bf8b4b479137260842506acbb12717dace0823c023e08b96360e60b0840d9.js"></script>
+  <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
+  <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
+  </head>
+  
+  <body data-new-gr-c-s-check-loaded="14.1211.0" data-gr-ext-installed="">
+    <div class="container text-center">
+  <div class="display-1">Times Tables Generator</div>
+  <p class="lead">Enter <em>any</em> number into the box below and hit submit.</p>
+  <input id="input" autocomplete="off">
+  <div class="mt-2">
+  <button class="btn btn-primary" id="submit">SUBMIT</button>
+  </div>
+  </div>
+  <div>
+  <h1 class="text-center" id="box"></h1>
+  </div>
+    
+    <script>const btn = document.querySelector('#submit');
+const box = document.querySelector('#box');
+
+// listen for submission
+btn.addEventListener('click', () => {
+  let list = [];
+  // catch the input value
+  let x = document.querySelector('#input').value;
+  // 	do nothing if input field is blank
+  if (!x) return;
+
+  for (let i = 0; i <= 10; i++) {if (window.CP.shouldStopExecution(0)) break;
+    let result = i * x;
+    // check if input is a number
+    if (!isNaN(x)) {
+      // check for int
+      if (x % 1 === 0) {
+        list.push(`${i} x ${x} = ` + result.toFixed(0));
+
+        box.innerHTML = list.join('<br />');
+
+      } else {
+
+        list.push(`${i} x ${x} = ` + result.toFixed(2));
+
+        box.innerHTML = list.join('<br />');
+
+      }
+    } else {
+
+      box.innerHTML = `${x} is not a number.`;
+
+      break;
+    }
+  }
+  // 	clear input field and reset array
+  window.CP.exitedLoop(0);document.querySelector('#input').value = '';
+  list = [];
+});</script>
+  
+  
+  </body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>

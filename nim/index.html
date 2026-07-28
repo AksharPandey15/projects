@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Game of Nim</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Raleway" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+</head>
+<body>
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h4>Nim</h4>
+      <p>Players take turns removing as many items as they wish from a single pile. The player left to remove the last item loses!</p>
+      <p>Select Game Mode:</p>
+      <button class="btn game-mode two-player">Two Player</button><br><br>
+      <button class="btn game-mode computer">vs. Computer</button><br><br>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect btn-flat">Play!</a>
+    </div>
+  </div>
+
+    <nav>
+      <div class="nav-wrapper">
+        <a class="brand-logo center game-title">nim</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="reset">Reset</a></li>
+          <li><a href="index.html">Game Modes and Instructions</a></li>
+        </ul>
+      </div>
+    </nav>
+  
+    <ul class="sidenav" id="mobile-demo">
+      <li><a class="reset">Reset</a></li>
+      <li><a href="index.html">Game Mode</a></li>
+    </ul>
+
+  <main class="container">
+    <div class="gameboard">
+      <div class="heap-one" id="heap-one">
+        <div class="item blue-grey lighten-3" id="h1-1"></div>
+        <div class="item blue-grey lighten-3" id="h1-2"></div>
+        <div class="item blue-grey lighten-3" id="h1-3"></div>
+      </div>
+      <div class="heap-two" id="heap-two">
+        <div class="item blue-grey" id="h2-1"></div>
+        <div class="item blue-grey" id="h2-2"></div>
+        <div class="item blue-grey" id="h2-3"></div>
+        <div class="item blue-grey" id="h2-4"></div>
+        <div class="item blue-grey" id="h2-5"></div> 
+      </div>     
+      <div class="heap-three" id="heap-three">
+        <div class="item blue-grey darken-3" id="h3-1"></div>
+        <div class="item blue-grey darken-3" id="h3-2"></div>
+        <div class="item blue-grey darken-3" id="h3-3"></div>
+        <div class="item blue-grey darken-3" id="h3-4"></div>
+        <div class="item blue-grey darken-3" id="h3-5"></div>
+        <div class="item blue-grey darken-3" id="h3-6"></div>
+        <div class="item blue-grey darken-3" id="h3-7"></div>
+      </div>
+    </div>
+
+    <div class="button-panel">
+      <h5 class="waves-effect waves-light btn-large switch-player flow-text" id="player-one">Player 1</h5>
+      <h5 class="waves-effect waves-light btn-large disabled switch-player flow-text" id="player-two">Player 2</h5>
+    </div>
+
+    <div class="reminder-container">
+      <h5 class="reminder-msg">Click your player button to finish your turn.</h5>
+    </div>
+  </main>
+<footer>
+    <p style="color: white;">Copyright 2024 - 2024 Akshar Pandey</p>
+</footer>
+  <script src="script.js"></script>
+</body>
+</html>

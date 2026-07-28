@@ -1,0 +1,471 @@
+/* Global Reset and Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+font-family: 'Inter', sans-serif;
+background-color: #0a192f; /* Dark Background */
+color: #ccd6f6; /* Light Text */
+line-height: 1.6;
+}
+
+
+
+a {
+  text-decoration: none;
+  color: #64ffda; /* Accent Color */
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Header Styling */
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+  margin-bottom: 40px;
+  background-color: #0a192f;
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 50px;
+  position: fixed;
+  top: 0;
+  backdrop-filter: blur(10px);
+}
+
+.logo h1 {
+  font-size: 2rem;
+  color: #ccd6f6;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #ccd6f6;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #64ffda;
+}
+
+.intro {
+  margin-top: 150px;
+  margin-bottom: 160px;
+}
+
+.big-heading {
+  font-size: 3.5rem;
+  color: #ffffff;
+}
+
+.sub-heading {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  color: #a8b2d1;
+}
+
+
+
+
+/* About Section */
+.about-section {
+  max-width: 900px;
+  margin: 80px auto;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  color: #a8b2d1;
+  font-size: 1.2rem;
+}
+
+/* Projects Section */
+.projects-section {
+  padding: 50px 0;
+  background-color: #112240;
+  text-align: center;
+}
+
+.projects-section h2 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background-color: #0a192f;
+  padding: 30px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card h3 {
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: #a8b2d1;
+  margin-bottom: 20px;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+}
+
+.project-link {
+  padding: 10px 20px;
+  background-color: #64ffda;
+  color: #0a192f;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.project-link:hover {
+  background-color: #52e0b3;
+}
+
+/* Contact Section */
+.contact-section {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.contact-section h2 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.contact-section p {
+  color: #a8b2d1;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#countdown {
+position: fixed;
+top: 20px;
+left: 50%;
+transform: translateX(-50%);
+background-color: rgba(0, 0, 0, 0.5);
+color: white;
+padding: 10px;
+border-radius: 5px;
+font-size: 20px;
+text-align: center;
+z-index: 1000;
+}
+
+#timer {
+font-size: 30px;
+font-weight: bold;
+margin-top: 5px;
+}
+
+.santa {
+display: none;
+}
+
+
+.social-media a {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.social-media img {
+  width: 30px; /* Adjust icon size */
+  height: 30px; /* Adjust icon size */
+  transition: transform 0.3s ease;
+}
+
+.social-media a:hover img {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  background-color: #0a192f;
+  color: #a8b2d1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+      flex-direction: column;
+      padding: 20px;
+  }
+
+  .nav-links {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .big-heading {
+      font-size: 2.5rem;
+  }
+
+  .sub-heading {
+      font-size: 1.2rem;
+  }
+
+
+  .about-section h2, .projects-section h2, .contact-section h2 {
+      font-size: 2rem;
+  }
+
+  .about-section p, .contact-section p {
+      font-size: 1rem;
+  }
+
+  .project-card {
+      padding: 20px;
+  }
+
+  .project-card h3 {
+      font-size: 1.5rem;
+  }
+
+  .project-card p {
+      font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .big-heading {
+      font-size: 2rem;
+  }
+
+  .sub-heading {
+      font-size: 1rem;
+  }
+
+}
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,500&display=swap");
+
+:root {
+--shiny-cta-bg: #000000;
+--shiny-cta-bg-subtle: #1a1818;
+--shiny-cta-fg: #ffffff;
+--shiny-cta-highlight: blue;
+--shiny-cta-highlight-subtle: #8484ff;
+}
+
+@property --gradient-angle {
+syntax: "<angle>";
+initial-value: 0deg;
+inherits: false;
+}
+
+@property --gradient-angle-offset {
+syntax: "<angle>";
+initial-value: 0deg;
+inherits: false;
+}
+
+@property --gradient-percent {
+syntax: "<percentage>";
+initial-value: 5%;
+inherits: false;
+}
+
+@property --gradient-shine {
+syntax: "<color>";
+initial-value: white;
+inherits: false;
+}
+
+.shiny-cta {
+--animation: gradient-angle linear infinite;
+--duration: 3s;
+--shadow-size: 2px;
+isolation: isolate;
+position: relative;
+overflow: hidden;
+cursor: pointer;
+outline-offset: 4px;
+padding: 1.25rem 2.5rem;
+font-family: inherit;
+font-size: 1.125rem;
+line-height: 1.2;
+border: 1px solid transparent;
+border-radius: 360px;
+color: var(--shiny-cta-fg);
+background: linear-gradient(var(--shiny-cta-bg), var(--shiny-cta-bg))
+    padding-box,
+  conic-gradient(
+      from calc(var(--gradient-angle) - var(--gradient-angle-offset)),
+      transparent,
+      var(--shiny-cta-highlight) var(--gradient-percent),
+      var(--gradient-shine) calc(var(--gradient-percent) * 2),
+      var(--shiny-cta-highlight) calc(var(--gradient-percent) * 3),
+      transparent calc(var(--gradient-percent) * 4)
+    )
+    border-box;
+box-shadow: inset 0 0 0 1px var(--shiny-cta-bg-subtle);
+
+&::before,
+&::after,
+span::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-inline-start: 50%;
+  inset-block-start: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+}
+
+&:active {
+  translate: 0 1px;
+}
+}
+
+/* Dots pattern */
+.shiny-cta::before {
+--size: calc(100% - var(--shadow-size) * 3);
+--position: 2px;
+--space: calc(var(--position) * 2);
+width: var(--size);
+height: var(--size);
+background: radial-gradient(
+    circle at var(--position) var(--position),
+    white calc(var(--position) / 4),
+    transparent 0
+  )
+  padding-box;
+background-size: var(--space) var(--space);
+background-repeat: space;
+mask-image: conic-gradient(
+  from calc(var(--gradient-angle) + 45deg),
+  black,
+  transparent 10% 90%,
+  black
+);
+border-radius: inherit;
+opacity: 0.4;
+z-index: -1;
+}
+
+/* Inner shimmer */
+.shiny-cta span {
+z-index: 1;
+
+&::before {
+  --size: calc(100% + 1rem);
+  width: var(--size);
+  height: var(--size);
+  box-shadow: inset 0 -1ex 2rem 4px var(--shiny-cta-highlight);
+  opacity: 0;
+}
+}
+
+/* Animate */
+.shiny-cta {
+--transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
+transition: var(--transition);
+transition-property: --gradient-angle-offset, --gradient-percent,
+  --gradient-shine;
+
+&,
+&::before,
+&::after {
+  animation: var(--animation) var(--duration),
+    var(--animation) calc(var(--duration) / 0.4) reverse paused;
+  animation-composition: add;
+}
+
+span::before {
+  transition: opacity var(--transition);
+  animation: calc(var(--duration) * 1.5) breathe linear infinite;
+}
+}
+
+.shiny-cta:is(:hover, :focus-visible) {
+--gradient-percent: 20%;
+--gradient-angle-offset: 95deg;
+--gradient-shine: var(--shiny-cta-highlight-subtle);
+
+&,
+&::before,
+&::after {
+  animation-play-state: running;
+}
+
+span::before {
+  opacity: 1;
+}
+}
+
+@keyframes gradient-angle {
+to {
+  --gradient-angle: 360deg;
+}
+}
+
+@keyframes shimmer {
+to {
+  rotate: 360deg;
+}
+}
+
+@keyframes breathe {
+from,
+to {
+  scale: 1;
+}
+50% {
+  scale: 1.2;
+}
+}

@@ -1,0 +1,14 @@
+body {
+    text-align: center;
+    font-family: myFirstFont;
+}
+
+#board {
+    /* background-color: skyblue; */
+    background-image: url("./flappybirdbg.png");
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(flappy-font.ttf);
+}

@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #221f2f;
+    padding: 50px 0;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    background-color: #ed2ff0;
+    width: 120px;
+    height: 120px;
+    left: 75%;
+    top: 20%;
+    filter: blur(90px);
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    background-color: #22a8cd;
+    width: 120px;
+    height: 120px;
+    left: 10%;
+    top: 80%;
+    filter: blur(90px);
+}
+
+.wrapper {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.44);
+    width: 50%;
+    max-width: 31.25em;
+    padding: 2em;
+    border-radius: 0.5em;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.4px);
+    -webkit-backdrop-filter: blur(7.4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.current-time {
+    font-size: 2.2em;
+    text-align: center;
+}
+
+.inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    margin-top: 1.5em;
+}
+
+.inputs input {
+    width: 3em;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    color: #fff;
+    text-align: center;
+    border-radius: 0.3em;
+    padding: 0.4em 0.2em;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.buttons {
+    display: flex;
+    gap: 1.2em;
+}
+
+button#set {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #fff;
+    padding: 0.6em;
+    width: 100%;
+    margin: 1.5em auto 0 auto;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button#set:hover {
+    border-color: #0d47a1;
+    color: #0d47a1;
+}
+
+.alarm {
+    display: grid;
+    grid-template-columns: 9fr 1fr 2fr;
+    margin-top: 1.5em;
+    align-items: center;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 0.6em;
+}
+
+/* Switch styles */
+.switch {
+    display: inline-block;
+    width: 4em; /* Width of the switch */
+    height: 2em; /* Height of the switch */
+    position: relative;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0; /* Hide the checkbox */
+    width: 0; /* Set width to 0 */
+    height: 0; /* Set height to 0 */
+}
+
+
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Background color when off */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.inputs select {
+    font-size: 1.2em;
+    background-color: transparent;
+    color: #fff;
+    border-radius: 0.3em;
+    padding: 0.4em 0.2em;
+    width: 4em; /* Set the width of the dropdown */
+}
+
+
+/* Circle for the 'off' state */
+.off {
+    position: absolute;
+    height: 2em;
+    width: 2em;
+    background-color: white; /* Background color of the switch knob */
+    left: 0; /* Align to the left */
+    transition: left 0.3s ease; /* Smooth movement */
+}
+
+/* Circle for the 'on' state */
+.on {
+    position: absolute;
+    height: 2em;
+    width: 2em;
+    background-color: white; /* Background color of the switch knob */
+    right: 0; /* Align to the right */
+    opacity: 0; /* Hide by default */
+    transition: right 0.3s ease; /* Smooth fade effect */
+}
+
+/* Change the background color when the switch is checked */
+.switch input:checked + .slider {
+    background-color: #66bb6a; /* Background color when on */
+}
+
+/* Move the knob to the right when checked */
+.switch input:checked ~ .off {
+    left: calc(100% - 2em); /* Move knob to the right */
+    opacity: 0; /* Hide the 'off' circle when checked */
+}
+
+/* Show the 'on' circle when checked */
+.switch input:checked ~ .on {
+    right: 0; /* Move knob to the left */
+    opacity: 1; /* Show the 'on' circle */
+}
+
+/* Alarm checkbox styles */
+.alarm input[type="checkbox"] {
+    appearance: none; /* Remove default checkbox */
+}
+
+/* Delete button styles */
+.deleteButton {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: all 0.3s ease;
+}
+
+.deleteButton:hover {
+    color: #0d47a1;
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        width: 80%;
+    }
+}

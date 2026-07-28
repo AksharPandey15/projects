@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Ultimate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Rock Paper Scissors Ultimate</h1>
+        
+        <!-- Game Mode Selection -->
+        <div class="mode-selector">
+            <button onclick="setGameMode('ai')" class="mode-btn">Play vs AI</button>
+            <button onclick="setGameMode('online')" class="mode-btn">Play Online</button>
+        </div>
+
+        <!-- AI Mode -->
+        <div id="aiMode">
+            <div class="difficulty-selector">
+                <h2>Select Difficulty:</h2>
+                <button onclick="setDifficulty('easy')" class="difficulty-btn">Easy</button>
+                <button onclick="setDifficulty('medium')" class="difficulty-btn">Medium</button>
+                <button onclick="setDifficulty('hard')" class="difficulty-btn">Hard</button>
+                <button onclick="setDifficulty('impossible')" class="difficulty-btn">Impossible</button>
+            </div>
+        </div>
+
+        <!-- Online Mode -->
+        <div id="onlineMode" style="display: none;">
+            <div class="online-controls">
+                <button onclick="createOnlineGame()" class="online-btn">Create New Game</button>
+                <div class="join-game">
+                    <input type="text" id="joinGameInput" placeholder="Enter game code">
+                    <button onclick="joinGame()" class="online-btn">Join Game</button>
+                </div>
+                <div id="gameCode" class="game-code"></div>
+                <div id="onlineStatus" class="online-status"></div>
+            </div>
+        </div>
+
+        <!-- Game Buttons (shared between modes) -->
+        <div class="game-buttons">
+            <button onclick="handleMove('rock')" class="choice-btn">Rock</button>
+            <button onclick="handleMove('paper')" class="choice-btn">Paper</button>
+            <button onclick="handleMove('scissors')" class="choice-btn">Scissors</button>
+        </div>
+
+        <div id="result">Select your move!</div>
+        <div id="score">Score - You: 0 Computer: 0</div>
+    </div>
+
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

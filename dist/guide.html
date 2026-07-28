@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DO NOT the Cat</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #111, #1c1c1c);
+        color: #f5f5f5;
+        padding: 40px 20px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+
+    .subtitle {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+        color: #ccc;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin: 40px 0 20px;
+        border-left: 5px solid #ff9800;
+        padding-left: 15px;
+    }
+
+    .skills {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: #222;
+        border-radius: 12px;
+        padding: 20px;
+        transition: 0.3s ease;
+        border: 1px solid #333;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        border-color: #ff9800;
+        box-shadow: 0 8px 20px rgba(255,152,0,0.2);
+    }
+
+    .card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        color: #ff9800;
+    }
+
+    .type {
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 20px;
+        background: #333;
+        color: #fff;
+    }
+
+    .effect {
+        margin-top: 8px;
+        color: #aaa;
+        font-size: 0.95rem;
+    }
+
+    footer {
+        margin-top: 60px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #777;
+        border-top: 1px solid #333;
+        padding-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+        h1 {
+            font-size: 2.2rem;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🐾 DO NOT the Cat</h1>
+    <p class="subtitle">
+        A roguelike, text-based idle/clicker game.<br>
+        Collect cats to unlock skills and upgrade your progress.<br>
+        There are 13 skills to unlock — how far can you get?
+    </p>
+
+    <div class="section-title">Skills & Achievements</div>
+
+    <div class="skills">
+
+        <div class="card">
+            <h3>✋ Hands</h3>
+            <div class="type">Base</div>
+            Unlock: Reach 110 cats
+            <div class="effect">Effect: +1 Base</div>
+        </div>
+
+        <div class="card">
+            <h3>❎ Times</h3>
+            <div class="type">Multiplier</div>
+            Unlock: Reach 1000 cats
+            <div class="effect">Effect: +0.1x Mult</div>
+        </div>
+
+        <div class="card">
+            <h3>📈 Grow</h3>
+            <div class="type">Interest</div>
+            Unlock: Reach 10000 cats
+            <div class="effect">Effect: +0.01% Interest</div>
+        </div>
+
+        <div class="card">
+            <h3>🏭 Factory</h3>
+            <div class="type">Base</div>
+            Unlock: Reach Level 10000 Hands
+            <div class="effect">Effect: 2x Base</div>
+        </div>
+
+        <div class="card">
+            <h3>🎬 Media</h3>
+            <div class="type">Multiplier</div>
+            Unlock: Reach Level 1000 Times
+            <div class="effect">Effect: 2x Mult</div>
+        </div>
+
+        <div class="card">
+            <h3>🏥 Vets</h3>
+            <div class="type">Interest</div>
+            Unlock: Reach Level 100 Grow
+            <div class="effect">Effect: +1% Interest</div>
+        </div>
+
+        <div class="card">
+            <h3>🌿 Catnip</h3>
+            <div class="type">Cooldown</div>
+            Unlock: Reach Megacat Boss
+            <div class="effect">Effect: 1000-click burst (15s cooldown)</div>
+        </div>
+
+        <div class="card">
+            <h3>💰 Payday</h3>
+            <div class="type">Passive</div>
+            Unlock: Pass Gigacat Boss
+            <div class="effect">Effect: 10x extra cats per unlocked skill</div>
+        </div>
+
+        <div class="card">
+            <h3>🚩 War</h3>
+            <div class="type">Passive</div>
+            Unlock: Pass Teracat Boss
+            <div class="effect">
+                Effect: 1000 Base + 10x Mult per skill<br>
+                Costs & cooldowns doubled
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🪦 Nekro</h3>
+            <div class="type">Passive</div>
+            Unlock: Pass Petacat Boss
+            <div class="effect">Effect: 5% discount per unlocked skill</div>
+        </div>
+
+        <div class="card">
+            <h3>🚀 Space</h3>
+            <div class="type">Cooldown</div>
+            Unlock: Pass Exacat Boss
+            <div class="effect">Effect: 100x balance after 1 minute</div>
+        </div>
+
+        <div class="card">
+            <h3>✨ Anti-Catter</h3>
+            <div class="type">Cooldown</div>
+            Unlock: Reach Infinity
+            <div class="effect">
+                Effect: Double or nothing<br>
+                Odds increase each playthrough
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>⚙️ Auto</h3>
+            <div class="type">Toggle</div>
+            Unlock: 20s AFK on new run
+            <div class="effect">Effect: 5 clicks/sec per unlocked skill</div>
+        </div>
+
+    </div>
+
+    <footer>
+        Sound effect remixed from "Kitten Meow" by Mike Koenig<br>
+        Licensed under Attribution 3.0
+    </footer>
+
+</div>
+
+</body>
+</html>

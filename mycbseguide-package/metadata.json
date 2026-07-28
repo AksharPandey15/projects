@@ -1,0 +1,5 @@
+{
+  "name": "mycbseguide package",
+  "description": "A user interface for selecting an educational package, viewing order details, and choosing a payment method, built with Angular and Tailwind CSS.",
+  "requestFramePermissions": []
+}

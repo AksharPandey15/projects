@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>AR Piano</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body onload="main()">
+        <canvas id="canvasA" style="margin-left:-21vmin"></canvas>
+        <canvas id="canvasPiano" style="margin-left:-21vmin;background:none;"></canvas>
+        <canvas id="canvasB" style= "margin-left:-21vmin;background:none;"></canvas>
+        
+        <canvas id="canvasHitTest" style= "margin-left:41vmin;width:38vmin;height:38vmin;margin-top:21vmin"></canvas>
+        
+        <canvas id="canvasBg" onclick="captureBackground()" style= "margin-left:41vmin;width:38vmin;height:38vmin;margin-top:-21vmin;cursor:pointer;"></canvas>
+        
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,185 @@
+<div class="container"></div>
+	<div class="inputs-wrapper">
+		<input type="date" id="date-input">
+		<button onclick="ageCalculate()">Calculate</button>
+	</div>
+	<div class="outputs-wrapper">
+		<div>
+			<span id="years"> - </span>
+			<p>Years</p>
+		</div>
+		<div>
+			<span id="months"> - </span>
+			<p>Months</p>
+		</div>
+		<div>
+			<span id="days"> - </span>
+			<p>Days</p>
+		</div>
+	</div>
+</div>
+<style>*,
+    *:before,
+    *:after {
+        padding: 0;
+        margin: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    body {
+        background-color: #0a6cf1;
+    }
+    .container {
+        width: 40%;
+        min-width: 320px;
+        position: absolute;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 50%;
+    }
+    .container * {
+        font-family: "Poppins", sans-serif;
+        border: none;
+        outline: none;
+    }
+    .inputs-wrapper {
+        background-color: #080808;
+        padding: 30px 25px;
+        border-radius: 8px;
+        margin-bottom: 40px;
+        -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+    }
+    input,
+    button {
+        height: 50px;
+        background-color: #ffffff;
+        color: #080808;
+        font-weight: 500;
+        border-radius: 5px;
+    }
+    input {
+        width: 100%;
+        padding: 0 20px;
+        font-size: 14px;
+        margin: 20px 0;
+    }
+    button {
+        width: 100%;
+    }
+    .outputs-wrapper {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .outputs-wrapper div {
+        height: 85px;
+        width: 85px;
+        background-color: #080808;
+        border-radius: 5px;
+        color: #ffffff;
+        display: -ms-grid;
+        display: grid;
+        place-items: center;
+        padding: 10px 0;
+        -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+    }
+    span {
+        font-size: 25px;
+        font-weight: 500;
+    }
+    p {
+        font-size: 12px;
+        color: #707070;
+        font-weight: 400;
+    }
+    a {
+        display: block;
+        width: 100%;
+        background-color: #080808;
+        color: #ffffff;
+        padding: 10px 0;
+        text-align: center;
+        text-decoration: none;
+        margin-top: 40px;
+        border-radius: 5px;
+        -webkit-box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+    }
+    </style><script>
+        alert("Select birth date and the click on calculate");
+const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+function leapchecker(year) {
+	if (year % 4 == 0 || (year % 100 == 0 && year % 400 == 0)) {
+		months[1] = 29;
+	} else {
+		months[1] = 28;
+	}
+}
+
+function ageCalculate() {
+	let today = new Date();
+	let inputDate = new Date(document.getElementById("date-input").value);
+
+	let birthMonth, birthDate, birthYear;
+	let birthDetails = {
+		date: inputDate.getDate(),
+		month: inputDate.getMonth() + 1,
+		year: inputDate.getFullYear()
+	};
+	let currentYear = today.getFullYear();
+	let currentMonth = today.getMonth() + 1;
+	let currentDate = today.getDate();
+
+	leapchecker(currentYear);
+
+	if (
+		birthDetails.year > currentYear ||
+		(birthDetails.month > currentMonth && birthDetails.year == currentYear) ||
+		(birthDetails.date > currentDate &&
+			birthDetails.month == currentMonth &&
+			birthDetails.year == currentYear)
+	) {
+		alert("Not yet born");
+		displayResult("-", "-", "-");
+		return;
+	}
+
+	birthYear = currentYear - birthDetails.year;
+
+	if (currentMonth >= birthDetails.month) {
+		birthMonth = currentMonth - birthDetails.month;
+	} else {
+		birthYear--;
+		birthMonth = 12 + currentMonth - birthDetails.month;
+	}
+
+	if (currentDate >= birthDetails.date) {
+		birthDate = currentDate - birthDetails.date;
+	} else {
+		birthMonth--;
+		let days = months[currentMonth - 2];
+		birthDate = days + currentDate - birthDetails.date;
+		if (birthMonth < 0) {
+			birthMonth = 11;
+			birthYear--;
+		}
+	}
+	displayResult(birthDate, birthMonth, birthYear);
+}
+
+function displayResult(bDate, bMonth, bYear) {
+	document.getElementById("years").textContent = bYear;
+	document.getElementById("months").textContent = bMonth;
+	document.getElementById("days").textContent = bDate;
+}
+
+    </script>

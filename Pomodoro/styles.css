@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffffff, #000000);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+  }
+  
+  .container {
+    text-align: center;
+    background: white;
+    color: #333;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  .timer {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  /* Adjust timer buttons */
+.adjust-timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .adjust-timer button {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    transition: background 0.3s ease;
+  }
+  
+  .adjust-timer button:hover {
+    background: #0056b3;
+  }
+  
+  .adjust-timer span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  
+  .controls button,
+  .mode button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .controls button {
+    background: #4caf50;
+    color: white;
+  }
+  
+  .controls button:hover {
+    background: #45a049;
+  }
+  
+  .mode button {
+    background: #007bff;
+    color: white;
+  }
+  
+  .mode button.active {
+    background: #0056b3;
+  }
+  
+  .mode button:hover {
+    background: #0056b3;
+  }
+  

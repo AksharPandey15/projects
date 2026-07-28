@@ -1,0 +1,5 @@
+{
+  "name": "macOS Terminal Clone",
+  "description": "A high-fidelity macOS Terminal emulator. Features standard shell commands, directory navigation, and command history.",
+  "requestFramePermissions": []
+}

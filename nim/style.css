@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Agu+Display:MORF@0..60&display=swap');
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url(img/back1.jpg);
+    background-size: cover;
+    font-family: "Raleway";
+  }
+  
+  main {
+    flex: 1 0 auto;
+  }
+  
+  #modal {
+    max-height: 90%;
+  }
+  
+  h4,
+  .game-title {
+    font-family: "Agu Display", serif;
+}
+  
+  nav {
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 2px 15px 6px #000;
+  }
+  
+  a {
+    margin: 0 5px;
+  }
+  
+  .page-footer {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .gameboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    min-height: 50vh;
+    margin-top: 10%;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .heap-one,
+  .heap-two,
+  .heap-three {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  .item {
+    margin: .5em;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    box-shadow: 5px 10px 18px #000;
+  }
+  
+  .button-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .switch-player,
+  .game-mode {
+    border-radius: 10px;
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    border: 2px solid transparent; /* Transparent border initially */
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* No shadow initially */
+  }
+  
+  .game-mode:hover {
+    border-color: #3498db; /* Border color change on hover */
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.6); /* Add a glow effect */
+    transform: scale(1.05); /* Slight scale up effect */    
+}
+
+  .reminder-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .reminder-msg {
+    padding: 0.25em;
+    border-radius: 0.5em;
+    background-color: rgba(255, 255, 255, 0.7); 
+  }
+  
+  .logo {
+    width: 25px;
+    height: 25px;
+    filter: invert(100%);
+  }
+  
+  .win-msg {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 20px;
+    color: #222;
+    padding: 10px;
+  }
+  
+  .instructions {
+    margin: 5%;
+    padding: 5%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 30px;
+  }
+  
+  @media (max-width: 800px) {
+    .item {
+    margin: .1em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    }
+  
+    .win-msg {
+      font-size: 24px;
+    }
+  
+    .reminder-msg {
+      font-size: 14px;
+    }
+  
+    .switch-player {
+      font-size: 14px;
+    }
+  }

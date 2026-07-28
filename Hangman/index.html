@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hangman Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: linear-gradient(to bottom, #000000, #333);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .game-container {
+            background: linear-gradient(to bottom, #000000, #444);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .hangman-draw {
+            font-family: monospace;
+            white-space: pre;
+            margin: 20px;
+            font-size: 1.2em;
+        }
+
+        .word-display {
+            font-size: 2em;
+            margin: 20px;
+            letter-spacing: 5px;
+        }
+
+        .keyboard {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin: 20px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            background: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .game-info {
+            margin: 20px;
+            font-size: 1.2em;
+        }
+
+        .message {
+            margin: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .category {
+            font-size: 1.2em;
+            color: #666;
+            margin: 10px;
+        }
+
+        .new-game-btn {
+            background: #2196F3;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            margin: 20px;
+        }
+
+        .new-game-btn:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Hangman Game</h1>
+        <div class="category" id="category">Category: <span></span></div>
+        <div class="hangman-draw" id="hangman"></div>
+        <div class="word-display" id="word"></div>
+        <div class="game-info">
+            Lives remaining: <span id="lives">6</span>
+        </div>
+        <div class="message" id="message"></div>
+        <div class="keyboard" id="keyboard"></div>
+        <button class="new-game-btn" onclick="newGame()">New Game</button>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html> 
