@@ -14,7 +14,7 @@ function Scene_Quote() {
 
 	// Layers, yo.
 	var q1 = MakeSprite("blackout");
-	var q2 = new PIXI.Text(" ", { font: "bold 72px Poppins, sans-serif", fill: "#FF2222", align: "center", stroke: "#000000", strokeThickness: 6 });
+	var q2 = new PIXI.Text("ब्रेकिंग इंडिया: नफ़रत LIVE", { font: "bold 72px Poppins, sans-serif", fill: "#FF2222", align: "center", stroke: "#000000", strokeThickness: 6 });
 	q2.anchor.set(0.5);
 	q2.x = Game.width / 2;
 	q2.y = Game.height / 2 - 60;
