@@ -86,6 +86,12 @@ function Camera(scene, options){
 	};
 	Game.stage.mousedown = Game.stage.touchstart = function(mouseData){
 
+		// Update position immediately on click/touch for mobile point-and-click
+	    var pos = mouseData.data.global;
+	    self.x = pos.x;
+	    self.y = pos.y;
+		self.updatePosition();
+
 		// ONLY ONCE. FREEZE.
 		if(self.frozen) return;
 		if(!options.streaming){
