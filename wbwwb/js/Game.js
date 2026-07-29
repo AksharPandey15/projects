@@ -123,7 +123,13 @@ window.addEventListener("DOMContentLoaded", function(){
 	var stageEl = document.querySelector("#stage");
 	if(stageEl) stageEl.addEventListener("dblclick", toggleFullscreen);
 	var fsBtn = document.querySelector("#fullscreen_btn");
-	if(fsBtn) fsBtn.addEventListener("click", toggleFullscreen);
+	if(fsBtn) {
+		fsBtn.addEventListener("click", toggleFullscreen);
+		fsBtn.addEventListener("touchstart", function(e){
+			e.preventDefault();
+			toggleFullscreen();
+		});
+	}
 });
 
 // LOADING, and ADDING TO MANIFEST.
