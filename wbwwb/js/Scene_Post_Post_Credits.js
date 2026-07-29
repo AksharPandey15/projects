@@ -42,7 +42,19 @@ function Scene_Post_Post_Credits(){
 	var interactiveCont = new PIXI.Container();
 	cont.addChild(interactiveCont);
 	interactiveCont.alpha = 0;
-	interactiveCont.addChild(MakeSprite("logo"));
+	var endTitle1 = new PIXI.Text("ब्रेकिंग इंडिया:", {font:"bold 64px Poppins, sans-serif", fill:"#FFFFFF", align:"center"});
+	endTitle1.anchor.x = 0.5;
+	endTitle1.anchor.y = 0.5;
+	endTitle1.x = Game.width / 2;
+	endTitle1.y = 100;
+	interactiveCont.addChild(endTitle1);
+
+	var endTitle2 = new PIXI.Text("नफ़रत LIVE", {font:"bold 80px Poppins, sans-serif", fill:"#FFFFFF", align:"center"});
+	endTitle2.anchor.x = 0.5;
+	endTitle2.anchor.y = 0.5;
+	endTitle2.x = Game.width / 2;
+	endTitle2.y = 190;
+	interactiveCont.addChild(endTitle2);
 
 	// _addButton
 	var isHovering = false;
@@ -74,7 +86,7 @@ function Scene_Post_Post_Credits(){
 			bg.gotoAndStop(0);
 			Tween_get(button.scale).to({x:1, y:1}, _s(0.2));
 		};
-		button.mousedown = function(){
+		button.mousedown = button.touchstart = function(){
 			isHovering = false;
 			Game.sounds.squeak.play();
 			callback();

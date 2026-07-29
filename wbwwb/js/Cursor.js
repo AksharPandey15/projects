@@ -12,15 +12,15 @@ function Cursor(scene){
 	mc.y = -100;
 
 	self.click = false;
-	Game.stage.mousemove = function(mouseData){
+	Game.stage.mousemove = Game.stage.touchmove = function(mouseData){
 	    var pos = mouseData.data.global;
 	    mc.x = pos.x+1;
 	    mc.y = pos.y+1;
 	};
-	Game.stage.mousedown = function(mouseData){
+	Game.stage.mousedown = Game.stage.touchstart = function(mouseData){
 		self.click = true;
 	};
-	Game.stage.mouseup = function(mouseData){
+	Game.stage.mouseup = Game.stage.touchend = function(mouseData){
 		self.click = false;
 	};
 
