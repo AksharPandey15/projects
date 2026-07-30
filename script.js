@@ -259,6 +259,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     printToConsole("Bad Apple playback finished.", "info");
                     return;
                 }
+                
+                // Approximate frame ranges for the choruses (the "best parts") at 12.4 FPS
+                // Chorus 1: ~1:18 to ~1:45 (frames 950 to 1350)
+                // Chorus 2: ~2:38 to ~3:05 (frames 1900 to 2350)
+                const isBestPart = (frame > 950 && frame < 1350) || (frame > 1900 && frame < 2350);
+                
+                if (isBestPart) {
+                    // Cycle through vibrant colors during the chorus
+                    artContainer.style.color = `hsl(${(frame * 5) % 360}, 100%, 50%)`;
+                } else {
+                    // Default neon green for the rest of the song
+                    artContainer.style.color = "#00ff00";
+                }
+                
                 artContainer.textContent = actualFrames[frame];
                 frame++;
             }, 1000 / 12.4); // 12.4 FPS
