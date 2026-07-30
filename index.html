@@ -1,1008 +1,993 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akshar Pandey | Developer</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akshar Pandey | Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header id="header">
-        <div class="navbar">
-            <div class="logo">
-                <h1>Akshar Pandey</h1>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li id="login-link"><a href="login.html">Login</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <div class="hero-wrapper" id="about">
-        <span class="hero-badge">Developer & Designer</span>
-        <h1 class="big-heading" id="greetings">Good Afternoon,</h1>
-        <p class="sub-heading">I'm Akshar Pandey, a passionate developer building clean, high-performance applications and digital experiences.</p>
-        <a href="#projects" class="hero-cta">View My Work</a>
-        
-        <div class="social-media">
-            <a href="https://github.com/AksharPandey19" target="_blank" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.373.5 0 5.873 0 12.5c0 5.303 3.438 9.8 8.207 11.387.6.111.82-.261.82-.578v-2.302c-3.338.724-4.037-1.604-4.037-1.604-.546-1.38-1.333-1.747-1.333-1.747-1.089-.743.083-.727.083-.727 1.206.085 1.839 1.236 1.839 1.236 1.07 1.839 2.8 1.305 3.486.998.108-.774.418-1.305.763-1.605-2.665-.303-5.467-1.333-5.467-5.933 0-1.313.47-2.392 1.236-3.236-.124-.303-.536-1.53.117-3.188 0 0 1.008-.322 3.302 1.228.957-.266 1.987-.399 3.006-.404 1.02.005 2.05.138 3.006.404 2.294-1.55 3.302-1.228 3.302-1.228.654 1.658.242 2.885.118 3.188.766.844 1.236 1.923 1.236 3.236 0 4.608-2.806 5.628-5.473 5.933.43.37.816 1.099.816 2.221v3.293c0 .318.219.693.825.578C20.565 22.298 24 17.8 24 12.5c0-6.627-5.373-12-12-12z"/></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/mycodingguide-offical-9867431b9/" target="_blank" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.225 0H1.775C.794 0 0 .794 0 1.775v20.45C0 23.206.794 24 1.775 24h20.45C23.206 24 24 23.206 24 22.225V1.775C24 .794 23.206 0 22.225 0zM7.047 20.452H3.579V9h3.468v11.452zM5.313 7.759c-1.12 0-2.031-.917-2.031-2.04 0-1.129.93-2.04 2.061-2.04 1.128 0 2.031.911 2.031 2.04 0 1.123-.903 2.04-2.061 2.04zM20.422 20.452h-3.468v-5.894c0-1.403-.026-3.206-1.953-3.206-1.953 0-2.253 1.527-2.253 3.09v6.01h-3.468V9h3.33v1.554h.046c.464-.878 1.593-1.8 3.287-1.8 3.515 0 4.157 2.31 4.157 5.302v6.396z"/></svg>
-            </a>
-        </div>
+  <div class="cursor"></div>
+  <canvas id="bg-canvas"></canvas>
+  <header id="header">
+    <div class="navbar">
+      <div class="logo">
+        <h1>Akshar Pandey</h1>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li id="dev-mode-btn"><a href="#" onclick="event.preventDefault()">Dev Mode</a></li>
+      </ul>
     </div>
+  </header>
 
-    <section id="projects">
-        <h2 class="section-title">Selected Works</h2>
-        <div class="projects-container">
-            <div class="project-card">
-          <h3>Policy</h3>
-          <br>
-          <a href="policy.html" class="shiny-cta">View Policy</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 1: Google Maps</h3>
-          <p>Google Maps API project. Try to find the easter egg.</p>
-          <a href="google app api/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 2: Tic Tac Toe App</h3>
-          <p>An interactive Tic Tac Toe game made using HTML, CSS, and JS.</p>
-          <a href="tictac toe/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 3: Weather Application</h3>
-          <p>A weather application using the Tomorrow.io API, providing current weather data.</p>
-          <a href="weather/" class="shiny-cta">View Project</a>
-        </div>
+  <div class="hero-wrapper" id="about">
+    <div class="hero-content">
+      <span class="hero-badge">Developer & Designer</span>
+      <h1 class="big-heading" id="greetings">Good Afternoon,</h1>
+      <h2 class="hero-title">I'm Akshar Pandey</h2>
+      <p class="sub-heading">Building clean, high-performance applications and
+        digital experiences with a touch of magic.</p>
 
-        <div class="project-card">
-          <h3>Project 4: Movie Finder</h3>
-          <p>The app provides movie and TV show information using the OMDb API.</p>
-          <a href="movie/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 5: Budget App</h3>
-          <p>Calculate Your Expenses</p>
-          <a href="budget/calcu.html" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 6: Alarm Application</h3>
-          <p>Tired of waking up late. HERE IS A ALARM</p>
-          <a href="alram/html.html" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 7: QR Code Maker</h3>
-          <p>You own a resturant and want all qr code. RIGHT PLACE CAME</p>
-          <a href="qrcodemaker/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 8: QR Code Reader</h3>
-          <p>You came to resturant and made you download it</p>
-          <a href="qrcodereader/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 9: Chess</h3>
-          <p>Herro! Want to play Chess</p>
-          <a href="Chess_Game/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 10: Battery Percentage Finder</h3>
-          <p>Want to find out your Battery even though it is on the bottem-right corner</p>
-          <a href="bt/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 11: Password Maker</h3>
-          <p>Thinking too much for a strong password so no hackers</p>
-          <a href="pass/indexx.html" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 12: Pixel Art</h3>
-          <p>Want to make Art in your PC</p>
-          <a href="pt/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 13: Typing Test</h3>
-          <p>Test your Keyborad Skils</p>
-          <a href="tyops/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 14: Aspect Ratio Calculator
-          </h3>
-          <p>Maths Test??</p>
-          <a href="ratio/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 15: Guess The Word
-          </h3>
-          <p>Just Guess IT</p>
-          <a href="words/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 16: 2048 Game
-          </h3>
-          <p>The Classic old 2048</p>
-          <a href="2048/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 17: tetris Clone
-          </h3>
-          <p>Like that "Unbeatable" Tetris</p>
-          <a href="tetris/index.htm" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 18: Snake Game
-          </h3>
-          <p>Snake Game Play It</p>
-          <a href="snakee/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 19: Text To Speech
-          </h3>
-          <p>I always wanted this.To Prank call my friends😀</p>
-          <a href="Text to Speech/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 20: Geometric Art Generator
-          </h3>
-          <p>Geometric Art Generator (also known as GAG)</p>
-          <a href="GAG/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 21: MineSweeper
-          </h3>
-          <p>Classic ol' MineSweeper from the 19's</p>
-          <a href="MineSweeper/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 22: Internet Speed Test
-          </h3>
-          <p>Test your Internet Speed</p>
-          <a href="isc/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 23: Box Shadow Generator
-          </h3>
-          <p>Me as developer got a lot of problems with this</p>
-          <a href="gost/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 24: Flip a Coin
-          </h3>
-          <p>Flip a coin</p>
-          <a href="coin/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 25: Translater
-          </h3>
-          <p>Stuck in a another country with a another language</p>
-          <a href="ransle/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 26: Gradient Generator
-          </h3>
-          <p>Making Gradient is fun</p>
-          <a href="gradient/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 27: Crypto Price App
-          </h3>
-          <p>Check the Crypto price using coingecko</p>
-          <a href="dogecoin/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 28: Cosmo
-          </h3>
-          <p>Just Cosmo IT</p>
-          <a href="cosmo/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 29: Sliding Toys
-          </h3>
-          <p>Just match the right numbers</p>
-          <a href="sliding_toys/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 30: Gravity Points
-          </h3>
-          <p>Small Particle attract to the black hole type thingy</p>
-          <a href="gravuty/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 31: ToDo App
-          </h3>
-          <p>Just don't forget to do your todo</p>
-          <a href="todo/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 32: Spin the wheel
-          </h3>
-          <p>Spin the wheel in a fixed range of 1-6</p>
-          <a href="spin-the-wheel/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 33: Live Code Editor
-          </h3>
-          <p>HTML,CSS,JS code editor</p>
-          <a href="code/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 34: Sudoku Solver
-          </h3>
-          <p>Sharp your mind</p>
-          <a href="suduko/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 35: Text Encryptor
-          </h3>
-          <p>Why you even want to Encrypt your message</p>
-          <a href="text/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 36: Pong Game
-          </h3>
-          <p>Ping Pong Game EveryOne knows this</p>
-          <a href="pingpong/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 37: Quizze
-          </h3>
-          <p>Suprise Test</p>
-          <a href="quixx/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 38: Event Calendar
-          </h3>
-          <p>Events</p>
-          <a href="url/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 39: Todo Extenstion
-          </h3>
-          <p>Install it and go to extension maneger in chrome and click
-            load unpack but first unzip the zip file and then go to load unpack
-            and click on the unpacked folder and done</p>
-          <a href="extenstion.zip" download="extenstion.zip" class="shiny-cta">Download Now</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 40: Glassmorphism Creater
-          </h3>
-          <p>What the hell is a Glassmorphism?</p>
-          <a href="glassmophism/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 41: Page Translater Extension
-          </h3>
-          <p>Install it and go to extension maneger in chrome and click
-            load unpack but first unzip the zip file and then go to load unpack
-            and click on the unpacked folder and done</p>
-          <a href="ptex.zip" download="ptex.zip" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 42: Wiki
-          </h3>
-          <p>Wiki-Wiki Search it</p>
-          <a href="wiki/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 43: Json Parser
-          </h3>
-          <p>See Json Files</p>
-          <a href="jsonparser/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 44: Image Color Picker
-          </h3>
-          <p>Check image color</p>
-          <a href="isp/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 45: Food Recipe App
-          </h3>
-          <p>Food Recipe App</p>
-          <a href="foodiw/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 46: Tradeview Widget
-          </h3>
-          <p>No Commets</p>
-          <a href="tradeview/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 47: Breakout Game
-          </h3>
-          <p>Just a game play it</p>
-          <a href="brewk/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 48: Simon Game
-          </h3>
-          <p>Just guess the color pattern</p>
-          <a href="simon/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 49: Flashcard
-          </h3>
-          <p>Nope</p>
-          <a href="flashcard/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 50: Rich Text Editor
-          </h3>
-          <p>Just a clone of note pad but in a browser</p>
-          <a href="notepad/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 51: Music Player App
-          </h3>
-          <p>Play Music</p>
-          <a href="nrew/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 52: Ai image Detector
-          </h3>
-          <p>No Comments</p>
-          <a href="magga/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 53: Github API
-          </h3>
-          <p>Check bio and more things from the username (Which is in Github)</p>
-          <a href="github/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 54: Dount ASCII
-          </h3>
-          <p>Took a hour on this thing</p>
-          <a href="donut_acii/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 55: Stock Trader</h3>
-          <p>No Commets</p>
-          <a href="stock/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 56:Currency Exchange</h3>
-          <p>Stuck in a country in a another lang</p>
-          <a href="current/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 57: Speech to text</h3>
-          <p>speak and turn it to text </p>
-          <a href="sppect/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 58: Url Shortner</h3>
-          <p>Short url</p>
-          <a href="urlshprt/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 59: Asteroid Game</h3>
-          <p>Play the Game</p>
-          <a href="impact/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 60: tip Calculator
-          </h3>
-          <p>It is good to tip</p>
-          <a href="tip/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 61: Dictionary App
-          </h3>
-          <p>It is good to learn</p>
-          <a href="ludo/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 62: Temperature
-          </h3>
-          <p>Convert °C to °F and to Kelvin</p>
-          <a href="temp/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 63: Horizon Browser
-          </h3>
-          <p>Just A Browser Made with Electronjs</p>
-          <a href="horzion/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 64: A Short Walk
-          </h3>
-          <p>No Commets</p>
-          <a href="ashourtwalk/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 65: Inside a box
-          </h3>
-          <p>No Commets</p>
-          <a href="atrip/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 66: Artificts Gut's
-          </h3>
-          <p>No Commets</p>
-          <a href="gotuts/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 65: Solar System
-          </h3>
-          <p>It is real time(If you started it at the start of the universe jk)</p>
-          <a href="space/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 66: Rock Paper Scissors Ultimate
-          </h3>
-          <p>Play with your friends.You can play with AI too with different difficulty.</p>
-          <a href="how/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 67: Video Call
-          </h3>
-          <p>Video Call with your friends.</p>
-          <a href="video/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 68: Party Planner
-          </h3>
-          <p>Party planning application</p>
-          <a href="PartyPLanner/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 69: Image Generator
-          </h3>
-          <p>Image generation application</p>
-          <a href="image/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 70: Hangman Game
-          </h3>
-          <p>Guess the word</p>
-          <a href="Hangman/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 71: Calculator
-          </h3>
-          <p>Just a Calculator</p>
-          <a href="Calculator/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 72: Google Dino Game
-          </h3>
-          <p>Google Dino Game CLone`</p>
-          <a href="dino/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 73: Number Guess
-          </h3>
-          <p>Just Guess it</p>
-          <a href="numberguess/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 74: Jokes Generator
-          </h3>
-          <p>Just a Joke</p>
-          <a href="jokesaside/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 75: Expense Tracker
-          </h3>
-          <p>Track Your Expense</p>
-          <a href="Spent/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 76: BMI Calculator
-          </h3>
-          <p>BMI stands for ....</p>
-          <a href="BMI Calce/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 77: Password stregth Checker
-          </h3>
-          <p>How Strong is it</p>
-          <a href="strenghchecker/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 78: Resume Builder
-          </h3>
-          <p>Build it</p>
-          <a href="resumemaker/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 79: Flappy Bird
-          </h3>
-          <p>Play The Remade Version of Flappy Bird(PC/LAPTOP ONLY)</p>
-          <a href="flappy/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 80: MarkDown Maker
-          </h3>
-          <p>Make Markdown</p>
-          <a href="Markdownmaker/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 81: Reaction Time Tester
-          </h3>
-          <p>Is your reaction time fast as a F1 Driver?</p>
-          <a href="reaction/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 82: Habit Tracker
-          </h3>
-          <p>Track your habits</p>
-          <a href="habit/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 83: Pomodoro Timer
-          </h3>
-          <p>idk</p>
-          <a href="Pomderdo/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 84: Drum Kit
-          </h3>
-          <p>If NOt have in real life this is right place</p>
-          <a href="drumkit/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 85: Roll Dice
-          </h3>
-          <p>No Comments :/</p>
-          <a href="dicerool/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 86: Loan Calculator
-          </h3>
-          <p>Please Check with your bank loan Calculator</p>
-          <a href="loan/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 87: TIme Table
-          </h3>
-          <p>Are you bad at maths</p>
-          <a href="timetable/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 88: Age Calculator
-          </h3>
-          <p>Your age</p>
-          <a href="age/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 89: Population Chart
-          </h3>
-          <p>It is not correct.</p>
-          <a href="population/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 90: Image Editor
-          </h3>
-          <p>You Can Just Like add fliters.</p>
-          <a href="photoeditor/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 91: Periodic Table
-          </h3>
-          <p>Studyyy the table</p>
-          <a href="table/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="hero-actions">
+        <a href="#projects" class="hero-cta magnetic-btn">View My Work</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 92: Palindrome Checker
-          </h3>
-          <p>Palindrome Checker</p>
-          <a href="palidrome/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="social-media">
+        <a href="https://github.com/AksharPandey19" target="_blank" aria-label="GitHub" class="magnetic-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 .5C5.373.5 0 5.873 0 12.5c0 5.303 3.438 9.8 8.207 11.387.6.111.82-.261.82-.578v-2.302c-3.338.724-4.037-1.604-4.037-1.604-.546-1.38-1.333-1.747-1.333-1.747-1.089-.743.083-.727.083-.727 1.206.085 1.839 1.236 1.839 1.236 1.07 1.839 2.8 1.305 3.486.998.108-.774.418-1.305.763-1.605-2.665-.303-5.467-1.333-5.467-5.933 0-1.313.47-2.392 1.236-3.236-.124-.303-.536-1.53.117-3.188 0 0 1.008-.322 3.302 1.228.957-.266 1.987-.399 3.006-.404 1.02.005 2.05.138 3.006.404 2.294-1.55 3.302-1.228 3.302-1.228.654 1.658.242 2.885.118 3.188.766.844 1.236 1.923 1.236 3.236 0 4.608-2.806 5.628-5.473 5.933.43.37.816 1.099.816 2.221v3.293c0 .318.219.693.825.578C20.565 22.298 24 17.8 24 12.5c0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/mycodingguide-offical-9867431b9/" target="_blank" aria-label="LinkedIn"
+          class="magnetic-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M22.225 0H1.775C.794 0 0 .794 0 1.775v20.45C0 23.206.794 24 1.775 24h20.45C23.206 24 24 23.206 24 22.225V1.775C24 .794 23.206 0 22.225 0zM7.047 20.452H3.579V9h3.468v11.452zM5.313 7.759c-1.12 0-2.031-.917-2.031-2.04 0-1.129.93-2.04 2.061-2.04 1.128 0 2.031.911 2.031 2.04 0 1.123-.903 2.04-2.061 2.04zM20.422 20.452h-3.468v-5.894c0-1.403-.026-3.206-1.953-3.206-1.953 0-2.253 1.527-2.253 3.09v6.01h-3.468V9h3.33v1.554h.046c.464-.878 1.593-1.8 3.287-1.8 3.515 0 4.157 2.31 4.157 5.302v6.396z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <section id="projects">
+    <h2 class="section-title">Selected Works</h2>
+    <div class="projects-container">
+      <div class="project-card">
+        <h3>Policy</h3>
+        <br>
+        <a href="policy.html" class="shiny-cta">View Policy</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 1: Google Maps</h3>
+        <p>Google Maps API project. Try to find the easter egg.</p>
+        <a href="google app api/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 2: Tic Tac Toe App</h3>
+        <p>An interactive Tic Tac Toe game made using HTML, CSS, and JS.</p>
+        <a href="tictac toe/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 3: Weather Application</h3>
+        <p>A weather application using the Tomorrow.io API, providing current weather data.</p>
+        <a href="weather/" class="shiny-cta">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Project 4: Movie Finder</h3>
+        <p>The app provides movie and TV show information using the OMDb API.</p>
+        <a href="movie/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 5: Budget App</h3>
+        <p>Calculate Your Expenses</p>
+        <a href="budget/calcu.html" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 6: Alarm Application</h3>
+        <p>Tired of waking up late. HERE IS A ALARM</p>
+        <a href="alram/html.html" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 7: QR Code Maker</h3>
+        <p>You own a resturant and want all qr code. RIGHT PLACE CAME</p>
+        <a href="qrcodemaker/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 8: QR Code Reader</h3>
+        <p>You came to resturant and made you download it</p>
+        <a href="qrcodereader/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 9: Chess</h3>
+        <p>Herro! Want to play Chess</p>
+        <a href="Chess_Game/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 10: Battery Percentage Finder</h3>
+        <p>Want to find out your Battery even though it is on the bottem-right corner</p>
+        <a href="bt/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 11: Password Maker</h3>
+        <p>Thinking too much for a strong password so no hackers</p>
+        <a href="pass/indexx.html" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 12: Pixel Art</h3>
+        <p>Want to make Art in your PC</p>
+        <a href="pt/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 13: Typing Test</h3>
+        <p>Test your Keyborad Skils</p>
+        <a href="tyops/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 14: Aspect Ratio Calculator
+        </h3>
+        <p>Maths Test??</p>
+        <a href="ratio/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 15: Guess The Word
+        </h3>
+        <p>Just Guess IT</p>
+        <a href="words/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 16: 2048 Game
+        </h3>
+        <p>The Classic old 2048</p>
+        <a href="2048/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 17: tetris Clone
+        </h3>
+        <p>Like that "Unbeatable" Tetris</p>
+        <a href="tetris/index.htm" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 18: Snake Game
+        </h3>
+        <p>Snake Game Play It</p>
+        <a href="snakee/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 19: Text To Speech
+        </h3>
+        <p>I always wanted this.To Prank call my friends😀</p>
+        <a href="Text to Speech/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 20: Geometric Art Generator
+        </h3>
+        <p>Geometric Art Generator (also known as GAG)</p>
+        <a href="GAG/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 21: MineSweeper
+        </h3>
+        <p>Classic ol' MineSweeper from the 19's</p>
+        <a href="MineSweeper/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 22: Internet Speed Test
+        </h3>
+        <p>Test your Internet Speed</p>
+        <a href="isc/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 23: Box Shadow Generator
+        </h3>
+        <p>Me as developer got a lot of problems with this</p>
+        <a href="gost/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 24: Flip a Coin
+        </h3>
+        <p>Flip a coin</p>
+        <a href="coin/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 25: Translater
+        </h3>
+        <p>Stuck in a another country with a another language</p>
+        <a href="ransle/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 26: Gradient Generator
+        </h3>
+        <p>Making Gradient is fun</p>
+        <a href="gradient/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 27: Crypto Price App
+        </h3>
+        <p>Check the Crypto price using coingecko</p>
+        <a href="dogecoin/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 28: Cosmo
+        </h3>
+        <p>Just Cosmo IT</p>
+        <a href="cosmo/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 29: Sliding Toys
+        </h3>
+        <p>Just match the right numbers</p>
+        <a href="sliding_toys/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 30: Gravity Points
+        </h3>
+        <p>Small Particle attract to the black hole type thingy</p>
+        <a href="gravuty/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 31: ToDo App
+        </h3>
+        <p>Just don't forget to do your todo</p>
+        <a href="todo/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 32: Spin the wheel
+        </h3>
+        <p>Spin the wheel in a fixed range of 1-6</p>
+        <a href="spin-the-wheel/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 33: Live Code Editor
+        </h3>
+        <p>HTML,CSS,JS code editor</p>
+        <a href="code/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 34: Sudoku Solver
+        </h3>
+        <p>Sharp your mind</p>
+        <a href="suduko/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 35: Text Encryptor
+        </h3>
+        <p>Why you even want to Encrypt your message</p>
+        <a href="text/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 36: Pong Game
+        </h3>
+        <p>Ping Pong Game EveryOne knows this</p>
+        <a href="pingpong/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 37: Quizze
+        </h3>
+        <p>Suprise Test</p>
+        <a href="quixx/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 38: Event Calendar
+        </h3>
+        <p>Events</p>
+        <a href="url/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 39: Todo Extenstion
+        </h3>
+        <p>Install it and go to extension maneger in chrome and click
+          load unpack but first unzip the zip file and then go to load unpack
+          and click on the unpacked folder and done</p>
+        <a href="extenstion.zip" download="extenstion.zip" class="shiny-cta">Download Now</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 40: Glassmorphism Creater
+        </h3>
+        <p>What the hell is a Glassmorphism?</p>
+        <a href="glassmophism/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 41: Page Translater Extension
+        </h3>
+        <p>Install it and go to extension maneger in chrome and click
+          load unpack but first unzip the zip file and then go to load unpack
+          and click on the unpacked folder and done</p>
+        <a href="ptex.zip" download="ptex.zip" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 42: Wiki
+        </h3>
+        <p>Wiki-Wiki Search it</p>
+        <a href="wiki/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 43: Json Parser
+        </h3>
+        <p>See Json Files</p>
+        <a href="jsonparser/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 44: Image Color Picker
+        </h3>
+        <p>Check image color</p>
+        <a href="isp/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 45: Food Recipe App
+        </h3>
+        <p>Food Recipe App</p>
+        <a href="foodiw/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 46: Tradeview Widget
+        </h3>
+        <p>No Commets</p>
+        <a href="tradeview/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 47: Breakout Game
+        </h3>
+        <p>Just a game play it</p>
+        <a href="brewk/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 48: Simon Game
+        </h3>
+        <p>Just guess the color pattern</p>
+        <a href="simon/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 49: Flashcard
+        </h3>
+        <p>Nope</p>
+        <a href="flashcard/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 50: Rich Text Editor
+        </h3>
+        <p>Just a clone of note pad but in a browser</p>
+        <a href="notepad/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 51: Music Player App
+        </h3>
+        <p>Play Music</p>
+        <a href="nrew/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 52: Ai image Detector
+        </h3>
+        <p>No Comments</p>
+        <a href="magga/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 53: Github API
+        </h3>
+        <p>Check bio and more things from the username (Which is in Github)</p>
+        <a href="github/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 54: Dount ASCII
+        </h3>
+        <p>Took a hour on this thing</p>
+        <a href="donut_acii/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 55: Stock Trader</h3>
+        <p>No Commets</p>
+        <a href="stock/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 56:Currency Exchange</h3>
+        <p>Stuck in a country in a another lang</p>
+        <a href="current/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 57: Speech to text</h3>
+        <p>speak and turn it to text </p>
+        <a href="sppect/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 58: Url Shortner</h3>
+        <p>Short url</p>
+        <a href="urlshprt/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 59: Asteroid Game</h3>
+        <p>Play the Game</p>
+        <a href="impact/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 60: tip Calculator
+        </h3>
+        <p>It is good to tip</p>
+        <a href="tip/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 61: Dictionary App
+        </h3>
+        <p>It is good to learn</p>
+        <a href="ludo/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 62: Temperature
+        </h3>
+        <p>Convert °C to °F and to Kelvin</p>
+        <a href="temp/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 63: Horizon Browser
+        </h3>
+        <p>Just A Browser Made with Electronjs</p>
+        <a href="horzion/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 64: A Short Walk
+        </h3>
+        <p>No Commets</p>
+        <a href="ashourtwalk/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 65: Inside a box
+        </h3>
+        <p>No Commets</p>
+        <a href="atrip/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 66: Artificts Gut's
+        </h3>
+        <p>No Commets</p>
+        <a href="gotuts/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 65: Solar System
+        </h3>
+        <p>It is real time(If you started it at the start of the universe jk)</p>
+        <a href="space/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 66: Rock Paper Scissors Ultimate
+        </h3>
+        <p>Play with your friends.You can play with AI too with different difficulty.</p>
+        <a href="how/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 67: Video Call
+        </h3>
+        <p>Video Call with your friends.</p>
+        <a href="video/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 68: Party Planner
+        </h3>
+        <p>Party planning application</p>
+        <a href="PartyPLanner/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 69: Image Generator
+        </h3>
+        <p>Image generation application</p>
+        <a href="image/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 70: Hangman Game
+        </h3>
+        <p>Guess the word</p>
+        <a href="Hangman/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 71: Calculator
+        </h3>
+        <p>Just a Calculator</p>
+        <a href="Calculator/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 72: Google Dino Game
+        </h3>
+        <p>Google Dino Game CLone`</p>
+        <a href="dino/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 73: Number Guess
+        </h3>
+        <p>Just Guess it</p>
+        <a href="numberguess/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 74: Jokes Generator
+        </h3>
+        <p>Just a Joke</p>
+        <a href="jokesaside/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 75: Expense Tracker
+        </h3>
+        <p>Track Your Expense</p>
+        <a href="Spent/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 76: BMI Calculator
+        </h3>
+        <p>BMI stands for ....</p>
+        <a href="BMI Calce/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 77: Password stregth Checker
+        </h3>
+        <p>How Strong is it</p>
+        <a href="strenghchecker/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 78: Resume Builder
+        </h3>
+        <p>Build it</p>
+        <a href="resumemaker/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 79: Flappy Bird
+        </h3>
+        <p>Play The Remade Version of Flappy Bird(PC/LAPTOP ONLY)</p>
+        <a href="flappy/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 80: MarkDown Maker
+        </h3>
+        <p>Make Markdown</p>
+        <a href="Markdownmaker/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 81: Reaction Time Tester
+        </h3>
+        <p>Is your reaction time fast as a F1 Driver?</p>
+        <a href="reaction/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 82: Habit Tracker
+        </h3>
+        <p>Track your habits</p>
+        <a href="habit/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 83: Pomodoro Timer
+        </h3>
+        <p>idk</p>
+        <a href="Pomderdo/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 84: Drum Kit
+        </h3>
+        <p>If NOt have in real life this is right place</p>
+        <a href="drumkit/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 85: Roll Dice
+        </h3>
+        <p>No Comments :/</p>
+        <a href="dicerool/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 86: Loan Calculator
+        </h3>
+        <p>Please Check with your bank loan Calculator</p>
+        <a href="loan/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 87: TIme Table
+        </h3>
+        <p>Are you bad at maths</p>
+        <a href="timetable/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 88: Age Calculator
+        </h3>
+        <p>Your age</p>
+        <a href="age/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 89: Population Chart
+        </h3>
+        <p>It is not correct.</p>
+        <a href="population/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 90: Image Editor
+        </h3>
+        <p>You Can Just Like add fliters.</p>
+        <a href="photoeditor/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 91: Periodic Table
+        </h3>
+        <p>Studyyy the table</p>
+        <a href="table/" class="shiny-cta">View Project</a>
+      </div>
+
+      <div class="project-card">
+        <h3>Project 92: Palindrome Checker
+        </h3>
+        <p>Palindrome Checker</p>
+        <a href="palidrome/" class="shiny-cta">View Project</a>
+      </div>
 
 
-        <div class="project-card">
-          <h3>Project 93: Number to name
-          </h3>
-          <p>IDK</p>
-          <a href="numver/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 93: Number to name
+        </h3>
+        <p>IDK</p>
+        <a href="numver/" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 94: Fireworks
-          </h3>
-          <p>IDK</p>
-          <a href="fire/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 94: Fireworks
+        </h3>
+        <p>IDK</p>
+        <a href="fire/" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 95: Vector Editor
-          </h3>
-          <p>IDK</p>
-          <a href="impactdrow/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 95: Vector Editor
+        </h3>
+        <p>IDK</p>
+        <a href="impactdrow/" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 96: NIM
-          </h3>
-          <p>A Maths Game</p>
-          <a href="nim/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 96: NIM
+        </h3>
+        <p>A Maths Game</p>
+        <a href="nim/" class="shiny-cta">View Project</a>
+      </div>
 
 
-        <div class="project-card">
-          <h3>Project 97: Netflix Clone
-          </h3>
-          <p>A Netflix</p>
-          <a href="netflix/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 97: Netflix Clone
+        </h3>
+        <p>A Netflix</p>
+        <a href="netflix/" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 98: Amazon Clone
-          </h3>
-          <p>A Amazon</p>
-          <a href="amazon/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 98: Amazon Clone
+        </h3>
+        <p>A Amazon</p>
+        <a href="amazon/" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 99: Apple Clone
-          </h3>
-          <p>Iphone 16</p>
-          <a href="apple/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 100: Purvanchal Projects
-          </h3>
-          <p>A Website for my Society</p>
-          <a href="purvanchalprojects/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 99: Apple Clone
+        </h3>
+        <p>Iphone 16</p>
+        <a href="apple/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 100: Purvanchal Projects
+        </h3>
+        <p>A Website for my Society</p>
+        <a href="purvanchalprojects/" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 101: What Beats Paper
-          </h3>
-          <p>This game takes 100 years to beat</p>
-          <a href="rockbeats/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 102: Pacman Google Clone
-          </h3>
-          <p>This game takes years to beat</p>
-          <a href="google_pacman/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 103: Piano
-          </h3>
-          <p>Just a broken sorry Piano</p>
-          <a href="piano/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 104: Keyborad Hero
-          </h3>
-          <p>Just a Keyborad Game</p>
-          <a href="key/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 105: Tlited Maze
-          </h3>
-          <p>Maze</p>
-          <a href="maze/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 101: What Beats Paper
+        </h3>
+        <p>This game takes 100 years to beat</p>
+        <a href="rockbeats/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 102: Pacman Google Clone
+        </h3>
+        <p>This game takes years to beat</p>
+        <a href="google_pacman/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 103: Piano
+        </h3>
+        <p>Just a broken sorry Piano</p>
+        <a href="piano/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 104: Keyborad Hero
+        </h3>
+        <p>Just a Keyborad Game</p>
+        <a href="key/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 105: Tlited Maze
+        </h3>
+        <p>Maze</p>
+        <a href="maze/" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 106: Your Location
-          </h3>
-          <p>Location Guesser</p>
-          <a href="userlocation/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 107: Your Browser
-          </h3>
-          <p>Guesser</p>
-          <a href="brosew/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 106: Your Location
+        </h3>
+        <p>Location Guesser</p>
+        <a href="userlocation/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 107: Your Browser
+        </h3>
+        <p>Guesser</p>
+        <a href="brosew/" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 108: Fistborn X
-          </h3>
-          <p>Laptop Game</p>
-          <a href="street_fighter/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 109: Tower Game
-          </h3>
-          <p>Build the tower Game</p>
-          <a href="towergame/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 110: Raven
-          </h3>
-          <p>Turn the CCTV Camera Online</p>
-          <a href="raven/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 111: Cursed Elevator
-          </h3>
-          <p>This is the 111th project and it is an angel number but the project</p>
-          <a href="cursed/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 112: Exilium: The Fall of Dominus
-          </h3>
-          <p>Action Start</p>
-          <a href="nego/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 113: Live Chart Maker
-          </h3>
-          <p>Did i make this earlier idk Déjà Vu i guess?</p>
-          <a href="live/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 114: Fextify
-          </h3>
-          <p class="h">Notepad Clone</p>
-          <a href="./notepad.exe" download="./notepad.exe" class="shiny-cta a">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 115: retrohunt
-          </h3>
-          <p>Someone or something is stealing our time. Today was yesterday and tomorrow is nowhere to be seen.
-            Detective Clay is on the case!</p>
-          <a href="./retrohaunt/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 116: Re-Wire
-          </h3>
-          <p>Bring the system back online by rewiring the Devices.
-          </p>
-          <a href="./Re-wire/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 117: Evil Glitch
-          </h3>
-          <p>Umm.. IDK
-          </p>
-          <a href="./Evil Glitch/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 118: The Curse of 13 Cats
-          </h3>
-          <p>Somewhere in an old alley - the Catcher is lurking for the homeless cats. Fortunately, the Catcher has
-            Triskaidekaphobia and is afraid of only one thing in the world: the number 13..
-          </p>
-          <a href="./curseofcats/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 119: XIII Floor
-          </h3>
-          <p>Solve the mystery of the XIII floor. I bet you can do it in just 5 steps using only 3 buttons.
-          </p>
-          <a href="./xiii-floor/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 120: National Accident Day
-          </h3>
-          <p>You were supposed to give a speech at the National Accident Day, but you are very very late. You need to
-            make it there on time, but the traffic is horrible.
-          </p>
-          <a href="./ndaay/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 121: Coup AHOO!
-          </h3>
-          <p>You're finally fed up with your fleet and their incompetence. Take down all 13 of them one by one and claim
-            your spot at the top.</p>
-          </p>
-          <a href="./Coup-ahoo/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 122: Dr1v3n
-          </h3>
-          <p>An epic race across 10 stages! Can you get to the magic garden? </p>
-          </p>
-          <a href="./Dr1v3n Wild/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 123: 13th Guy
-          </h3>
-          <p>Don't be the 13th guy </p>
-          </p>
-          <a href="./13th-guy/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 124: Squad 13
-          </h3>
-          <p>Complete The Missions</p>
-          </p>
-          <a href="./Squad 13/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 125: Aud13nd
-          </h3>
-          <p>Win it</p>
-          </p>
-          <a href="./aud13nd/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 126: Not-13
-          </h3>
-          <p>Game where you pick an item that doesn't have 13 of it on the screen as fast as possible to get high score!
-          </p>
-          </p>
-          <a href="https://not-13.vercel.app" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 127: Badluck Butter Chicken episode 1
-          </h3>
-          <p>Just a game</p>
-          </p>
-          <a href="Badluck Butter Chicken/episode 1/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 128: Economy of Motion
-          </h3>
-          <p>Finish the level without moving 13 times</p>
-          </p>
-          <a href="Economy of Motion/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 129: O-hii-bad..
-          </h3>
-          <p>Game</p>
-          </p>
-          <a href="o-hiii-bad-skatepark/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 130: Snake 2.0
-          </h3>
-          <p>snake Game!!!</p>
-          </p>
-          <a href="snake-2/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 131: How it Started
-          </h3>
-          <p>Save the Numbers</p>
-          </p>
-          <a href="how-it-star/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 132: Brewing Disaster
-          </h3>
-          <p>WITCHCRAFT!!! HELPP</p>
-          </p>
-          <a href="witch/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 133: m13e
-          </h3>
-          <p>Maze game</p>
-          </p>
-          <a href="m13e/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 134: 2027 Countdown
-          </h3>
-          <p>Wishing you health, happiness, and success in the coming year!</p>
-          </p>
-          <a href="2027_countdown/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 135: Ar Piano
-          </h3>
-          <p>Just a Piano</p>
-          </p>
-          <a href="arpi/" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 108: Fistborn X
+        </h3>
+        <p>Laptop Game</p>
+        <a href="street_fighter/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 109: Tower Game
+        </h3>
+        <p>Build the tower Game</p>
+        <a href="towergame/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 110: Raven
+        </h3>
+        <p>Turn the CCTV Camera Online</p>
+        <a href="raven/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 111: Cursed Elevator
+        </h3>
+        <p>This is the 111th project and it is an angel number but the project</p>
+        <a href="cursed/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 112: Exilium: The Fall of Dominus
+        </h3>
+        <p>Action Start</p>
+        <a href="nego/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 113: Live Chart Maker
+        </h3>
+        <p>Did i make this earlier idk Déjà Vu i guess?</p>
+        <a href="live/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 114: Fextify
+        </h3>
+        <p class="h">Notepad Clone</p>
+        <a href="./notepad.exe" download="./notepad.exe" class="shiny-cta a">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 115: retrohunt
+        </h3>
+        <p>Someone or something is stealing our time. Today was yesterday and tomorrow is nowhere to be seen.
+          Detective Clay is on the case!</p>
+        <a href="./retrohaunt/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 116: Re-Wire
+        </h3>
+        <p>Bring the system back online by rewiring the Devices.
+        </p>
+        <a href="./Re-wire/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 117: Evil Glitch
+        </h3>
+        <p>Umm.. IDK
+        </p>
+        <a href="./Evil Glitch/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 118: The Curse of 13 Cats
+        </h3>
+        <p>Somewhere in an old alley - the Catcher is lurking for the homeless cats. Fortunately, the Catcher has
+          Triskaidekaphobia and is afraid of only one thing in the world: the number 13..
+        </p>
+        <a href="./curseofcats/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 119: XIII Floor
+        </h3>
+        <p>Solve the mystery of the XIII floor. I bet you can do it in just 5 steps using only 3 buttons.
+        </p>
+        <a href="./xiii-floor/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 120: National Accident Day
+        </h3>
+        <p>You were supposed to give a speech at the National Accident Day, but you are very very late. You need to
+          make it there on time, but the traffic is horrible.
+        </p>
+        <a href="./ndaay/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 121: Coup AHOO!
+        </h3>
+        <p>You're finally fed up with your fleet and their incompetence. Take down all 13 of them one by one and claim
+          your spot at the top.</p>
+        </p>
+        <a href="./Coup-ahoo/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 122: Dr1v3n
+        </h3>
+        <p>An epic race across 10 stages! Can you get to the magic garden? </p>
+        </p>
+        <a href="./Dr1v3n Wild/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 123: 13th Guy
+        </h3>
+        <p>Don't be the 13th guy </p>
+        </p>
+        <a href="./13th-guy/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 124: Squad 13
+        </h3>
+        <p>Complete The Missions</p>
+        </p>
+        <a href="./Squad 13/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 125: Aud13nd
+        </h3>
+        <p>Win it</p>
+        </p>
+        <a href="./aud13nd/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 126: Not-13
+        </h3>
+        <p>Game where you pick an item that doesn't have 13 of it on the screen as fast as possible to get high score!
+        </p>
+        </p>
+        <a href="https://not-13.vercel.app" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 127: Badluck Butter Chicken episode 1
+        </h3>
+        <p>Just a game</p>
+        </p>
+        <a href="Badluck Butter Chicken/episode 1/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 128: Economy of Motion
+        </h3>
+        <p>Finish the level without moving 13 times</p>
+        </p>
+        <a href="Economy of Motion/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 129: O-hii-bad..
+        </h3>
+        <p>Game</p>
+        </p>
+        <a href="o-hiii-bad-skatepark/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 130: Snake 2.0
+        </h3>
+        <p>snake Game!!!</p>
+        </p>
+        <a href="snake-2/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 131: How it Started
+        </h3>
+        <p>Save the Numbers</p>
+        </p>
+        <a href="how-it-star/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 132: Brewing Disaster
+        </h3>
+        <p>WITCHCRAFT!!! HELPP</p>
+        </p>
+        <a href="witch/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 133: m13e
+        </h3>
+        <p>Maze game</p>
+        </p>
+        <a href="m13e/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 134: 2027 Countdown
+        </h3>
+        <p>Wishing you health, happiness, and success in the coming year!</p>
+        </p>
+        <a href="2027_countdown/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 135: Ar Piano
+        </h3>
+        <p>Just a Piano</p>
+        </p>
+        <a href="arpi/" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 136: Mario clone
-          </h3>
-          <p>Its me Mario!</p>
-          </p>
-          <a href="retro/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 137: myCBSEguide Landing
-          </h3>
-          <p>Test Site</p>
-          </p>
-          <a href="mycbseguide_landing" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 136: Mario clone
+        </h3>
+        <p>Its me Mario!</p>
+        </p>
+        <a href="retro/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 137: myCBSEguide Landing
+        </h3>
+        <p>Test Site</p>
+        </p>
+        <a href="mycbseguide_landing" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 138: Pacman
-          </h3>
-          <p>Pac-Pac Man</p>
-          </p>
-          <a href="pacman/index.html" class="shiny-cta">View Project</a>
-        </div>
+      <div class="project-card">
+        <h3>Project 138: Pacman
+        </h3>
+        <p>Pac-Pac Man</p>
+        </p>
+        <a href="pacman/index.html" class="shiny-cta">View Project</a>
+      </div>
 
-        <div class="project-card">
-          <h3>Project 139: Apple Clone
-          </h3>
-          <p>This is not affilated (iz thiz spelling of affilated good?) with Apple</p>
-          </p>
-          <a href="https://apple-clone-chi-seven.vercel.app/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 140: CMD
-          </h3>
-          <p>A macOS Terminal Clone</p>
-          </p>
-          <a href="https://cmd-azure.vercel.app/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 141: PLEASE DO NOT DO THE CAT
-          </h3>
-          <p>It took me ages</p>
-          </p>
-          <a href="dist/" class="shiny-cta">View Project</a>
-        </div>
-        <div class="project-card">
-          <h3>Project 142: ब्रेकिंग इंडिया: नफ़रत LIVE
-          </h3>
-          <p>Hard Reality of Indian Media</p>
-          </p>
-          <a href="wbwwb/" class="shiny-cta">View Project</a>
-        </div>
-        </div>
-    </section>
-    
-    <section id="contact" class="contact-section">
-        <p>Let's work together.</p>
-        <a href="mailto:akshar.nanu@gmail.com">akshar.nanu@gmail.com</a>
-    </section>
-    
-    <footer>
-        <p>© <span id="year">2026</span> Akshar Pandey. All rights reserved.</p>
-    </footer>
+      <div class="project-card">
+        <h3>Project 139: Apple Clone
+        </h3>
+        <p>This is not affilated (iz thiz spelling of affilated good?) with Apple</p>
+        </p>
+        <a href="https://apple-clone-chi-seven.vercel.app/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 140: CMD
+        </h3>
+        <p>A macOS Terminal Clone</p>
+        </p>
+        <a href="https://cmd-azure.vercel.app/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 141: PLEASE DO NOT DO THE CAT
+        </h3>
+        <p>It took me ages</p>
+        </p>
+        <a href="dist/" class="shiny-cta">View Project</a>
+      </div>
+      <div class="project-card">
+        <h3>Project 142: ब्रेकिंग इंडिया: नफ़रत LIVE
+        </h3>
+        <p>Hard Reality of Indian Media</p>
+        </p>
+        <a href="wbwwb/" class="shiny-cta">View Project</a>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        document.getElementById("year").innerHTML = new Date().getFullYear();
+  <section id="contact" class="contact-section">
+    <p>Let's work together.</p>
+    <a href="mailto:akshar.nanu@gmail.com">akshar.nanu@gmail.com</a>
+  </section>
 
-        const hrs = new Date().getHours();
-        let greet = 'Good Evening';
-        if (hrs < 12) greet = 'Good Morning';
-        else if (hrs < 17) greet = 'Good Afternoon';
-        document.getElementById('greetings').innerHTML = greet + ",";
+  <footer>
+    <p>© <span id="year">2026</span> Akshar Pandey. All rights reserved.</p>
+  </footer>
 
-        // Simple Fade-up observer
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { rootMargin: "0px 0px -50px 0px" });
+  <div id="console-layer" class="hidden-console">
+    <div id="console-output"></div>
+    <div id="console-input-area">
+      <span class="prompt">admin@akshar:~$</span>
+      <input type="text" id="console-input" autocomplete="off" spellcheck="false" autofocus />
+    </div>
+  </div>
 
-        document.querySelectorAll('.project-card').forEach(card => {
-            observer.observe(card);
-        });
-
-        // Email logic
-        document.addEventListener("DOMContentLoaded", () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const userEmail = urlParams.get("email");
-            const navLinks = document.getElementById("nav-links");
-            
-            if (userEmail && navLinks) {
-                const loginLink = document.getElementById("login-link");
-                if (loginLink) loginLink.remove();
-                
-                const emailItem = document.createElement("li");
-                emailItem.style.color = "var(--text-secondary)";
-                emailItem.textContent = decodeURIComponent(userEmail);
-                navLinks.appendChild(emailItem);
-            }
-        });
-        
-        const userAgent = navigator.userAgent;
-        if (userAgent.indexOf('Mac') !== -1 || userAgent.indexOf('Linux') !== -1) {
-            const hElements = document.getElementsByClassName('h');
-            for (let element of hElements) {
-                element.textContent = 'Unavailable on macOS/Linux';
-            }
-        }
-    </script>
+  <script src="script.js"></script>
 </body>
+
 </html>
