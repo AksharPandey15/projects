@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Official Cat Proposal 🐾</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #faf7f5;
+            --card-bg: #ffffff;
+            --accent: #f43f5e;
+            --accent-hover: #e11d48;
+            --text-main: #1c1917;
+            --text-muted: #78716c;
+            --border: #e7e5e4;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 680px;
+            width: 100%;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #ffe4e6;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card {
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) - 4px);
+            padding: 1rem;
+            background: #fafaf9;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .action-zone {
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            position: relative;
+            min-height: 220px;
+        }
+
+        .action-zone h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-group {
+            position: relative;
+            width: 100%;
+            height: 160px;
+        }
+
+        button {
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            border-radius: 9999px;
+            padding: 0.85rem 2rem;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        #yes-btn {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            width: 160px;
+        }
+
+        #no-btn {
+            background-color: #e7e5e4;
+            color: #57534e;
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            width: 100px;
+            transition: top 0.15s ease-out, left 0.15s ease-out;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .success-message h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <span class="tag">Formal Proposal</span>
+            <h1>Why We Should Get a Cat 🐱</h1>
+            <p class="subtitle">A well-reasoned breakdown for Mom</p>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-title"><span>🧹</span> Built-in Pest Control</div>
+                <div class="card-desc">Natural pest management. No bugs or spiders stand a chance.</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title"><span>🧘</span> Mood & Stress Relief</div>
+                <div class="card-desc">Cat purrs operate at frequencies (20-140 Hz) proven to lower stress.</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title"><span>📦</span> Low Maintenance</div>
+                <div class="card-desc">Self-cleaning, litter-trained, and independent—no walks in the rain!</div>
+            </div>
+        </div>
+
+        <div class="action-zone" id="action-zone">
+            <h2>Final Decision</h2>
+            <div class="btn-group" id="btn-group">
+                <button id="yes-btn">Yes! 🎉</button>
+                <button id="no-btn">No 😾</button>
+            </div>
+        </div>
+
+        <div class="success-message" id="success-message">
+            <h2>Approved! 🎉🐾</h2>
+            <p class="subtitle">Contract finalized. Time to visit the adoption center!</p>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const btnGroup = document.getElementById('btn-group');
+        const actionZone = document.getElementById('action-zone');
+        const successMessage = document.getElementById('success-message');
+
+        let yesScale = 1;
+
+        // Reposition "No" away from touch position within the bounds of btn-group
+        const evadeTouch = (touchX, touchY) => {
+            const groupRect = btnGroup.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            // Get relative touch location inside the container
+            const relTouchX = touchX - groupRect.left;
+            const relTouchY = touchY - groupRect.top;
+
+            const maxX = groupRect.width - btnRect.width;
+            const maxY = groupRect.height - btnRect.height;
+
+            // Teleport to opposite side of touch position
+            let targetX = relTouchX > groupRect.width / 2 ? 10 : maxX - 10;
+            let targetY = relTouchY > groupRect.height / 2 ? 10 : maxY - 10;
+
+            noBtn.style.left = `${targetX + btnRect.width / 2}px`;
+            noBtn.style.top = `${targetY + btnRect.height / 2}px`;
+
+            // Scale up "Yes" button
+            yesScale = Math.min(yesScale + 0.15, 2.2);
+            yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+        };
+
+        // Detect proximity on touch devices
+        btnGroup.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            const btnRect = noBtn.getBoundingClientRect();
+
+            // Proximity threshold
+            const distance = Math.hypot(
+                touch.clientX - (btnRect.left + btnRect.width / 2),
+                touch.clientY - (btnRect.top + btnRect.height / 2)
+            );
+
+            if (distance < 100) {
+                e.preventDefault();
+                evadeTouch(touch.clientX, touch.clientY);
+            }
+        }, { passive: false });
+
+        // Handle mouse hover fallback for desktop testing
+        noBtn.addEventListener('mouseenter', (e) => {
+            evadeTouch(e.clientX, e.clientY);
+        });
+
+        // Final state
+        yesBtn.addEventListener('click', () => {
+            actionZone.style.display = 'none';
+            document.querySelectorAll('.grid, header').forEach(el => el.style.display = 'none');
+            successMessage.style.display = 'block';
+        });
+    </script>
+</body>
+
+</html>
