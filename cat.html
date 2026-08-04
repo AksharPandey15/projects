@@ -4,22 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Official Cat Proposal 🐾</title>
+    <title>Operation Cat 🐾 - Official Proposal for Mummy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
         rel="stylesheet">
+    <!-- Confetti Engine -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
         :root {
-            --bg: #faf7f5;
+            --bg: #fcfbf9;
             --card-bg: #ffffff;
             --accent: #f43f5e;
             --accent-hover: #e11d48;
             --text-main: #1c1917;
             --text-muted: #78716c;
-            --border: #e7e5e4;
-            --radius: 16px;
+            --border: #f0ece9;
+            --radius: 18px;
         }
 
         * {
@@ -34,7 +36,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.5;
             padding: 1rem;
             min-height: 100vh;
             display: flex;
@@ -44,99 +46,236 @@
         }
 
         .container {
-            max-width: 680px;
+            max-width: 580px;
             width: 100%;
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+            padding: 1.25rem;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
         }
 
         header {
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.85rem;
         }
 
         .tag {
             display: inline-block;
             background: #ffe4e6;
             color: var(--accent);
-            font-weight: 700;
-            font-size: 0.75rem;
+            font-weight: 800;
+            font-size: 0.72rem;
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.4rem;
         }
 
         h1 {
-            font-size: 1.75rem;
+            font-size: 1.6rem;
             font-weight: 800;
             letter-spacing: -0.025em;
             color: var(--text-main);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
 
         p.subtitle {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.82rem;
         }
 
-        .grid {
-            display: grid;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
+        /* Zero Cost Banner */
+        .cost-badge {
+            background: #f0fdf4;
+            color: #166534;
+            border: 1px solid #dcfce7;
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.6rem 0.85rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 1rem;
         }
 
-        .card {
+        .cost-badge span {
+            text-decoration: line-through;
+            color: #86efac;
+            margin: 0 4px;
+        }
+
+        /* Section Headers */
+        .section-title {
+            font-size: 0.88rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: #334155;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Accordion / Matrix of Objections */
+        .objections-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .obj-item {
             border: 1px solid var(--border);
-            border-radius: calc(var(--radius) - 4px);
-            padding: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
             background: #fafaf9;
         }
 
-        .card-title {
+        .obj-header {
+            padding: 0.65rem 0.85rem;
             font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
+            font-size: 0.82rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .obj-header span.icon {
+            font-size: 1rem;
+        }
+
+        .obj-body {
+            padding: 0.65rem 0.85rem;
+            font-size: 0.78rem;
+            color: #57534e;
+            border-top: 1px solid var(--border);
+            background: #fafaf9;
+        }
+
+        /* Daughter Oath Contract */
+        .contract-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 0.85rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .check-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.45rem;
+            font-size: 0.78rem;
+            color: #334155;
+            font-weight: 600;
         }
 
-        .card-desc {
-            color: var(--text-muted);
+        .check-item input {
+            accent-color: var(--accent);
+            width: 15px;
+            height: 15px;
+        }
+
+        /* Swipeable Adoption Gallery */
+        .gallery-section {
+            margin-bottom: 1rem;
+        }
+
+        .gallery-container {
+            display: flex;
+            gap: 0.6rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding-bottom: 0.35rem;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-card {
+            flex: 0 0 82%;
+            scroll-snap-align: center;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .cat-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cat-info {
+            padding: 0.5rem 0.65rem;
+        }
+
+        .cat-name {
+            font-weight: 700;
             font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
+        .cat-badge {
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 0.68rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .cat-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        /* Decision Zone */
         .action-zone {
             text-align: center;
-            padding-top: 1rem;
+            padding-top: 0.85rem;
             border-top: 1px solid var(--border);
             position: relative;
-            min-height: 220px;
         }
 
         .action-zone h2 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s ease;
         }
 
         .btn-group {
             position: relative;
             width: 100%;
-            height: 160px;
+            height: 140px;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #fafaf9;
         }
 
         button {
             font-family: inherit;
-            font-weight: 700;
-            font-size: 1rem;
+            font-weight: 800;
+            font-size: 0.95rem;
             border: none;
             border-radius: 9999px;
-            padding: 0.85rem 2rem;
+            padding: 0.75rem 1.75rem;
             cursor: pointer;
             touch-action: manipulation;
         }
@@ -144,38 +283,50 @@
         #yes-btn {
             background-color: var(--accent);
             color: white;
-            box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.3);
+            box-shadow: 0 10px 20px -3px rgba(244, 63, 94, 0.35);
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
-            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-            width: 160px;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            width: 150px;
         }
 
         #no-btn {
             background-color: #e7e5e4;
             color: #57534e;
             position: absolute;
-            top: 80%;
+            top: 75%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 5;
-            width: 100px;
-            transition: top 0.15s ease-out, left 0.15s ease-out;
+            width: 90px;
+            transition: left 0.18s ease-out, top 0.18s ease-out;
         }
 
+        /* Success Screen */
         .success-message {
             display: none;
             text-align: center;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
         }
 
         .success-message h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--accent);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .foster-note {
+            margin-top: 1rem;
+            background: #fff7ed;
+            border: 1px solid #ffedd5;
+            padding: 0.85rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #c2410c;
+            text-align: left;
         }
     </style>
 </head>
@@ -183,40 +334,144 @@
 <body>
 
     <div class="container">
-        <header>
-            <span class="tag">Formal Proposal</span>
-            <h1>Why We Should Get a Cat 🐱</h1>
-            <p class="subtitle">A well-reasoned breakdown for Mom</p>
+        <header id="page-header">
+            <span class="tag">Zero-Risk Pitch</span>
+            <h1 id="main-heading">Why We Need a Cat 🐱</h1>
+            <p class="subtitle">A complete solution guide for Mummy</p>
         </header>
 
-        <div class="grid">
-            <div class="card">
-                <div class="card-title"><span>🧹</span> Built-in Pest Control</div>
-                <div class="card-desc">Natural pest management. No bugs or spiders stand a chance.</div>
-            </div>
+        <!-- Zero Cost Banner -->
+        <div class="cost-badge" id="cost-badge">
+            💰 Total Expense to Mummy: <span>₹5,000</span> <strong>₹0.00 / month</strong>
+        </div>
 
-            <div class="card">
-                <div class="card-title"><span>🧘</span> Mood & Stress Relief</div>
-                <div class="card-desc">Cat purrs operate at frequencies (20-140 Hz) proven to lower stress.</div>
+        <!-- Mummy Concerns Solved -->
+        <div id="objections-section">
+            <div class="section-title">
+                <span>Mummy's Concerns — Solved 🛡️</span>
             </div>
+            <div class="objections-list">
+                <div class="obj-item">
+                    <div class="obj-header">
+                        <span>🧹 Smell & Litter Hygiene</span>
+                        <span class="icon">✨</span>
+                    </div>
+                    <div class="obj-body">
+                        <strong>Solution:</strong> We will use Odour-Locking Clumping Tofu Litter kept in an enclosed
+                        box on the balcony/utility area. It traps smells instantly & takes 2 minutes to scoop daily.
+                    </div>
+                </div>
 
-            <div class="card">
-                <div class="card-title"><span>📦</span> Low Maintenance</div>
-                <div class="card-desc">Self-cleaning, litter-trained, and independent—no walks in the rain!</div>
+                <div class="obj-item">
+                    <div class="obj-header">
+                        <span>🛕 Mandir & Kitchen Hygiene</span>
+                        <span class="icon">🔒</span>
+                    </div>
+                    <div class="obj-body">
+                        <strong>Solution:</strong> We will install harmless texture strips and keep kitchen/Mandir doors
+                        secured. Cats naturally avoid elevated sacred areas when boundary-trained in Week 1.
+                    </div>
+                </div>
+
+                <div class="obj-item">
+                    <div class="obj-header">
+                        <span>🛋️ Sofa Scratching & Fur</span>
+                        <span class="icon">🧶</span>
+                    </div>
+                    <div class="obj-body">
+                        <strong>Solution:</strong> Sisal scratch posts will be placed right next to furniture on Day 1.
+                        Daily 5-minute fur brushing prevents shedding on clothes & beds.
+                    </div>
+                </div>
+
+                <div class="obj-item">
+                    <div class="obj-header">
+                        <span>🧳 Family Trips & Gaon Visits</span>
+                        <span class="icon">🚗</span>
+                    </div>
+                    <div class="obj-body">
+                        <strong>Solution:</strong> Cats are independent. For short 1–2 day trips, automatic feeders
+                        handle food. For longer vacations, we have pre-arranged cat sitters.
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- Daughter Responsibility Contract -->
+        <div class="contract-card" id="contract-card">
+            <div class="section-title" style="margin-bottom:0.4rem;">
+                <span>📜 Official Daughter Oath</span>
+            </div>
+            <div class="checklist">
+                <label class="check-item">
+                    <input type="checkbox" checked disabled>
+                    <span>Daily litter box cleaning handled 100% by us</span>
+                </label>
+                <label class="check-item">
+                    <input type="checkbox" checked disabled>
+                    <span>All food & vet expenses paid from our savings</span>
+                </label>
+                <label class="check-item">
+                    <input type="checkbox" checked disabled>
+                    <span>Zero work transferred to Mummy — Guaranteed</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Swipeable Adoption Gallery -->
+        <div class="gallery-section" id="gallery-section">
+            <div class="section-title">
+                <span>Future Family Members 🐾</span>
+                <span style="font-size:0.72rem; color:var(--accent);">Swipe 👉</span>
+            </div>
+            <div class="gallery-container">
+                <div class="cat-card">
+                    <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcS3cMrE8PHAzNDisJ_vchdNeBjOopAdiAVMNlSnT2nOdBREomjABQhiWUKqvuImvGni6tKunqNIaQhx-W0"
+                        alt="Fluffy kitten">
+                    <div class="cat-info">
+                        <div class="cat-name">Milo <span class="cat-badge">Gentle Cuddler</span></div>
+                        <div class="cat-desc">Loves quiet naptime and gentle chin scratches.</div>
+                    </div>
+                </div>
+
+                <div class="cat-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSS9IY5w89Xh0V5DTS60WUKA3XeFekGMlpu6olwHRZ-8Zp3RwWEpTHahJKLBfCYny7PT5DYk6bT2t1J3Ho"
+                        alt="Playful orange tabby">
+                    <div class="cat-info">
+                        <div class="cat-name">Luna <span class="cat-badge">Playful & Curious</span></div>
+                        <div class="cat-desc">Expert bug hunter & lizard protector.</div>
+                    </div>
+                </div>
+
+                <div class="cat-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQrQHvS7DVmBrWAP1WNbT_u35BSQ-7k2TiDzIDGk99KcuMmhh9L7Ab2AUq6Rbc12gwCtxFLjRYhQevg0rU"
+                        alt="Sleeping calico kitten">
+                    <div class="cat-info">
+                        <div class="cat-name">Oliver <span class="cat-badge">Purr Machine</span></div>
+                        <div class="cat-desc">Starts purring as soon as you sit down nearby.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Decision Area -->
         <div class="action-zone" id="action-zone">
-            <h2>Final Decision</h2>
+            <h2 id="decision-heading">Final Decision</h2>
             <div class="btn-group" id="btn-group">
                 <button id="yes-btn">Yes! 🎉</button>
                 <button id="no-btn">No 😾</button>
             </div>
         </div>
 
+        <!-- Victory Screen -->
         <div class="success-message" id="success-message">
             <h2>Approved! 🎉🐾</h2>
-            <p class="subtitle">Contract finalized. Time to visit the adoption center!</p>
+            <p class="subtitle">Contract finalized! Time to get in touch with local rescue centers!</p>
+            <div class="foster-note">
+                <strong>🤝 14-Day Guilt-Free Trial Clause:</strong><br>
+                We will foster first! If Mummy feels uncomfortable after 14 days for any reason, the cat returns to the
+                shelter — zero questions asked!
+            </div>
         </div>
     </div>
 
@@ -226,59 +481,89 @@
         const btnGroup = document.getElementById('btn-group');
         const actionZone = document.getElementById('action-zone');
         const successMessage = document.getElementById('success-message');
+        const decisionHeading = document.getElementById('decision-heading');
+
+        const meowSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
 
         let yesScale = 1;
+        let attempts = 0;
 
-        // Reposition "No" away from touch position within the bounds of btn-group
-        const evadeTouch = (touchX, touchY) => {
+        const persuasiveTexts = [
+            "Are you sure, Mummy? 🥺",
+            "Think of the purrs! 🐾",
+            "100% zero cost to you! 💰",
+            "We do all the work! 📜",
+            "14-Day Trial Period included! 🤝",
+            "Just press YES! 🎉"
+        ];
+
+        // Smart Evasive Logic for Mobile Touch & Desktop Mouse
+        const handleEvasion = (clientX, clientY) => {
             const groupRect = btnGroup.getBoundingClientRect();
             const btnRect = noBtn.getBoundingClientRect();
 
-            // Get relative touch location inside the container
-            const relTouchX = touchX - groupRect.left;
-            const relTouchY = touchY - groupRect.top;
+            const btnCenterX = btnRect.left + btnRect.width / 2;
+            const btnCenterY = btnRect.top + btnRect.height / 2;
 
-            const maxX = groupRect.width - btnRect.width;
-            const maxY = groupRect.height - btnRect.height;
+            const dist = Math.hypot(clientX - btnCenterX, clientY - btnCenterY);
 
-            // Teleport to opposite side of touch position
-            let targetX = relTouchX > groupRect.width / 2 ? 10 : maxX - 10;
-            let targetY = relTouchY > groupRect.height / 2 ? 10 : maxY - 10;
+            if (dist < 110) {
+                attempts++;
 
-            noBtn.style.left = `${targetX + btnRect.width / 2}px`;
-            noBtn.style.top = `${targetY + btnRect.height / 2}px`;
+                const padding = 15;
+                const maxX = groupRect.width - btnRect.width - padding;
+                const maxY = groupRect.height - btnRect.height - padding;
 
-            // Scale up "Yes" button
-            yesScale = Math.min(yesScale + 0.15, 2.2);
-            yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+                const currentRelX = clientX - groupRect.left;
+                const currentRelY = clientY - groupRect.top;
+
+                let newX = currentRelX > groupRect.width / 2 ? padding : maxX;
+                let newY = currentRelY > groupRect.height / 2 ? padding : maxY;
+
+                noBtn.style.left = `${newX + btnRect.width / 2}px`;
+                noBtn.style.top = `${newY + btnRect.height / 2}px`;
+
+                yesScale = Math.min(yesScale + 0.18, 2.3);
+                yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+
+                const textIdx = (attempts - 1) % persuasiveTexts.length;
+                decisionHeading.textContent = persuasiveTexts[textIdx];
+                decisionHeading.style.color = '#f43f5e';
+            }
         };
 
-        // Detect proximity on touch devices
-        btnGroup.addEventListener('touchstart', (e) => {
-            const touch = e.touches[0];
-            const btnRect = noBtn.getBoundingClientRect();
-
-            // Proximity threshold
-            const distance = Math.hypot(
-                touch.clientX - (btnRect.left + btnRect.width / 2),
-                touch.clientY - (btnRect.top + btnRect.height / 2)
-            );
-
-            if (distance < 100) {
-                e.preventDefault();
-                evadeTouch(touch.clientX, touch.clientY);
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                handleEvasion(e.touches[0].clientX, e.touches[0].clientY);
             }
-        }, { passive: false });
+        }, { passive: true });
 
-        // Handle mouse hover fallback for desktop testing
-        noBtn.addEventListener('mouseenter', (e) => {
-            evadeTouch(e.clientX, e.clientY);
+        window.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 0) {
+                handleEvasion(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+
+        window.addEventListener('mousemove', (e) => {
+            handleEvasion(e.clientX, e.clientY);
         });
 
-        // Final state
+        // Victory Celebration Trigger
         yesBtn.addEventListener('click', () => {
+            meowSound.play().catch(() => { });
+
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 140,
+                    spread: 80,
+                    origin: { y: 0.6 }
+                });
+            }
+
             actionZone.style.display = 'none';
-            document.querySelectorAll('.grid, header').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('#page-header, #cost-badge, #objections-section, #contract-card, #gallery-section').forEach(el => {
+                el.style.display = 'none';
+            });
             successMessage.style.display = 'block';
         });
     </script>
