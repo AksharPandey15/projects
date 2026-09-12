@@ -1,0 +1,208 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #333;
+    font-family: 'Press Start 2P', monospace, sans-serif;
+    touch-action: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+    height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    width: 100%;
+    max-width: 450px;
+    /* Portrait aspect ratio */
+    height: 100%;
+    background-color: #6a96e6;
+    /* Sky blue matching reference */
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+    padding: 20px 20px 15px 20px;
+    color: white;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.header h1 {
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+.header h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+.progress-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+    transition: width 0.1s linear;
+}
+
+.canvas-wrapper {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7f6f1;
+    /* Off-white for the area around canvas */
+    position: relative;
+    padding: 10px;
+}
+
+canvas {
+    background-color: #8c8c8c;
+    border: 3px solid #3c3c3c;
+    max-width: 100%;
+    max-height: 100%;
+    /* Keep aspect ratio to match game logic */
+    image-rendering: pixelated;
+}
+
+.ui-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.ui-overlay.hidden {
+    display: none;
+}
+
+.ui-overlay h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+button {
+    font-family: 'Press Start 2P', monospace;
+    padding: 10px 20px;
+    font-size: 14px;
+    background-color: #6a96e6;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #557ecb;
+}
+
+button.hidden {
+    display: none;
+}
+
+/* Controls Area */
+.controls {
+    height: 120px;
+    background-color: #f7f6f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    border-top: 2px solid #ddd;
+    flex-shrink: 0;
+}
+
+/* Custom Slider Styling */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+/* Track */
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    background: #e6e6e6;
+    border-radius: 15px;
+    border: 2px solid #3c3c3c;
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 30px;
+    cursor: pointer;
+    background: #e6e6e6;
+    border-radius: 15px;
+    border: 2px solid #3c3c3c;
+}
+
+/* Thumb */
+input[type=range]::-webkit-slider-thumb {
+    height: 50px;
+    width: 70px;
+    border-radius: 12px;
+    background:
+        /* Grip lines */
+        linear-gradient(to right, transparent 20%, #fff 20%, #fff 25%, transparent 25%, transparent 47%, #fff 47%, #fff 52%, transparent 52%, transparent 75%, #fff 75%, #fff 80%, transparent 80%),
+        /* Top Highlight */
+        linear-gradient(to bottom, #98b9fa 0%, #98b9fa 15%, #6a96e6 15%, #6a96e6 100%);
+    border: 3px solid #3c3c3c;
+    box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -12px;
+    /* Center relative to track */
+}
+
+input[type=range]::-moz-range-thumb {
+    height: 50px;
+    width: 70px;
+    border-radius: 12px;
+    background:
+        linear-gradient(to right, transparent 20%, #fff 20%, #fff 25%, transparent 25%, transparent 47%, #fff 47%, #fff 52%, transparent 52%, transparent 75%, #fff 75%, #fff 80%, transparent 80%),
+        linear-gradient(to bottom, #98b9fa 0%, #98b9fa 15%, #6a96e6 15%, #6a96e6 100%);
+    border: 3px solid #3c3c3c;
+    box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AlienLang Translator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <main class="container">
+        <header>
+            <h1 class="glitch" data-text="ALIENLANG">ALIENLANG</h1>
+            <p class="subtitle">Universal Translation Matrix</p>
+        </header>
+
+        <div class="translator-grid">
+            <!-- English Section -->
+            <div class="glass-panel">
+                <div class="panel-header">
+                    <h2>Human (English)</h2>
+                    <button id="clear-eng" class="icon-btn" title="Clear Text">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <textarea id="english-input" placeholder="Enter human phrase here... (e.g. 'hello friend')"></textarea>
+                <div class="panel-footer">
+                    <button id="btn-to-alien" class="primary-btn">Translate to AlienLang <span class="arrow">→</span></button>
+                </div>
+            </div>
+
+            <!-- Alien Section -->
+            <div class="glass-panel alien-theme">
+                <div class="panel-header">
+                    <h2>Zorp (AlienLang)</h2>
+                    <button id="clear-alien" class="icon-btn" title="Clear Text">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <textarea id="alien-input" placeholder="Zup zap zorp... (e.g. 'zap zup vip vop')"></textarea>
+                <div class="panel-footer">
+                    <button id="btn-to-english" class="primary-btn secondary-variant"><span class="arrow">←</span> Translate to English</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="dictionary-section glass-panel">
+            <div class="dictionary-header">
+                <h2>Lexicon Matrix</h2>
+                <input type="text" id="search-dict" placeholder="Search matrix..." class="search-input">
+            </div>
+            <div class="dictionary-grid" id="dictionary-grid">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+    </main>
+    <script src="language.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

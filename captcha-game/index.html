@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CAPTCHA Driving Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <div class="game-container">
+            <div class="header">
+                <h1>Steer the car and</h1>
+                <h2>don't crash</h2>
+            </div>
+
+            <div class="canvas-wrapper">
+                <canvas id="gameCanvas" width="400" height="400"></canvas>
+
+                <div id="ui-overlay" class="ui-overlay hidden">
+                    <h3 id="ui-message"></h3>
+                    <button id="retry-btn" class="hidden">Retry</button>
+                </div>
+            </div>
+
+            <div class="controls">
+                <input type="range" id="steering-slider" min="0" max="100" value="50">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
