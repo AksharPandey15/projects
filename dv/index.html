@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="The Ultimate Parallax Portfolio of a Chaotic Student: Surviving Life, University, and 4 Unsolvable Crushes. Deep cyber-luxe parallax experience.">
+  <meta name="author" content="The Drama Protagonist">
+  <meta name="theme-color" content="#0a0b12">
+  <title id="page-title">The Drama King • Parallax Portfolio & Survival Dossier</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="mode-drama">
+
+  <!-- Custom Glowing Cursor -->
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Background Parallax Canvas & Nebulas -->
+  <div class="space-background" id="space-background">
+    <canvas id="starfield-canvas"></canvas>
+    <div class="cosmic-orb orb-1" data-parallax-speed="0.04"></div>
+    <div class="cosmic-orb orb-2" data-parallax-speed="-0.03"></div>
+    <div class="cosmic-orb orb-3" data-parallax-speed="0.06"></div>
+    <div class="cyber-grid-overlay"></div>
+  </div>
+
+
+
+  <!-- Navigation Header -->
+  <header class="navbar" id="main-nav">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo" id="brand-logo">
+        <span class="logo-glitch" data-text="Daksh">Daksh</span>
+        <span class="logo-sub" id="nav-subtitle">Stupid</span>
+      </a>
+      <nav class="nav-menu" id="nav-menu" aria-label="Primary Navigation">
+        <a href="#hero" class="nav-link active" id="nav-link-hero">Identity</a>
+        <a href="#lore" class="nav-link" id="nav-link-lore">The Lore</a>
+        <a href="#crushes" class="nav-link" id="nav-link-crushes">The 4 Crushes</a>
+        <a href="#timeline" class="nav-link" id="nav-link-timeline">Drama</a>
+        <a href="#skills" class="nav-link" id="nav-link-skills">Survival Stack</a>
+        <a href="#confess" class="nav-link" id="nav-link-confess">S.O.S Box</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Mobile Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Wrap -->
+  <main id="main-content">
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="section hero-section" id="hero">
+      <div class="parallax-layer layer-back" data-parallax-speed="0.08">
+        <div class="floating-geo geo-circle"></div>
+        <div class="floating-geo geo-triangle"></div>
+      </div>
+
+      <div class="container hero-container">
+        <!-- Left Hero Content -->
+        <div class="hero-text-block">
+          <div class="status-badge" id="hero-status-pill">
+            <span class="badge-dot pulse"></span>
+            <span class="badge-text" id="hero-badge-text">CANNOT MOVE ON</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="title-sub" id="hero-role-label">Full-Time Student &amp; Chief of Depression</span>
+            <span class="title-main text-gradient" id="hero-name">Daksh Kumar Gupta</span>
+          </h1>
+
+          <p class="hero-tagline" id="hero-tagline">
+            Navigating school exams on 8 hours of sleep, suffering from infinite crushes and depression
+          </p>
+
+          <div class="hero-metrics-grid">
+            <div class="metric-card tilt-card" data-tilt>
+              <div class="metric-icon">💔</div>
+              <div class="metric-number count-up" data-target="4">0</div>
+              <div class="metric-label" id="metric-crushes-label">Active Crushes</div>
+              <div class="metric-sub">Risk of depression: 99.99%</div>
+            </div>
+
+            <div class="metric-card tilt-card" data-tilt>
+              <div class="metric-icon">📉</div>
+              <div class="metric-number"><span class="count-up" data-target="50" data-decimals="1">50</span> / 100
+              </div>
+              <div class="metric-label" id="metric-gpa-label">Current Percentage</div>
+              <div class="metric-sub">Currently fueled by girls &amp; self-hatred</div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#crushes" class="btn btn-primary" id="btn-explore-crushes">
+              <span class="btn-shine"></span>
+              <span class="btn-label">Inspect The 4 Crushes Dossier</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+
+            <a href="#timeline" class="btn btn-secondary" id="btn-drama-archive">
+              <span class="btn-label">View Disaster Timeline</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Hero Parallax 3D Card -->
+        <div class="hero-avatar-wrapper">
+          <div class="parallax-avatar-card tilt-card" id="hero-avatar-card" data-tilt>
+            <div class="card-glow-edge"></div>
+
+            <div class="avatar-frame">
+              <img src="assets/avatar.jpg" alt="Portrait of Daksh K. Gupta" class="avatar-image" id="main-avatar-img"
+                onerror="this.style.display='none'; document.getElementById('avatar-svg-fallback').style.display='flex';">
+              <!-- Sleek Visual SVG Fallback when image is not yet placed -->
+              <div class="avatar-fallback" id="avatar-svg-fallback">
+                <div class="cyber-hologram">
+                  <div class="holo-rings"></div>
+                  <div class="holo-core">
+                    <span class="holo-emoji">⚡</span>
+                    <span class="holo-text">I Dont have your pic</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-caption">
+              <div class="caption-header">
+                <span class="caption-badge">SPECIALTY</span>
+                <span class="caption-tag">DRAMA MAGNET</span>
+              </div>
+              <h3 class="caption-name" id="hero-avatar-caption-name">Daksh K. Gupta</h3>
+              <p class="caption-desc" id="hero-avatar-caption-desc">
+                "I am one polite smile away from writing a 300-page screenplay about our future."
+              </p>
+
+              <div class="avatar-card-bars">
+                <div class="bar-group">
+                  <div class="bar-info"><span>Delusion Index</span><span>98%</span></div>
+                  <div class="bar-track">
+                    <div class="bar-fill" style="width: 98%;"></div>
+                  </div>
+                </div>
+                <div class="bar-group">
+                  <div class="bar-info"><span>Survival Luck</span><span>14%</span></div>
+                  <div class="bar-track">
+                    <div class="bar-fill danger" style="width: 14%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Micro Parallax Badges -->
+            <div class="floating-badge badge-top-right" data-parallax-speed="0.12">
+              <span class="badge-icon">💘</span>
+              <span class="badge-txt">Heartbreak Risk: High</span>
+            </div>
+            <div class="floating-badge badge-bottom-left" data-parallax-speed="-0.1">
+              <span class="badge-icon">📚</span>
+              <span class="badge-txt">Exams: 3 Days Left</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== THE LORE / ORIGIN STORY ==================== -->
+    <section class="section lore-section" id="lore">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">THE CANON TIMELINE</span>
+          <h2 class="section-title text-gradient" id="lore-section-title">The Lore: How We Arrived At Peak Chaos</h2>
+          <p class="section-subtitle">
+            A comprehensive psychological dossier detailing how a completely normal student got trapped in an anime
+            rom-com plot with zero plot armor.
+          </p>
+        </div>
+
+        <div class="lore-grid">
+          <!-- Chapter 1: 6th Grade (PE Class, No Texts) -->
+          <div class="lore-card glass-panel tilt-card" data-tilt>
+            <div class="lore-num">01 • 6TH GRADE (PE CLASS)</div>
+            <div class="lore-icon">⚽</div>
+            <h3 class="lore-title">MERE DOST KE BHEN KE BARE ME SOCH BHI MAT - Akshar</h3>
+            <p class="lore-body">
+              Started in 6th grade right at school during PE class on the sports ground. Daksh said cutie to his friends
+              sister, attempting to look like an idiot every time she was
+              nearby. Pure fun.
+            </p>
+            <div class="lore-quote">"Accidently said cutie during PE just hoping she would look in my general
+              direction."</div>
+          </div>
+
+          <!-- Chapter 2: 7th Grade (Zero Texts, Transferred) -->
+          <div class="lore-card glass-panel tilt-card" data-tilt>
+            <div class="lore-num">02 • 7TH GRADE (THE TRANSFER)</div>
+            <div class="lore-icon">🏃‍♀️</div>
+            <h3 class="lore-title">Vidushi BHABHI JII - Akshar</h3>
+            <p class="lore-body">
+              By 7th grade, Daksh caught feelings for another girl in school. Zero text messages were ever exchanged
+              because before anything could happen, she literally unenrolled and transferred to another school entirely.
+              Left without a single trace.
+            </p>
+            <div class="lore-quote">"She literally switched school districts before a single word or text could be
+              exchanged."</div>
+          </div>
+
+          <!-- Chapter 3: The Savage Execution (THE ONLY TEXT MESSAGE) -->
+          <div class="lore-card glass-panel tilt-card" data-tilt>
+            <div class="lore-num">03 • THE BEST INCIDENT</div>
+            <div class="lore-icon">💀</div>
+            <h3 class="lore-title">Lol ananya standerd rakh -akshar</h3>
+            <p class="lore-body">
+              The <strong>only crush in history where any reference occurred</strong>—and it resulted in a fatal
+              catastrophe. She replied back dropping a tactical nuclear warhead: called Daksh 'ugly and dumb' and
+              publicly announced, 'I am not even friends with him.'
+            </p>
+            <div class="lore-quote">"The only reply in my romantic career, and it was a direct verbal execution."
+            </div>
+          </div>
+
+          <!-- Chapter 4: The Unconfessed Paradox (Never Confessed) -->
+          <div class="lore-card glass-panel tilt-card" data-tilt>
+            <div class="lore-num">04 • PRESENT DAY (UNCONFESSED)</div>
+            <div class="lore-icon">🤐</div>
+            <h3 class="lore-title">iykyk - akshar</h3>
+            <p class="lore-body">
+              The supposed current crush. Critical canon detail: <strong>Daksh never confessed to her</strong>. Not a
+              single word or text was ever uttered. He simply suffers in silence observing the painful rumors that she
+              might actually have a crush on <em>his friend</em> (maybe).
+            </p>
+            <div class="lore-quote">"Never confessed, never texted, yet currently suffering maximum emotional
+              consequences."</div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+
+    <!-- ==================== THE 4 CRUSHES DOSSIER ==================== -->
+    <section class="section crushes-section" id="crushes">
+      <div class="parallax-layer layer-mid" data-parallax-speed="0.05">
+        <div class="crush-floating-heart" style="top: 15%; left: 8%;">💜</div>
+        <div class="crush-floating-heart" style="top: 60%; right: 5%;">💔</div>
+      </div>
+
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">CLASSIFIED</span>
+          <h2 class="section-title text-gradient" id="crushes-section-title">The 4 Crushes</h2>
+          <p class="section-subtitle">
+            An in-depth forensic breakdown of the four concurrent romantic targets destabilizing my friend's sanity and
+            heart
+          </p>
+
+          <!-- Crushes Filter Buttons -->
+          <div class="crush-filter-bar" id="crush-filter-bar">
+            <button class="filter-pill active" data-filter="all">All 4 Crushes</button>
+            <button class="filter-pill" data-filter="high-risk">High Risk</button>
+            <button class="filter-pill" data-filter="friendzone">Friendzone Tier</button>
+            <button class="filter-pill" data-filter="impossible">Impossible Odds</button>
+          </div>
+        </div>
+
+        <!-- 4 Crushes 3D Parallax Cards Grid -->
+        <div class="crushes-grid" id="crushes-grid">
+
+          <!-- CRUSH #1: 6th Grade Friend's Sister (PE Class, No Texts) -->
+          <article class="crush-card glass-panel tilt-card" data-category="impossible" data-tilt id="crush-card-1">
+            <div class="card-status-strip danger">
+              <span>6TH GRADE • PE CLASS</span>
+              <span class="status-indicator">COMMUNICATION: 0 TEXTS</span>
+            </div>
+
+            <div class="crush-visual">
+              <div class="crush-avatar-circle" style="background: linear-gradient(135deg, #a855f7, #6366f1);">
+                <span class="crush-emoji">⚽</span>
+              </div>
+              <div class="crush-meta">
+                <h3 class="crush-name" id="crush-1-name">"Friend's Sister"</h3>
+                <span class="crush-archetype" id="crush-1-arch">F**k you daksh</span>
+              </div>
+            </div>
+
+            <p class="crush-desc" id="crush-1-desc">
+              Happened at school during 6th grade PE class. While playing sports on the field, Daksh accidently said
+              'cutie'
+              just hoping she would look in his direction.
+            </p>
+
+            <div class="crush-stats">
+              <div class="c-stat">
+                <span class="c-label">Place</span>
+                <span class="c-val">School PE Field</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-label">Texts Exchanged</span>
+                <span class="c-val danger">0 (None)</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-label">Rizz/Aura</span>
+                <span class="c-val danger">0%</span>
+              </div>
+            </div>
+
+            <div class="crush-quote">
+              "AGE DIFFERENT DEKH LE - akshar"
+            </div>
+          </article>
+
+          <!-- CRUSH #2: 7th Grade The One Who Left (Zero Texts) -->
+          <article class="crush-card glass-panel tilt-card" data-category="impossible" data-tilt id="crush-card-2">
+            <div class="card-status-strip warning">
+              <span>7TH GRADE • THE TRANSFER (ZERO TEXTS)</span>
+              <span class="status-indicator">TEXT COUNT: 0</span>
+            </div>
+
+            <div class="crush-visual">
+              <div class="crush-avatar-circle" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">
+                <span class="crush-emoji">🏃‍♀️</span>
+              </div>
+              <div class="crush-meta">
+                <h3 class="crush-name" id="crush-2-name">"The One Who Left"</h3>
+                <span class="crush-archetype" id="crush-2-arch">Vidushi</span>
+              </div>
+            </div>
+
+            <p class="crush-desc" id="crush-2-desc">
+              Developed feelings in 7th grade, only for her to immediately unenroll and switch schools entirely. Zero
+              text messages were ever sent or received—she vanished before communication was even possible.
+            </p>
+
+            <div class="crush-stats">
+              <div class="c-stat">
+                <span class="c-label">School Left</span>
+                <span class="c-val warning">Yes</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-label">Texts Exchanged</span>
+                <span class="c-val danger">0 (lol)</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-label">Closure Level</span>
+                <span class="c-val danger">Error</span>
+              </div>
+            </div>
+
+            <div class="crush-quote">
+              "Kurvansh Better - Akshar"
+            </div>
+          </article>
+
+          <!-- CRUSH #3: The Savage Execution (THE ONLY TEXT MESSAGE) -->
+          <article class="crush-card glass-panel tilt-card" data-category="high-risk" data-tilt id="crush-card-3">
+            <div class="card-status-strip accent">
+              <span>THE BEST INCIDENT</span>
+              <span class="status-indicator">THE ONLY REFERENCE ON RECORD</span>
+            </div>
+
+            <div class="crush-visual">
+              <div class="crush-avatar-circle" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">
+                <span class="crush-emoji">💀</span>
+              </div>
+              <div class="crush-meta">
+                <h3 class="crush-name" id="crush-3-name">"The Savage Realist"</h3>
+                <span class="crush-archetype" id="crush-3-arch">Ananya</span>
+              </div>
+            </div>
+
+            <p class="crush-desc" id="crush-3-desc">
+              Started when she friends confessed his feeling to her and she said she is chomu(fr btw) and also
+              stranger-zoned her if thats even a word
+            </p>
+
+            <div class="crush-stats">
+              <div class="c-stat">
+                <span class="c-label">Aura</span>
+                <span class="c-val danger">0</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-label">Friendship Status</span>
+                <span class="c-val danger">Stranger</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-label">Self-Esteem</span>
+                <span class="c-val danger">-10000%</span>
+              </div>
+            </div>
+
+            <div class="crush-quote">
+              "Apne ander standerds dal expected better from you(oh wait vidush(chomu) nvm) - Akshar"
+            </div>
+          </article>
+
+          <!-- CRUSH #4: The Supposed Crush (NEVER CONFESSED) -->
+          <article class="crush-card glass-panel tilt-card" data-category="friendzone" data-tilt id="crush-card-4">
+            <div class="card-status-strip success">
+              <span>PRESENT SAGA • NEVER CONFESSED</span>
+              <span class="status-indicator">CONFESSION: NEVER MADE</span>
+            </div>
+
+            <div class="crush-visual">
+              <div class="crush-avatar-circle" style="background: linear-gradient(135deg, #10b981, #06b6d4);">
+                <span class="crush-emoji">🤐</span>
+              </div>
+              <div class="crush-meta">
+                <h3 class="crush-name" id="crush-4-name">Target #4: "The Supposed Crush"</h3>
+                <span class="crush-archetype" id="crush-4-arch">Likes Friend (Maybe)</span>
+              </div>
+            </div>
+
+            <p class="crush-desc" id="crush-4-desc">
+              The supposed current crush. Vital fact: Daksh NEVER confessed to her. SHE IS HER FRIEND SO BRODY IS
+              FRIEND-ZONED LOL
+              He simply observes in silent agony that she might actually have feelings for
+              *his friend* (maybe).
+            </p>
+
+            <div class="crush-stats">
+              <div class="c-stat">
+                <span class="c-label">Confession Made</span>
+                <span class="c-val danger">Never (0%)</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-label">Talks</span>
+                <span class="c-val">90%</span>
+              </div>
+              <div class="c-stat">
+                <span class="c-label">Spectator Role</span>
+                <span class="c-val">Front Row</span>
+              </div>
+            </div>
+
+            <div class="crush-quote">
+              "ye crush nahi hai - Akshar"
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== DRAMA LOG / DISASTER TIMELINE ==================== -->
+    <section class="section timeline-section" id="timeline">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">HISTORICAL DISASTER ARCHIVE</span>
+          <h2 class="section-title text-gradient">The Drama Log: Notorious Catastrophes</h2>
+          <p class="section-subtitle">
+            Documented chronological evidence that proves god gives his toughest battles to his most delusional
+            soldiers.
+          </p>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-line"></div>
+
+          <!-- Timeline Item 1: 6th Grade PE Class -->
+          <div class="timeline-node" data-aos="fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-panel tilt-card" data-tilt>
+              <div class="t-badge danger">6TH GRADE • INCIDENT #01</div>
+              <h3 class="t-title">Friend's Sister • PE Ground "Cutie" Blunder</h3>
+              <p class="t-desc">
+                Happened right at school during 6th grade PE class. While playing sports on the field, Daksh
+                accidentally said 'cutie' just hoping she would look in his direction. Exactly 0 texts sent—pure
+                playground chaos.
+              </p>
+              <div class="t-meta">
+                <span>Rizz/Aura: 0%</span>
+                <span>Texts: 0 (None)</span>
+                <span>Akshar: "AGE DIFFERENT DEKH LE"</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2: 7th Grade The Transfer -->
+          <div class="timeline-node right" data-aos="fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-panel tilt-card" data-tilt>
+              <div class="t-badge warning">7TH GRADE • INCIDENT #02</div>
+              <h3 class="t-title">Vidushi • The Phantom School Transfer</h3>
+              <p class="t-desc">
+                Developed feelings in 7th grade for Vidushi, only for her to immediately unenroll and switch schools
+                entirely. Zero text messages were ever sent or received (lol)—she vanished before communication was even
+                possible.
+              </p>
+              <div class="t-meta">
+                <span>Closure: Error</span>
+                <span>Texts: 0 (lol)</span>
+                <span>Akshar: "Kurvansh Better"</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3: The Savage Execution Ananya -->
+          <div class="timeline-node" data-aos="fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-panel tilt-card" data-tilt>
+              <div class="t-badge accent">THE BEST INCIDENT • INCIDENT #03</div>
+              <h3 class="t-title">Ananya • "Chomu" &amp; The Stranger-Zone Execution</h3>
+              <p class="t-desc">
+                Started when friends confessed his feelings to Ananya. She said he is "chomu" (fr btw) and proceeded to
+                stranger-zone him if that's even a word. Total self-esteem dropped straight to -10000%.
+              </p>
+              <div class="t-meta">
+                <span>Aura: 0 | Self-Esteem: -10000%</span>
+                <span>Friendship: Stranger</span>
+                <span>Akshar: "Apne ander standerds dal"</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 4: Present Day Unconfessed Friend-Zone -->
+          <div class="timeline-node right" data-aos="fade-up">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card glass-panel tilt-card" data-tilt>
+              <div class="t-badge success">PRESENT DAY • INCIDENT #04</div>
+              <h3 class="t-title">The Unconfessed Friend-Zoned Paradox</h3>
+              <p class="t-desc">
+                The supposed current crush. Vital fact: Daksh NEVER confessed to her. SHE IS HIS FRIEND SO BRODY IS
+                FRIEND-ZONED LOL. He simply observes in silent agony with front row seats as she might actually like his
+                friend instead.
+              </p>
+              <div class="t-meta">
+                <span>Confession: Never (0%)</span>
+                <span>Talks: 90%</span>
+                <span>Akshar: "ye crush nahi hai"</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== EMERGENCY S.O.S / CONFESSION TERMINAL ==================== -->
+    <section class="section contact-section" id="confess">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-eyebrow">EMERGENCY INTERVENTION DISPATCH</span>
+          <h2 class="section-title text-gradient">SSend Reality Check or Advice</h2>
+          <p class="section-subtitle">
+            Are you one of his friends? Or heaven forbid, ONE OF THE 4 CRUSHES? Drop your thoughts into
+            the form(not send to anyone).
+          </p>
+        </div>
+
+        <div class="terminal-container glass-panel">
+          <div class="terminal-bar">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-title">HELP DAKSH</div>
+          </div>
+
+          <div class="terminal-body">
+            <form id="sos-form" class="terminal-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="sender-name">Your Name</label>
+                  <input type="text" id="sender-name" placeholder="e.g. Concerned Friend, Crush #2, Disappointed Mom"
+                    required>
+                </div>
+                <div class="form-group">
+                  <label for="message-type">Category of Intervention</label>
+                  <select id="message-type">
+                    <option value="reality-check">Emergency Reality Check (Slap him with reality)</option>
+                    <option value="dating-advice">Romantic Tactical Advice</option>
+                    <option value="study-help">Study Group S.O.S (Save his Marks)</option>
+                    <option value="anonymous-confession">Anonymous Crush Confession</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="sos-message">Your Message / Intervention Speech</label>
+                <textarea id="sos-message" rows="4"
+                  placeholder="Bro, please stop staring at her story viewer list and go study for midterms..."
+                  required></textarea>
+              </div>
+
+              <div class="terminal-actions">
+                <button type="submit" class="btn btn-primary" id="btn-submit-sos">
+                  <span class="btn-shine"></span>
+                  <span class="btn-label">Transmit Intervention Protocol</span>
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                  </svg>
+                </button>
+                <button type="button" class="btn btn-ghost" id="btn-random-advice">
+                  <span>🎲 Generate Random Reality Check</span>
+                </button>
+              </div>
+            </form>
+
+            <!-- Dynamic Live Response Output Box -->
+            <div class="terminal-output" id="terminal-output" style="display: none;">
+              <div class="output-header">
+                <span class="output-pulse"></span>
+                <span>RESPONSE:</span>
+              </div>
+              <p class="output-text" id="output-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-left">
+        <div class="footer-logo">Parody Portfolio</div>
+        <p class="footer-desc">
+          This is a Parody website made by Akshar Pandey. I do not mean any harm/defamement to any of the crushes and
+          daksh.
+        </p>
+      </div>
+
+      <div class="footer-center">
+        <button class="btn btn-secondary btn-sm" id="btn-quote-easter">
+          <span>Get Random Student Survival Quote</span>
+        </button>
+        <p class="easter-quote-display" id="easter-quote-display">
+          "The first step to recovery is admitting you re-read that text 80 times."
+        </p>
+      </div>
+
+      <div class="footer-right">
+        <p class="copyright">© <span id="current-year">2026</span> Akshar Pandey.</p>
+        <p class="footer-sub"><b>NO AFFLIATION TO DAKSH</b></p>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- Main JavaScript Bundle -->
+  <script src="js/main.js"></script>
+</body>
+
+</html>

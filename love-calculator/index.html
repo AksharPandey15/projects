@@ -3,52 +3,205 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Percentage Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#ff5277">
+    <meta name="description"
+        content="Calculate your true love compatibility percentage with beautiful step-by-step algorithmic breakdown!">
+    <title>Love Calculator 💖 True Connection Meter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 
 <body>
-    <div class="background-elements">
-        <div class="heart shape-1"></div>
-        <div class="heart shape-2"></div>
-        <div class="heart shape-3"></div>
-        <div class="heart shape-4"></div>
-    </div>
+    <!-- Floating romantic ambient particles (GPU lightweight canvas) -->
+    <canvas id="ambient-canvas"></canvas>
 
-    <div class="container">
-        <div class="card">
-            <h1>Love Calculator 💖</h1>
-            <p class="subtitle">Enter two names to see your true connection</p>
 
-            <div class="input-group">
-                <input type="text" id="name1" placeholder="Name1" autocomplete="off">
-                <span class="plus">+</span>
-                <input type="text" id="name2" placeholder="Name2" autocomplete="off">
-            </div>
+    <main class="main-wrapper">
+        <div class="card-glow-wrapper">
+            <section class="card" id="calculator-card">
+                <!-- Header -->
+                <div class="card-header">
 
-            <button id="calculate-btn">Calculate Percentage</button>
-
-            <div id="result-section" class="hidden">
-                <h3>Calculation Steps:</h3>
-                <div id="steps-container"></div>
-
-                <div class="final-result hidden" id="final-result">
-                    <svg class="progress-ring" width="140" height="140">
-                        <circle class="progress-ring__circle-bg" stroke="rgba(255,255,255,0.2)" stroke-width="10"
-                            fill="transparent" r="60" cx="70" cy="70" />
-                        <circle class="progress-ring__circle" stroke="#ff4d4d" stroke-width="10" stroke-linecap="round"
-                            fill="transparent" r="60" cx="70" cy="70" />
-                    </svg>
-                    <div class="percentage-text"><span id="percentage">0</span>%</div>
+                    <h1 class="card-title">Love Calculator <span class="heart-pulse">💖</span></h1>
+                    <p class="subtitle">Enter two names to reveal your deep cosmic harmony & step-by-step math</p>
                 </div>
-                <p id="message"></p>
-            </div>
+
+                <!-- Input Form -->
+                <form id="love-form" onsubmit="return false;" autocomplete="off">
+                    <div class="inputs-container">
+                        <div class="input-card">
+                            <label for="name1" class="input-label">
+                                <span class="avatar-icon">👑</span>
+                                <span>First Person</span>
+                            </label>
+                            <div class="input-field-wrap">
+                                <input type="text" id="name1" placeholder="e.g. Ronaldo" maxlength="30"
+                                    spellcheck="false" autocomplete="off" required>
+                                <button type="button" class="clear-input-btn" data-target="name1"
+                                    aria-label="Clear first name">&times;</button>
+                            </div>
+                        </div>
+
+                        <div class="connector-wrap">
+                            <span class="connector-heart">X</span>
+
+                        </div>
+
+                        <div class="input-card">
+                            <label for="name2" class="input-label">
+                                <span class="avatar-icon">🌹</span>
+                                <span>Second Person</span>
+                            </label>
+                            <div class="input-field-wrap">
+                                <input type="text" id="name2" placeholder="e.g. Messi" maxlength="30" spellcheck="false"
+                                    autocomplete="off" required>
+                                <button type="button" class="clear-input-btn" data-target="name2"
+                                    aria-label="Clear second name">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Suggestions / Demo Pill -->
+                    <div class="quick-pick-wrap">
+                        <span class="quick-label">Try popular:</span>
+                        <div class="quick-tags">
+                            <button type="button" class="quick-pill" data-n1="Daksh Kumar Gupta"
+                                data-n2="Vidushi Sharma">Daksh +
+                                Vidushi</button>
+                            <button type="button" class="quick-pill" data-n1="Tanmay Awasthi"
+                                data-n2="Jhanvi Gagi">Tanmay +
+                                Jhanvi</button>
+                            <button type="button" class="quick-pill" data-n1="Rachit Sharma" data-n2="Reet">Rachit +
+                                Reet</button>
+                        </div>
+                    </div>
+
+                    <!-- Main Calculate Action -->
+                    <div class="action-wrap">
+                        <button type="submit" id="calculate-btn" class="primary-btn">
+                            <span class="btn-shine"></span>
+                            <span class="btn-text">Calculate Percentage</span>
+                            <span class="btn-icon">✨</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Result Section -->
+                <div id="result-section" class="result-section hidden">
+                    <!-- Progress Bar / Status -->
+                    <div class="calculation-status" id="calc-status">
+                        <div class="status-indicator">
+                            <span class="status-spinner"></span>
+                            <span id="status-text">Crunching letter frequencies...</span>
+                        </div>
+                        <button type="button" id="skip-btn" class="skip-btn hidden">Skip to Result ⚡</button>
+                    </div>
+
+                    <!-- Step-by-Step Algorithm Container -->
+                    <div class="steps-wrapper">
+                        <div class="steps-header">
+                            <span class="steps-title">Algorithm Breakdown</span>
+                            <span class="steps-badge" id="steps-count-badge">0 Steps</span>
+                        </div>
+                        <div id="steps-container" class="steps-box"></div>
+                    </div>
+
+                    <!-- Final Result Showcase -->
+                    <div class="final-result-card hidden" id="final-result">
+                        <div class="ring-container">
+                            <svg class="progress-ring" viewBox="0 0 160 160">
+                                <defs>
+                                    <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#ff2a6d" />
+                                        <stop offset="50%" stop-color="#ff6584" />
+                                        <stop offset="100%" stop-color="#ffd166" />
+                                    </linearGradient>
+                                    <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feGaussianBlur stdDeviation="4" result="blur" />
+                                        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                                    </filter>
+                                </defs>
+                                <circle class="progress-ring__circle-bg" stroke="rgba(255, 255, 255, 0.15)"
+                                    stroke-width="12" fill="transparent" r="66" cx="80" cy="80" />
+                                <circle class="progress-ring__circle" stroke="url(#ringGradient)" stroke-width="12"
+                                    stroke-linecap="round" filter="url(#glowEffect)" fill="transparent" r="66" cx="80"
+                                    cy="80" />
+                            </svg>
+
+                            <div class="ring-content">
+                                <div class="percentage-number"><span id="percentage">0</span><span
+                                        class="pct-symbol">%</span></div>
+                                <span class="ring-subtext">Affinity Score</span>
+                            </div>
+                        </div>
+
+                        <!-- Result Title & Verdict -->
+                        <div class="verdict-wrapper">
+                            <div class="verdict-pill" id="verdict-pill">Calculating...</div>
+                            <h2 id="message" class="verdict-title"></h2>
+                            <p id="verdict-description" class="verdict-desc"></p>
+                        </div>
+
+                        <!-- Compatibility Meters Breakdown -->
+                        <div class="affinity-breakdown">
+                            <div class="breakdown-item">
+                                <div class="breakdown-labels">
+                                    <span>Passion & Chemistry</span>
+                                    <span id="passion-val">0%</span>
+                                </div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" id="passion-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-labels">
+                                    <span>Communication & Trust</span>
+                                    <span id="trust-val">0%</span>
+                                </div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" id="trust-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="breakdown-item">
+                                <div class="breakdown-labels">
+                                    <span>Long-Term Harmony</span>
+                                    <span id="harmony-val">0%</span>
+                                </div>
+                                <div class="bar-track">
+                                    <div class="bar-fill" id="harmony-bar" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Toolbar -->
+                        <div class="result-actions">
+                            <button type="button" id="share-btn" class="secondary-btn">
+                                <span>Share Result</span>
+                            </button>
+                            <button type="button" id="retry-btn" class="outline-btn">
+                                <span>Try Another</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
+    </main>
+
+    <!-- Toast Notification for Share / Copy alerts -->
+    <div id="toast" class="toast hidden" role="alert">
+        <span id="toast-icon">✨</span>
+        <span id="toast-msg">Copied to clipboard!</span>
     </div>
 
-    <script src="script.js?v=3"></script>
+    <!-- Celebration Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js?v=4"></script>
 </body>
 
 </html>
