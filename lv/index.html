@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="violet">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lavish — School Student &amp; Badminton Player | K.R. Mangalam</title>
+  <meta name="description"
+    content="Portfolio of Lavish — Student at K.R. Mangalam School, passionate badminton player with quick reflexes, and proud member of the comfortable ~70% marks club.">
+  <meta name="keywords" content="Lavish, KR Mangalam School, Badminton, School Student, Portfolio">
+  <meta name="author" content="Lavish">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Lavish — Student &amp; Badminton Enthusiast | K.R. Mangalam School">
+  <meta property="og:description"
+    content="Meet Lavish: student at K.R. Mangalam School, court badminton player, and honest ~70% marks achiever.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow glow-2" aria-hidden="true"></div>
+  <div class="ambient-glow glow-3" aria-hidden="true"></div>
+
+  <!-- Interactive Canvas Background -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <!-- Top Announcement Bar / Student Status -->
+  <div class="top-banner" id="top-banner">
+    <div class="banner-inner container">
+      <div class="banner-left">
+        <span class="live-pulse"></span>
+        <span class="banner-text">
+          <strong>🎒 K.R. Mangalam School</strong> • 🏸 <strong>Badminton Shuttler</strong> • Personal Site of <strong
+            class="name-target-highlight" id="banner-name">Lavish</strong>
+        </span>
+      </div>
+      <div class="banner-right">
+        <div class="campus-badge" title="Academic & Court Standing">
+          <span class="badge-dot"></span>
+          <span>~70% Marks • 100% Passion</span>
+        </div>
+        <div class="theme-picker" title="Switch Theme Color">
+          <button class="theme-dot active" data-color="violet" title="Cyber Violet" aria-label="Violet theme"></button>
+          <button class="theme-dot" data-color="cyan" title="Electric Cyan" aria-label="Cyan theme"></button>
+          <button class="theme-dot" data-color="emerald" title="Court Emerald" aria-label="Emerald theme"></button>
+          <button class="theme-dot" data-color="amber" title="Solar Amber" aria-label="Amber theme"></button>
+        </div>
+        <button id="sound-toggle-btn" class="sound-toggle-btn" title="Toggle UI Sound Effects"
+          aria-label="Sound effects toggle">
+          <svg id="sound-icon-on" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
+          </svg>
+          <svg id="sound-icon-off" class="hidden" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <line x1="23" y1="9" x2="17" y2="15" />
+            <line x1="17" y1="9" x2="23" y2="15" />
+          </svg>
+          <span id="sound-text">SFX ON</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container container">
+      <a href="#hero" class="nav-logo" id="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-name name-target">Lavish</span>
+        <span class="logo-slash">/</span>
+        <span class="logo-bracket">&gt;</span>
+      </a>
+
+      <nav class="nav-links" id="nav-links" aria-label="Main Navigation">
+        <a href="#about" class="nav-link"><span class="nav-num">01.</span> About Lavish</a>
+        <a href="#badminton" class="nav-link"><span class="nav-num">02.</span> Badminton 🏸</a>
+        <a href="#school-life" class="nav-link"><span class="nav-num">03.</span> School Life 🎒</a>
+        <a href="#terminal-section" class="nav-link"><span class="nav-num">04.</span> Terminal 💻</a>
+        <a href="#testimonials" class="nav-link"><span class="nav-num">05.</span> Friends</a>
+        <a href="#contact" class="nav-link"><span class="nav-num">06.</span> Say Hi</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-sm btn-primary">
+          <span>Challenge to Badminton</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="drawer-links">
+      <a href="#about" class="drawer-link">01. About Lavish</a>
+      <a href="#badminton" class="drawer-link">02. Badminton Passion</a>
+      <a href="#school-life" class="drawer-link">03. School Life at KRM</a>
+      <a href="#terminal-section" class="drawer-link">04. Interactive Terminal</a>
+      <a href="#testimonials" class="drawer-link">05. What Friends Say</a>
+      <a href="#contact" class="drawer-link">06. Contact</a>
+    </div>
+    <div class="drawer-footer">
+      <a href="#contact" class="btn btn-primary btn-block">Say Hi to <span class="name-target">Lavish</span></a>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+
+        <div class="hero-badge-row">
+          <div class="status-pill">
+            <span class="status-indicator"></span>
+            <span class="status-text">K.R. Mangalam School Student</span>
+          </div>
+          <div class="badminton-pill">
+            <span class="shuttle-icon">🏸</span>
+            <span>Attacking Badminton Shuttler</span>
+          </div>
+          <div class="location-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span id="local-time-clock">Greater Noida • India</span>
+          </div>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-greeting">Hey there, I'm</span>
+          <span class="hero-name-glitch gradient-text name-target" id="hero-display-name">Lavish</span>
+        </h1>
+
+        <div class="hero-role-wrapper">
+          <span class="role-static">Living life with&nbsp;</span>
+          <span class="role-typing" id="role-typing-text">Badminton Smashes &amp; Good Vibes</span>
+          <span class="role-cursor">|</span>
+        </div>
+
+        <p class="hero-summary">
+          Just a regular student at <strong>K.R. Mangalam School</strong> who loves playing badminton, hanging out with
+          friends, and enjoying school life. Maintaining an honest, comfortable <strong>~70% marks average</strong>—zero
+          study panic, plenty of time on the court, and giving 100% passion to every rally.
+        </p>
+
+        <!-- Call to actions -->
+        <div class="hero-cta-group">
+          <a href="#badminton" class="btn btn-primary magnetic-btn" id="hero-cta-badminton">
+            <span>🏸 Badminton Highlights</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
+          </a>
+          <a href="#school-life" class="btn btn-secondary magnetic-btn" id="hero-cta-school">
+            <span>🎒 Life at K.R. Mangalam</span>
+          </a>
+          <a href="#terminal-section" class="btn btn-tertiary magnetic-btn" id="hero-cta-terminal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="4 17 10 11 4 5" />
+              <line x1="12" y1="19" x2="20" y2="19" />
+            </svg>
+            <span>Play with Terminal</span>
+          </a>
+        </div>
+
+        <!-- Metrics Ticker Bar -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-value">KR Mangalam</div>
+            <div class="metric-label">School Campus</div>
+            <div class="metric-sub">School Student Life</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">~70%</div>
+            <div class="metric-label">Average Marks</div>
+            <div class="metric-sub">Consistent &amp; Stress-Free</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">210+ km/h</div>
+            <div class="metric-label">Jump Smash Speed</div>
+            <div class="metric-sub">Attacking Badminton Game</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">100%</div>
+            <div class="metric-label">Genuine &amp; Grounded</div>
+            <div class="metric-sub">No Pretension • Good Energy</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: ABOUT LAVISH -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><span class="tag-dot"></span> 01 / PROFILE &amp; VIBE</div>
+          <h2 class="section-title">Life as Lavish: Real, Active &amp; Grounded</h2>
+          <p class="section-desc">No fake claims, no exam panic. Just an authentic student who loves sports, friends,
+            and school.</p>
+        </div>
+
+        <div class="about-student-wrapper">
+
+          <div class="student-story-box glass-card">
+            <div class="story-header-row">
+              <div class="story-avatar-symbol">🏸</div>
+              <div>
+                <h3 class="story-title">"Why stress over 99% when you can enjoy 70% and play great badminton?"</h3>
+                <span class="story-subtitle">The Lavish School Philosophy • K.R. Mangalam School</span>
+              </div>
+            </div>
+
+            <p class="bio-text">
+              I’m <strong class="text-white name-target">Lavish</strong>, a student at <strong>K.R. Mangalam
+                School</strong>. While a lot of people stress themselves out cramming textbooks day and night, I believe
+              in balance. I comfortably score an honest <strong>~70% average</strong>—I pay attention in class, get my
+              work done, pass my exams without tearing my hair out, and keep my mind fresh.
+            </p>
+            <p class="bio-text">
+              My real energy comes alive on the <strong>badminton court</strong>. During school sports periods,
+              after-class matches, and weekend sessions, there's nothing better than hearing the sharp snap of a Yonex
+              racket connecting with a shuttlecock for a clean jump smash. Badminton keeps me fit, sharp, and resilient.
+            </p>
+
+            <div class="student-pillars-grid">
+              <div class="pillar-card">
+                <div class="pillar-icon">🏸</div>
+                <h4 class="pillar-title">Badminton First</h4>
+                <p class="pillar-desc">Agile on the court, quick dives, and steep attacking smashes. Always up for
+                  another set.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">🎒</div>
+                <h4 class="pillar-title">K.R. Mangalam Life</h4>
+                <p class="pillar-desc">Attending classes, hanging out in recess, and making school days fun with
+                  classmates.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">📊</div>
+                <h4 class="pillar-title">The ~70% Sweet Spot</h4>
+                <p class="pillar-desc">Consistent, solid marks. Enough to do well while staying totally relaxed and
+                  happy.</p>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon">🤝</div>
+                <h4 class="pillar-title">Reliable Friend</h4>
+                <p class="pillar-desc">Always backs up his friends, whether partnering on the court or helping out in
+                  class.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: BADMINTON ARENA (HIS MAIN SPORT PASSION) -->
+    <section class="section badminton-section" id="badminton">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag"><span class="tag-dot"></span> 02 / ATHLETIC PASSION</div>
+          <h2 class="section-title">The Badminton Court: Where Lavish Shines</h2>
+          <p class="section-desc">Quick reflexes, wrist snap, footwork, and aggressive smashes. Here’s what Lavish
+            brings to the court.</p>
+        </div>
+
+        <div class="badminton-stats-showcase">
+
+          <div class="badminton-stat-card glass-card">
+            <div class="b-stat-header">
+              <span class="b-icon">💥</span>
+              <div>
+                <h3 class="b-title">Attacking Jump Smash</h3>
+                <span class="b-sub">Signature Weapon</span>
+              </div>
+            </div>
+            <p class="b-desc">
+              High contact-point jump smash clocking over 210 km/h, aimed steep down the line to finish rallies
+              decisively.
+            </p>
+            <div class="stat-bar-wrap">
+              <div class="s-label"><span>Power &amp; Angle</span><span>92%</span></div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 92%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="badminton-stat-card glass-card">
+            <div class="b-stat-header">
+              <span class="b-icon">⚡</span>
+              <div>
+                <h3 class="b-title">Court Speed &amp; Agility</h3>
+                <span class="b-sub">Fast Footwork</span>
+              </div>
+            </div>
+            <p class="b-desc">
+              Quick chassé steps and split-step recovery. Fast reaction time when retrieving opponent smashes from the
+              baseline.
+            </p>
+            <div class="stat-bar-wrap">
+              <div class="s-label"><span>Court Coverage</span><span>88%</span></div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 88%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="badminton-stat-card glass-card">
+            <div class="b-stat-header">
+              <span class="b-icon">🎯</span>
+              <div>
+                <h3 class="b-title">Deceptive Drop Shots</h3>
+                <span class="b-sub">Touch &amp; Disguise</span>
+              </div>
+            </div>
+            <p class="b-desc">
+              Disguised swing mimicking a baseline smash, executing a soft slice drop that grazes the white net tape.
+            </p>
+            <div class="stat-bar-wrap">
+              <div class="s-label"><span>Touch &amp; Spin</span><span>85%</span></div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 85%;"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Badminton Gear & Player Highlights -->
+        <div class="court-gear-card glass-card">
+          <div class="gear-header">
+            <div>
+              <span class="section-tag" style="margin-bottom: 4px;">RACKET &amp; COURT DETAILS</span>
+              <h3 style="font-size: 1.4rem;">Lavish's Badminton Kit &amp; Style</h3>
+            </div>
+            <div class="gear-badge">
+              <span>Yonex Power Player</span>
+            </div>
+          </div>
+
+          <div class="gear-specs-grid">
+            <div class="spec-card">
+              <span class="sc-icon">🏸</span>
+              <span class="sc-title">Preferred Racket</span>
+              <span class="sc-val">Yonex Astrox (Head-Heavy)</span>
+              <span class="sc-note">Optimal for explosive smashes</span>
+            </div>
+
+            <div class="spec-card">
+              <span class="sc-icon">⚡</span>
+              <span class="sc-title">String Tension</span>
+              <span class="sc-val">26 lbs (BG65Ti)</span>
+              <span class="sc-note">Crisp hitting sound &amp; control</span>
+            </div>
+
+            <div class="spec-card">
+              <span class="sc-icon">🔥</span>
+              <span class="sc-title">Favorite Match Format</span>
+              <span class="sc-val">Singles &amp; Fast Doubles</span>
+              <span class="sc-note">Enjoys high-speed rallies</span>
+            </div>
+
+            <div class="spec-card">
+              <span class="sc-icon">🏫</span>
+              <span class="sc-title">Home Court</span>
+              <span class="sc-val">K.R. Mangalam School</span>
+              <span class="sc-note">After-school games &amp; recess</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: SCHOOL LIFE AT K.R. MANGALAM -->
+    <section class="section school-section" id="school-life">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag"><span class="tag-dot"></span> 03 / CAMPUS DAYS</div>
+          <h2 class="section-title">A Day in Lavish's Life at K.R. Mangalam School</h2>
+          <p class="section-desc">How Lavish balances classes, homework, good humor, and court practice.</p>
+        </div>
+
+        <div class="routine-grid">
+
+          <div class="routine-card glass-card">
+            <div class="routine-time">08:00 AM</div>
+            <h4 class="routine-title">Morning Assembly &amp; Class Catchup</h4>
+            <p class="routine-desc">Arriving at K.R. Mangalam School, meeting the group, reviewing homework, and
+              planning who’s playing badminton during break.</p>
+          </div>
+
+          <div class="routine-card glass-card">
+            <div class="routine-time">11:30 AM</div>
+            <h4 class="routine-title">Recess &amp; Quick Rallies</h4>
+            <p class="routine-desc">Grabbing lunch with friends, heading toward the sports hall, and hitting quick
+              rallies before the warning bell rings.</p>
+          </div>
+
+          <div class="routine-card glass-card">
+            <div class="routine-time">01:00 PM</div>
+            <h4 class="routine-title">Classroom Studies &amp; Activities</h4>
+            <p class="routine-desc">Paying attention to key concepts, working with classmates on school tasks, keeping
+              that solid ~70% score secure.</p>
+          </div>
+
+          <div class="routine-card glass-card highlight-routine">
+            <div class="routine-time">03:30 PM</div>
+            <h4 class="routine-title">🏸 Badminton Time!</h4>
+            <p class="routine-desc">The school bell rings! Racket out, shoes laced, and straight onto the court for full
+              sets, jump smashes, and doubles fun.</p>
+          </div>
+
+        </div>
+
+        <!-- Academic Balance Bar -->
+        <div class="marks-showcase-card glass-card">
+          <div class="marks-header">
+            <div>
+              <span class="section-tag" style="margin-bottom: 4px;">ACADEMIC HONESTY</span>
+              <h3 style="font-size: 1.35rem;">The Realistic ~70% Report Card</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">No all-night cramming panic — just consistent
+                performance across subjects.</p>
+            </div>
+            <div class="marks-pill">
+              <span>Overall Average: ~70%</span>
+            </div>
+          </div>
+
+          <div class="marks-bars-list">
+            <div class="mark-row">
+              <div class="m-meta">
+                <span>🏸 Physical Education &amp; Badminton Sports</span>
+                <span class="m-score">95% (Top Tier)</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 95%;"></div>
+              </div>
+            </div>
+
+            <div class="mark-row">
+              <div class="m-meta">
+                <span>💻 Computer Science / Practical Lab</span>
+                <span class="m-score">82% (High Pass)</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 82%;"></div>
+              </div>
+            </div>
+
+            <div class="mark-row">
+              <div class="m-meta">
+                <span>📖 English &amp; Communication</span>
+                <span class="m-score">72% (Solid)</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 72%;"></div>
+              </div>
+            </div>
+
+            <div class="mark-row">
+              <div class="m-meta">
+                <span>📐 Mathematics &amp; Sciences</span>
+                <span class="m-score">68% (Passed with Ease)</span>
+              </div>
+              <div class="progress-bar">
+                <div class="fill" style="width: 68%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: INTERACTIVE HACKER TERMINAL (FOR FUN COMMANDS!) -->
+    <section class="section terminal-section" id="terminal-section">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag"><span class="tag-dot"></span> 04 / INTERACTIVE SHELL</div>
+          <h2 class="section-title">Lavish’s School Terminal</h2>
+          <p class="section-desc">Type <code class="code-pill">badminton</code>, <code class="code-pill">school</code>,
+            or <code class="code-pill">smash</code> to try interactive commands!</p>
+        </div>
+
+        <div class="terminal-container">
+          <div class="terminal-window">
+
+            <div class="terminal-bar">
+              <div class="t-controls">
+                <span class="t-btn red"></span>
+                <span class="t-btn yellow"></span>
+                <span class="t-btn green"></span>
+              </div>
+              <div class="t-title">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="4 17 10 11 4 5" />
+                  <line x1="12" y1="19" x2="20" y2="19" />
+                </svg>
+                lavish@krm-school-laptop: ~ (zsh)
+              </div>
+              <div class="t-quick-actions">
+                <button class="t-action-btn" id="btn-term-clear" title="Clear Terminal">Clear</button>
+              </div>
+            </div>
+
+            <!-- Terminal Output Body -->
+            <div class="terminal-body" id="terminal-body" role="log" aria-live="polite">
+              <div class="t-log-entry banner-entry">
+                <pre class="ascii-banner">
+ _                 _     _     
+| |               (_)   | |    
+| |     __ ___   ___ ___| |__  
+| |    / _` \ \ / / / __| '_ \ 
+| |___| (_| |\ V /| \__ \ | | |
+|______\__,_| \_/ |_|___/_| |_|
+                </pre>
+                <div class="t-welcome-text">
+                  Welcome to <span class="gradient-text">Lavish</span>'s terminal! Student at K.R. Mangalam School.<br>
+                  Type <span class="cmd-pill">help</span> for commands, or click any quick command below.
+                </div>
+              </div>
+            </div>
+
+            <!-- Terminal Shortcut Pills -->
+            <div class="terminal-shortcuts">
+              <span class="sc-label">Quick Commands:</span>
+              <button class="sc-btn" data-cmd="badminton">badminton 🏸</button>
+              <button class="sc-btn" data-cmd="school">school 🎒</button>
+              <button class="sc-btn" data-cmd="smash">smash 💥</button>
+              <button class="sc-btn" data-cmd="marks">marks 📊</button>
+              <button class="sc-btn" data-cmd="whoami">whoami 🙋‍♂️</button>
+              <button class="sc-btn" data-cmd="contact">contact ✉️</button>
+            </div>
+
+            <!-- Terminal Prompt Input Line -->
+            <div class="terminal-input-row">
+              <span class="t-prompt-prefix">lavish@temrinal <span class="t-dir">~</span> <span
+                  class="t-sym">$</span></span>
+              <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false"
+                placeholder="Type a command (try 'badminton' or 'smash')...">
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION: WHAT MATES & FRIENDS SAY -->
+    <section class="section testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag"><span class="tag-dot"></span> 05 / SCHOOL VIBES</div>
+          <h2 class="section-title">What Friends &amp; Court Mates Say</h2>
+          <p class="section-desc">Real words from fellow K.R. Mangalam School students and badminton partners.</p>
+        </div>
+
+        <div class="testimonials-grid">
+
+          <div class="testimonial-card glass-card">
+            <div class="quote-mark">“</div>
+            <p class="quote-body">
+              "Playing doubles with <strong>Lavish</strong> is awesome. Whenever we're on defense in school matches, his
+              counter-smash from the back court turns the match around in one second. Plus he keeps the whole team
+              laughing!"
+            </p>
+            <div class="author-info">
+              <div class="author-avatar-badge">AP</div>
+              <div>
+                <div class="author-name">Akshar Pandey</div>
+                <div class="author-role">Best Friend • KRM School</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-card">
+            <div class="quote-mark">“</div>
+            <p class="quote-body">
+              "While everyone else was panicking during school exams, <strong>Lavish</strong> scored his steady 70%,
+              helped our entire study group with notes, and was already back playing badminton that afternoon!"
+            </p>
+            <div class="author-info">
+              <div class="author-avatar-badge">DS</div>
+              <div>
+                <div class="author-name">Divyansh</div>
+                <div class="author-role">Classmate &amp; Study Group Friend</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card glass-card">
+            <div class="quote-mark">“</div>
+            <p class="quote-body">
+              "<strong>Lavish</strong> is just a great person to be around. He never brags, he plays hard on the court,
+              and he’s always ready to support anyone in the class."
+            </p>
+            <div class="author-info">
+              <div class="author-avatar-badge">SS</div>
+              <div>
+                <div class="author-name">Siddharth Sharma</div>
+                <div class="author-role">School Sports House Friend</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CONNECT & CHALLENGE A MATCH -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+
+        <div class="section-header">
+          <div class="section-tag"><span class="tag-dot"></span> 06 / GET IN TOUCH</div>
+          <h2 class="section-title">Say Hi or Challenge Lavish to a Match!</h2>
+          <p class="section-desc">Want to chat, hang out, or play a 3-set badminton match at K.R. Mangalam School? Send
+            a message!</p>
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- Contact Left: Channels & Live Status -->
+          <div class="contact-channels-card glass-card">
+            <h3 class="channels-title">Direct Reach</h3>
+            <p class="channels-desc">Always up for a fun badminton game, school catchup, or general chat.</p>
+
+            <div class="channel-items">
+              <div class="channel-item">
+                <div class="ch-icon">
+                  <span style="font-size: 18px;">🏸</span>
+                </div>
+                <div>
+                  <span class="ch-label">School Location</span>
+                  <span class="ch-link">K.R. Mangalam World School</span>
+                </div>
+              </div>
+
+              <div class="channel-item">
+                <div class="ch-icon">
+                  <span style="font-size: 18px;">📍</span>
+                </div>
+                <div>
+                  <span class="ch-label">Region</span>
+                  <span class="ch-link">Greater Noida</span>
+                </div>
+              </div>
+
+              <div class="channel-item">
+                <div class="ch-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                    <line x1="16" y1="2" x2="16" y2="6" />
+                    <line x1="8" y1="2" x2="8" y2="6" />
+                    <line x1="3" y1="10" x2="21" y2="10" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="ch-label">Badminton Match Request</span>
+                  <button class="ch-link-btn" id="btn-coffee-chat">Pick a Match Time on Court</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="availability-status-box">
+              <div class="stat-indicator-wrap">
+                <span class="live-dot-green"></span>
+                <strong>Status:</strong> Ready for a Badminton Game!
+              </div>
+              <p class="status-subtext">Usually free after 3:30 PM on weekdays near the school sports hall.</p>
+            </div>
+          </div>
+
+          <!-- Contact Right: Interactive Message Form -->
+          <div class="contact-form-card glass-card">
+            <h3 class="form-title">Send a Message to Lavish</h3>
+            <form id="contact-form" class="contact-form" novalidate>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-name">Your Name <span class="required">*</span></label>
+                  <input type="text" id="contact-name" name="name" class="form-input"
+                    placeholder="e.g. Divyansh / School Friend" required>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email">Your Email <span class="required">*</span></label>
+                  <input type="email" id="contact-email" name="email" class="form-input" placeholder="aryan@example.com"
+                    required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-topic">Reason for Connecting</label>
+                <select id="contact-topic" name="topic" class="form-select">
+                  <option value="badminton">🏸 Challenge Lavish to a Badminton Match</option>
+                  <option value="krm">🎒 K.R. Mangalam School Chat</option>
+                  <option value="say-hi">👋 Just saying Hi &amp; Connecting</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message">Your Message <span class="required">*</span></label>
+                <textarea id="contact-message" name="message" class="form-textarea" rows="5"
+                  placeholder="Hey Lavish, want to play badminton this Friday after school?..." required></textarea>
+                <div class="char-count"><span id="char-current">0</span> / 1000 characters</div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="btn-submit-form">
+                <span id="submit-btn-text">Send Message to Lavish</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </button>
+
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <div class="footer-logo">
+          <span class="logo-bracket">&lt;</span>
+          <span class="logo-name name-target">Lavish</span>
+          <span class="logo-slash">/</span>
+          <span class="logo-bracket">&gt;</span>
+        </div>
+        <p class="footer-tagline">Student at K.R. Mangalam School • Badminton Shuttler • ~70% Marks, 100% Passion.</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#hero">Top ↑</a>
+        <a href="#about">About</a>
+        <a href="#badminton">Badminton</a>
+        <a href="#school-life">School Life</a>
+        <a href="#terminal-section">Terminal</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-right">
+        <div class="system-status">
+          <span class="live-dot-green"></span>
+          <span>Not affliated to lavish</span>
+        </div>
+        <div class="copyright">
+          © <span id="current-year">2026</span> <strong class="name-target">Akshar</strong>. All rights reserved.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
