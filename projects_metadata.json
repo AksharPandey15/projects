@@ -1,0 +1,1793 @@
+[
+  {
+    "index": 0,
+    "title": "Policy",
+    "desc": "",
+    "p_classes": [],
+    "href": "policy.html",
+    "a_text": "View Policy",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 1,
+    "title": "Project 1: Google Maps",
+    "desc": "Google Maps API project. Try to find the easter egg.",
+    "p_classes": [],
+    "href": "google app api/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 2,
+    "title": "Project 2: Tic Tac Toe App",
+    "desc": "An interactive Tic Tac Toe game made using HTML, CSS, and JS.",
+    "p_classes": [],
+    "href": "tictac toe/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 3,
+    "title": "Project 3: Weather Application",
+    "desc": "A weather application using the Tomorrow.io API, providing current weather data.",
+    "p_classes": [],
+    "href": "weather/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 4,
+    "title": "Project 4: Movie Finder",
+    "desc": "The app provides movie and TV show information using the OMDb API.",
+    "p_classes": [],
+    "href": "movie/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 5,
+    "title": "Project 5: Budget App",
+    "desc": "Calculate Your Expenses",
+    "p_classes": [],
+    "href": "budget/calcu.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 6,
+    "title": "Project 6: Alarm Application",
+    "desc": "Tired of waking up late. HERE IS A ALARM",
+    "p_classes": [],
+    "href": "alram/html.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 7,
+    "title": "Project 7: QR Code Maker",
+    "desc": "You own a resturant and want all qr code. RIGHT PLACE CAME",
+    "p_classes": [],
+    "href": "qrcodemaker/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 8,
+    "title": "Project 8: QR Code Reader",
+    "desc": "You came to resturant and made you download it",
+    "p_classes": [],
+    "href": "qrcodereader/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 9,
+    "title": "Project 9: Chess",
+    "desc": "Herro! Want to play Chess",
+    "p_classes": [],
+    "href": "Chess_Game/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 10,
+    "title": "Project 10: Battery Percentage Finder",
+    "desc": "Want to find out your Battery even though it is on the bottem-right corner",
+    "p_classes": [],
+    "href": "bt/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 11,
+    "title": "Project 11: Password Maker",
+    "desc": "Thinking too much for a strong password so no hackers",
+    "p_classes": [],
+    "href": "pass/indexx.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 12,
+    "title": "Project 12: Pixel Art",
+    "desc": "Want to make Art in your PC",
+    "p_classes": [],
+    "href": "pt/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 13,
+    "title": "Project 13: Typing Test",
+    "desc": "Test your Keyborad Skils",
+    "p_classes": [],
+    "href": "tyops/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 14,
+    "title": "Project 14: Aspect Ratio Calculator",
+    "desc": "Maths Test??",
+    "p_classes": [],
+    "href": "ratio/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 15,
+    "title": "Project 15: Guess The Word",
+    "desc": "Just Guess IT",
+    "p_classes": [],
+    "href": "words/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 16,
+    "title": "Project 16: 2048 Game",
+    "desc": "The Classic old 2048",
+    "p_classes": [],
+    "href": "2048/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 17,
+    "title": "Project 17: tetris Clone",
+    "desc": "Like that \"Unbeatable\" Tetris",
+    "p_classes": [],
+    "href": "tetris/index.htm",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 18,
+    "title": "Project 18: Snake Game",
+    "desc": "Snake Game Play It",
+    "p_classes": [],
+    "href": "snakee/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 19,
+    "title": "Project 19: Text To Speech",
+    "desc": "I always wanted this.To Prank call my friends\ud83d\ude00",
+    "p_classes": [],
+    "href": "Text to Speech/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 20,
+    "title": "Project 20: Geometric Art Generator",
+    "desc": "Geometric Art Generator (also known as GAG)",
+    "p_classes": [],
+    "href": "GAG/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 21,
+    "title": "Project 21: MineSweeper",
+    "desc": "Classic ol' MineSweeper from the 19's",
+    "p_classes": [],
+    "href": "MineSweeper/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 22,
+    "title": "Project 22: Internet Speed Test",
+    "desc": "Test your Internet Speed",
+    "p_classes": [],
+    "href": "isc/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 23,
+    "title": "Project 23: Box Shadow Generator",
+    "desc": "Me as developer got a lot of problems with this",
+    "p_classes": [],
+    "href": "gost/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 24,
+    "title": "Project 24: Flip a Coin",
+    "desc": "Flip a coin",
+    "p_classes": [],
+    "href": "coin/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 25,
+    "title": "Project 25: Translater",
+    "desc": "Stuck in a another country with a another language",
+    "p_classes": [],
+    "href": "ransle/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 26,
+    "title": "Project 26: Gradient Generator",
+    "desc": "Making Gradient is fun",
+    "p_classes": [],
+    "href": "gradient/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 27,
+    "title": "Project 27: Crypto Price App",
+    "desc": "Check the Crypto price using coingecko",
+    "p_classes": [],
+    "href": "dogecoin/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 28,
+    "title": "Project 28: Cosmo",
+    "desc": "Just Cosmo IT",
+    "p_classes": [],
+    "href": "cosmo/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 29,
+    "title": "Project 29: Sliding Toys",
+    "desc": "Just match the right numbers",
+    "p_classes": [],
+    "href": "sliding_toys/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 30,
+    "title": "Project 30: Gravity Points",
+    "desc": "Small Particle attract to the black hole type thingy",
+    "p_classes": [],
+    "href": "gravuty/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 31,
+    "title": "Project 31: ToDo App",
+    "desc": "Just don't forget to do your todo",
+    "p_classes": [],
+    "href": "todo/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 32,
+    "title": "Project 32: Spin the wheel",
+    "desc": "Spin the wheel in a fixed range of 1-6",
+    "p_classes": [],
+    "href": "spin-the-wheel/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 33,
+    "title": "Project 33: Live Code Editor",
+    "desc": "HTML,CSS,JS code editor",
+    "p_classes": [],
+    "href": "code/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 34,
+    "title": "Project 34: Sudoku Solver",
+    "desc": "Sharp your mind",
+    "p_classes": [],
+    "href": "suduko/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 35,
+    "title": "Project 35: Text Encryptor",
+    "desc": "Why you even want to Encrypt your message",
+    "p_classes": [],
+    "href": "text/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 36,
+    "title": "Project 36: Pong Game",
+    "desc": "Ping Pong Game EveryOne knows this",
+    "p_classes": [],
+    "href": "pingpong/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 37,
+    "title": "Project 37: Quizze",
+    "desc": "Suprise Test",
+    "p_classes": [],
+    "href": "quixx/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 38,
+    "title": "Project 38: Event Calendar",
+    "desc": "Events",
+    "p_classes": [],
+    "href": "url/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 39,
+    "title": "Project 39: Todo Extenstion",
+    "desc": "Install it and go to extension maneger in chrome and click\n          load unpack but first unzip the zip file and then go to load unpack\n          and click on the unpacked folder and done",
+    "p_classes": [],
+    "href": "extenstion.zip",
+    "a_text": "Download Now",
+    "download": "extenstion.zip",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 40,
+    "title": "Project 40: Glassmorphism Creater",
+    "desc": "What the hell is a Glassmorphism?",
+    "p_classes": [],
+    "href": "glassmophism/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 41,
+    "title": "Project 41: Page Translater Extension",
+    "desc": "Install it and go to extension maneger in chrome and click\n          load unpack but first unzip the zip file and then go to load unpack\n          and click on the unpacked folder and done",
+    "p_classes": [],
+    "href": "ptex.zip",
+    "a_text": "View Project",
+    "download": "ptex.zip",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 42,
+    "title": "Project 42: Wiki",
+    "desc": "Wiki-Wiki Search it",
+    "p_classes": [],
+    "href": "wiki/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 43,
+    "title": "Project 43: Json Parser",
+    "desc": "See Json Files",
+    "p_classes": [],
+    "href": "jsonparser/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 44,
+    "title": "Project 44: Image Color Picker",
+    "desc": "Check image color",
+    "p_classes": [],
+    "href": "isp/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 45,
+    "title": "Project 45: Food Recipe App",
+    "desc": "Food Recipe App",
+    "p_classes": [],
+    "href": "foodiw/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 46,
+    "title": "Project 46: Tradeview Widget",
+    "desc": "No Commets",
+    "p_classes": [],
+    "href": "tradeview/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 47,
+    "title": "Project 47: Breakout Game",
+    "desc": "Just a game play it",
+    "p_classes": [],
+    "href": "brewk/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 48,
+    "title": "Project 48: Simon Game",
+    "desc": "Just guess the color pattern",
+    "p_classes": [],
+    "href": "simon/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 49,
+    "title": "Project 49: Flashcard",
+    "desc": "Nope",
+    "p_classes": [],
+    "href": "flashcard/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 50,
+    "title": "Project 50: Rich Text Editor",
+    "desc": "Just a clone of note pad but in a browser",
+    "p_classes": [],
+    "href": "notepad/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 51,
+    "title": "Project 51: Music Player App",
+    "desc": "Play Music",
+    "p_classes": [],
+    "href": "nrew/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 52,
+    "title": "Project 52: Ai image Detector",
+    "desc": "No Comments",
+    "p_classes": [],
+    "href": "magga/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 53,
+    "title": "Project 53: Github API",
+    "desc": "Check bio and more things from the username (Which is in Github)",
+    "p_classes": [],
+    "href": "github/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 54,
+    "title": "Project 54: Dount ASCII",
+    "desc": "Took a hour on this thing",
+    "p_classes": [],
+    "href": "donut_acii/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 55,
+    "title": "Project 55: Stock Trader",
+    "desc": "No Commets",
+    "p_classes": [],
+    "href": "stock/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 56,
+    "title": "Project 56:Currency Exchange",
+    "desc": "Stuck in a country in a another lang",
+    "p_classes": [],
+    "href": "current/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 57,
+    "title": "Project 57: Speech to text",
+    "desc": "speak and turn it to text",
+    "p_classes": [],
+    "href": "sppect/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 58,
+    "title": "Project 58: Url Shortner",
+    "desc": "Short url",
+    "p_classes": [],
+    "href": "urlshprt/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 59,
+    "title": "Project 59: Asteroid Game",
+    "desc": "Play the Game",
+    "p_classes": [],
+    "href": "impact/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 60,
+    "title": "Project 60: tip Calculator",
+    "desc": "It is good to tip",
+    "p_classes": [],
+    "href": "tip/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 61,
+    "title": "Project 61: Dictionary App",
+    "desc": "It is good to learn",
+    "p_classes": [],
+    "href": "ludo/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 62,
+    "title": "Project 62: Temperature",
+    "desc": "Convert \u00b0C to \u00b0F and to Kelvin",
+    "p_classes": [],
+    "href": "temp/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 63,
+    "title": "Project 63: Horizon Browser",
+    "desc": "Just A Browser Made with Electronjs",
+    "p_classes": [],
+    "href": "horzion/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 64,
+    "title": "Project 64: A Short Walk",
+    "desc": "No Commets",
+    "p_classes": [],
+    "href": "ashourtwalk/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 65,
+    "title": "Project 65: Inside a box",
+    "desc": "No Commets",
+    "p_classes": [],
+    "href": "atrip/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 66,
+    "title": "Project 66: Artificts Gut's",
+    "desc": "No Commets",
+    "p_classes": [],
+    "href": "gotuts/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 67,
+    "title": "Project 65: Solar System",
+    "desc": "It is real time(If you started it at the start of the universe jk)",
+    "p_classes": [],
+    "href": "space/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 68,
+    "title": "Project 66: Rock Paper Scissors Ultimate",
+    "desc": "Play with your friends.You can play with AI too with different difficulty.",
+    "p_classes": [],
+    "href": "how/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 69,
+    "title": "Project 67: Video Call",
+    "desc": "Video Call with your friends.",
+    "p_classes": [],
+    "href": "video/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 70,
+    "title": "Project 68: Party Planner",
+    "desc": "Party planning application",
+    "p_classes": [],
+    "href": "PartyPLanner/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 71,
+    "title": "Project 69: Image Generator",
+    "desc": "Image generation application",
+    "p_classes": [],
+    "href": "image/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 72,
+    "title": "Project 70: Hangman Game",
+    "desc": "Guess the word",
+    "p_classes": [],
+    "href": "Hangman/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 73,
+    "title": "Project 71: Calculator",
+    "desc": "Just a Calculator",
+    "p_classes": [],
+    "href": "Calculator/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 74,
+    "title": "Project 72: Google Dino Game",
+    "desc": "Google Dino Game CLone`",
+    "p_classes": [],
+    "href": "dino/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 75,
+    "title": "Project 73: Number Guess",
+    "desc": "Just Guess it",
+    "p_classes": [],
+    "href": "numberguess/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 76,
+    "title": "Project 74: Jokes Generator",
+    "desc": "Just a Joke",
+    "p_classes": [],
+    "href": "jokesaside/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 77,
+    "title": "Project 75: Expense Tracker",
+    "desc": "Track Your Expense",
+    "p_classes": [],
+    "href": "Spent/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 78,
+    "title": "Project 76: BMI Calculator",
+    "desc": "BMI stands for ....",
+    "p_classes": [],
+    "href": "BMI Calce/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 79,
+    "title": "Project 77: Password stregth Checker",
+    "desc": "How Strong is it",
+    "p_classes": [],
+    "href": "strenghchecker/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 80,
+    "title": "Project 78: Resume Builder",
+    "desc": "Build it",
+    "p_classes": [],
+    "href": "resumemaker/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 81,
+    "title": "Project 79: Flappy Bird",
+    "desc": "Play The Remade Version of Flappy Bird(PC/LAPTOP ONLY)",
+    "p_classes": [],
+    "href": "flappy/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 82,
+    "title": "Project 80: MarkDown Maker",
+    "desc": "Make Markdown",
+    "p_classes": [],
+    "href": "Markdownmaker/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 83,
+    "title": "Project 81: Reaction Time Tester",
+    "desc": "Is your reaction time fast as a F1 Driver?",
+    "p_classes": [],
+    "href": "reaction/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 84,
+    "title": "Project 82: Habit Tracker",
+    "desc": "Track your habits",
+    "p_classes": [],
+    "href": "habit/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 85,
+    "title": "Project 83: Pomodoro Timer",
+    "desc": "idk",
+    "p_classes": [],
+    "href": "Pomderdo/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 86,
+    "title": "Project 84: Drum Kit",
+    "desc": "If NOt have in real life this is right place",
+    "p_classes": [],
+    "href": "drumkit/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 87,
+    "title": "Project 85: Roll Dice",
+    "desc": "No Comments :/",
+    "p_classes": [],
+    "href": "dicerool/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 88,
+    "title": "Project 86: Loan Calculator",
+    "desc": "Please Check with your bank loan Calculator",
+    "p_classes": [],
+    "href": "loan/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 89,
+    "title": "Project 87: TIme Table",
+    "desc": "Are you bad at maths",
+    "p_classes": [],
+    "href": "timetable/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 90,
+    "title": "Project 88: Age Calculator",
+    "desc": "Your age",
+    "p_classes": [],
+    "href": "age/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 91,
+    "title": "Project 89: Population Chart",
+    "desc": "It is not correct.",
+    "p_classes": [],
+    "href": "population/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 92,
+    "title": "Project 90: Image Editor",
+    "desc": "You Can Just Like add fliters.",
+    "p_classes": [],
+    "href": "photoeditor/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 93,
+    "title": "Project 91: Periodic Table",
+    "desc": "Studyyy the table",
+    "p_classes": [],
+    "href": "table/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 94,
+    "title": "Project 92: Palindrome Checker",
+    "desc": "Palindrome Checker",
+    "p_classes": [],
+    "href": "palidrome/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 95,
+    "title": "Project 93: Number to name",
+    "desc": "IDK",
+    "p_classes": [],
+    "href": "numver/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 96,
+    "title": "Project 94: Fireworks",
+    "desc": "IDK",
+    "p_classes": [],
+    "href": "fire/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 97,
+    "title": "Project 95: Vector Editor",
+    "desc": "IDK",
+    "p_classes": [],
+    "href": "impactdrow/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 98,
+    "title": "Project 96: NIM",
+    "desc": "A Maths Game",
+    "p_classes": [],
+    "href": "nim/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 99,
+    "title": "Project 97: Netflix Clone",
+    "desc": "A Netflix",
+    "p_classes": [],
+    "href": "netflix/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 100,
+    "title": "Project 98: Amazon Clone",
+    "desc": "A Amazon",
+    "p_classes": [],
+    "href": "amazon/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 101,
+    "title": "Project 99: Apple Clone",
+    "desc": "Iphone 16",
+    "p_classes": [],
+    "href": "apple/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 102,
+    "title": "Project 100: Purvanchal Projects",
+    "desc": "A Website for my Society",
+    "p_classes": [],
+    "href": "purvanchalprojects/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 103,
+    "title": "Project 101: What Beats Paper",
+    "desc": "This game takes 100 years to beat",
+    "p_classes": [],
+    "href": "rockbeats/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 104,
+    "title": "Project 102: Pacman Google Clone",
+    "desc": "This game takes years to beat",
+    "p_classes": [],
+    "href": "google_pacman/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 105,
+    "title": "Project 103: Piano",
+    "desc": "Just a broken sorry Piano",
+    "p_classes": [],
+    "href": "piano/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 106,
+    "title": "Project 104: Keyborad Hero",
+    "desc": "Just a Keyborad Game",
+    "p_classes": [],
+    "href": "key/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 107,
+    "title": "Project 105: Tlited Maze",
+    "desc": "Maze",
+    "p_classes": [],
+    "href": "maze/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 108,
+    "title": "Project 106: Your Location",
+    "desc": "Location Guesser",
+    "p_classes": [],
+    "href": "userlocation/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 109,
+    "title": "Project 107: Your Browser",
+    "desc": "Guesser",
+    "p_classes": [],
+    "href": "brosew/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 110,
+    "title": "Project 108: Fistborn X",
+    "desc": "Laptop Game",
+    "p_classes": [],
+    "href": "street_fighter/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 111,
+    "title": "Project 109: Tower Game",
+    "desc": "Build the tower Game",
+    "p_classes": [],
+    "href": "towergame/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 112,
+    "title": "Project 110: Raven",
+    "desc": "Turn the CCTV Camera Online",
+    "p_classes": [],
+    "href": "raven/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 113,
+    "title": "Project 111: Cursed Elevator",
+    "desc": "This is the 111th project and it is an angel number but the project",
+    "p_classes": [],
+    "href": "cursed/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 114,
+    "title": "Project 112: Exilium: The Fall of Dominus",
+    "desc": "Action Start",
+    "p_classes": [],
+    "href": "nego/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 115,
+    "title": "Project 113: Live Chart Maker",
+    "desc": "Did i make this earlier idk D\u00e9j\u00e0 Vu i guess?",
+    "p_classes": [],
+    "href": "live/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 116,
+    "title": "Project 114: Fextify",
+    "desc": "Notepad Clone",
+    "p_classes": [
+      "h"
+    ],
+    "href": "./notepad.exe",
+    "a_text": "View Project",
+    "download": "./notepad.exe",
+    "a_classes": [
+      "shiny-cta",
+      "a"
+    ]
+  },
+  {
+    "index": 117,
+    "title": "Project 115: retrohunt",
+    "desc": "Someone or something is stealing our time. Today was yesterday and tomorrow is nowhere to be seen.\n          Detective Clay is on the case!",
+    "p_classes": [],
+    "href": "./retrohaunt/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 118,
+    "title": "Project 116: Re-Wire",
+    "desc": "Bring the system back online by rewiring the Devices.",
+    "p_classes": [],
+    "href": "./Re-wire/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 119,
+    "title": "Project 117: Evil Glitch",
+    "desc": "Umm.. IDK",
+    "p_classes": [],
+    "href": "./Evil Glitch/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 120,
+    "title": "Project 118: The Curse of 13 Cats",
+    "desc": "Somewhere in an old alley - the Catcher is lurking for the homeless cats. Fortunately, the Catcher has\n          Triskaidekaphobia and is afraid of only one thing in the world: the number 13..",
+    "p_classes": [],
+    "href": "./curseofcats/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 121,
+    "title": "Project 119: XIII Floor",
+    "desc": "Solve the mystery of the XIII floor. I bet you can do it in just 5 steps using only 3 buttons.",
+    "p_classes": [],
+    "href": "./xiii-floor/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 122,
+    "title": "Project 120: National Accident Day",
+    "desc": "You were supposed to give a speech at the National Accident Day, but you are very very late. You need to\n          make it there on time, but the traffic is horrible.",
+    "p_classes": [],
+    "href": "./ndaay/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 123,
+    "title": "Project 121: Coup AHOO!",
+    "desc": "You're finally fed up with your fleet and their incompetence. Take down all 13 of them one by one and claim\n          your spot at the top.",
+    "p_classes": [],
+    "href": "./Coup-ahoo/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 124,
+    "title": "Project 122: Dr1v3n",
+    "desc": "An epic race across 10 stages! Can you get to the magic garden?",
+    "p_classes": [],
+    "href": "./Dr1v3n Wild/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 125,
+    "title": "Project 123: 13th Guy",
+    "desc": "Don't be the 13th guy",
+    "p_classes": [],
+    "href": "./13th-guy/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 126,
+    "title": "Project 124: Squad 13",
+    "desc": "Complete The Missions",
+    "p_classes": [],
+    "href": "./Squad 13/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 127,
+    "title": "Project 125: Aud13nd",
+    "desc": "Win it",
+    "p_classes": [],
+    "href": "./aud13nd/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 128,
+    "title": "Project 126: Not-13",
+    "desc": "Game where you pick an item that doesn't have 13 of it on the screen as fast as possible to get high score!",
+    "p_classes": [],
+    "href": "https://not-13.vercel.app",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 129,
+    "title": "Project 127: Badluck Butter Chicken episode 1",
+    "desc": "Just a game",
+    "p_classes": [],
+    "href": "Badluck Butter Chicken/episode 1/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 130,
+    "title": "Project 128: Economy of Motion",
+    "desc": "Finish the level without moving 13 times",
+    "p_classes": [],
+    "href": "Economy of Motion/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 131,
+    "title": "Project 129: O-hii-bad..",
+    "desc": "Game",
+    "p_classes": [],
+    "href": "o-hiii-bad-skatepark/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 132,
+    "title": "Project 130: Snake 2.0",
+    "desc": "snake Game!!!",
+    "p_classes": [],
+    "href": "snake-2/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 133,
+    "title": "Project 131: How it Started",
+    "desc": "Save the Numbers",
+    "p_classes": [],
+    "href": "how-it-star/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 134,
+    "title": "Project 132: Brewing Disaster",
+    "desc": "WITCHCRAFT!!! HELPP",
+    "p_classes": [],
+    "href": "witch/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 135,
+    "title": "Project 133: m13e",
+    "desc": "Maze game",
+    "p_classes": [],
+    "href": "m13e/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 136,
+    "title": "Project 134: 2027 Countdown",
+    "desc": "Wishing you health, happiness, and success in the coming year!",
+    "p_classes": [],
+    "href": "2027_countdown/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 137,
+    "title": "Project 135: Ar Piano",
+    "desc": "Just a Piano",
+    "p_classes": [],
+    "href": "arpi/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 138,
+    "title": "Project 136: Mario clone",
+    "desc": "Its me Mario!",
+    "p_classes": [],
+    "href": "retro/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 139,
+    "title": "Project 137: myCBSEguide Landing",
+    "desc": "Test Site",
+    "p_classes": [],
+    "href": "mycbseguide_landing",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 140,
+    "title": "Project 138: Pacman",
+    "desc": "Pac-Pac Man",
+    "p_classes": [],
+    "href": "pacman/index.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 141,
+    "title": "Project 139: Apple Clone",
+    "desc": "This is not affilated (iz thiz spelling of affilated good?) with Apple",
+    "p_classes": [],
+    "href": "https://apple-clone-chi-seven.vercel.app/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 142,
+    "title": "Project 140: CMD",
+    "desc": "A macOS Terminal Clone",
+    "p_classes": [],
+    "href": "https://cmd-azure.vercel.app/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 143,
+    "title": "Project 141: PLEASE DO NOT DO THE CAT",
+    "desc": "It took me ages",
+    "p_classes": [],
+    "href": "dist/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 144,
+    "title": "Project 142: \u092c\u094d\u0930\u0947\u0915\u093f\u0902\u0917 \u0907\u0902\u0921\u093f\u092f\u093e: \u0928\u092b\u093c\u0930\u0924 LIVE",
+    "desc": "Hard Reality of Indian Media",
+    "p_classes": [],
+    "href": "wbwwb/",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 145,
+    "title": "Project 143: Alien Language Translator",
+    "desc": "Translate English to Alien Language",
+    "p_classes": [],
+    "href": "alien-translator/index.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 146,
+    "title": "Project 144: Captcha Game",
+    "desc": "Solve The Captcha",
+    "p_classes": [],
+    "href": "captcha-game/index.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 147,
+    "title": "Project 145: Love Percentage",
+    "desc": "Calculate love(-.. .- -.- ... ....)",
+    "p_classes": [],
+    "href": "love-calculator/index.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 148,
+    "title": "Project 146: Portfolio of Daksh",
+    "desc": "PARODY WEBSITE(FRIENDS ONLY)",
+    "p_classes": [],
+    "href": "dv/index.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  }
+]

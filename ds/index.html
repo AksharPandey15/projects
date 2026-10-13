@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divyansh K. Swach — The Rolling Legend | Parallax Portfolio</title>
+
+  <!-- SEO & Meta Tags -->
+  <meta name="description"
+    content="Official Parallax Portfolio of Divyansh K. Swach: High School Student, Certified Bhukkad, Aerodynamic Football, and Satakshi's One and Only.">
+  <meta name="keywords" content="Divyansh K Swach, Parallax Portfolio, Bhukkad, Football, Satakshi, High School Legend">
+  <meta name="author" content="Divyansh's Classmates">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Top Scroll Progress Bar -->
+  <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+  <!-- Ambient Background Canvas & Glowing Parallax Orbs -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-grid"></div>
+    <div class="orb orb-gold" id="orbGold"></div>
+    <div class="orb orb-rose" id="orbRose"></div>
+    <div class="orb orb-cyan" id="orbCyan"></div>
+  </div>
+
+  <!-- Floating Parallax Stickers / Emojis Layer -->
+  <div class="floating-elements-container" aria-hidden="true">
+    <span class="float-item" style="top: 15%; left: 8%;">🍕</span>
+    <span class="float-item" style="top: 28%; right: 12%;">⚽</span>
+    <span class="float-item" style="top: 52%; left: 5%;">🍔</span>
+    <span class="float-item" style="top: 68%; right: 8%;">💖</span>
+    <span class="float-item" style="top: 82%; left: 14%;">🥟</span>
+    <span class="float-item" style="top: 40%; left: 85%;">🧠</span>
+    <span class="float-item" style="top: 88%; right: 22%;">🍟</span>
+  </div>
+
+  <!-- Confetti Canvas for Celebrations -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar" id="navbar">
+      <a href="#hero" class="nav-brand" id="brandLogo">
+        <span class="brand-icon">⚽</span>
+        <span>Divyansh<span style="color: var(--accent-gold);">.exe</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">The Legend</a></li>
+        <li><a href="#blueprint" class="nav-link">Football Specs</a></li>
+        <li><a href="#feeder" class="nav-link">Feed Divyansh</a></li>
+        <li><a href="#satakshi" class="nav-link">Satakshi</a></li>
+        <li><a href="#iq-test" class="nav-link">IQ Diagnostics</a></li>
+        <li><a href="#awards" class="nav-link">Hall of Fame</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-icon" id="soundToggleBtn" title="Toggle Sound FX"
+          aria-label="Toggle Sound Effects">🔊</button>
+        <button class="btn-icon" id="rollDivyanshBtn" title="Roll Divyansh Across Screen"
+          aria-label="Roll Divyansh">⚽</button>
+        <a href="#feeder" class="btn-nav-action" style="text-decoration: none;" id="navFeedBtn">
+          <span>🍕</span> Feed Him
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- =====================================================================
+         HERO SECTION
+         ===================================================================== -->
+    <section class="hero" id="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+
+
+          <h1 class="hero-name">
+            Meet <span class="name-gradient">Divyansh K. Swach</span>
+          </h1>
+
+          <div class="hero-roles">
+            <span>Specialization:</span>
+            <span class="typed-text" id="typedText">Certified School Bhukkad 🍕</span>
+            <span class="typing-cursor">&nbsp;</span>
+          </div>
+
+          <p class="hero-description">
+            Just a high school student with zero interest in algebra, an unlimited appetite for canteen samosas, and
+            the <strong>exact aerodynamic geometry of a FIFA World Cup football</strong>. While the doctors debate
+            whether he is
+            stupid, an idiot, or both, he has already secured the greatest prize in school: <strong>his girlfriend
+              Satakshi</strong>.
+          </p>
+
+          <div class="hero-badges-strip">
+            <div class="hero-mini-badge" id="badgeSphericity">
+              <span>⚽</span> 99.8% Perfect Sphericity
+            </div>
+            <div class="hero-mini-badge" id="badgeBhukkad">
+              <span>🍔</span> Grandmaster Bhukkad
+            </div>
+            <div class="hero-mini-badge" id="badgeSatakshi">
+              <span>💖</span> Satakshi's Full-Time Protector
+            </div>
+            <div class="hero-mini-badge" id="badgeIQ">
+              <span>🧠</span> IQ: -4.2 (±10)
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#feeder" class="btn-primary" id="heroFeedCta">
+              <span>🍕</span> Feed Divyansh Now
+            </a>
+            <a href="#satakshi" class="btn-secondary" id="heroSatakshiCta">
+              <span>💘</span> The Satakshi Mystery
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Avatar Showcase with 3D Tilt -->
+        <div class="hero-visual-card">
+          <div class="hero-avatar-frame" id="heroAvatarFrame">
+            <img src="assets/divyansh_hero.jpg" alt="Divyansh K. Swach - Chubby Schoolboy holding burger and love note"
+              class="hero-avatar-img" id="heroImg">
+          </div>
+
+          <!-- Floating Info Badges on Hero Image -->
+          <div class="hero-float-badge badge-top-left" id="heroBadgeTop">
+            <span class="badge-icon">🍕</span>
+            <div>
+              <div class="badge-text-primary">Snack Ingestion</div>
+              <div class="badge-text-secondary">4 Burgers / Second</div>
+            </div>
+          </div>
+
+          <div class="hero-float-badge badge-bottom-right" id="heroBadgeBottom">
+            <span class="badge-icon">💘</span>
+            <div>
+              <div class="badge-text-primary">Taken by Satakshi</div>
+              <div class="badge-text-secondary">Official Soulmates</div>
+            </div>
+          </div>
+
+          <div class="hero-float-badge badge-center-left" id="heroBadgeLeft">
+            <span class="badge-icon">⚽</span>
+            <div>
+              <div class="badge-text-primary">Football Grade</div>
+              <div class="badge-text-secondary">High Kickability</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TELEMETRY / METRICS TICKER BAR
+         ===================================================================== -->
+    <section class="stats-bar-section" id="telemetry">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item" id="statCalories">
+            <div class="stat-num stat-gold" id="totalCalorieCounter">98,450</div>
+            <div class="stat-label">Daily Calories Devoured</div>
+            <div class="stat-footnote">Calculated via Canteen Receipts</div>
+          </div>
+
+          <div class="stat-item" id="statSphericity">
+            <div class="stat-num stat-cyan">360°</div>
+            <div class="stat-label">Radial Sphericity</div>
+            <div class="stat-footnote">Matches FIFA Ball Specifications</div>
+          </div>
+
+          <div class="stat-item" id="statIQ">
+            <div class="stat-num stat-rose">-4.2</div>
+            <div class="stat-label">Intellectual Quotient (IQ)</div>
+            <div class="stat-footnote">Stupid, idiot, or all of them</div>
+          </div>
+
+          <div class="stat-item" id="statSatakshi">
+            <div class="stat-num stat-green">1000%</div>
+            <div class="stat-label">Satakshi Simp Rating</div>
+            <div class="stat-footnote">Overclocked Love Processor</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         ABOUT SECTION: THE SPHERICAL AUTOBIOGRAPHY
+         ===================================================================== -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-pill pill-gold">
+            <span>Who is Ronaldo??</span>
+          </div>
+          <h2 class="section-title title-gradient-gold">
+            The Legend of Divyansh K. Swach
+          </h2>
+          <p class="section-subtitle">
+            While standard school students worry about exams and college admissions, Divyansh has cracked
+            the code to true existence: food, roundness, ignorance, and pure romance.
+          </p>
+        </div>
+
+        <div class="story-cards-grid">
+          <!-- Card 1: Bhukkad -->
+          <div class="story-card" id="cardBhukkad">
+            <div class="card-top-icon icon-burger">🍔</div>
+            <h3 class="story-title">The Foood System</h3>
+            <p class="story-text">
+              If an edible object enters within a 100-meter radius of Divyansh, it is pulled into his digestive orbit.
+              He has been observed consuming 4 double burgers, 3 samosas, and 2 rolls before the morning school assembly
+              even concludes.
+            </p>
+            <div class="story-quote">
+              "Breakfast is a hobby. Lunch is an obsession. Dinner is a lifestyle." - Divyansh
+            </div>
+          </div>
+
+          <!-- Card 2: Football -->
+          <div class="story-card" id="cardFootball">
+            <div class="card-top-icon icon-football">⚽</div>
+            <h3 class="story-title">The Human Football</h3>
+            <p class="story-text">
+              While other kids grew vertically, Divyansh chose the path of uniform 3D expansion. Extremely large,
+              supremely fat,
+              and naturally pressurized, sports teachers regularly mistake him for the official tournament match ball.
+            </p>
+            <div class="story-quote">
+              "Roll him down the corridor and he won't stop until 5th period." - Akshar
+            </div>
+          </div>
+
+          <!-- Card 3: IQ -->
+          <div class="story-card" id="cardBrain">
+            <div class="card-top-icon icon-brain">🧠</div>
+            <h3 class="story-title">The IQ Enigma</h3>
+            <p class="story-text">
+              Is he not very smart? Is he an idiot? Or is he stupid? Scientists conducted deep cognitive tests and
+              unanimously
+              concluded: <em>He is a dazzling combination of all three</em>. Yet he smiles with the innocence of a
+              newborn penguin.
+            </p>
+            <div class="story-quote">
+              "Thought process? Never heard of her. Must be a new dish at the cafeteria." - Divyansh
+            </div>
+          </div>
+
+          <!-- Card 4: Satakshi -->
+          <div class="story-card" id="cardSatakshi">
+            <div class="card-top-icon icon-heart">💖</div>
+            <h3 class="story-title">The Satakshi Miracle</h3>
+            <p class="story-text">
+              Despite having the IQ of a boiled potato and the silhouette of a medicine ball, Divyansh did the
+              impossible:
+              he won the heart of Satakshi. How? By offering her the last bite of his favorite burger—a sacrifice of
+              pure heroism.
+            </p>
+            <div class="story-quote">
+              "Satakshi is out of my league, but gravity pulled us together anyway."
+            </div>
+          </div>
+        </div>
+
+        <!-- Aerodynamic Sphericity Interactive Widget -->
+        <div class="aerodynamics-box" id="aeroWidget">
+          <div class="aero-header">
+            <div class="aero-title-wrap">
+              <h3>📐 Aerodynamic Sphericity Simulator</h3>
+              <p>Drag the slider to increase Divyansh's pizza intake and witness his transformation into a frictionless
+                sphere!</p>
+            </div>
+          </div>
+
+          <div class="slider-container">
+            <div class="slider-labels">
+              <span>Light Snacking (20 Pizza)</span>
+              <span>Full Football State (500 Pizzas)</span>
+              <span>Cosmic Ingestion (1,000 Pizzas)</span>
+            </div>
+            <input type="range" min="0" max="100" value="70" class="aero-range" id="aeroSlider"
+              aria-label="Sphericity Drag Slider">
+          </div>
+
+          <div class="aero-results-display">
+            <div class="aero-res-card">
+              <div class="aero-val" id="sphericityDisplay">96.8%</div>
+              <div class="aero-lbl">Sphericity Rating</div>
+            </div>
+            <div class="aero-res-card">
+              <div class="aero-val" id="dragDisplay">0.17 Cd</div>
+              <div class="aero-lbl">Air Drag Coefficient</div>
+            </div>
+            <div class="aero-res-card">
+              <div class="aero-val" id="kickabilityDisplay">95%</div>
+              <div class="aero-lbl">Kickability Potential</div>
+            </div>
+            <div class="aero-res-card">
+              <div class="aero-val" style="color: var(--accent-rose);">Satakshi Approved</div>
+              <div class="aero-lbl">Cuddle Index</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         TECHNICAL BLUEPRINT: MATCH BALL VS DIVYANSH
+         ===================================================================== -->
+    <section class="blueprint-section" id="blueprint">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-pill pill-cyan">
+            <span>🔬</span> Scientific Analysis
+          </div>
+          <h2 class="section-title title-gradient-cyan">
+            Biometric Blueprint: Football vs. Divyansh
+          </h2>
+          <p class="section-subtitle">
+            Our aerospace and canteen research department conducted a comparative biometric study between the
+            official FB-2024 match ball and Divyansh K. Swach.
+          </p>
+        </div>
+
+        <div class="blueprint-wrapper">
+          <div class="blueprint-toolbar">
+            <div class="blueprint-status">
+              <span style="color: #00f0ff;">● SYSTEM LIVE</span> | SCHEMATIC ID: #BALL-SWACH-2026
+            </div>
+            <div class="blueprint-status" style="color: var(--accent-gold);">
+              VERDICT: SUBJECT B IS SIGNIFICANTLY CUTIER & ROUNDER
+            </div>
+          </div>
+
+          <div class="blueprint-img-box">
+            <img src="assets/blueprint.jpg"
+              alt="Scientific Blueprint comparing Soccer Ball to Divyansh Chubby Schoolboy" class="blueprint-img"
+              id="blueprintImg">
+          </div>
+
+          <div class="blueprint-interactive-features">
+            <div class="spec-chip">
+              <span class="spec-icon">🥪</span>
+              <div>
+                <div class="spec-title">Cookie & Lunchbox Storage</div>
+                <div class="spec-desc">Dual cheek compression units hold 2 sandwiches and 1 apple for mid-class
+                  emergency nourishment.</div>
+              </div>
+            </div>
+
+            <div class="spec-chip">
+              <span class="spec-icon">⚽</span>
+              <div>
+                <div class="spec-title">Optimal Kickability</div>
+                <div class="spec-desc">Both subjects share a 22cm radial profile, high bounce factor, and dimpled grip
+                  for school playground chaos.</div>
+              </div>
+            </div>
+
+            <div class="spec-chip">
+              <span class="spec-icon">⚡</span>
+              <div>
+                <div class="spec-title">Sugar-Powered Energy Grid</div>
+                <div class="spec-desc">Zero battery required. Operates entirely on glucose, chocolate milkshakes, and
+                  smiles from Satakshi.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         FEEDING MINIGAME: THE BHUKKAD DEMOLITION LAB
+         ===================================================================== -->
+    <section class="feeding-section" id="feeder">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-pill pill-gold">
+            <span>🍕</span> Interactive Feeding Lab
+          </div>
+          <h2 class="section-title title-gradient-gold">
+            The Black Hole
+          </h2>
+          <p class="section-subtitle">
+            Divyansh's stomach is a bottomless black hole. Click snacks below to feed him, listen to him munch,
+            and watch his belly expand into planetary football proportions!
+          </p>
+        </div>
+
+        <div class="feeder-grid">
+          <!-- Left: Belly Visual & Chonk-o-meter -->
+          <div class="feeder-display-card">
+            <div class="chonk-meter-wrap">
+              <div class="chonk-label-bar">
+                <span>CHONK-O-METER</span>
+                <span id="chonkPercentText">25%</span>
+              </div>
+              <div class="chonk-bar-track">
+                <div class="chonk-bar-fill" id="chonkBarFill"></div>
+              </div>
+              <div class="chonk-stage-text" id="chonkStageText">Stage 1: Mildly Chubby Schoolboy 🎒</div>
+            </div>
+
+            <!-- Belly Visualizer -->
+            <div class="avatar-belly-visual" id="avatarBellyVisual" title="Click Divyansh's Belly!">
+              <div class="belly-football-seams"></div>
+              <div class="belly-face">😋</div>
+              <div class="belly-badge-tag">BOUNCE ME!</div>
+            </div>
+
+            <!-- Quotes Box -->
+            <div class="belly-quote-box">
+              <p id="bellyQuoteText">"Click any snack on the right! I can smell burgers from 2 miles away!"</p>
+            </div>
+          </div>
+
+          <!-- Right: Food Dispensary Buttons -->
+          <div class="food-shelf-box">
+            <h3 class="food-shelf-title">Canteen Menu Dispenser</h3>
+            <p class="food-shelf-desc">Feed Divyansh his favorite delicacies to witness instant mass accumulation:</p>
+
+            <div class="food-buttons-grid">
+              <button class="food-card-btn" data-cal="250" id="feedBurger">
+                <span class="food-card-emoji">🍔</span>
+                <div>
+                  <div class="food-card-name">Monster Burger</div>
+                  <div class="food-card-cal">+250 kcal • Massive Chonk</div>
+                </div>
+              </button>
+
+              <button class="food-card-btn" data-cal="180" id="feedMomos">
+                <span class="food-card-emoji">🥟</span>
+                <div>
+                  <div class="food-card-name">Steam Momos</div>
+                  <div class="food-card-cal">+180 kcal • Spicy Chutney</div>
+                </div>
+              </button>
+
+              <button class="food-card-btn" data-cal="350" id="feedPizza">
+                <span class="food-card-emoji">🍕</span>
+                <div>
+                  <div class="food-card-name">Extra Cheesy Pizza</div>
+                  <div class="food-card-cal">+350 kcal • Pure Bliss</div>
+                </div>
+              </button>
+
+              <button class="food-card-btn" data-cal="450" id="feedBiryani">
+                <span class="food-card-emoji">🍛</span>
+                <div>
+                  <div class="food-card-name">Chicken Biryani</div>
+                  <div class="food-card-cal">+450 kcal • Canteen Royal</div>
+                </div>
+              </button>
+
+              <button class="food-card-btn" data-cal="150" id="feedDonut">
+                <span class="food-card-emoji">🍩</span>
+                <div>
+                  <div class="food-card-name">Glazed Donut</div>
+                  <div class="food-card-cal">+150 kcal • Quick Sugar</div>
+                </div>
+              </button>
+
+              <button class="food-card-btn" data-cal="200" id="feedFries">
+                <span class="food-card-emoji">🍟</span>
+                <div>
+                  <div class="food-card-name">Loaded Fries</div>
+                  <div class="food-card-cal">+200 kcal • Satakshi Approved</div>
+                </div>
+              </button>
+            </div>
+
+            <div class="feeder-actions-bar">
+              <button class="btn-reset-belly" id="resetBellyBtn">↺ Clear Stomach (Digest All)</button>
+              <span style="font-size: 0.8rem; color: var(--text-dim);">Sounds Synthesized Live!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SATAKSHI ROMANCE SHRINE
+         ===================================================================== -->
+    <section class="satakshi-section" id="satakshi">
+      <div class="container satakshi-grid">
+        <!-- Satakshi Illustration Frame -->
+        <div class="satakshi-visual-card">
+          <div class="satakshi-frame" id="satakshiFrame">
+            <img src="assets/divyansh_satakshi.jpg" alt="Divyansh sharing milkshake and pizza with Satakshi"
+              class="satakshi-img" id="satakshiImg">
+          </div>
+          <div class="love-float-tag">
+            <span>💘</span> Official Power Couple of School
+          </div>
+        </div>
+
+        <!-- Satakshi Content & Love Calculator -->
+        <div class="satakshi-content">
+          <div class="satakshi-pill">
+            <span>❤️</span> The Satakshi Wingman Archive
+          </div>
+
+          <h2 class="satakshi-heading title-gradient-rose">
+            How a Human Football Won Satakshi's Heart
+          </h2>
+
+          <p class="satakshi-desc">
+            They said round shapes and high school romance don't mix. They were wrong. Divyansh and Satakshi prove
+            that true love transcends grades, intelligence, and waistlines. He loves food, but he loves Satakshi
+            even more than a fresh margherita pizza!
+          </p>
+
+          <!-- Interactive Love Calculator -->
+          <div class="love-calculator-card" id="loveCalc">
+            <div class="love-calc-header">
+              <h4>Compatibility Matrix</h4>
+              <div class="love-score-num">1,000%</div>
+            </div>
+
+            <div class="love-meter-track">
+              <div class="love-meter-bar"></div>
+            </div>
+
+            <ul class="vows-list">
+              <li class="vow-item">
+                <span class="heart-icon">💖</span>
+                <span><strong>Fry Sharing Treaty:</strong> Divyansh guarantees Satakshi gets the crispy curly fries
+                  first.</span>
+              </li>
+              <li class="vow-item">
+                <span class="heart-icon">💖</span>
+                <span><strong>Homework Exchange:</strong> Satakshi solves his math equations; Divyansh guards her
+                  lunchbox with his life.</span>
+              </li>
+              <li class="vow-item">
+                <span class="heart-icon">💖</span>
+                <span><strong>The Football Defense:</strong> In case of school bullies, Divyansh rolls in to provide
+                  impenetrable cushion.</span>
+              </li>
+            </ul>
+
+            <button class="btn-trigger-hearts" id="spawnHeartsBtn">
+              <span>💖</span> Shower Satakshi With Love Hearts!
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         BRAINPOWER & IQ DIAGNOSTICS (THE "NOT VERY SMART" TEST)
+         ===================================================================== -->
+    <section class="iq-section" id="iq-test">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-pill pill-cyan">
+            <span>🧠</span> Cognitive Spectrum Assessment
+          </div>
+          <h2 class="section-title title-gradient-cyan">
+            Brainpower Diagnostics: Stupid vs. Idiot
+          </h2>
+          <p class="section-subtitle">
+            You asked: is he not very smart, an idiot, stupid, or all of them? Take his official high school
+            aptitude exam to reveal his true brain horsepower!
+          </p>
+        </div>
+
+        <div class="iq-quiz-container">
+          <div class="quiz-header">
+            <h3>Divyansh's Thought Process Simulator</h3>
+            <p>Pick the answers you think Divyansh chose on his mid-term exam:</p>
+          </div>
+
+          <!-- Question 1 -->
+          <div class="quiz-card" id="quizQ1">
+            <div class="quiz-question">
+              <span>1.</span> If you have 3 samosas and Satakshi takes 2, what is left?
+            </div>
+            <div class="quiz-options-list">
+              <button class="quiz-option-btn">A) 1 Samosa remaining</button>
+              <button class="quiz-option-btn" data-divyansh="true">B) A sudden uncontrollable urge to order 6 more
+                samosas! (Divyansh)</button>
+              <button class="quiz-option-btn">C) Emotional devastation and severe heartbreak</button>
+            </div>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="quiz-card" id="quizQ2">
+            <div class="quiz-question">
+              <span>2.</span> What is the primary source of Earth's gravitational pull?
+            </div>
+            <div class="quiz-options-list">
+              <button class="quiz-option-btn">A) Earth's planetary mass and general relativity</button>
+              <button class="quiz-option-btn">B) The Moon's orbital tidal resonance</button>
+              <button class="quiz-option-btn" data-divyansh="true">C) Divyansh's belly pulling burgers out of thin air!
+                (Divyansh)</button>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="quiz-card" id="quizQ3">
+            <div class="quiz-question">
+              <span>3.</span> Solve for X: 2x + 10 = 20
+            </div>
+            <div class="quiz-options-list">
+              <button class="quiz-option-btn">A) x = 5</button>
+              <button class="quiz-option-btn" data-divyansh="true">B) Ask Satakshi for help, then fall asleep on the
+                desk! (Divyansh)</button>
+              <button class="quiz-option-btn">C) Eat the exam paper so teacher cannot grade it</button>
+            </div>
+          </div>
+
+          <!-- Report Card Output -->
+          <div class="report-card-summary">
+            <div>
+              <div class="report-stat-num" id="quizIqResult">-4.2</div>
+              <div class="report-stat-label">Calculated IQ</div>
+            </div>
+            <div>
+              <div class="report-stat-num" id="quizTitleResult">Stupid & Idiot Combo</div>
+              <div class="report-stat-label">Diagnostic Status</div>
+            </div>
+            <div>
+              <div class="report-stat-num" style="color: var(--accent-rose);">Satakshi's Guy</div>
+              <div class="report-stat-label">Saving Grace</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         HALL OF FAME & TROPHY CASE
+         ===================================================================== -->
+    <section class="awards-section" id="awards">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-pill pill-gold">
+            <span>🏆</span> AWARDS
+          </div>
+          <h2 class="section-title title-gradient-gold">
+            The Hall of Spherical Fame
+          </h2>
+          <p class="section-subtitle">
+            While he may not have academic trophies, his awards in the culinary, aerodynamic, and romantic arts
+            stand unrivaled in school history.
+          </p>
+        </div>
+
+        <!-- Featured Trophy Card -->
+        <div class="trophy-hero-card">
+          <div class="trophy-image-frame">
+            <img src="assets/trophy.jpg" alt="Golden Bhukkad of the Decade Trophy" class="trophy-img" id="trophyImg">
+          </div>
+          <div class="trophy-details">
+            <h3>Bhukkad of the Decade Award</h3>
+            <p>
+              Awarded by the National High School Canteen Guild for unprecedented dedication to buffet destruction,
+              unwavering devotion to Satakshi, and maintaining a flawless 100% spherical aspect ratio throughout
+              four academic quarters.
+            </p>
+            <button class="btn-primary" id="viewTrophyBtn">
+              <span>📜</span> View Official Certificate
+            </button>
+          </div>
+        </div>
+
+        <!-- Grid of Medals -->
+        <div class="awards-grid">
+          <div class="award-card" id="award1">
+            <div class="award-icon">🥇</div>
+            <div class="award-issuer">FIFA Accreditation Committee</div>
+            <div class="award-title">Honorary Match Ball</div>
+            <div class="award-desc">Certified to rebound with maximum joy and bounce effortlessly across school
+              playgrounds.</div>
+          </div>
+
+          <div class="award-card" id="award2">
+            <div class="award-icon">🥪</div>
+            <div class="award-issuer">School Cafeteria Union</div>
+            <div class="award-title">Lifetime Free Chutney</div>
+            <div class="award-desc">Awarded for keeping the cafeteria in business during all 4 seasons of school.</div>
+          </div>
+
+          <div class="award-card" id="award3">
+            <div class="award-icon">🧠</div>
+            <div class="award-issuer">Backbenchers Society</div>
+            <div class="award-title">Zero Stress Meditation</div>
+            <div class="award-desc">Mastery of keeping a mind completely blank during 45-minute calculus lectures.</div>
+          </div>
+
+          <div class="award-card" id="award4">
+            <div class="award-icon">💍</div>
+            <div class="award-issuer">Satakshi's Personal Decree</div>
+            <div class="award-title">Best Boyfriend on Earth</div>
+            <div class="award-desc">Forever validated as the sweetest, roundest, and most loyal companion alive.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SEND A SNACK FORM (CONTACT)
+         ===================================================================== -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-pill pill-rose">
+            <span>📮</span> Urgent Delivery Service
+          </div>
+          <h2 class="section-title title-gradient-rose">
+            Send a Snack to Divyansh
+          </h2>
+          <p class="section-subtitle">
+            Divyansh does not check emails or text messages. The only verified way to communicate with him
+            is through food parcel dispatch!
+          </p>
+        </div>
+
+        <div class="snack-order-box">
+          <form id="snackOrderForm">
+            <div class="form-group">
+              <label for="senderName" class="form-label">Your Name (Friend / Classmate):</label>
+              <input type="text" id="senderName" class="form-input" placeholder="e.g. Fellow Backbencher" required>
+            </div>
+
+            <div class="form-group">
+              <label for="snackSelect" class="form-label">Select Snack to Dispatch:</label>
+              <select id="snackSelect" class="form-select" required>
+                <option value="Giant Cheesy Pizza">🍕 Giant Cheesy Pizza (Instant Reply)</option>
+                <option value="50 Steamed Momos">🥟 50 Steamed Momos with Red Chili Sauce</option>
+                <option value="Double Whopper Burger Combo">🍔 Double Whopper Burger & Fries</option>
+                <option value="Satakshi's Sweet Compliment">💌 Satakshi's Love Letter (10,000x Value)</option>
+                <option value="Plate of Canteen Samosas">🥟 Emergency 4 Samosas</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="snackMessage" class="form-label">Personal Message or Roast for Divyansh:</label>
+              <textarea id="snackMessage" rows="3" class="form-textarea"
+                placeholder="e.g. Stop eating during chemistry class, Satakshi is watching!" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-snack" id="btnSubmitSnack">
+              <span>🚀</span> Dispatch Snack to Divyansh's Stomach!
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="nav-brand">
+        <span class="brand-icon">⚽</span>
+        <span>Divyansh K. Swach</span>
+      </div>
+
+      <p class="footer-disclaimer">
+        Disclaimer: This portfolio is an parody crafted for Divyansh Kumar Swach.
+        No footballs were harmed in the making of this website. All burgers, momos, and samosas were consumed
+        with extreme enthusiasm. Certified 100% Satakshi approved.
+      </p>
+
+      <div class="footer-love">
+        Made by Akshar. My Website - <a href="https://whyisvercel.vercel.app"
+          class="nav-link">whyisvercel.vercel.app</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       CERTIFICATE MODAL
+       ===================================================================== -->
+  <div class="modal-overlay" id="certificateModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">✕</button>
+      <div style="font-size: 3rem; margin-bottom: 10px;">📜</div>
+      <h3 style="color: var(--accent-gold); font-size: 1.6rem; margin-bottom: 8px;">OFFICIAL DIPLOMA OF EXCELLENCE</h3>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">Issued by the High School Supreme
+        Council of Canteen Affairs</p>
+
+      <div
+        style="background: rgba(0,0,0,0.3); border: 1px dashed var(--accent-gold); border-radius: 16px; padding: 20px; text-align: left; margin-bottom: 24px;">
+        <p><strong>Candidate:</strong> Divyansh K. Swach</p>
+        <p><strong>Official Shape:</strong> 100% Spheroid (Football Grade)</p>
+        <p><strong>Gastronomic Title:</strong> Grandmaster Bhukkad</p>
+        <p><strong>Status:</strong> Stupid, Idiot, lovable, and taken by Satakshi</p>
+        <p><strong>Signatures:</strong> <em>The Canteen Chief</em> & <em>Satakshi</em></p>
+      </div>
+
+      <button class="btn-primary" onclick="document.getElementById('certificateModal').classList.remove('active')"
+        style="width: 100%; justify-content: center;">
+        Salute the Legend 🫡
+      </button>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+
+</html>

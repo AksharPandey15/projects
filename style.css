@@ -30,11 +30,13 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none; /* Custom cursor */
+  cursor: none;
+  /* Custom cursor */
   overflow-x: hidden;
 }
 
-a, button {
+a,
+button {
   cursor: none;
 }
 
@@ -85,7 +87,11 @@ ul {
 }
 
 /* Typography */
-h1, h2, h3, h4, .hero-badge {
+h1,
+h2,
+h3,
+h4,
+.hero-badge {
   font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -310,13 +316,16 @@ section {
   -webkit-backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .project-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: radial-gradient(circle at top right, rgba(100, 200, 255, 0.1), transparent 70%);
   opacity: 0;
   transition: opacity var(--transition-slow);
@@ -325,7 +334,7 @@ section {
 .project-card:hover {
   transform: translateY(-10px) scale(1.02);
   border-color: var(--border-hover);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(100,200,255,0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(100, 200, 255, 0.1);
   z-index: 10;
 }
 
@@ -436,7 +445,7 @@ footer {
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-size: 0.95rem;
-  background: rgba(5,5,5,0.8);
+  background: rgba(5, 5, 5, 0.8);
   position: relative;
   z-index: 1;
 }
@@ -511,17 +520,21 @@ footer {
   body {
     cursor: auto;
   }
+
   .cursor {
     display: none;
   }
+
   .navbar {
     padding: 16px 20px;
     flex-direction: column;
     gap: 16px;
   }
+
   .hero-wrapper {
     padding: 150px 20px 80px 20px;
   }
+
   .projects-container {
     grid-template-columns: 1fr;
   }
