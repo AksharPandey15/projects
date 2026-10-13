@@ -1789,5 +1789,29 @@
     "a_classes": [
       "shiny-cta"
     ]
+  },
+  {
+    "index": 149,
+    "title": "Project 147: Portfolio of Lavish",
+    "desc": "PARODY WEBSITE(FRIENDS ONLY)",
+    "p_classes": [],
+    "href": "lv/index.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
+  },
+  {
+    "index": 150,
+    "title": "Project 146: Portfolio of Daksh",
+    "desc": "PARODY WEBSITE(FRIENDS ONLY)",
+    "p_classes": [],
+    "href": "ds/index.html",
+    "a_text": "View Project",
+    "download": "",
+    "a_classes": [
+      "shiny-cta"
+    ]
   }
 ]
