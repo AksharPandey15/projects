@@ -1477,6 +1477,93 @@ section {
   box-shadow: 0 10px 30px rgba(255, 0, 84, 0.6);
 }
 
+/* 4th Grade Origin to Couples Timeline */
+.satakshi-timeline-container {
+  margin-top: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.timeline-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  position: relative;
+}
+
+.timeline-step-card {
+  background: linear-gradient(160deg, rgba(28, 18, 32, 0.85), rgba(16, 12, 22, 0.95));
+  border: 1px solid rgba(255, 0, 84, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  backdrop-filter: blur(14px);
+  transition: var(--transition-smooth);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.timeline-step-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-rose);
+  box-shadow: 0 16px 40px rgba(255, 0, 84, 0.25);
+}
+
+.step-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-rose);
+  background: rgba(255, 0, 84, 0.12);
+  border: 1px solid rgba(255, 0, 84, 0.3);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.step-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.timeline-step-card:hover .step-icon {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.step-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.step-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.step-quote {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 3px solid var(--accent-rose);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #ffd6e0;
+}
+
 /* ==========================================================================
    BRAINPOWER & IQ DIAGNOSTICS SECTION
    ========================================================================== */

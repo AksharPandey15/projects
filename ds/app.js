@@ -219,8 +219,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const typedTarget = document.getElementById('typedText');
   const roles = [
     'Certified School Bhukkad 🍕',
+    'In Love with Satakshi Since 4th Grade 🎒❤️',
     'Aerodynamically Spherical ⚽',
-    'Satakshi\'s Eternal Simp ❤️',
+    'Satakshi\'s Eternal Soulmate ❤️',
     'Brain Power: 404 Not Found 🧠',
     'Canteen VIP Guest of Honor 🥪',
     'Legally Resembles a Soccer Ball 🏆'
@@ -434,6 +435,39 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 8b. 4th Grade to Couples Interactive Timeline Step Cards
+  const timelineStepCards = document.querySelectorAll('.timeline-step-card');
+  timelineStepCards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      const emojis = [
+        ['🎒', '😜', '✏️', '🤣'],
+        ['💬', '🍕', '🗣️', '✨'],
+        ['🥊', '😈', '🍔', '😆'],
+        ['💖', '💍', '💘', '🥰']
+      ];
+      
+      if (idx === 0) sfx.playBoing();
+      else if (idx === 1) sfx.playLoveChime();
+      else if (idx === 2) sfx.playMunch();
+      else sfx.playCelebration();
+
+      // Spawn burst of emojis from card
+      const rect = card.getBoundingClientRect();
+      const cardEmojis = emojis[idx] || ['💖'];
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          const particle = document.createElement('div');
+          particle.className = 'floating-heart-particle';
+          particle.textContent = cardEmojis[Math.floor(Math.random() * cardEmojis.length)];
+          particle.style.left = `${rect.left + Math.random() * rect.width}px`;
+          particle.style.top = `${rect.top}px`;
+          document.body.appendChild(particle);
+          setTimeout(() => particle.remove(), 2000);
+        }, i * 60);
+      }
+    });
+  });
 
   // 9. IQ Quiz Diagnostics
   const quizOptionBtns = document.querySelectorAll('.quiz-option-btn');
