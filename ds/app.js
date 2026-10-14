@@ -124,6 +124,26 @@ document.addEventListener('DOMContentLoaded', () => {
         osc.stop(this.ctx.currentTime + i * 0.1 + 0.4);
       });
     }
+
+    playLockClick() {
+      if (this.muted) return;
+      this.init();
+      if (!this.ctx) return;
+
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(180, this.ctx.currentTime + 0.09);
+
+      gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.09);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+      osc.start();
+      osc.stop(this.ctx.currentTime + 0.09);
+    }
   }
 
   const sfx = new SoundFX();
@@ -605,6 +625,205 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target === certificateModal) {
         certificateModal.classList.remove('active');
       }
+    });
+  }
+
+  // 12. Security Password Gatekeeper Controller
+  const securityGateOverlay = document.getElementById('securityGateOverlay');
+  const securityGateCard = document.getElementById('securityGateCard');
+  const securityGateForm = document.getElementById('securityGateForm');
+  const gatePasswordInput = document.getElementById('gatePasswordInput');
+  const gateInputWrapper = document.getElementById('gateInputWrapper');
+  const gateToggleVisibility = document.getElementById('gateToggleVisibility');
+  const gateEyeIcon = document.getElementById('gateEyeIcon');
+  const gateFeedback = document.getElementById('gateFeedback');
+  const gateSubmitBtn = document.getElementById('gateSubmitBtn');
+  const gateBtnIcon = document.getElementById('gateBtnIcon');
+  const gateBtnLabel = document.getElementById('gateBtnLabel');
+  const gateAvatar = document.getElementById('gateAvatar');
+  const gateAvatarIcon = document.getElementById('gateAvatarIcon');
+  const lockSiteBtn = document.getElementById('lockSiteBtn');
+
+  const CORRECT_PASSPHRASE = 'football';
+  let isUnlocking = false;
+
+  // Auto-focus input when gate is active
+  if (gatePasswordInput) {
+    setTimeout(() => {
+      gatePasswordInput.focus();
+    }, 200);
+  }
+
+  // Toggle Password Visibility
+  if (gateToggleVisibility && gatePasswordInput) {
+    gateToggleVisibility.addEventListener('click', () => {
+      const isPassword = gatePasswordInput.type === 'password';
+      gatePasswordInput.type = isPassword ? 'text' : 'password';
+      if (gateEyeIcon) {
+        gateEyeIcon.textContent = isPassword ? '🙈' : '👁️';
+      }
+      gateToggleVisibility.setAttribute(
+        'title',
+        isPassword ? 'Hide password' : 'Show password'
+      );
+    });
+  }
+
+  // Function to unlock the site
+  function unlockWebsite() {
+    if (isUnlocking) return;
+    isUnlocking = true;
+
+    // Feedback & UI State
+    if (gateFeedback) {
+      gateFeedback.textContent = '✅ Access Clearance Granted! Unlocking...';
+      gateFeedback.className = 'gate-feedback feedback-success';
+    }
+    if (gateInputWrapper) {
+      gateInputWrapper.className = 'gate-input-wrapper is-valid';
+    }
+    if (gateAvatar) {
+      gateAvatar.classList.remove('error-state');
+      gateAvatar.classList.add('success-state');
+    }
+    if (gateAvatarIcon) {
+      gateAvatarIcon.textContent = '🔓';
+    }
+    if (gateBtnIcon) {
+      gateBtnIcon.textContent = '✨';
+    }
+    if (gateBtnLabel) {
+      gateBtnLabel.textContent = 'Welcome, Agent!';
+    }
+    if (gatePasswordInput) {
+      gatePasswordInput.disabled = true;
+    }
+    if (gateSubmitBtn) {
+      gateSubmitBtn.disabled = true;
+    }
+
+    // Audio & Confetti
+    sfx.playCelebration();
+    runConfettiExplosion();
+
+    // Smooth dismiss animation
+    setTimeout(() => {
+      if (securityGateOverlay) {
+        securityGateOverlay.classList.add('gate-unlocked');
+      }
+      document.body.classList.remove('site-locked');
+      isUnlocking = false;
+    }, 600);
+  }
+
+  // Function to reject incorrect password
+  function rejectPassword() {
+    sfx.playBuzzer();
+
+    if (securityGateCard) {
+      securityGateCard.classList.remove('shake-card');
+      // Trigger reflow to restart animation
+      void securityGateCard.offsetWidth;
+      securityGateCard.classList.add('shake-card');
+      setTimeout(() => {
+        securityGateCard.classList.remove('shake-card');
+      }, 500);
+    }
+
+    if (gateInputWrapper) {
+      gateInputWrapper.className = 'gate-input-wrapper is-invalid';
+    }
+
+    if (gateAvatar) {
+      gateAvatar.classList.remove('success-state');
+      gateAvatar.classList.add('error-state');
+      if (gateAvatarIcon) {
+        gateAvatarIcon.textContent = '⛔';
+      }
+      setTimeout(() => {
+        gateAvatar.classList.remove('error-state');
+        if (gateAvatarIcon) {
+          gateAvatarIcon.textContent = '🔒';
+        }
+      }, 1200);
+    }
+
+    if (gateFeedback) {
+      gateFeedback.textContent = '⛔ Access Denied: Incorrect password. Need a hint? Click below!';
+      gateFeedback.className = 'gate-feedback feedback-error';
+    }
+
+    if (gatePasswordInput) {
+      gatePasswordInput.focus();
+      gatePasswordInput.select();
+    }
+  }
+
+  // Handle Form Submit
+  if (securityGateForm) {
+    securityGateForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const entered = (gatePasswordInput?.value || '').trim().toLowerCase();
+
+      if (entered === CORRECT_PASSPHRASE) {
+        unlockWebsite();
+      } else {
+        rejectPassword();
+      }
+    });
+  }
+
+  // Clear invalid styling when user types
+  if (gatePasswordInput) {
+    gatePasswordInput.addEventListener('input', () => {
+      if (gateInputWrapper && gateInputWrapper.classList.contains('is-invalid')) {
+        gateInputWrapper.className = 'gate-input-wrapper';
+      }
+      if (gateFeedback && gateFeedback.classList.contains('feedback-error')) {
+        gateFeedback.textContent = '';
+      }
+    });
+  }
+
+  // Lock Site Button in Navbar
+  if (lockSiteBtn) {
+    lockSiteBtn.addEventListener('click', () => {
+      sfx.playLockClick();
+
+      // Reset UI elements
+      document.body.classList.add('site-locked');
+      if (securityGateOverlay) {
+        securityGateOverlay.classList.remove('gate-unlocked');
+      }
+      if (gatePasswordInput) {
+        gatePasswordInput.disabled = false;
+        gatePasswordInput.value = '';
+        setTimeout(() => gatePasswordInput.focus(), 150);
+      }
+      if (gateSubmitBtn) {
+        gateSubmitBtn.disabled = false;
+      }
+      if (gateBtnIcon) {
+        gateBtnIcon.textContent = '🔓';
+      }
+      if (gateBtnLabel) {
+        gateBtnLabel.textContent = 'Unlock Clearance';
+      }
+      if (gateAvatar) {
+        gateAvatar.className = 'gate-avatar';
+      }
+      if (gateAvatarIcon) {
+        gateAvatarIcon.textContent = '🔒';
+      }
+      if (gateInputWrapper) {
+        gateInputWrapper.className = 'gate-input-wrapper';
+      }
+      if (gateFeedback) {
+        gateFeedback.textContent = '';
+        gateFeedback.className = 'gate-feedback';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 });

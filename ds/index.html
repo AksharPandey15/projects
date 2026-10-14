@@ -23,7 +23,70 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 
-<body>
+<body class="site-locked">
+
+  <!-- =====================================================================
+       SECURITY PASSWORD GATEKEEPER (LOCKED ON PAGE LOAD)
+       ===================================================================== -->
+  <div class="security-gate-overlay" id="securityGateOverlay" role="dialog" aria-modal="true"
+    aria-labelledby="gateTitle">
+    <div class="security-gate-backdrop"></div>
+
+    <!-- Floating Ambient Security Emojis -->
+    <div class="security-gate-particles" aria-hidden="true">
+      <span class="gate-particle" style="top: 14%; left: 10%;">🔒</span>
+      <span class="gate-particle" style="top: 72%; left: 8%;">⚽</span>
+      <span class="gate-particle" style="top: 20%; right: 12%;">🍕</span>
+      <span class="gate-particle" style="top: 78%; right: 10%;">✨</span>
+      <span class="gate-particle" style="top: 48%; left: 88%;">🛡️</span>
+    </div>
+
+    <div class="security-gate-card" id="securityGateCard">
+      <div class="gate-card-glow" aria-hidden="true"></div>
+
+      <!-- Classified Clearance Badge -->
+      <div class="gate-clearance-badge">
+        <span class="gate-badge-dot"></span>
+        <span>RESTRICTED ACCESS</span>
+      </div>
+
+      <!-- Animated Lock Avatar -->
+      <div class="gate-avatar-wrapper">
+        <div class="gate-avatar" id="gateAvatar">
+          <span class="gate-avatar-icon" id="gateAvatarIcon">🔒</span>
+        </div>
+        <div class="gate-avatar-ripple"></div>
+      </div>
+
+      <h2 class="gate-title" id="gateTitle">Security Clearance Required</h2>
+      <p class="gate-subtitle">
+        You are attempting to access <strong>Divyansh K. Swach's</strong> official archives.
+        Please provide the security password to proceed.
+      </p>
+
+      <!-- Password Entry Form -->
+      <form class="gate-form" id="securityGateForm" autocomplete="off">
+        <div class="gate-input-wrapper" id="gateInputWrapper">
+          <span class="gate-input-icon" aria-hidden="true">🔑</span>
+          <input type="password" id="gatePasswordInput" class="gate-input" placeholder="Enter security password..."
+            autocomplete="off" spellcheck="false" required aria-label="Enter security password" />
+          <button type="button" class="gate-toggle-visibility" id="gateToggleVisibility" title="Show or hide password"
+            aria-label="Toggle password visibility">
+            <span id="gateEyeIcon">👁️</span>
+          </button>
+        </div>
+
+        <div class="gate-feedback" id="gateFeedback" aria-live="polite"></div>
+
+        <button type="submit" class="gate-submit-btn" id="gateSubmitBtn">
+          <span class="gate-btn-icon" id="gateBtnIcon">🔓</span>
+          <span class="gate-btn-label" id="gateBtnLabel">Unlock Clearance</span>
+        </button>
+      </form>
+
+
+    </div>
+  </div>
 
   <!-- Top Scroll Progress Bar -->
   <div class="scroll-progress-bar" id="scrollProgressBar"></div>
@@ -72,6 +135,8 @@
           aria-label="Toggle Sound Effects">🔊</button>
         <button class="btn-icon" id="rollDivyanshBtn" title="Roll Divyansh Across Screen"
           aria-label="Roll Divyansh">⚽</button>
+        <button class="btn-icon" id="lockSiteBtn" title="Lock Website (Require Password)"
+          aria-label="Lock Website">🔒</button>
         <a href="#feeder" class="btn-nav-action" style="text-decoration: none;" id="navFeedBtn">
           <span>🍕</span> Feed Him
         </a>
@@ -269,8 +334,10 @@
             <div class="card-top-icon icon-heart">💖</div>
             <h3 class="story-title">The Satakshi Miracle (4th Grade Origin)</h3>
             <p class="story-text">
-              Started back in <strong>4th grade</strong>! Satakshi used to make fun of Divyansh and annoyed him constantly. 
-              Later on, they became friends and talked a lot, becoming closer each day. Both loved annoying each other—and 
+              Started back in <strong>4th grade</strong>! Satakshi used to make fun of Divyansh and annoyed him
+              constantly.
+              Later on, they became friends and talked a lot, becoming closer each day. Both loved annoying each
+              other—and
               later on, they officially became couples!
             </p>
             <div class="story-quote">
@@ -523,9 +590,9 @@
           </h2>
 
           <p class="satakshi-desc">
-            Their story is legendary across the school corridors: It started in <strong>4th grade</strong> when 
-            Satakshi made fun of Divyansh and constantly annoyed him every single day. But later on, they became 
-            friends and talked a lot, growing closer and closer. Both loved annoying each other to pieces—and 
+            Their story is legendary across the school corridors: It started in <strong>4th grade</strong> when
+            Satakshi made fun of Divyansh and constantly annoyed him every single day. But later on, they became
+            friends and talked a lot, growing closer and closer. Both loved annoying each other to pieces—and
             later on, they officially became couples!
           </p>
 
@@ -543,19 +610,23 @@
             <ul class="vows-list">
               <li class="vow-item">
                 <span class="heart-icon">💖</span>
-                <span><strong>Started in 4th Grade:</strong> Satakshi made fun of him & annoyed him, sparking the ultimate love story.</span>
+                <span><strong>Started in 4th Grade:</strong> Satakshi made fun of him & annoyed him, sparking the
+                  ultimate love story.</span>
               </li>
               <li class="vow-item">
                 <span class="heart-icon">💖</span>
-                <span><strong>Mutual Annoyance Treaty:</strong> Both spend 24/7 annoying each other and wouldn't have it any other way.</span>
+                <span><strong>Mutual Annoyance Treaty:</strong> Both spend 24/7 annoying each other and wouldn't have it
+                  any other way.</span>
               </li>
               <li class="vow-item">
                 <span class="heart-icon">💖</span>
-                <span><strong>The Fry Sharing Pledge:</strong> Divyansh guarantees Satakshi gets the crispiest fries first.</span>
+                <span><strong>The Fry Sharing Pledge:</strong> Divyansh guarantees Satakshi gets the crispiest fries
+                  first.</span>
               </li>
               <li class="vow-item">
                 <span class="heart-icon">💖</span>
-                <span><strong>Official Couple Status:</strong> High school's roundest legend and Satakshi, bonded forever.</span>
+                <span><strong>Official Couple Status:</strong> High school's roundest legend and Satakshi, bonded
+                  forever.</span>
               </li>
             </ul>
 
@@ -587,7 +658,8 @@
             <div class="step-icon">🎒</div>
             <h4 class="step-title">The Teasing Era</h4>
             <p class="step-desc">
-              Started in 4th grade! Satakshi made fun of Divyansh, roasted his antics, and annoyed him constantly every single school day.
+              Started in 4th grade! Satakshi made fun of Divyansh, roasted his antics, and annoyed him constantly every
+              single school day.
             </p>
             <div class="step-quote">"Why won't this girl stop annoying me?!" — Divyansh in 4th Grade</div>
           </div>
@@ -598,7 +670,8 @@
             <div class="step-icon">💬</div>
             <h4 class="step-title">Talked A Lot & Became Closer</h4>
             <p class="step-desc">
-              Later on, they became genuine friends. They started talking a lot during recess, walking home together, and sharing secrets until they grew super close.
+              Later on, they became genuine friends. They started talking a lot during recess, walking home together,
+              and sharing secrets until they grew super close.
             </p>
             <div class="step-quote">"Hours of talking, zero homework completed."</div>
           </div>
@@ -609,7 +682,8 @@
             <div class="step-icon">🥊</div>
             <h4 class="step-title">Both Annoyed Each Other</h4>
             <p class="step-desc">
-              Being close didn't stop the mischief! Both annoyed each other 24/7—stealing tiffins, hiding pens, and laughing endlessly. Annoyance was their love language.
+              Being close didn't stop the mischief! Both annoyed each other 24/7—stealing tiffins, hiding pens, and
+              laughing endlessly. Annoyance was their love language.
             </p>
             <div class="step-quote">"The more we annoy each other, the stronger we get!"</div>
           </div>
@@ -620,7 +694,8 @@
             <div class="step-icon">💍</div>
             <h4 class="step-title">Became Couples!</h4>
             <p class="step-desc">
-              And later on, after all the years of teasing, talking, and mutual annoyance, they officially became couples! The cutest, funniest pair in school.
+              And later on, after all the years of teasing, talking, and mutual annoyance, they officially became
+              couples! The cutest, funniest pair in school.
             </p>
             <div class="step-quote">"From 4th grade roasts to forever soulmates ❤️"</div>
           </div>
