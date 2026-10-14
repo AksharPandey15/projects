@@ -749,7 +749,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (gateFeedback) {
-      gateFeedback.textContent = '⛔ Access Denied: Incorrect password. Need a hint? Click below!';
+      gateFeedback.textContent = '⛔ Access Denied: Incorrect password! Please try again.';
       gateFeedback.className = 'gate-feedback feedback-error';
     }
 

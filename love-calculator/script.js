@@ -1,32 +1,53 @@
 /**
- * Love Calculator - High Performance Modern Script
- * Optimized for Mobile (iOS & Android) with Touch & Web Audio
+ * Love Calculator & FLAMES Game - High Performance Modern Script
+ * Optimized for Mobile (iOS & Android) with Touch & GPU Animations
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
+    // Mode State
+    let currentMode = 'percentage'; // 'percentage' | 'flames'
+
+    // DOM Elements - Mode Switcher
+    const btnModePercentage = document.getElementById('btn-mode-percentage');
+    const btnModeFlames = document.getElementById('btn-mode-flames');
+    const pageTitle = document.getElementById('page-title');
+    const pageSubtitle = document.getElementById('page-subtitle');
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+    const connectorIcon = document.getElementById('connector-icon');
+
+    // DOM Elements - Form & Inputs
     const form = document.getElementById('love-form');
     const calcBtn = document.getElementById('calculate-btn');
     const name1Input = document.getElementById('name1');
     const name2Input = document.getElementById('name2');
-    const resultSection = document.getElementById('result-section');
-    const stepsContainer = document.getElementById('steps-container');
-    const stepsBadge = document.getElementById('steps-count-badge');
-    const statusText = document.getElementById('status-text');
-    const skipBtn = document.getElementById('skip-btn');
-    const finalResultDiv = document.getElementById('final-result');
-    const percentageSpan = document.getElementById('percentage');
-    const messageEl = document.getElementById('message');
-    const verdictPill = document.getElementById('verdict-pill');
-    const verdictDesc = document.getElementById('verdict-description');
-    const circle = document.querySelector('.progress-ring__circle');
-    const toast = document.getElementById('toast');
-    const shareBtn = document.getElementById('share-btn');
-    const retryBtn = document.getElementById('retry-btn');
     const clearBtns = document.querySelectorAll('.clear-input-btn');
     const quickPills = document.querySelectorAll('.quick-pill');
 
-    // Compatibility bars
+    // DOM Elements - Results & Steps
+    const resultSection = document.getElementById('result-section');
+    const statusText = document.getElementById('status-text');
+    const skipBtn = document.getElementById('skip-btn');
+    const flamesBoard = document.getElementById('flames-board');
+    const flamesBadges = document.querySelectorAll('.flames-badge');
+    const stepsTitle = document.getElementById('steps-title');
+    const stepsBadge = document.getElementById('steps-count-badge');
+    const stepsContainer = document.getElementById('steps-container');
+
+    // DOM Elements - Final Result
+    const finalResultDiv = document.getElementById('final-result');
+    const percentageRingContainer = document.getElementById('percentage-ring-container');
+    const flamesEmblemContainer = document.getElementById('flames-emblem-container');
+    const percentageSpan = document.getElementById('percentage');
+    const destinyEmoji = document.getElementById('destiny-emoji');
+    const destinyLetter = document.getElementById('destiny-letter');
+    const destinyWord = document.getElementById('destiny-word');
+    const verdictPill = document.getElementById('verdict-pill');
+    const messageEl = document.getElementById('message');
+    const verdictDesc = document.getElementById('verdict-description');
+    const circle = document.querySelector('.progress-ring__circle');
+
+    // DOM Elements - Compatibility bars
     const passionVal = document.getElementById('passion-val');
     const passionBar = document.getElementById('passion-bar');
     const trustVal = document.getElementById('trust-val');
@@ -34,7 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const harmonyVal = document.getElementById('harmony-val');
     const harmonyBar = document.getElementById('harmony-bar');
 
-    // Progress Ring Calculation (Ultra-safe for all mobile browser versions)
+    // Action Buttons
+    const shareBtn = document.getElementById('share-btn');
+    const retryBtn = document.getElementById('retry-btn');
+    const toast = document.getElementById('toast');
+
+    // Progress Ring Initialization
     const radius = (circle && circle.r && circle.r.baseVal && circle.r.baseVal.value)
         ? circle.r.baseVal.value
         : (circle ? parseFloat(circle.getAttribute('r')) || 66 : 66);
@@ -45,7 +71,145 @@ document.addEventListener('DOMContentLoaded', () => {
         circle.style.strokeDashoffset = circumference;
     }
 
-    // Clear input button listeners
+    // State & Timers tracking
+    let activeTimeouts = [];
+    let isCalculating = false;
+    let currentCalculationState = null;
+
+    function clearScheduledTimeouts() {
+        activeTimeouts.forEach(id => clearTimeout(id));
+        activeTimeouts = [];
+    }
+
+    // ==========================================================================
+    // FLAMES METADATA DICTIONARY
+    // ==========================================================================
+    const FLAMES_DATA = {
+        'F': {
+            name: 'Friends',
+            emoji: '🤝',
+            badge: 'Best Friends Forever 🤝',
+            title: 'Unbreakable Best Friends! 🤝💫',
+            desc: 'A match founded on effortless laughter, loyalty, and deep trust. You understand each other without saying a word — true partners in crime!',
+            bars: [
+                { label: 'Trust & Loyalty', val: 98 },
+                { label: 'Banter & Fun', val: 96 },
+                { label: 'Long-Term Bond', val: 94 }
+            ]
+        },
+        'L': {
+            name: 'Love',
+            emoji: '❤️',
+            badge: 'True Love Connection ❤️',
+            title: 'Passionate Cosmic Love! ❤️🔥',
+            desc: 'The universe has aligned your paths! Magnetic chemistry, electric romance, and deep attraction that only grows stronger over time.',
+            bars: [
+                { label: 'Romantic Chemistry', val: 99 },
+                { label: 'Electric Passion', val: 97 },
+                { label: 'Soul Harmony', val: 95 }
+            ]
+        },
+        'A': {
+            name: 'Affection',
+            emoji: '🥰',
+            badge: 'Sweet Affection 🥰',
+            title: 'Tender & Sweet Affection! 🥰✨',
+            desc: 'Endless butterflies, gentle hugs, and heartwarming care. You bring out the softest, most loving and attentive versions of one another.',
+            bars: [
+                { label: 'Warmth & Cuteness', val: 97 },
+                { label: 'Emotional Comfort', val: 95 },
+                { label: 'Gentle Fondness', val: 93 }
+            ]
+        },
+        'M': {
+            name: 'Marriage',
+            emoji: '💍',
+            badge: 'Destined For Marriage 💍',
+            title: 'Destined For Marriage! 💍👑',
+            desc: 'A timeless union written in the stars! Rock-solid devotion, shared values, and a soulmate partnership built for a lifetime of happiness.',
+            bars: [
+                { label: 'Lifelong Devotion', val: 99 },
+                { label: 'Soul Partnership', val: 98 },
+                { label: 'Unshakable Trust', val: 96 }
+            ]
+        },
+        'E': {
+            name: 'Enemy',
+            emoji: '⚔️',
+            badge: 'Frenemies / Rivals ⚔️',
+            title: 'Enemies-To-Lovers Tension! ⚔️⚡',
+            desc: 'Sparks fly whenever you clash! Intense arguments, fierce rivalry, and stubborn pride that mask an undeniable magnetic attraction.',
+            bars: [
+                { label: 'Dramatic Tension', val: 99 },
+                { label: 'Competitive Fire', val: 96 },
+                { label: 'Hidden Chemistry', val: 82 }
+            ]
+        },
+        'S': {
+            name: 'Siblings',
+            emoji: '👫',
+            badge: 'Sibling Energy 👫',
+            title: 'Playful Sibling Bond! 👫🍕',
+            desc: 'Endless teasing, stealing food, and knowing each other’s deepest secrets. Utter comfort and protective care with zero romantic drama!',
+            bars: [
+                { label: 'Family Comfort', val: 98 },
+                { label: 'Teasing Quotient', val: 97 },
+                { label: 'Protective Loyalty', val: 95 }
+            ]
+        }
+    };
+
+    // ==========================================================================
+    // MODE SWITCHER LOGIC
+    // ==========================================================================
+    function switchMode(newMode) {
+        if (currentMode === newMode && !isCalculating) return;
+        currentMode = newMode;
+        clearScheduledTimeouts();
+        isCalculating = false;
+        calcBtn.disabled = false;
+        resultSection.classList.add('hidden');
+        resetFlamesBoard();
+
+        if (currentMode === 'percentage') {
+            btnModePercentage.classList.add('active');
+            btnModePercentage.setAttribute('aria-selected', 'true');
+            btnModeFlames.classList.remove('active');
+            btnModeFlames.setAttribute('aria-selected', 'false');
+
+            pageTitle.innerHTML = 'Love Calculator <span class="heart-pulse" id="title-icon">💖</span>';
+            pageSubtitle.innerText = 'Enter two names to reveal your deep cosmic harmony & step-by-step math';
+            btnText.innerText = 'Calculate Percentage';
+            btnIcon.innerText = '✨';
+            stepsTitle.innerText = 'Algorithm Breakdown';
+            flamesBoard.classList.add('hidden');
+        } else {
+            btnModeFlames.classList.add('active');
+            btnModeFlames.setAttribute('aria-selected', 'true');
+            btnModePercentage.classList.remove('active');
+            btnModePercentage.setAttribute('aria-selected', 'false');
+
+            pageTitle.innerHTML = 'FLAMES Game <span class="heart-pulse" id="title-icon">🔥</span>';
+            pageSubtitle.innerText = 'Enter two names to reveal your relationship destiny through the legendary FLAMES test';
+            btnText.innerText = 'Reveal FLAMES Destiny';
+            btnIcon.innerText = '🔥';
+            stepsTitle.innerText = 'Elimination Breakdown';
+            flamesBoard.classList.remove('hidden');
+        }
+    }
+
+    btnModePercentage?.addEventListener('click', () => switchMode('percentage'));
+    btnModeFlames?.addEventListener('click', () => switchMode('flames'));
+
+    function resetFlamesBoard() {
+        flamesBadges.forEach(badge => {
+            badge.classList.remove('eliminated', 'winner', 'active-count');
+        });
+    }
+
+    // ==========================================================================
+    // INPUT LISTENERS & QUICK PICKS
+    // ==========================================================================
     clearBtns.forEach(btn => {
         const targetId = btn.getAttribute('data-target');
         const targetInput = document.getElementById(targetId);
@@ -63,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Quick pick pill presets
     quickPills.forEach(pill => {
         pill.addEventListener('click', () => {
             const n1 = pill.getAttribute('data-n1');
@@ -71,57 +234,24 @@ document.addEventListener('DOMContentLoaded', () => {
             name1Input.value = n1;
             name2Input.value = n2;
             clearBtns.forEach(b => b.classList.add('visible'));
-            calculateLove();
+            startCalculation();
         });
     });
 
-    // Handle Form & Enter Key
     form?.addEventListener('submit', (e) => {
         e.preventDefault();
-        calculateLove();
+        startCalculation();
     });
 
     calcBtn?.addEventListener('click', (e) => {
         e.preventDefault();
-        calculateLove();
+        startCalculation();
     });
 
-    // State & Timers tracking for instant cancellations
-    let activeTimeouts = [];
-    let isCalculating = false;
-    let currentFinalCalculation = null;
-
-    function clearScheduledTimeouts() {
-        activeTimeouts.forEach(id => clearTimeout(id));
-        activeTimeouts = [];
-    }
-
-    // Skip Button Handler
-    skipBtn?.addEventListener('click', () => {
-        if (!isCalculating || !currentFinalCalculation) return;
-        clearScheduledTimeouts();
-        // Immediately render all steps
-        stepsContainer.innerHTML = '';
-        currentFinalCalculation.steps.forEach((stepArray, idx) => {
-            const isLast = idx === currentFinalCalculation.steps.length - 1;
-            appendStepRow(stepArray, idx + 1, isLast);
-        });
-        stepsContainer.scrollTop = stepsContainer.scrollHeight;
-        revealFinalResult(currentFinalCalculation.percentage, currentFinalCalculation.name1, currentFinalCalculation.name2);
-    });
-
-    // Retry Button
-    retryBtn?.addEventListener('click', () => {
-        name1Input.value = '';
-        name2Input.value = '';
-        clearBtns.forEach(b => b.classList.remove('visible'));
-        resultSection.classList.add('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        name1Input.focus();
-    });
-
-    // Main Calculate Logic
-    function calculateLove() {
+    // ==========================================================================
+    // DISPATCHER: START CALCULATION
+    // ==========================================================================
+    function startCalculation() {
         const rawName1 = name1Input.value.trim();
         const rawName2 = name2Input.value.trim();
 
@@ -132,19 +262,27 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Dismiss mobile virtual keyboard for clean view
         name1Input.blur();
         name2Input.blur();
 
-        // Cancel previous runs
+        if (currentMode === 'percentage') {
+            runPercentageCalculation(rawName1, rawName2);
+        } else {
+            runFlamesCalculation(rawName1, rawName2);
+        }
+    }
+
+    // ==========================================================================
+    // METHOD 1: LOVE PERCENTAGE ALGORITHM
+    // ==========================================================================
+    function runPercentageCalculation(rawName1, rawName2) {
         clearScheduledTimeouts();
         isCalculating = true;
         calcBtn.disabled = true;
 
-        // Reset and prepare UI
         resultSection.classList.remove('hidden');
+        flamesBoard.classList.add('hidden');
         finalResultDiv.classList.add('hidden');
-        finalResultDiv.classList.remove('pop');
         skipBtn.classList.remove('hidden');
         stepsContainer.innerHTML = '';
         percentageSpan.innerText = '0';
@@ -152,17 +290,15 @@ document.addEventListener('DOMContentLoaded', () => {
         messageEl.innerText = '';
         statusText.innerText = 'Analyzing phonetic harmony...';
 
-        // Smooth scroll towards the result section so mobile users see progress instantly
+        percentageRingContainer.classList.remove('hidden');
+        flamesEmblemContainer.classList.add('hidden');
+
         setTimeout(() => {
             resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 80);
 
-        // Character Frequency Matching Algorithm
-        let str1 = rawName1.toLowerCase().replace(/[^a-z0-9]/g, '');
-        let str2 = rawName2.toLowerCase().replace(/[^a-z0-9]/g, '');
-
-        if (!str1) str1 = rawName1.toLowerCase();
-        if (!str2) str2 = rawName2.toLowerCase();
+        let str1 = rawName1.toLowerCase().replace(/[^a-z0-9]/g, '') || rawName1.toLowerCase();
+        let str2 = rawName2.toLowerCase().replace(/[^a-z0-9]/g, '') || rawName2.toLowerCase();
 
         let freq1 = {};
         for (let c of str1) freq1[c] = (freq1[c] || 0) + 1;
@@ -180,10 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Push '2' for each pair
         for (let i = 0; i < totalPairs; i++) array.push(2);
-
-        // Push '1' for non-paired remaining letters
         let remaining = (str1.length + str2.length) - (totalPairs * 2);
         for (let i = 0; i < remaining; i++) array.push(1);
 
@@ -191,7 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let steps = [array.slice()];
 
-        // Reduce steps outer digits addition
         while (array.length > 2) {
             if (array.length === 3) {
                 let currentNum = parseInt(array.join(''));
@@ -205,10 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
             while (left < right) {
                 let sum = array[left] + array[right];
                 if (sum >= 10) {
-                    let sumStr = sum.toString();
-                    for (let char of sumStr) {
-                        nextArray.push(parseInt(char));
-                    }
+                    for (let char of sum.toString()) nextArray.push(parseInt(char));
                 } else {
                     nextArray.push(sum);
                 }
@@ -216,10 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 right--;
             }
 
-            if (left === right) {
-                nextArray.push(array[left]);
-            }
-
+            if (left === right) nextArray.push(array[left]);
             array = nextArray;
             steps.push(array.slice());
         }
@@ -228,7 +354,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (array.length === 0) finalPercentage = 0;
         if (array.length === 1) finalPercentage = array[0];
 
-        currentFinalCalculation = {
+        currentCalculationState = {
+            mode: 'percentage',
             steps,
             percentage: finalPercentage,
             name1: rawName1,
@@ -236,8 +363,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         stepsBadge.innerText = `${steps.length} Steps`;
-
-        // Responsive animation timing: snappier on mobile (180ms - 220ms)
         const stepDelay = Math.max(160, Math.min(240, Math.floor(2200 / (steps.length || 1))));
 
         steps.forEach((stepArray, idx) => {
@@ -255,10 +380,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const totalStepsTime = steps.length * stepDelay;
-
-        // Reveal final result
         const finishTimeout = setTimeout(() => {
-            revealFinalResult(finalPercentage, rawName1, rawName2);
+            revealPercentageResult(finalPercentage, rawName1, rawName2);
         }, totalStepsTime + 150);
         activeTimeouts.push(finishTimeout);
     }
@@ -286,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stepsContainer.appendChild(row);
     }
 
-    function revealFinalResult(finalPercentage, name1, name2) {
+    function revealPercentageResult(finalPercentage, name1, name2) {
         isCalculating = false;
         calcBtn.disabled = false;
         skipBtn.classList.add('hidden');
@@ -294,12 +417,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         finalResultDiv.classList.remove('hidden');
 
-        // Smooth scroll to final card
         setTimeout(() => {
             finalResultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }, 50);
 
-        // Animate counter and ring
         animateValue(percentageSpan, 0, finalPercentage, 1600);
 
         if (circle) {
@@ -307,37 +428,25 @@ document.addEventListener('DOMContentLoaded', () => {
             circle.style.strokeDashoffset = offset;
         }
 
-        // Haptic Celebration
         if (navigator.vibrate) navigator.vibrate([40, 60, 100]);
 
-        // Confetti burst on higher scores
         if (finalPercentage >= 60) {
             triggerConfetti();
         }
 
-        // Verdict & Description
         const verdictInfo = getVerdictData(finalPercentage);
         verdictPill.innerText = verdictInfo.badge;
         messageEl.innerText = verdictInfo.title;
         verdictDesc.innerText = verdictInfo.desc;
 
-        // Affinity Breakdown Bars
         const passion = Math.min(100, Math.max(15, Math.round(finalPercentage * 0.95 + (Math.random() * 8 - 4))));
         const trust = Math.min(100, Math.max(20, Math.round(finalPercentage * 0.88 + 12)));
         const harmony = Math.min(100, Math.max(10, Math.round(finalPercentage * 0.92 + 5)));
 
-        passionVal.innerText = `${passion}%`;
-        passionBar.style.width = `${passion}%`;
+        updateAffinityBars('Passion & Chemistry', passion, 'Communication & Trust', trust, 'Long-Term Harmony', harmony);
 
-        trustVal.innerText = `${trust}%`;
-        trustBar.style.width = `${trust}%`;
-
-        harmonyVal.innerText = `${harmony}%`;
-        harmonyBar.style.width = `${harmony}%`;
-
-        // Update Share button setup
         if (shareBtn) {
-            shareBtn.onclick = () => handleShare(name1, name2, finalPercentage, verdictInfo.badge);
+            shareBtn.onclick = () => handleSharePercentage(name1, name2, finalPercentage, verdictInfo.badge);
         }
     }
 
@@ -381,13 +490,333 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Number counting animation
+    // ==========================================================================
+    // METHOD 2: FLAMES DESTINY GAME ALGORITHM
+    // ==========================================================================
+    function runFlamesCalculation(rawName1, rawName2) {
+        clearScheduledTimeouts();
+        isCalculating = true;
+        calcBtn.disabled = true;
+
+        resultSection.classList.remove('hidden');
+        flamesBoard.classList.remove('hidden');
+        resetFlamesBoard();
+        finalResultDiv.classList.add('hidden');
+        skipBtn.classList.remove('hidden');
+        stepsContainer.innerHTML = '';
+        messageEl.innerText = '';
+        statusText.innerText = 'Striking matching letters...';
+
+        percentageRingContainer.classList.add('hidden');
+        flamesEmblemContainer.classList.remove('hidden');
+
+        setTimeout(() => {
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 80);
+
+        let str1 = rawName1.toLowerCase().replace(/[^a-z]/g, '') || rawName1.toLowerCase();
+        let str2 = rawName2.toLowerCase().replace(/[^a-z]/g, '') || rawName2.toLowerCase();
+
+        let chars1 = str1.split('');
+        let chars2 = str2.split('');
+        let cancelled1 = new Array(chars1.length).fill(false);
+        let cancelled2 = new Array(chars2.length).fill(false);
+        let cancelledPairs = [];
+
+        for (let i = 0; i < chars1.length; i++) {
+            let c = chars1[i];
+            for (let j = 0; j < chars2.length; j++) {
+                if (!cancelled2[j] && chars2[j] === c) {
+                    cancelled1[i] = true;
+                    cancelled2[j] = true;
+                    cancelledPairs.push(c);
+                    break;
+                }
+            }
+        }
+
+        let remainCount1 = cancelled1.filter(v => !v).length;
+        let remainCount2 = cancelled2.filter(v => !v).length;
+        let remainingCount = remainCount1 + remainCount2;
+
+        // Circular FLAMES elimination simulation
+        let flamesList = ['F', 'L', 'A', 'M', 'E', 'S'];
+        let rounds = [];
+        let startIdx = 0;
+
+        if (remainingCount === 0) {
+            // Mirror Match edge case
+            rounds.push({
+                roundNum: 1,
+                eliminated: null,
+                remaining: ['L'],
+                note: '0 remaining letters! Perfect Mirror Match!'
+            });
+            flamesList = ['L'];
+        } else {
+            let roundCounter = 1;
+            while (flamesList.length > 1) {
+                let elimIdx = (startIdx + remainingCount - 1) % flamesList.length;
+                let eliminatedLetter = flamesList[elimIdx];
+                let currentStartLetter = flamesList[startIdx];
+                flamesList.splice(elimIdx, 1);
+                startIdx = elimIdx % flamesList.length;
+
+                rounds.push({
+                    roundNum: roundCounter++,
+                    eliminated: eliminatedLetter,
+                    remaining: flamesList.slice(),
+                    startFrom: currentStartLetter,
+                    count: remainingCount
+                });
+            }
+        }
+
+        let winnerLetter = flamesList[0];
+        let winnerData = FLAMES_DATA[winnerLetter] || FLAMES_DATA['L'];
+
+        currentCalculationState = {
+            mode: 'flames',
+            rawName1,
+            rawName2,
+            chars1,
+            chars2,
+            cancelled1,
+            cancelled2,
+            cancelledPairs,
+            remainingCount,
+            rounds,
+            winnerLetter,
+            winnerData
+        };
+
+        stepsBadge.innerText = `${rounds.length + 1} Rounds`;
+
+        // Render Step 0: Name Matching & Letter Cancellation
+        const introTimeout = setTimeout(() => {
+            appendFlamesLetterMatchSummary(chars1, cancelled1, chars2, cancelled2, remainingCount, rawName1, rawName2);
+            statusText.innerText = `Found ${remainingCount} unique remaining letters. Counting FLAMES...`;
+            if (navigator.vibrate) navigator.vibrate(20);
+        }, 120);
+        activeTimeouts.push(introTimeout);
+
+        // Render Rounds Step by Step
+        const roundDelay = 480;
+        rounds.forEach((rnd, idx) => {
+            const timeoutId = setTimeout(() => {
+                appendFlamesRoundRow(rnd);
+                if (rnd.eliminated) {
+                    const badgeEl = document.getElementById(`fb-${rnd.eliminated}`);
+                    if (badgeEl) {
+                        badgeEl.classList.add('eliminated');
+                    }
+                }
+                if (navigator.vibrate) navigator.vibrate(15);
+                stepsContainer.scrollTop = stepsContainer.scrollHeight;
+                statusText.innerText = `Round ${rnd.roundNum}: Struck out ${rnd.eliminated ? (FLAMES_DATA[rnd.eliminated]?.name || rnd.eliminated) : 'none'}...`;
+            }, 550 + idx * roundDelay);
+            activeTimeouts.push(timeoutId);
+        });
+
+        // Reveal Final Winner
+        const finishDelay = 650 + rounds.length * roundDelay;
+        const finishTimeout = setTimeout(() => {
+            revealFlamesResult(winnerLetter, winnerData, rawName1, rawName2);
+        }, finishDelay);
+        activeTimeouts.push(finishTimeout);
+    }
+
+    function appendFlamesLetterMatchSummary(chars1, cancelled1, chars2, cancelled2, count, n1, n2) {
+        const row = document.createElement('div');
+        row.className = 'step-row flames-summary-step';
+
+        const label = document.createElement('span');
+        label.className = 'step-label';
+        label.innerText = 'Step 1: Letter Matching';
+        row.appendChild(label);
+
+        const content = document.createElement('div');
+        content.className = 'flames-step-content';
+
+        // Name 1 letters
+        const name1Wrap = document.createElement('div');
+        name1Wrap.className = 'name-cancel-wrap';
+        chars1.forEach((c, idx) => {
+            const badge = document.createElement('span');
+            badge.className = `char-badge ${cancelled1[idx] ? 'match' : 'remain'}`;
+            badge.innerText = c;
+            name1Wrap.appendChild(badge);
+        });
+
+        const plusSign = document.createElement('span');
+        plusSign.innerText = '+';
+        plusSign.style.fontWeight = '800';
+        plusSign.style.color = 'var(--primary)';
+
+        // Name 2 letters
+        const name2Wrap = document.createElement('div');
+        name2Wrap.className = 'name-cancel-wrap';
+        chars2.forEach((c, idx) => {
+            const badge = document.createElement('span');
+            badge.className = `char-badge ${cancelled2[idx] ? 'match' : 'remain'}`;
+            badge.innerText = c;
+            name2Wrap.appendChild(badge);
+        });
+
+        const countBadge = document.createElement('span');
+        countBadge.className = 'count-badge';
+        countBadge.innerText = `Count = ${count}`;
+
+        content.appendChild(name1Wrap);
+        content.appendChild(plusSign);
+        content.appendChild(name2Wrap);
+        content.appendChild(countBadge);
+        row.appendChild(content);
+
+        stepsContainer.appendChild(row);
+    }
+
+    function appendFlamesRoundRow(roundData) {
+        const row = document.createElement('div');
+        row.className = 'step-row';
+
+        const label = document.createElement('span');
+        label.className = 'step-label';
+        label.innerText = `Round ${roundData.roundNum}:`;
+        row.appendChild(label);
+
+        const textWrap = document.createElement('div');
+        textWrap.className = 'flames-round-text';
+
+        if (roundData.eliminated) {
+            const info = FLAMES_DATA[roundData.eliminated];
+            textWrap.innerHTML = `Counted <strong>${roundData.count}</strong> ➔ Struck out <span class="elim-badge"><s>${roundData.eliminated}</s> - ${info?.name || ''} ${info?.emoji || ''}</span> Remaining:`;
+            
+            const pillsWrap = document.createElement('span');
+            pillsWrap.className = 'remain-pills';
+            roundData.remaining.forEach(ltr => {
+                const pill = document.createElement('span');
+                pill.className = 'mini-pill';
+                pill.innerText = ltr;
+                pillsWrap.appendChild(pill);
+            });
+            textWrap.appendChild(pillsWrap);
+        } else {
+            textWrap.innerHTML = `<strong>${roundData.note}</strong>`;
+        }
+
+        row.appendChild(textWrap);
+        stepsContainer.appendChild(row);
+    }
+
+    function revealFlamesResult(winnerLetter, winnerData, name1, name2) {
+        isCalculating = false;
+        calcBtn.disabled = false;
+        skipBtn.classList.add('hidden');
+        statusText.innerText = 'Destiny revealed! 🔥';
+
+        // Highlight winner on FLAMES board
+        flamesBadges.forEach(badge => {
+            const letter = badge.getAttribute('data-letter');
+            if (letter === winnerLetter) {
+                badge.classList.remove('eliminated');
+                badge.classList.add('winner');
+            } else {
+                badge.classList.add('eliminated');
+            }
+        });
+
+        finalResultDiv.classList.remove('hidden');
+
+        setTimeout(() => {
+            finalResultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 50);
+
+        // Update FLAMES emblem
+        destinyEmoji.innerText = winnerData.emoji;
+        destinyLetter.innerText = winnerLetter;
+        destinyWord.innerText = winnerData.name.toUpperCase();
+
+        if (navigator.vibrate) navigator.vibrate([50, 70, 120]);
+        triggerConfetti();
+
+        // Verdict & Description
+        verdictPill.innerText = winnerData.badge;
+        messageEl.innerText = winnerData.title;
+        verdictDesc.innerText = winnerData.desc;
+
+        // Affinity Breakdown Bars
+        const b = winnerData.bars;
+        updateAffinityBars(b[0].label, b[0].val, b[1].label, b[1].val, b[2].label, b[2].val);
+
+        if (shareBtn) {
+            shareBtn.onclick = () => handleShareFlames(name1, name2, winnerData.name, winnerData.emoji);
+        }
+    }
+
+    // ==========================================================================
+    // SKIP TO RESULT HANDLER
+    // ==========================================================================
+    skipBtn?.addEventListener('click', () => {
+        if (!isCalculating || !currentCalculationState) return;
+        clearScheduledTimeouts();
+
+        if (currentCalculationState.mode === 'percentage') {
+            stepsContainer.innerHTML = '';
+            currentCalculationState.steps.forEach((stepArray, idx) => {
+                const isLast = idx === currentCalculationState.steps.length - 1;
+                appendStepRow(stepArray, idx + 1, isLast);
+            });
+            stepsContainer.scrollTop = stepsContainer.scrollHeight;
+            revealPercentageResult(
+                currentCalculationState.percentage,
+                currentCalculationState.name1,
+                currentCalculationState.name2
+            );
+        } else {
+            stepsContainer.innerHTML = '';
+            const s = currentCalculationState;
+            appendFlamesLetterMatchSummary(
+                s.chars1, s.cancelled1, s.chars2, s.cancelled2, s.remainingCount, s.rawName1, s.rawName2
+            );
+            s.rounds.forEach(rnd => {
+                appendFlamesRoundRow(rnd);
+                if (rnd.eliminated) {
+                    const badgeEl = document.getElementById(`fb-${rnd.eliminated}`);
+                    if (badgeEl) badgeEl.classList.add('eliminated');
+                }
+            });
+            stepsContainer.scrollTop = stepsContainer.scrollHeight;
+            revealFlamesResult(s.winnerLetter, s.winnerData, s.rawName1, s.rawName2);
+        }
+    });
+
+    // ==========================================================================
+    // HELPER: UPDATE BARS & ANIMS
+    // ==========================================================================
+    function updateAffinityBars(label1, val1, label2, val2, label3, val3) {
+        const labels = document.querySelectorAll('.breakdown-labels');
+        if (labels.length >= 3) {
+            labels[0].querySelector('span:first-child').innerText = label1;
+            labels[1].querySelector('span:first-child').innerText = label2;
+            labels[2].querySelector('span:first-child').innerText = label3;
+        }
+
+        passionVal.innerText = `${val1}%`;
+        passionBar.style.width = `${val1}%`;
+
+        trustVal.innerText = `${val2}%`;
+        trustBar.style.width = `${val2}%`;
+
+        harmonyVal.innerText = `${val3}%`;
+        harmonyBar.style.width = `${val3}%`;
+    }
+
     function animateValue(obj, start, end, duration) {
         let startTimestamp = null;
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            // Ease out quad
             const easeOut = 1 - (1 - progress) * (1 - progress);
             obj.innerHTML = Math.floor(easeOut * (end - start) + start);
             if (progress < 1) {
@@ -397,20 +826,41 @@ document.addEventListener('DOMContentLoaded', () => {
         window.requestAnimationFrame(step);
     }
 
-    // Native Share
-    function handleShare(n1, n2, pct, badge) {
+    // ==========================================================================
+    // SHARING HANDLERS
+    // ==========================================================================
+    function handleSharePercentage(n1, n2, pct, badge) {
         const shareMessage = `${n1} and ${n2} scored ${pct}% (${badge}) on the Love Calculator!`;
-
         if (navigator.share) {
             navigator.share({
                 title: 'Our Love Compatibility Score',
                 text: shareMessage,
                 url: window.location.href
-            }).catch(() => {
-                // User dismissed native share sheet
-            });
+            }).catch(() => {});
         }
     }
+
+    function handleShareFlames(n1, n2, destinyName, emoji) {
+        const shareMessage = `🔥 FLAMES Test: ${n1} + ${n2} got ${destinyName.toUpperCase()} ${emoji}! Discover your relationship destiny here:`;
+        if (navigator.share) {
+            navigator.share({
+                title: 'Our FLAMES Relationship Destiny',
+                text: shareMessage,
+                url: window.location.href
+            }).catch(() => {});
+        }
+    }
+
+    // Retry Button
+    retryBtn?.addEventListener('click', () => {
+        name1Input.value = '';
+        name2Input.value = '';
+        clearBtns.forEach(b => b.classList.remove('visible'));
+        resultSection.classList.add('hidden');
+        resetFlamesBoard();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        name1Input.focus();
+    });
 
     // Toast Alert
     let toastTimeout = null;
@@ -418,10 +868,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!toast) return;
         const msgEl = document.getElementById('toast-msg');
         if (msgEl) msgEl.innerText = message;
-        
-        toast.classList.remove('hidden');
 
-        // Force browser reflow to reliably restart CSS animation every time
+        toast.classList.remove('hidden');
         toast.style.animation = 'none';
         void toast.offsetWidth;
         toast.style.animation = '';
@@ -432,9 +880,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2600);
     }
 
-    /* ==========================================================================
-       GPU-LIGHTWEIGHT AMBIENT BACKGROUND (Optimized for Mobile Battery)
-       ========================================================================== */
+    // ==========================================================================
+    // GPU LIGHTWEIGHT AMBIENT PARTICLES
+    // ==========================================================================
     const ambientCanvas = document.getElementById('ambient-canvas');
     if (ambientCanvas) {
         const ctx = ambientCanvas.getContext('2d');
@@ -446,9 +894,13 @@ document.addEventListener('DOMContentLoaded', () => {
             height = ambientCanvas.height = window.innerHeight;
         });
 
-        // 14 floating ambient hearts
         const particles = [];
-        const colors = ['rgba(255, 42, 109, 0.16)', 'rgba(255, 105, 180, 0.14)', 'rgba(255, 182, 193, 0.18)', 'rgba(254, 207, 239, 0.2)'];
+        const colors = [
+            'rgba(255, 42, 109, 0.16)',
+            'rgba(255, 105, 180, 0.14)',
+            'rgba(255, 182, 193, 0.18)',
+            'rgba(254, 207, 239, 0.2)'
+        ];
 
         for (let i = 0; i < 14; i++) {
             particles.push({
@@ -457,8 +909,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 size: Math.random() * 16 + 10,
                 speedY: -(Math.random() * 0.6 + 0.3),
                 speedX: (Math.random() - 0.5) * 0.4,
-                color: colors[Math.floor(Math.random() * colors.length)],
-                opacity: Math.random() * 0.6 + 0.3
+                color: colors[Math.floor(Math.random() * colors.length)]
             });
         }
 
@@ -468,13 +919,9 @@ document.addEventListener('DOMContentLoaded', () => {
             c.beginPath();
             const topCurveHeight = size * 0.3;
             c.moveTo(0, topCurveHeight);
-            // top left curve
             c.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
-            // bottom left curve
             c.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.4, 0, size);
-            // bottom right curve
             c.bezierCurveTo(0, (size + topCurveHeight) / 1.4, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
-            // top right curve
             c.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
             c.closePath();
             c.fillStyle = color;
@@ -508,9 +955,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         renderAmbient();
 
-        // Tap/click to spawn cute floating heart
         window.addEventListener('click', (e) => {
-            // Ignore if clicking on interactive form inputs/buttons
             if (e.target.closest('input, button, .steps-box')) return;
             particles.push({
                 x: e.clientX,
@@ -518,16 +963,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 size: Math.random() * 18 + 14,
                 speedY: -(Math.random() * 1.5 + 1),
                 speedX: (Math.random() - 0.5) * 1.2,
-                color: 'rgba(255, 42, 109, 0.45)',
-                opacity: 0.9
+                color: 'rgba(255, 42, 109, 0.45)'
             });
             if (particles.length > 25) particles.shift();
         }, { passive: true });
     }
 
-    /* ==========================================================================
-       CONFETTI CANNON FOR CELEBRATION
-       ========================================================================== */
+    // ==========================================================================
+    // CONFETTI CANNON CELEBRATION
+    // ==========================================================================
     const confettiCanvas = document.getElementById('confetti-canvas');
     function triggerConfetti() {
         if (!confettiCanvas) return;

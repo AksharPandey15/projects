@@ -25,9 +25,26 @@
             <section class="card" id="calculator-card">
                 <!-- Header -->
                 <div class="card-header">
+                    <!-- Mode Switcher (Love % vs FLAMES) -->
+                    <div class="mode-switch-wrapper">
+                        <div class="mode-switch-pill" role="tablist" aria-label="Calculator Mode">
+                            <button type="button" class="mode-switch-btn active" id="btn-mode-percentage" role="tab"
+                                aria-selected="true" data-mode="percentage">
+                                <span class="mode-btn-icon">💖</span>
+                                <span class="mode-btn-text">Love %</span>
+                            </button>
+                            <button type="button" class="mode-switch-btn" id="btn-mode-flames" role="tab"
+                                aria-selected="false" data-mode="flames">
+                                <span class="mode-btn-icon">🔥</span>
+                                <span class="mode-btn-text">FLAMES</span>
+                            </button>
+                        </div>
+                    </div>
 
-                    <h1 class="card-title">Love Calculator <span class="heart-pulse">💖</span></h1>
-                    <p class="subtitle">Enter two names to reveal your deep cosmic harmony & step-by-step math</p>
+                    <h1 class="card-title" id="page-title">Love Calculator <span class="heart-pulse"
+                            id="title-icon">💖</span></h1>
+                    <p class="subtitle" id="page-subtitle">Enter two names to reveal your deep cosmic harmony &
+                        step-by-step math</p>
                 </div>
 
                 <!-- Input Form -->
@@ -47,8 +64,7 @@
                         </div>
 
                         <div class="connector-wrap">
-                            <span class="connector-heart">X</span>
-
+                            <span class="connector-heart" id="connector-icon">X</span>
                         </div>
 
                         <div class="input-card">
@@ -72,9 +88,9 @@
                             <button type="button" class="quick-pill" data-n1="Daksh Kumar Gupta"
                                 data-n2="Vidushi Sharma">Daksh +
                                 Vidushi</button>
-                            <button type="button" class="quick-pill" data-n1="Tanmay Awasthi"
-                                data-n2="Jhanvi Gagi">Tanmay +
-                                Jhanvi</button>
+                            <button type="button" class="quick-pill" data-n1="Dushyant Singh"
+                                data-n2="Swikriti Rana">Dushyant +
+                                Swiggy</button>
                             <button type="button" class="quick-pill" data-n1="Rachit Sharma" data-n2="Reet">Rachit +
                                 Reet</button>
                         </div>
@@ -84,8 +100,8 @@
                     <div class="action-wrap">
                         <button type="submit" id="calculate-btn" class="primary-btn">
                             <span class="btn-shine"></span>
-                            <span class="btn-text">Calculate Percentage</span>
-                            <span class="btn-icon">✨</span>
+                            <span class="btn-text" id="btn-text">Calculate Percentage</span>
+                            <span class="btn-icon" id="btn-icon">✨</span>
                         </button>
                     </div>
                 </form>
@@ -101,10 +117,38 @@
                         <button type="button" id="skip-btn" class="skip-btn hidden">Skip to Result ⚡</button>
                     </div>
 
+                    <!-- Interactive FLAMES Board (Shown during & after FLAMES calculation) -->
+                    <div class="flames-board hidden" id="flames-board" aria-label="FLAMES Status Board">
+                        <div class="flames-badge" data-letter="F" id="fb-F">
+                            <span class="fb-letter">F</span>
+                            <span class="fb-name">Friends</span>
+                        </div>
+                        <div class="flames-badge" data-letter="L" id="fb-L">
+                            <span class="fb-letter">L</span>
+                            <span class="fb-name">Love</span>
+                        </div>
+                        <div class="flames-badge" data-letter="A" id="fb-A">
+                            <span class="fb-letter">A</span>
+                            <span class="fb-name">Affection</span>
+                        </div>
+                        <div class="flames-badge" data-letter="M" id="fb-M">
+                            <span class="fb-letter">M</span>
+                            <span class="fb-name">Marriage</span>
+                        </div>
+                        <div class="flames-badge" data-letter="E" id="fb-E">
+                            <span class="fb-letter">E</span>
+                            <span class="fb-name">Enemy</span>
+                        </div>
+                        <div class="flames-badge" data-letter="S" id="fb-S">
+                            <span class="fb-letter">S</span>
+                            <span class="fb-name">Siblings</span>
+                        </div>
+                    </div>
+
                     <!-- Step-by-Step Algorithm Container -->
                     <div class="steps-wrapper">
                         <div class="steps-header">
-                            <span class="steps-title">Algorithm Breakdown</span>
+                            <span class="steps-title" id="steps-title">Algorithm Breakdown</span>
                             <span class="steps-badge" id="steps-count-badge">0 Steps</span>
                         </div>
                         <div id="steps-container" class="steps-box"></div>
@@ -112,7 +156,8 @@
 
                     <!-- Final Result Showcase -->
                     <div class="final-result-card hidden" id="final-result">
-                        <div class="ring-container">
+                        <!-- Percentage Ring Container (Shown in Percentage mode) -->
+                        <div class="ring-container" id="percentage-ring-container">
                             <svg class="progress-ring" viewBox="0 0 160 160">
                                 <defs>
                                     <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -137,6 +182,17 @@
                                         class="pct-symbol">%</span></div>
                                 <span class="ring-subtext">Affinity Score</span>
                             </div>
+                        </div>
+
+                        <!-- FLAMES Destiny Emblem Container (Shown in FLAMES mode) -->
+                        <div class="flames-emblem-container hidden" id="flames-emblem-container">
+                            <div class="destiny-glow-ring"></div>
+                            <div class="destiny-shield">
+                                <span class="destiny-emoji" id="destiny-emoji">❤️</span>
+                                <span class="destiny-letter" id="destiny-letter">L</span>
+                            </div>
+                            <div class="destiny-word" id="destiny-word">LOVE</div>
+                            <span class="destiny-subtext">Relationship Destiny</span>
                         </div>
 
                         <!-- Result Title & Verdict -->
