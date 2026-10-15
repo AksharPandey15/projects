@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="50%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#0B0F19" />
+  <rect x="2" y="2" width="60" height="60" rx="14" stroke="url(#grad)" stroke-width="2" stroke-opacity="0.6" />
+  <!-- Graduation Cap -->
+  <path d="M32 14L10 24L32 34L54 24L32 14Z" fill="url(#grad)" filter="url(#glow)"/>
+  <path d="M18 28.5V39C18 43.5 24.3 47 32 47C39.7 47 46 43.5 46 39V28.5L32 35.5L18 28.5Z" fill="#8B5CF6" fill-opacity="0.85"/>
+  <!-- Tassel -->
+  <path d="M50 25.5V39.5C50 41 49 42 47.5 42C46 42 45 41 45 39.5V28" stroke="#38BDF8" stroke-width="2" stroke-linecap="round"/>
+  <!-- Sparkle / Star -->
+  <path d="M48 10L49.5 14L53.5 15.5L49.5 17L48 21L46.5 17L42.5 15.5L46.5 14L48 10Z" fill="#FBBF24"/>
+</svg>
