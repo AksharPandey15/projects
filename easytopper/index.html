@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="style.css">
   <script>
     // Immediate theme initialization to prevent flash of wrong theme / icon
-    (function() {
+    (function () {
       var saved = localStorage.getItem('easy_topper_theme') || 'dark';
       if (saved === 'light') {
         document.documentElement.classList.add('theme-light');
@@ -123,13 +123,16 @@
         </div>
 
         <div class="topbar-right">
-          <button class="icon-btn action-btn" id="exportSessionBtn" title="Export / Download Session Notes" aria-label="Export Session">
+          <button class="icon-btn action-btn" id="exportSessionBtn" title="Export / Download Session Notes"
+            aria-label="Export Session">
             <i class="fa-solid fa-download"></i>
           </button>
-          <button class="icon-btn action-btn" id="ttsToggleBtn" title="Toggle Auto Read-Aloud Voice" aria-label="Toggle Voice">
+          <button class="icon-btn action-btn" id="ttsToggleBtn" title="Toggle Auto Read-Aloud Voice"
+            aria-label="Toggle Voice">
             <i class="fa-solid fa-volume-high" id="ttsIcon"></i>
           </button>
-          <button class="icon-btn action-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <button class="icon-btn action-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode"
+            aria-label="Toggle Theme">
             <i class="fa-solid fa-moon" id="themeIcon"></i>
           </button>
           <button class="icon-btn action-btn" id="topSettingsBtn" title="Settings & Model Config" aria-label="Settings">
@@ -305,16 +308,20 @@
         <div class="setting-group">
           <div class="setting-label-row">
             <label for="apiKeyInput">AI Engine API Key</label>
-            <span class="badge-free" id="apiStatusBadge"><i class="fa-solid fa-shield-halved"></i> Pre-configured Free Tier Active</span>
+            <span class="badge-free" id="apiStatusBadge"><i class="fa-solid fa-shield-halved"></i> Pre-configured Free
+              Tier Active</span>
           </div>
           <div class="input-with-action">
-            <input type="password" id="apiKeyInput" placeholder="Pre-configured Free Tier Active (Enter custom key to override)" autocomplete="off">
+            <input type="password" id="apiKeyInput"
+              placeholder="Pre-configured Free Tier Active (Enter custom key to override)" autocomplete="off">
             <button class="icon-btn input-action-btn" id="toggleApiKeyVisBtn" title="Show / Hide Key">
               <i class="fa-regular fa-eye"></i>
             </button>
           </div>
           <p class="setting-help" id="apiKeyHelpText">
-            <i class="fa-solid fa-lock" style="color: var(--accent-emerald);"></i> A pre-configured high-speed AI Free Tier engine is connected and ready. Your personal key remains private and is never shown. Leave blank to continue using the pre-configured engine, or enter a custom key if desired.
+            <i class="fa-solid fa-lock" style="color: var(--accent-emerald);"></i> A pre-configured high-speed AI Free
+            Tier engine is connected and ready. Your personal key remains private and is never shown. Leave blank to
+            continue using the pre-configured engine, or enter a custom key if desired.
           </p>
           <div class="test-connection-row">
             <button class="test-api-btn" id="testApiBtn">
@@ -330,16 +337,18 @@
           <label for="modelSelect">AI Intelligence Model</label>
           <div class="select-wrapper">
             <select id="modelSelect">
-              <option value="gemini-3.1-flash-lite" selected>Topper-AI 3.1 Flash (Ultra Fast & Recommended)</option>
-              <option value="gemini-2.5-flash">Topper-AI 2.5 Vision (Multimodal & Diagrams)</option>
+              <option value="gemini-3.1-flash-lite" selected>Topper-AI 3.1 Flash-Lite (Ultra Fast & Recommended)
+              </option>
               <option value="gemini-3.8-flash">Topper-AI 3.8 Thinker (Advanced Derivations & Logic)</option>
-              <option value="gemini-flash-latest">Topper-AI Ultra (Latest Engine)</option>
+              <option value="gemini-flash-latest">Topper-AI Ultra (Latest General Engine)</option>
               <option value="gemini-3.5-flash">Topper-AI Pro 3.5 (Deep Academic Reasoning)</option>
+              <option value="gemini-flash-lite-latest">Topper-AI 3.0 Lite (High-Speed Backup)</option>
             </select>
             <i class="fa-solid fa-chevron-down select-chevron"></i>
           </div>
           <p class="setting-help">
-            <code>Topper-AI 3.1 Flash</code> is the default model providing near-instant responses with top academic accuracy.
+            <code>Topper-AI 3.1 Flash</code> is the default model providing near-instant responses with top academic
+            accuracy.
           </p>
         </div>
 

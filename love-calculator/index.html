@@ -15,7 +15,74 @@
     <link rel="stylesheet" href="style.css?v=4">
 </head>
 
-<body>
+<body class="site-locked">
+    <!-- =====================================================================
+         SECURITY PASSWORD GATEKEEPER (LOCKED ON PAGE LOAD)
+         ===================================================================== -->
+    <div class="security-gate-overlay" id="securityGateOverlay" role="dialog" aria-modal="true"
+        aria-labelledby="gateTitle">
+        <div class="security-gate-backdrop"></div>
+
+        <!-- Floating Ambient Security Emojis -->
+        <div class="security-gate-particles" aria-hidden="true">
+            <span class="gate-particle" style="top: 14%; left: 10%;">🔒</span>
+            <span class="gate-particle" style="top: 72%; left: 8%;">💖</span>
+            <span class="gate-particle" style="top: 20%; right: 12%;">💌</span>
+            <span class="gate-particle" style="top: 78%; right: 10%;">🔥</span>
+            <span class="gate-particle" style="top: 48%; left: 88%;">✨</span>
+        </div>
+
+        <div class="security-gate-card" id="securityGateCard">
+            <div class="gate-card-glow" aria-hidden="true"></div>
+
+            <!-- Classified Clearance Badge -->
+            <div class="gate-clearance-badge">
+                <span class="gate-badge-dot"></span>
+                <span>RESTRICTED ACCESS • FRIENDS ONLY</span>
+            </div>
+
+            <!-- Animated Lock Avatar -->
+            <div class="gate-avatar-wrapper">
+                <div class="gate-avatar" id="gateAvatar">
+                    <span class="gate-avatar-icon" id="gateAvatarIcon">🔒</span>
+                </div>
+                <div class="gate-avatar-ripple"></div>
+            </div>
+
+            <h2 class="gate-title" id="gateTitle">Security Clearance Required</h2>
+            <p class="gate-subtitle">
+                You are attempting to access the confidential <strong>Love Calculator</strong> &amp; connection algorithm engine.
+                Please provide the friends-only password to proceed.
+            </p>
+
+            <!-- Password Entry Form -->
+            <form class="gate-form" id="securityGateForm" autocomplete="off">
+                <div class="gate-input-wrapper" id="gateInputWrapper">
+                    <span class="gate-input-icon" aria-hidden="true">🔑</span>
+                    <input type="password" id="gatePasswordInput" class="gate-input" placeholder="Enter friends-only password..."
+                        autocomplete="off" spellcheck="false" required aria-label="Enter security password" />
+                    <button type="button" class="gate-toggle-visibility" id="gateToggleVisibility" title="Show or hide password"
+                        aria-label="Toggle password visibility">
+                        <span id="gateEyeIcon">👁️</span>
+                    </button>
+                </div>
+
+                <div class="gate-feedback" id="gateFeedback" aria-live="polite"></div>
+
+                <button type="submit" class="gate-submit-btn" id="gateSubmitBtn">
+                    <span class="gate-btn-icon" id="gateBtnIcon">🔓</span>
+                    <span class="gate-btn-label" id="gateBtnLabel">Unlock Love Engine</span>
+                </button>
+            </form>
+
+            <div class="gate-footer-note">
+                <span>Friends Only Clearance</span>
+                <span class="dot-sep">•</span>
+                <span>Project 145 Protected</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating romantic ambient particles (GPU lightweight canvas) -->
     <canvas id="ambient-canvas"></canvas>
 
@@ -39,6 +106,7 @@
                                 <span class="mode-btn-text">FLAMES</span>
                             </button>
                         </div>
+                        <button type="button" class="lock-toggle-btn" id="lockSiteBtn" title="Lock Calculator (Require Password)" aria-label="Lock Calculator">🔒</button>
                     </div>
 
                     <h1 class="card-title" id="page-title">Love Calculator <span class="heart-pulse"

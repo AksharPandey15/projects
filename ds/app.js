@@ -644,7 +644,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const gateAvatarIcon = document.getElementById('gateAvatarIcon');
   const lockSiteBtn = document.getElementById('lockSiteBtn');
 
-  const CORRECT_PASSPHRASE = 'football';
+  const CORRECT_PASSPHRASES = ['friendsonly', 'friends only', 'football'];
   let isUnlocking = false;
 
   // Auto-focus input when gate is active
@@ -765,7 +765,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const entered = (gatePasswordInput?.value || '').trim().toLowerCase();
 
-      if (entered === CORRECT_PASSPHRASE) {
+      if (CORRECT_PASSPHRASES.includes(entered)) {
         unlockWebsite();
       } else {
         rejectPassword();

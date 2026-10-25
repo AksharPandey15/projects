@@ -38,6 +38,7 @@
     initEasterEggs();
     initNav();
     applyProfileToDOM();
+    initSecurityGate();
   });
 
   // ==================== 1. GLOWING CURSOR FOLLOWER ====================
@@ -409,6 +410,255 @@
         }
       });
     }, { passive: true });
+  }
+
+  // ==================== 11. SECURITY PASSWORD GATEKEEPER ====================
+  function initSecurityGate() {
+    const securityGateOverlay = document.getElementById('securityGateOverlay');
+    const securityGateCard = document.getElementById('securityGateCard');
+    const securityGateForm = document.getElementById('securityGateForm');
+    const gatePasswordInput = document.getElementById('gatePasswordInput');
+    const gateInputWrapper = document.getElementById('gateInputWrapper');
+    const gateToggleVisibility = document.getElementById('gateToggleVisibility');
+    const gateEyeIcon = document.getElementById('gateEyeIcon');
+    const gateFeedback = document.getElementById('gateFeedback');
+    const gateSubmitBtn = document.getElementById('gateSubmitBtn');
+    const gateBtnIcon = document.getElementById('gateBtnIcon');
+    const gateBtnLabel = document.getElementById('gateBtnLabel');
+    const gateAvatar = document.getElementById('gateAvatar');
+    const gateAvatarIcon = document.getElementById('gateAvatarIcon');
+    const lockSiteBtn = document.getElementById('lockSiteBtn');
+
+    const CORRECT_PASSPHRASES = ['friendsonly', 'friends only'];
+    let isUnlocking = false;
+
+    // Web Audio Synthesizer for Security Sounds
+    let gateAudioCtx = null;
+    function getGateAudio() {
+      if (!gateAudioCtx && (window.AudioContext || window.webkitAudioContext)) {
+        gateAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (gateAudioCtx && gateAudioCtx.state === 'suspended') {
+        gateAudioCtx.resume();
+      }
+      return gateAudioCtx;
+    }
+
+    function playBuzzer() {
+      try {
+        const ctx = getGateAudio();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(120, ctx.currentTime);
+        osc.frequency.linearRampToValueAtTime(90, ctx.currentTime + 0.28);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.28);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.28);
+      } catch (e) {}
+    }
+
+    function playCelebration() {
+      try {
+        const ctx = getGateAudio();
+        if (!ctx) return;
+        const notes = [440, 554.37, 659.25, 880];
+        notes.forEach((freq, idx) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + idx * 0.09);
+          gain.gain.setValueAtTime(0.22, ctx.currentTime + idx * 0.09);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + idx * 0.09 + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + idx * 0.09);
+          osc.stop(ctx.currentTime + idx * 0.09 + 0.35);
+        });
+      } catch (e) {}
+    }
+
+    function playClick() {
+      try {
+        const ctx = getGateAudio();
+        if (!ctx) return;
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(700, ctx.currentTime);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.06);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.06);
+      } catch (e) {}
+    }
+
+    // Auto-focus input on load
+    if (gatePasswordInput) {
+      setTimeout(() => gatePasswordInput.focus(), 250);
+    }
+
+    // Toggle Password Visibility
+    if (gateToggleVisibility && gatePasswordInput) {
+      gateToggleVisibility.addEventListener('click', () => {
+        playClick();
+        const isPassword = gatePasswordInput.type === 'password';
+        gatePasswordInput.type = isPassword ? 'text' : 'password';
+        if (gateEyeIcon) {
+          gateEyeIcon.textContent = isPassword ? '🙈' : '👁️';
+        }
+        gateToggleVisibility.setAttribute('title', isPassword ? 'Hide password' : 'Show password');
+      });
+    }
+
+    // Unlock Website Function
+    function unlockWebsite() {
+      if (isUnlocking) return;
+      isUnlocking = true;
+
+      if (gateFeedback) {
+        gateFeedback.textContent = '✅ Access Clearance Granted! Unlocking dossier...';
+        gateFeedback.className = 'gate-feedback feedback-success';
+      }
+      if (gateInputWrapper) {
+        gateInputWrapper.className = 'gate-input-wrapper is-valid';
+      }
+      if (gateAvatar) {
+        gateAvatar.classList.remove('error-state');
+        gateAvatar.classList.add('success-state');
+      }
+      if (gateAvatarIcon) {
+        gateAvatarIcon.textContent = '🔓';
+      }
+      if (gateBtnIcon) {
+        gateBtnIcon.textContent = '✨';
+      }
+      if (gateBtnLabel) {
+        gateBtnLabel.textContent = 'Clearance Granted!';
+      }
+      if (gatePasswordInput) {
+        gatePasswordInput.disabled = true;
+      }
+      if (gateSubmitBtn) {
+        gateSubmitBtn.disabled = true;
+      }
+
+      playCelebration();
+
+      setTimeout(() => {
+        if (securityGateOverlay) {
+          securityGateOverlay.classList.add('gate-unlocked');
+        }
+        document.body.classList.remove('site-locked');
+        isUnlocking = false;
+      }, 600);
+    }
+
+    // Reject Password Function
+    function rejectPassword() {
+      playBuzzer();
+
+      if (securityGateCard) {
+        securityGateCard.classList.remove('shake-card');
+        void securityGateCard.offsetWidth;
+        securityGateCard.classList.add('shake-card');
+        setTimeout(() => {
+          securityGateCard.classList.remove('shake-card');
+        }, 500);
+      }
+
+      if (gateInputWrapper) {
+        gateInputWrapper.className = 'gate-input-wrapper is-invalid';
+      }
+
+      if (gateAvatar) {
+        gateAvatar.classList.remove('success-state');
+        gateAvatar.classList.add('error-state');
+        if (gateAvatarIcon) gateAvatarIcon.textContent = '⛔';
+        setTimeout(() => {
+          gateAvatar.classList.remove('error-state');
+          if (gateAvatarIcon) gateAvatarIcon.textContent = '🔒';
+        }, 1200);
+      }
+
+      if (gateFeedback) {
+        gateFeedback.textContent = '⛔ Access Denied: Incorrect password! Please try again.';
+        gateFeedback.className = 'gate-feedback feedback-error';
+      }
+
+      if (gatePasswordInput) {
+        gatePasswordInput.focus();
+        gatePasswordInput.select();
+      }
+    }
+
+    // Form Submit Handler
+    if (securityGateForm) {
+      securityGateForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const entered = (gatePasswordInput?.value || '').trim().toLowerCase();
+
+        if (CORRECT_PASSPHRASES.includes(entered)) {
+          unlockWebsite();
+        } else {
+          rejectPassword();
+        }
+      });
+    }
+
+    // Clear error style on typing
+    if (gatePasswordInput) {
+      gatePasswordInput.addEventListener('input', () => {
+        if (gateInputWrapper && gateInputWrapper.classList.contains('is-invalid')) {
+          gateInputWrapper.className = 'gate-input-wrapper';
+        }
+        if (gateFeedback && gateFeedback.classList.contains('feedback-error')) {
+          gateFeedback.textContent = '';
+        }
+      });
+    }
+
+    // Lock Site Button in Navbar
+    if (lockSiteBtn) {
+      lockSiteBtn.addEventListener('click', () => {
+        playClick();
+        document.body.classList.add('site-locked');
+        if (securityGateOverlay) {
+          securityGateOverlay.classList.remove('gate-unlocked');
+        }
+        if (gatePasswordInput) {
+          gatePasswordInput.disabled = false;
+          gatePasswordInput.value = '';
+          setTimeout(() => gatePasswordInput.focus(), 150);
+        }
+        if (gateSubmitBtn) {
+          gateSubmitBtn.disabled = false;
+        }
+        if (gateBtnIcon) {
+          gateBtnIcon.textContent = '🔓';
+        }
+        if (gateBtnLabel) {
+          gateBtnLabel.textContent = 'Unlock Dossier';
+        }
+        if (gateInputWrapper) {
+          gateInputWrapper.className = 'gate-input-wrapper';
+        }
+        if (gateFeedback) {
+          gateFeedback.textContent = '';
+          gateFeedback.className = 'gate-feedback';
+        }
+        if (gateAvatar) {
+          gateAvatar.className = 'gate-avatar';
+          if (gateAvatarIcon) gateAvatarIcon.textContent = '🔒';
+        }
+      });
+    }
   }
 
 })();

@@ -4,7 +4,7 @@
  */
 
 // Default Configuration
-const DEFAULT_API_KEY = 'AQ.Ab8RN6KMt3WlI8ngZ8BfMAnxDVUaQGEHgqbQuFJySMboCHfZ-Q';
+const DEFAULT_API_KEY = 'AQ.Ab8RN6I1xOoPw4jMZNGFnEORruLcMxG2sLaSabrPDqrU68wYSQ';
 const DEFAULT_MODEL = 'gemini-3.1-flash-lite';
 const STORAGE_PREFIX = 'easy_topper_';
 
@@ -44,6 +44,19 @@ const state = {
   speechRecognition: null,
   isRecordingVoice: false
 };
+
+// Clean up any stale/revoked legacy keys or deprecated models stored in user's browser localStorage
+const INVALID_LEGACY_KEYS = [
+  'AQ.Ab8RN6KMt3WlI8ngZ8BfMAnxDVUaQGEHgqbQuFJySMboCHfZ-Q'
+];
+if (INVALID_LEGACY_KEYS.includes(state.customApiKey)) {
+  state.customApiKey = '';
+  localStorage.removeItem(`${STORAGE_PREFIX}custom_api_key`);
+}
+if (state.model === 'gemini-2.5-flash') {
+  state.model = DEFAULT_MODEL;
+  localStorage.setItem(`${STORAGE_PREFIX}model`, DEFAULT_MODEL);
+}
 
 function getEffectiveApiKey() {
   return state.customApiKey.trim() || DEFAULT_API_KEY;
@@ -193,11 +206,11 @@ function toggleTts() {
 }
 
 const MODEL_DISPLAY_NAMES = {
-  'gemini-3.1-flash-lite': 'Topper-AI 3.1 Flash',
-  'gemini-2.5-flash': 'Topper-AI 2.5 Vision',
+  'gemini-3.1-flash-lite': 'Topper-AI 3.1 Flash-Lite',
   'gemini-3.8-flash': 'Topper-AI 3.8 Thinker',
   'gemini-flash-latest': 'Topper-AI Ultra',
-  'gemini-3.5-flash': 'Topper-AI Pro 3.5'
+  'gemini-3.5-flash': 'Topper-AI Pro 3.5',
+  'gemini-flash-lite-latest': 'Topper-AI 3.0 Lite'
 };
 
 function getModelDisplayName(modelKey) {
@@ -817,7 +830,8 @@ async function executeGeminiCall(session, currentPrompt, imagePayload) {
     const response = await fetch(endpointUrl, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'x-goog-api-key': effectiveKey
       },
       body: JSON.stringify(payload),
       signal: state.abortController.signal
@@ -977,7 +991,10 @@ async function testApiConnection() {
   try {
     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(testModel)}:generateContent?key=${encodeURIComponent(testKey)}`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'x-goog-api-key': testKey
+      },
       body: JSON.stringify({ contents: [{ parts: [{ text: 'Ping test. Reply with OK.' }] }] })
     });
 

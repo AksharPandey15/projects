@@ -21,7 +21,74 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="mode-drama">
+<body class="mode-drama site-locked">
+
+  <!-- =====================================================================
+       SECURITY PASSWORD GATEKEEPER (LOCKED ON PAGE LOAD)
+       ===================================================================== -->
+  <div class="security-gate-overlay" id="securityGateOverlay" role="dialog" aria-modal="true"
+    aria-labelledby="gateTitle">
+    <div class="security-gate-backdrop"></div>
+
+    <!-- Floating Ambient Security Emojis -->
+    <div class="security-gate-particles" aria-hidden="true">
+      <span class="gate-particle" style="top: 15%; left: 12%;">🔒</span>
+      <span class="gate-particle" style="top: 70%; left: 8%;">🎭</span>
+      <span class="gate-particle" style="top: 22%; right: 14%;">💔</span>
+      <span class="gate-particle" style="top: 75%; right: 10%;">✨</span>
+      <span class="gate-particle" style="top: 45%; left: 86%;">📜</span>
+    </div>
+
+    <div class="security-gate-card" id="securityGateCard">
+      <div class="gate-card-glow" aria-hidden="true"></div>
+
+      <!-- Classified Clearance Badge -->
+      <div class="gate-clearance-badge">
+        <span class="gate-badge-dot"></span>
+        <span>TOP SECRET • FRIENDS ONLY</span>
+      </div>
+
+      <!-- Animated Lock Avatar -->
+      <div class="gate-avatar-wrapper">
+        <div class="gate-avatar" id="gateAvatar">
+          <span class="gate-avatar-icon" id="gateAvatarIcon">🔒</span>
+        </div>
+        <div class="gate-avatar-ripple"></div>
+      </div>
+
+      <h2 class="gate-title" id="gateTitle">Security Clearance Required</h2>
+      <p class="gate-subtitle">
+        You are attempting to access <strong>Daksh K. Gupta's</strong> parody dossier and 4 crush archives.
+        Please provide the friends-only password to proceed.
+      </p>
+
+      <!-- Password Entry Form -->
+      <form class="gate-form" id="securityGateForm" autocomplete="off">
+        <div class="gate-input-wrapper" id="gateInputWrapper">
+          <span class="gate-input-icon" aria-hidden="true">🔑</span>
+          <input type="password" id="gatePasswordInput" class="gate-input" placeholder="Enter friends-only password..."
+            autocomplete="off" spellcheck="false" required aria-label="Enter security password" />
+          <button type="button" class="gate-toggle-visibility" id="gateToggleVisibility" title="Show or hide password"
+            aria-label="Toggle password visibility">
+            <span id="gateEyeIcon">👁️</span>
+          </button>
+        </div>
+
+        <div class="gate-feedback" id="gateFeedback" aria-live="polite"></div>
+
+        <button type="submit" class="gate-submit-btn" id="gateSubmitBtn">
+          <span class="gate-btn-icon" id="gateBtnIcon">🔓</span>
+          <span class="gate-btn-label" id="gateBtnLabel">Unlock Dossier</span>
+        </button>
+      </form>
+
+      <div class="gate-footer-note">
+        <span>Friends Only Clearance</span>
+        <span class="dot-sep">•</span>
+        <span>Project 146 Protected</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Custom Glowing Cursor -->
   <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
@@ -55,6 +122,7 @@
       </nav>
 
       <div class="nav-actions">
+        <button class="btn-lock-nav" id="lockSiteBtn" title="Lock Dossier (Require Password)" aria-label="Lock Dossier">🔒</button>
         <!-- Mobile Menu Toggle -->
         <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Mobile Menu">
           <span></span><span></span><span></span>
